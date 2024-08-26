@@ -20,36 +20,32 @@
 
 <style scoped lang="scss">
 @use '@/assets/main.scss';
-
 section {
     background-image: url(./public/imgs/TruckHome.png);
     width: 100%;
     background-size: cover;
-    height: 80vh;
+    height: 40rem;
     display: flex;
     justify-content: center;
     border-bottom: 3.5px solid #FC1D87;
-}
-
-article {
+    article {
     width: 80%;
     margin: auto;
-}
-
-h1 {
-    font-size: 6rem;
-    font-weight: 700;
-    color: white;
-}
-
-p {
-    color: white;
-}
-
-article>div {
+    div {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     width: 30%;
+    h1 {
+    font-size: 80px;
+    font-weight: 700;
+    color: white;
+    }
+    p {
+    font-size: 16px;
+    color: white;
+    }
+    }
+    }
 }
 </style>

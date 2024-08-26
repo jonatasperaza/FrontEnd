@@ -5,7 +5,8 @@
     <section>
         <div class="container">
             <div>
-                <h1>Faça seu pedido <div class="strong-pink">AQUI !</div></h1>
+                <h1 class="title-last-section">Faça seu pedido </h1>
+                <h1 class="title-last-section strong-pink">AQUI !</h1>
             </div>
             <div class="a">
                 <router-link to="/makeOrder">
@@ -30,14 +31,13 @@ section{
     color: main.$standard-white;
 }
 
-h1{
-    font-size: 5rem;
+.title-last-section {
+    font-size: 70px;
     display: flex;
-    gap: 1rem;
 }
 
 .container{
-    width: 50%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -45,6 +45,10 @@ h1{
     justify-content: center;
     gap: 2rem;
     height: 200px;
+    div{
+        display: flex;
+        gap: 10px;
+    }
 }
 
 .a{
@@ -56,7 +60,7 @@ h1{
 a{
     text-decoration: none;
     padding: .75rem;
-    width: 45%;
+    width: 20%;
     text-align: center;
     margin: auto;
     background-color: main.$standard-pink;
@@ -70,4 +74,10 @@ a{
 a:hover{
     background: black;
 }
+// .title-last-section{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+// }
 </style>

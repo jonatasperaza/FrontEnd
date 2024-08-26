@@ -73,14 +73,14 @@ section {
     width: 100%;
     background-color: black;
     padding: 3rem;
-    height: 60vh;
+    height: 42rem;
     display: flex;
     justify-content: center;
     color: white;
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -90,12 +90,12 @@ section {
 .cards {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    gap: 1rem;
+    gap: 3rem;
 }
 
 .card-row {
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
 }
 
 .card {
@@ -158,11 +158,14 @@ span.pink {
 }
 
 h1{
-    font-size: 4rem;
+    font-size: 60px;
     font-weight: 700;
     color: white;
     width: 100%;
     word-break: break-all;
+}
+h2{
+    font-size: 25px;
 }
 
 
