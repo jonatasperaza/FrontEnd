@@ -1,8 +1,9 @@
 <script setup>
+import router from '@/router';
 </script>
 <template>
 <div class="login-btns">
-    <button class="logIn-btn">Log In</button>
+    <button class="logIn-btn" @click="router.push('/login')">Log In</button>
     <span></span>
     <button class="signIn-btn">Sing In</button>
 </div>
