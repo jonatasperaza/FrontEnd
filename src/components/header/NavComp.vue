@@ -3,10 +3,10 @@ import { RouterLink } from 'vue-router';
 </script>
 <template>
     <nav>
-        <div class="nav-link"><RouterLink>Home</RouterLink></div>
-        <div class="nav-link"><RouterLink>Sobre nós</RouterLink></div>
-        <div class="nav-link"><RouterLink>Veículos</RouterLink></div>
-        <div class="nav-link"><RouterLink>Pedido</RouterLink></div>
+        <div class="nav-link"><RouterLink to="/">Home</RouterLink></div>
+        <div class="nav-link"><RouterLink to="/">Sobre nós</RouterLink></div>
+        <div class="nav-link"><RouterLink to="/">Veículos</RouterLink></div>
+        <div class="nav-link"><RouterLink to="/">Pedido</RouterLink></div>
     </nav>
 </template>
 <style scoped lang="scss">
