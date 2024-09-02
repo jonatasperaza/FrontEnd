@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router';
 <template>
     <div class="container"> 
         <div class="row">
-            <h1><span></span>Login</h1>
+            <h1>Login</h1>
         </div>
         <form @submit.prevent>
             <label>Email</label>
@@ -24,7 +24,7 @@ import { RouterLink } from 'vue-router';
 <style scoped lang="scss">
 @use '../../assets/main';
 .container{
-    width: 50%;
+    width: 45%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@ import { RouterLink } from 'vue-router';
     align-items: center;
     background-color: main.$standard-black;
     form{
-        width: 300px;
+        width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -40,21 +40,24 @@ import { RouterLink } from 'vue-router';
             color: main.$standard-white;
             width: 50%;
             font-size: 16px;
-            font-weight: 500;
-            margin: 10px 0;
+            font-weight: 800;
+            margin: .5rem .5rem;
         }
         input{
-            height: 40px;
-            border-radius: .5rem;
+            height: 3rem;
+            border-radius: 1rem;
             border: 1px solid main.$standard-white;
             padding: 0 10px;
             color: main.$standard-white;
             background-color: main.$standard-black;
-            margin: 5px 0;
         }
         .row{
             display: flex;
             align-items: center;
+            margin: .5rem 0;
+            label{
+                margin: 0 0 0 .5rem;
+            }
         }
         button{
             width: 100%;
@@ -64,15 +67,15 @@ import { RouterLink } from 'vue-router';
             color: main.$standard-white;
             font-size: 16px;
             font-weight: 500;
-            margin: 10px 0;
             cursor: pointer;
+            margin: .5rem 0;
             transition: .3s ease-in-out;
         }
         a{
             color: main.$standard-white;
             font-size: 16px;
             font-weight: 500;
-            margin: 10px 0;
+            margin: .5rem 0;
             cursor: pointer;
         }
     }
@@ -82,7 +85,7 @@ import { RouterLink } from 'vue-router';
 }
 .colorBordeaux:hover{
     background-color: main.$standard-black;
-    color: main.$standard-bordeaux;
+    color: main.$standard-pink;
 }
 .colorPink{
     background-color: main.$standard-pink;
@@ -96,8 +99,6 @@ h1{
     font-style: italic;
     font-size: 50px;
     margin: 2rem;
-    font-weight: 500;
-    border-left: 3px solid main.$standard-pink;
-    padding: 0 0 0 1rem
+    font-weight: 800;
 }
 </style>
