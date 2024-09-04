@@ -2,11 +2,15 @@
 </script>
 <template>
     <section>
-        <div>
-            <div class="container-title">
-                <h1>Caminhões</h1><h1 class="colored-text">Scania</h1>
+        <div class="container-first-info">
+            <div class="container">
+                <div class="container-title">
+                    <h1>Caminhões</h1><h1 class="colored-text">Scania</h1>
+                </div>
+                <div class="container-text">
+                    <p>Os caminhões da Scania são reconhecidos mundialmente por sua durabilidade, eficiência e inovação tecnológica, projetados para oferecer alto desempenho, desde transporte de cargas pesadas até serviços urbanos e de longa distância. </p>
+                </div>    
             </div>
-            <p>Os caminhões da Scania são reconhecidos mundialmente por sua durabilidade, eficiência e inovação tecnológica, projetados para oferecer alto desempenho, desde transporte de cargas pesadas até serviços urbanos e de longa distância. </p>
         </div>
         <div class="container-ul">
             <ul>
@@ -26,44 +30,60 @@
 
 section {
     height: 40rem;
-    background-color: black;
+    background-image: url(./public/imgs/background-line.png);
+    background-size: cover;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     align-items: center;
-    div {
-        margin: 2em;
+
+    .container-first-info {
+        margin: 4em;
         color: white;
-        .container-title {
+        .container {
+            padding-left: 3em;
+            border-left: 4px solid main.$standard-pink;
+            .container-title {
             display: flex;
             h1 {
-                font-size: 60px;
                 
+                font-size: 60px;
             }
 
             .colored-text{
-            color: main.$standard-pink;
             margin-left: 0.3em;
+            color: main.$standard-pink;
             }
 
         }
-        
-        p {
-            font-size: 20px;
+        .container-text {
+            margin-top: 1.5em;
+            p {
+                font-size: 23px;
+            }
+
         }
+        }
+        
     }
     .container-ul {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        justify-items: center;
         color: white;
         ul {
             li {
+                margin-bottom: 1em ;
                 font-size: 25px;
             }
+            li::marker {
+            color: main.$standard-pink;
+        }
         }
     }
     .truck-container {
+        display: flex;
+        flex-direction: row-reverse;
         grid-column: 2;
         grid-row: 1 / span 2;
     }
