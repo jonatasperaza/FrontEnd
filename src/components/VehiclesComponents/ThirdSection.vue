@@ -5,7 +5,7 @@
         <div class="container-first-info">
             <div class="container">
                 <div class="container-title">
-                    <h1>Caminhões</h1><h1 class="colored-text">Scania</h1>
+                    <h1>Caminhões</h1><h1 class="colored-text">Volvo</h1>
                 </div>
                 <div class="container-text">
                     <p>Os caminhões da Scania são reconhecidos mundialmente por sua durabilidade, eficiência e inovação tecnológica, projetados para oferecer alto desempenho, desde transporte de cargas pesadas até serviços urbanos e de longa distância. </p>
@@ -21,7 +21,7 @@
             </ul>
         </div>  
         <div class="truck-container">
-            <img src="/public/imgs/caminhao-scania.png">
+            <img src="/public/imgs/caminhao-volvo.png">
         </div>
     </section>
 </template>
@@ -29,7 +29,7 @@
 @use '../../assets/main';
 
 section {
-    background-image: url(./public/imgs/background-line.png);
+    background-image: url(./public/imgs/background-inverse-line.png);
     background-size: cover;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -45,6 +45,8 @@ section {
         .container {
             padding-left: 3em;
             border-left: 4px solid main.$standard-pink;
+            grid-column: 2;
+            grid-row: 1;
             .container-title {
             display: flex;
             h1 {
@@ -69,6 +71,8 @@ section {
         
     }
     .container-ul {
+        grid-column: 2;
+        grid-row: 2;
         display: grid;
         grid-template-columns: 2fr 1fr;
         justify-items: center;
@@ -84,15 +88,14 @@ section {
         }
     }
     .truck-container {
-        width: 80%;
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        width: 70%;
         img{
             width: 100%;
         }
-        margin-top: 2em;
-        margin-left: 4em;
+        margin: 2em;
         display: flex;
-        grid-column: 2;
-        grid-row: 1 / span 2;
     }
 }
 </style>

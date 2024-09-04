@@ -5,7 +5,7 @@
         <div class="container-first-info">
             <div class="container">
                 <div class="container-title">
-                    <h1>Caminhões</h1><h1 class="colored-text">Scania</h1>
+                    <h1>Caminhões</h1><h1 class="colored-text">Mercedez</h1>
                 </div>
                 <div class="container-text">
                     <p>Os caminhões da Scania são reconhecidos mundialmente por sua durabilidade, eficiência e inovação tecnológica, projetados para oferecer alto desempenho, desde transporte de cargas pesadas até serviços urbanos e de longa distância. </p>
@@ -21,7 +21,7 @@
             </ul>
         </div>  
         <div class="truck-container">
-            <img src="/public/imgs/caminhao-scania.png">
+            <img src="/public/imgs/caminhao-mercedez.png">
         </div>
     </section>
 </template>

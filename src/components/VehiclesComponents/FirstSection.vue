@@ -18,7 +18,7 @@ section {
     background-image: url(./public/imgs/TruckVehicle.png);
     width: 100%;
     background-size: cover;
-    height: 40rem;
+    height: 50rem;
     display: flex;
     justify-content: center;
     border-bottom: 3.5px solid #FC1D87;
