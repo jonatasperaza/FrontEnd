@@ -5,29 +5,46 @@ import FormSecondStep from './FormSecondStep.vue';
 
 const firstStep = ref(null);
 const secondStep = ref(null);
-const next = () =>{
-    firstStep.value.classList.add('hideForm');
-    secondStep.value.classList.add('passForm');
-}
-const back = () =>{
-    firstStep.value.classList.remove('hideForm');
-    firstStep.value.classList.add('backForm');
-    secondStep.value.classList.remove('passForm');
-}
+const isSecondStepVisible = ref(false);
+
+const next = () => {
+    // Remove any previous animation classes
+    firstStep.value.classList.remove('slideInReverse', 'slideOut');
+    secondStep.value.classList.remove('slideIn', 'slideOutReverse');
+
+    firstStep.value.classList.add('slideOut');
+    setTimeout(() => {
+        isSecondStepVisible.value = true;
+        firstStep.value.style.display = 'none';
+        secondStep.value.classList.add('slideIn');
+    }, 500);
+};
+const back = () => {
+    secondStep.value.classList.add('slideOutReverse');
+    setTimeout(() => {
+        isSecondStepVisible.value = false;
+        firstStep.value.style.display = 'flex';
+        secondStep.value.classList.remove('slideOutReverse');
+        setTimeout(() =>{
+        firstStep.value.classList.add('slideInReverse');
+        }, 0)
+}, 500);
+};
 </script>
 <template>
 <section>
     <div class="container">
         <h1>Registre-se</h1>
-        <div ref="firstStep">
-            <FormFirstStep  @next="next" />
+        <div ref="firstStep" :class="{ hidden: isSecondStepVisible }">
+            <FormFirstStep @next="next" />
         </div>
-        <div ref="secondStep">
-            <FormSecondStep  @back="back" />
+        <div ref="secondStep" v-show="isSecondStepVisible">
+            <FormSecondStep @back="back" />
         </div>
     </div>
 </section>
 </template>
+
 <style scoped lang="scss">
 @use '../../assets/main';
 section{
@@ -42,11 +59,6 @@ section{
 }
 div{
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
 }
 h1{
     color: main.$standard-pink;
@@ -57,43 +69,63 @@ h1{
 }
 .container{
     width: 45%;
-    height: 100%;
+    min-height:100vh ;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: main.$standard-black;   
+    background-color: main.$standard-black;
 }
-.hideForm{
+.hidden {
     display: none;
 }
-.passForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: nextForm .5s;
+.slideOut {
+    animation: slideOut 0.5s forwards;
 }
-.backForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: backForm .5s;
+.slideIn {
+    animation: slideIn 0.5s forwards;
 }
-@keyframes nextForm {
-    from{
+.slideInReverse {
+    animation: slideInReverse 0.5s forwards;
+}
+.slideOutReverse {
+    animation: slideOutReverse 0.5s forwards;
+}
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+@keyframes slideIn {
+    from {
         opacity: 0;
         transform: translateX(100%);
     }
-    to{
+    to {
         opacity: 1;
         transform: translateX(0);
     }
 }
-@keyframes backForm {
-    from{
+@keyframes slideOutReverse {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+@keyframes slideInReverse {
+    from {
         opacity: 0;
         transform: translateX(-100%);
     }
-    to{
+    to {
         opacity: 1;
         transform: translateX(0);
     }
