@@ -1,12 +1,11 @@
 <script setup>
-import { RouterLink } from 'vue-router';
 </script>
 <template>
     <nav>
-        <div class="nav-link"><RouterLink to="/">Home</RouterLink></div>
-        <div class="nav-link"><RouterLink to="/">Sobre nós</RouterLink></div>
-        <div class="nav-link"><RouterLink to="/">Veículos</RouterLink></div>
-        <div class="nav-link"><RouterLink to="/">Pedido</RouterLink></div>
+        <div class="nav-link"><router-link to="/">Home</router-link></div>
+        <div class="nav-link"><router-link to="/">Sobre nós</router-link></div>
+        <div class="nav-link"><router-link to="/vehicles">Veículos</router-link></div>
+        <div class="nav-link"><router-link to="/">Pedido</router-link></div>
     </nav>
 </template>
 <style scoped lang="scss">
