@@ -29,8 +29,8 @@ function selectCategory(Category) {
     ><button @click="selectCategory('AE')" :class="{ selectedPink: selectedCategory === 'AE' }">
       AE
     </button>
-    <button class="nextButton">Próximo</button>
-    <button class="backButton">Voltar</button>
+    <button class="nextButton" @click="$emit('next')">Próximo</button>
+    <button class="backButton" @click="$emit('back')">Voltar</button>
   </form>
 </template>
 <style scoped lang="scss">
@@ -38,10 +38,12 @@ function selectCategory(Category) {
 h2 {
   color: main.$standard-white;
   font-size: 50px;
+  width: max-content;
   font-weight: 800;
-  margin: 1rem 0;
+  margin: 1rem auto;
   padding-left: 1rem;
   border-left: 2px solid main.$standard-pink;
+  font-style: italic;
 }
 form {
   width: 50%;

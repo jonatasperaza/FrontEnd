@@ -17,7 +17,7 @@
     <label for="">Complemento</label>
     <input type="text" placeholder="Insira um complemento" />
     <button class="normalColor">Finalizar</button>
-    <button class="invertColor">Voltar</button>
+    <button class="invertColor" @click="$emit('back')">Voltar</button>
   </form>
 </template>
 <style scoped lang="scss">
@@ -25,10 +25,12 @@
 h2 {
   color: main.$standard-white;
   font-size: 50px;
+  width: max-content;
   font-weight: 800;
-  margin: 1rem 0;
+  margin: 1rem auto;
   padding-left: 1rem;
   border-left: 2px solid main.$standard-pink;
+  font-style: italic;
 }
 form {
   width: 50%;

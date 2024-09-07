@@ -29,7 +29,7 @@ const selectGender = (gender) => {
       </button>
       <button @click="selectGender('woman')" :class="{ selectedPink: selectedGender === 'woman' }"> <img src="/public/woman-icon.svg" alt="Ícone feminino" /></button>
     </div>
-    <button>Próximo</button>
+    <button @click="$emit('next')">Próximo</button>
   </form>
 </template>
 
@@ -38,10 +38,12 @@ const selectGender = (gender) => {
 h2 {
   color: main.$standard-white;
   font-size: 50px;
+  width: max-content;
   font-weight: 800;
-  margin: 1rem 0;
+  margin: 1rem auto;
   padding-left: 1rem;
   border-left: 2px solid main.$standard-pink;
+  font-style: italic;
 }
 form {
   width: 50%;

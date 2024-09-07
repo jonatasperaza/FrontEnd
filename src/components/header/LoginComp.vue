@@ -5,7 +5,7 @@ import router from '@/router';
 <div class="login-btns">
     <button class="logIn-btn" @click="router.push('/login')">Log In</button>
     <span></span>
-    <button class="signIn-btn">Sing In</button>
+    <button class="signIn-btn" @click="router.push('/client/signin')">Sing In</button>
 </div>
 </template>
 <style scoped lang="scss"> 
