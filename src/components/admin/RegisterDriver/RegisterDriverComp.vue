@@ -1,7 +1,10 @@
 <script setup>
+// import FormFirstStep from './FormFirstStep.vue';
+// import FormSecondStep from './FormSecondStep.vue';
+import FormThirdStep from './FormThirdStep.vue';
 </script>
 <template>
-    <section><div class="container"></div></section>
+    <section><div class="container"><FormThirdStep /></div></section>
 </template>
 <style scoped lang="scss">
 @use '../../../assets/main';
