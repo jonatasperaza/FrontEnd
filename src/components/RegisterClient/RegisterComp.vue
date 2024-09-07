@@ -15,7 +15,7 @@ const next = () => {
     firstStep.value.style.display = 'none'
     secondStep.value.classList.add('slideIn')
   }, 500)
-}
+};
 const back = () => {
   secondStep.value.classList.add('slideOutReverse')
   setTimeout(() => {
@@ -26,7 +26,7 @@ const back = () => {
       firstStep.value.classList.add('slideInReverse')
     }, 0)
   }, 500)
-}
+};
 </script>
 <template>
   <section>
