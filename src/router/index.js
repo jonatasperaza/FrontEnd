@@ -5,6 +5,7 @@ import AboutView from '@/views/AboutView.vue'
 import LoginView from '@/views/LoginView.vue'
 import ViaCepView from '@/views/tests/ViaCepView.vue'
 import SignInViewClient from '@/views/client/SignInViewClient.vue'
+import RegisterEmployeeView from '@/views/admin/RegisterEmployeeView.vue'
 import RegisterDriverView from '@/views/admin/RegisterDriverView.vue'
 
 const router = createRouter({
@@ -41,10 +42,16 @@ const router = createRouter({
       component: SignInViewClient
     },
     {
+      path:'/admin/employee/signup',
+      name: 'employee-signup',
+      component: RegisterEmployeeView
+     },
+    {
       path: '/admin/driver/signin',
       name: 'driver-signin',
       component: RegisterDriverView
     }
+   }
   ]
 })
 
