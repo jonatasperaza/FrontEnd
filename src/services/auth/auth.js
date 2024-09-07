@@ -1,9 +1,9 @@
-import axios from 'axios'
+import { api } from "@/plugins"
 
 class AuthService {
-  async postUserToken(token) {
+  async getUser(token) {
     try {
-      const response = await axios.post('/usuarios/me/', {
+      const response = await api.get('/user/me/', {
         headers: {
           Authorization: `Bearer ${token}`
         }

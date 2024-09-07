@@ -26,8 +26,8 @@ const getUserInfo = async () => {
   }
 };
 
-onMounted(() => {
-  getUserInfo();
+onMounted(async () => {
+  await getUserInfo();
 });
 </script>
 <template>

@@ -17,13 +17,19 @@ export const useAuthStore = defineStore('auth', () => {
   const userStorageLocal = useStorage('user', localUser)
 
   async function setToken(token) {
-    const data = await AuthService.postUserToken(token)
-    userStorageLocal.value = {
-      isLogged: true,
-      email: data.email,
-      token: token,
-      id: data.id,
-      name: data.name
+    let data
+    try {
+      data = await AuthService.getUser(token)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      userStorageLocal.value = {
+        isLogged: true,
+        email: data.email,
+        token: token,
+        id: data.id,
+        name: data.name
+      }
     }
   }
 
@@ -48,7 +54,6 @@ export const useAuthStore = defineStore('auth', () => {
   function setId(novoDado) {
     id.value = novoDado
   }
-
 
   function setName(novoDado) {
     name.value = novoDado
