@@ -1,4 +1,5 @@
 <script setup>
+import LeftProfileInputsVue from "./LeftProfileInputs.vue";
 </script>
 <template>
     <section>
@@ -6,6 +7,7 @@
             <h1><span class="strong-pink">Meu</span> Perfil</h1>
             <div class="rowInputs">
                 <div class="left">
+                    <LeftProfileInputsVue />
                 </div>
                 <div class="right"><div class="ClientPic"></div>
             <div class="inputs"></div></div>
