@@ -17,17 +17,16 @@
 @use '../../../assets/main';
 .clientPic {
   width: 30%;
-  height: 7rem;
+  height: 18%;
   background-color: main.$standard-white;
   border-radius: 50%;
   margin: 3rem auto;
 }
 form {
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 1rem auto 4rem auto;
   label {
     color: main.$standard-white;
     width: 50%;

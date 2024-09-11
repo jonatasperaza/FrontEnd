@@ -19,11 +19,10 @@
 <style scoped lang="scss">
 @use '../../../assets/main';
 form {
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 1rem auto 4rem auto;
   label {
     color: main.$standard-white;
     width: 50%;
