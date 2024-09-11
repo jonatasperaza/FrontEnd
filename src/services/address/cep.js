@@ -2,10 +2,13 @@ import axios from 'axios'
 
 class CepService {
   async getCep(cep) {
-    const response = await axios.get(`https://viacep.com.br/ws/${cep}/json`)
-    console.log(response.data)
-    return response.data
+    try {
+      const response = await axios.get(`https://viacep.com.br/ws/${cep}/json`)
+      return response.data
+    } catch (error) {
+      return error
+    }
   }
 }
 
-export default new CepService
+export default new CepService()
