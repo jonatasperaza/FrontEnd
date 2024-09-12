@@ -2,6 +2,7 @@
 import LeftProfileInputsVue from './LeftProfileInputs.vue'
 import RightProfileInputsVue from './RightProfileInputs.vue'
 import TypeOrderComp from './TypeOrderComp.vue';
+import DoneOrders from './DoneOrders.vue';
 </script>
 <template>
   <section>
@@ -18,6 +19,7 @@ import TypeOrderComp from './TypeOrderComp.vue';
       <span class="pinkLine"></span>
       <h2><span class="strong-pink">Histórico</span></h2>
       <TypeOrderComp />
+      <DoneOrders />
     </div>
   </section>
 </template>
@@ -30,7 +32,7 @@ section {
   .container {
     width: 60%;
     height: 100%;
-    border: 2px solid white;
+    // border: 2px solid white;
     margin: auto;
     .pinkLine{
     width: 100%;
