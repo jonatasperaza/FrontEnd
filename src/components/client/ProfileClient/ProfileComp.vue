@@ -1,8 +1,7 @@
 <script setup>
 import LeftProfileInputsVue from './LeftProfileInputs.vue'
 import RightProfileInputsVue from './RightProfileInputs.vue'
-import TypeOrderComp from './TypeOrderComp.vue';
-import DoneOrders from './DoneOrders.vue';
+import TypeOrderComp from './TypeOrderComp.vue'
 </script>
 <template>
   <section>
@@ -13,13 +12,12 @@ import DoneOrders from './DoneOrders.vue';
           <LeftProfileInputsVue />
         </div>
         <div class="right">
-            <RightProfileInputsVue />
+          <RightProfileInputsVue />
         </div>
       </div>
-      <span class="pinkLine"></span>
+      <div class="pinkLine"></div>
       <h2><span class="strong-pink">Histórico</span></h2>
       <TypeOrderComp />
-      <DoneOrders />
     </div>
   </section>
 </template>
@@ -31,22 +29,20 @@ section {
   background-color: main.$standard-black;
   .container {
     width: 60%;
-    height: 100%;
-    // border: 2px solid white;
     margin: auto;
-    .pinkLine{
-    width: 100%;
-    height: 2px;
-    background-color: main.$standard-pink;
-    margin: 1rem 0;
-  }
+
+    .pinkLine {
+      width: 100%;
+      height: 2px;
+      background-color: main.$standard-pink;
+      margin: 1rem 0;
+    }
   }
   h1 {
     color: white;
-    font-size: 2rem;
+    font-size: 45px;
     text-align: center;
     padding: 1rem;
-    border-bottom: 2px solid white;
   }
   h2 {
     color: white;
@@ -54,21 +50,12 @@ section {
     text-align: center;
     padding: 1rem;
   }
-
   .rowInputs {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 1rem;
-    .left {
-      width: 48%;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      align-items: center;
-      // border-right: 2px solid white;
-    }
+    .left,
     .right {
       width: 48%;
       height: 80vh;
@@ -79,9 +66,4 @@ section {
     }
   }
 }
-div {
-  // border: 1px solid white;
-  margin: 1rem 0;
-}
-
 </style>

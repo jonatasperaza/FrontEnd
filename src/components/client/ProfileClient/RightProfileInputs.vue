@@ -1,24 +1,27 @@
-<script setup>
-</script>
+<script setup></script>
 <template>
-    <div class="clientPic"></div>
-    <form @submit.prevent>
-        <label for="">Nome</label>
-        <input type="text" placeholder="Nome">
-        <label for="">Email</label>
-        <input type="text" placeholder="Email">
-        <label for="">Telefone</label>
-        <input type="text" placeholder="Telefone">
-        <label for="">Endereço</label>
-        <input type="text" placeholder="Endereço">
-    </form>
+  <div class="clientPic">
+    <img src="/public/client-Icon.svg" alt="" />
+  </div>
+  <form @submit.prevent>
+    <label for="">Nome</label>
+    <input type="text" placeholder="Nome" />
+    <label for="">Email</label>
+    <input type="text" placeholder="Email" />
+    <label for="">Telefone</label>
+    <input type="text" placeholder="Telefone" />
+    <label for="">Endereço</label>
+    <input type="text" placeholder="Endereço" />
+  </form>
 </template>
 <style scoped lang="scss">
 @use '../../../assets/main';
 .clientPic {
   width: 30%;
   height: 18%;
-  background-color: main.$standard-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   margin: 3rem auto;
 }
@@ -35,9 +38,9 @@ form {
     margin: 0.5rem 0.5rem;
   }
   input {
-    height: 2.75rem;
+    height: 2.5rem;
     border-radius: 1rem;
-    border: 1px solid main.$standard-white;
+    border: 2px solid main.$standard-white;
     padding: 0 10px;
     color: main.$standard-white;
     background-color: main.$standard-black;

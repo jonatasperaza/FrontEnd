@@ -2,28 +2,28 @@
 const testOrders = [
   {
     id: 1,
-    product: 'carro',
+    product: 'ração',
     quantity: '1',
     weight: '1000kg',
     date: '01/01/2021'
   },
   {
     id: 2,
-    product: 'moto',
+    product: 'gasolina',
     quantity: '2',
     weight: '200kg',
     date: '02/02/2021'
   },
   {
     id: 3,
-    product: 'caminhao',
+    product: 'feno',
     quantity: '3',
     weight: '3000kg',
     date: '03/03/2021'
   },
   {
     id: 4,
-    product: 'avião',
+    product: 'trigo',
     quantity: '4',
     weight: '4000kg',
     date: '04/04/2021'

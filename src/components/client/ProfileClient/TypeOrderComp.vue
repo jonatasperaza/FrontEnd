@@ -1,27 +1,45 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import DoneOrders from './DoneOrders.vue'
+import PendingOrders from './PendingOrders.vue'
+import FinishedOrders from './FinishedOrders.vue'
 
-const selectedType = ref(null)
-function selectType(Type) {
-  selectedType.value = Type
+const selectedType = ref('feito')
+const selectedTypeComponent = computed(() => {
+  if (selectedType.value === 'feito') return DoneOrders
+  if (selectedType.value === 'pendente') return PendingOrders
+  if (selectedType.value === 'finalizado') return FinishedOrders
+})
+function selectType(type) {
+  selectedType.value = type
 }
 </script>
 <template>
   <div class="row">
     <button @click="selectType('feito')" :class="{ selectedPink: selectedType === 'feito' }">
-      Feito</button
-    ><button @click="selectType('pendente')" :class="{ selectedPink: selectedType === 'pendente' }">
-      Pendente</button
-    ><button
-      @click="selectType('finalizado')"
-      :class="{ selectedPink: selectedType === 'finalizado' }"
-    >
+      Feito
+    </button>
+    <button @click="selectType('pendente')" :class="{ selectedPink: selectedType === 'pendente' }">
+      Pendente
+    </button>
+    <button @click="selectType('finalizado')" :class="{ selectedPink: selectedType === 'finalizado' }">
       Finalizado
     </button>
   </div>
+  <transition name="fade" mode="out-in">
+    <component :is="selectedTypeComponent" key="selectedType" />
+  </transition>
 </template>
 <style scoped lang="scss">
 @use '../../../assets/main';
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 .row {
   display: flex;
   justify-content: space-around;
