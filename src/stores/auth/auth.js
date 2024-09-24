@@ -39,7 +39,6 @@ export const useAuthStore = defineStore('auth', () => {
       token: ''
     }
     localStorage.clear()
-    router.push('/singin')
   }
 
   return {
