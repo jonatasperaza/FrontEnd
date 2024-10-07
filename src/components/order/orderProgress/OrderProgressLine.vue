@@ -1,155 +1,49 @@
-<script setup>
-</script>
+<script setup></script>
 <template>
-    <section>
-        <div>
-            <ol class="progress" data-steps="3">
-                <li class="done">
-                    <span class="step"></span>
-                    
-                </li>
-                <li class="done">
-                    <span class="step"></span>
-
-                </li>
-                <li class="active">
-                    <span class="step"></span>
-              
-                </li>
-            </ol>
-        </div>
-    </section>
+  <section>
+    <div class="container">
+      <div>
+        <div class="circle"></div>
+        <span></span>
+        <div class="circle"></div>
+        <span></span>
+        <div class="circle"></div>
+      </div>
+      <div class="container-title">
+        <h2>dados do pedido</h2>
+        <h2>dados de coleta</h2>
+        <h2>dados de entrega</h2>
+      </div>
+    </div>
+  </section>
 </template>
 <style scoped lang="scss">
 @use '../../../assets/main.scss';
 section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: main.$standard-black;
 
-div {
+  .container {
     width: 50%;
-}
-/* Progress Tracker v2 */
 
-ol.progress[data-steps="2"] li {
-    width: 49%;
-}
+    .container-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
 
-ol.progress[data-steps="3"] li {
-    width: 33%;
-}
-
-ol.progress[data-steps="4"] li {
-    width: 24%;
-}
-
-ol.progress[data-steps="5"] li {
-    width: 19%;
-}
-
-ol.progress[data-steps="6"] li {
-    width: 16%;
-}
-
-ol.progress[data-steps="7"] li {
-    width: 14%;
-}
-
-ol.progress[data-steps="8"] li {
-    width: 12%;
-}
-
-ol.progress[data-steps="9"] li {
-    width: 11%;
-}
-
-.progress {
-    width: 100%;
-    list-style: none;
-    list-style-image: none;
-    margin: 20px 0 20px 0;
-    padding: 0;
-}
-
-.progress li {
-    float: left;
-    text-align: center;
-    position: relative;
-}
-
-.progress .name {
-    display: block;
-    text-align: center;
-    color: black;
-    opacity: 0.3;
-}
-
-.progress .step {
-    color: black;
-    border: 3px solid silver;
-    background-color: silver;
-    border-radius: 50%;
-    line-height: 1.2;
-    width: 1.2em;
-    height: 1.2em;
-    display: inline-block;
-    z-index: 0;
-}
-
-.progress .step span {
-    opacity: 0.3;
-}
-
-.progress .active .name,
-.progress .active .step span {
-    opacity: 1;
-}
-
-.progress .step:before {
-    content: "";
-    display: block;
-    background-color: silver;
-    height: 0.4em;
-    width: 50%;
-    position: absolute;
-    bottom: 0.6em;
-    left: 0;
-    z-index: -1;
-}
-
-.progress .step:after {
-    content: "";
-    display: block;
-    background-color: silver;
-    height: 0.4em;
-    width: 50%;
-    position: absolute;
-    bottom: 0.6em;
-    right: 0;
-    z-index: -1;
-}
-
-.progress li:first-of-type .step:before {
-    display: none;
-}
-
-.progress li:last-of-type .step:after {
-    display: none;
-}
-
-.progress .done .step,
-.progress .done .step:before,
-.progress .done .step:after,
-.progress .active .step,
-.progress .active .step:before {
-    background-color: main.$standard-pink;
-}
-
-.progress .done .step,
-.progress .active .step {
-    border: 3px solid main.$standard-pink;
+      h2 {
+        color: main.$standard-white;
+        font-size: 1rem;
+      }
+    }
+    h2 {
+      color: main.$standard-white;
+      font-size: 1rem;
+    }
+  }
 }
 </style>
