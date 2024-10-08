@@ -9,7 +9,7 @@ export const useOrdersStore = defineStore("orders",
             order: reactive({
             }),
             loading: false,
-            step: 1,
+            step: 2,
             error: null
         });
         const isLoading = computed(() => state.loading);

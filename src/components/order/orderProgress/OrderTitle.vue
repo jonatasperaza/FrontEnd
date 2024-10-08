@@ -16,7 +16,7 @@ section {
     height: 10rem;
     background-color: black;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
 
     div {
@@ -28,7 +28,7 @@ section {
         height: 5em;
 
         h1 {
-            font-size: 4vw;
+            font-size: 4rem;
         }
     }
 }

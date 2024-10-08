@@ -16,12 +16,14 @@
 </template>
 <style scoped lang="scss">
 @use '../../assets/main';
+
 form {
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 1rem auto 4rem auto;
+
   label {
     color: main.$standard-white;
     width: 50%;
@@ -29,6 +31,7 @@ form {
     font-weight: 800;
     margin: 0.5rem 0.5rem;
   }
+
   input {
     height: 3.25rem;
     border-radius: 1rem;
@@ -37,6 +40,7 @@ form {
     color: main.$standard-white;
     background-color: main.$standard-black;
   }
+
   button {
     width: 100%;
     height: 3rem;
@@ -51,6 +55,7 @@ form {
     transition: 0.3s ease-in-out;
   }
 }
+
 button:hover {
   background-color: main.$standard-black;
   color: main.$standard-pink;

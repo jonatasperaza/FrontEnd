@@ -18,10 +18,10 @@ console.log(ordersStore.state.step);
         <div :class="{ 'stepSelected': ordersStore.state.step == 3 }"></div>
       </div>
       <div class="container-title">
-        <h2 :class="{ 'stepSelected2': ordersStore.state.step >= 1 }">dados do pedido</h2>
-        <h2 :class="{ 'stepSelected2': ordersStore.state.step >= 1 }">dados de coleta</h2>
-        <h2 :class="{ 'stepSelected2': ordersStore.state.step >= 1 }">dados de entrega</h2>
-      </div>  
+        <h2 >dados do pedido</h2>
+        <h2>dados de coleta</h2>
+        <h2 >dados de entrega</h2>
+      </div>
     </div>
   </section>
 </template>
@@ -36,7 +36,7 @@ section {
   background-color: main.$standard-black;
 
   .container {
-    width: 50%;
+    width: 30%;
 
     .container-title {
       width: 100%;
@@ -46,7 +46,7 @@ section {
       margin-bottom: 1rem;
 
       h2 {
-        color: main.$standard-white;
+        color: main.$standard-pink;
         font-size: 1rem;
       }
     }
@@ -54,7 +54,7 @@ section {
 }
 
 .circles {
-  width: 88%;
+  width: 85%;
   margin: auto;
   height: 3rem;
   display: flex;
@@ -75,10 +75,9 @@ section {
   }
 
   .stepSelected {
-    background-color: main.$standard-pink !important;
+    background-color: main.$standard-pink ;
   }
-  .stepSelected2 {
-    color: main.$standard-pink !important;
-  }
+
 }
 </style>
+;
