@@ -18,9 +18,9 @@ console.log(ordersStore.state.step);
         <div :class="{ 'stepSelected': ordersStore.state.step == 3 }"></div>
       </div>
       <div class="container-title">
-        <h2>dados do pedido</h2>
-        <h2>dados de coleta</h2>
-        <h2>dados de entrega</h2>
+        <h2>Dados Do Pedido</h2>
+        <h2>Dados De Coleta</h2>
+        <h2>Dados De Entrega</h2>
       </div>
     </div>
   </section>

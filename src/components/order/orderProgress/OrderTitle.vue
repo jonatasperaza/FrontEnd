@@ -1,16 +1,22 @@
 <script setup>
+import { useOrdersStore } from '@/stores';
+
+const ordersStore = useOrdersStore();
 </script>
 <template>
     <section>
         <div>
-            <h1 class="strong-pink">
-                Dados
-                <span class="white">do pedido</span>
+            <h1 class="strong-pink" v-if="ordersStore.state.step == 1">Dados<span class="white">do Pedido</span>
+            </h1>
+            <h1 class="strong-pink" v-if="ordersStore.state.step == 2">Dados<span class="white">de Coleta</span>
+            </h1>
+            <h1 class="strong-pink" v-if="ordersStore.state.step == 3">Dados<span class="white">de Entrega</span>
             </h1>
         </div>
     </section>
 </template>
-<style scoped>
+<style scoped lang="scss">
+@use '../../../assets/main.scss';
 section {
     width: 100%;
     height: 10rem;
@@ -18,8 +24,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    div {
+    div{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -29,6 +34,9 @@ section {
 
         h1 {
             font-size: 4rem;
+            span{
+                margin-left: 0.25em 
+            };
         }
     }
 }

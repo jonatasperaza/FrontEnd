@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { useOrdersStore } from '@/stores';
 
-import OrderProgressComp from './OrderProgress/OrderProgressComp.vue';
+import OrderProgressComp from './orderProgress/OrderProgressComp.vue';
 import OrderData from './OrderInformations/OrderData.vue';
 import CollectionData from './OrderInformations/CollectionData.vue';
 import DeliveryData from './OrderInformations/DeliveryData.vue';
@@ -82,6 +82,8 @@ const backToSecond = () => {
 
 section {
     background-color: main.$standard-black;
+    width: 100%;
+    min-height: 100vh;
 }
 
 .hidden {
@@ -112,14 +114,14 @@ section {
 
     to {
         opacity: 0;
-        transform: translateX(-20%);
+        transform: translateX(-5%);
     }
 }
 
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateX(20%);
+        transform: translateX(5%);
     }
 
     to {
@@ -136,14 +138,14 @@ section {
 
     to {
         opacity: 0;
-        transform: translateX(20%);
+        transform: translateX(5%);
     }
 }
 
 @keyframes slideInReverse {
     from {
         opacity: 0;
-        transform: translateX(-20%);
+        transform: translateX(-5%);
     }
 
     to {
