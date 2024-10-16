@@ -1,4 +1,7 @@
 <script setup>
+import { useOrdersStore } from '@/stores';
+
+const ordersStore = useOrdersStore();
 </script>
 <template>
     <section>
@@ -7,31 +10,31 @@
                 <div class="container-field">
                     <div class="container-input">
                         <label>CEP</label>
-                        <input class="input" placeholder="Inserir CEP" type="text" name="">
+                        <input class="input" placeholder="Inserir CEP" type="text" name="" v-model="ordersStore.state.order.deliveryCep">
                     </div>
                     <div class="container-input">
                         <label>Número</label>
-                        <input class="input" placeholder="Inserir número" type="text" name="">
+                        <input class="input" placeholder="Inserir número" type="text" name="" v-model="ordersStore.state.order.deliveryNumber">
                     </div>
                 </div>
                 <div class="container-field">
                     <div class="container-input">
                         <label>Endereço</label>
-                        <input class="input" placeholder="Inserir endereço" type="text" name="">
+                        <input class="input" placeholder="Inserir endereço" type="text" name="" v-model="ordersStore.state.order.deliveryAddress">
                     </div>
                     <div class="container-input">
                         <label>Complemento</label>
-                        <input class="input" placeholder="Inserir complemento" type="text" name="">
+                        <input class="input" placeholder="Inserir complemento" type="text" name="" v-model="ordersStore.state.order.deliveryComplement">
                     </div>
                 </div>
                 <div class="container-field">
                     <div class="container-input">
                         <label>Cidade</label>
-                        <input class="input" placeholder="Inserir cidade" type="text" name="">
+                        <input class="input" placeholder="Inserir cidade" type="text" name="" v-model="ordersStore.state.order.deliveryCity">
                     </div>
                     <div class="container-input">
                         <label>Estado</label>
-                        <input class="input" placeholder="Inserir estado" type="text" name="">
+                        <input class="input" placeholder="Inserir estado" type="text" name="" v-model="ordersStore.state.order.deliveryState">
                     </div>
                 </div>
             </form>
