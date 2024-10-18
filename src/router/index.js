@@ -8,6 +8,7 @@ import SignInViewClient from '@/views/client/SignInViewClient.vue'
 import RegisterEmployeeView from '@/views/admin/RegisterEmployeeView.vue'
 import RegisterDriverView from '@/views/admin/RegisterDriverView.vue'
 import ProfileClientView from '@/views/client/ProfileClientView.vue'
+import DriverProfileView from '@/views/driver/DriverProfileView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +57,11 @@ const router = createRouter({
       path: '/client/profile',
       name: 'client-profile',
       component: ProfileClientView
+    },
+    {
+      path: '/driver/profile',
+      name: 'driver-profile',
+      component: DriverProfileView
     }
   ]
 })
