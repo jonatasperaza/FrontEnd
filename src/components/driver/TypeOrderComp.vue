@@ -4,11 +4,11 @@ import DoneOrders from './DoneOrders.vue'
 import PendingOrders from './PendingOrders.vue'
 import FinishedOrders from './FinishedOrders.vue'
 
-const selectedType = ref('feito')
+const selectedType = ref('done')
 const selectedTypeComponent = computed(() => {
-  if (selectedType.value === 'feito') return DoneOrders
-  if (selectedType.value === 'pendente') return PendingOrders
-  if (selectedType.value === 'finalizado') return FinishedOrders
+  if (selectedType.value === 'done') return DoneOrders
+  if (selectedType.value === 'pending') return PendingOrders
+  if (selectedType.value === 'finished') return FinishedOrders
 })
 function selectType(type) {
   selectedType.value = type
@@ -16,13 +16,13 @@ function selectType(type) {
 </script>
 <template>
   <div class="row">
-    <button @click="selectType('feito')" :class="{ selectedPink: selectedType === 'feito' }">
+    <button @click="selectType('done')" :class="{ selectedPink: selectedType === 'done' }">
       Feito
     </button>
-    <button @click="selectType('pendente')" :class="{ selectedPink: selectedType === 'pendente' }">
+    <button @click="selectType('pending')" :class="{ selectedPink: selectedType === 'pending' }">
       Pendente
     </button>
-    <button @click="selectType('finalizado')" :class="{ selectedPink: selectedType === 'finalizado' }">
+    <button @click="selectType('finished')" :class="{ selectedPink: selectedType === 'finished' }">
       Finalizado
     </button>
   </div>
