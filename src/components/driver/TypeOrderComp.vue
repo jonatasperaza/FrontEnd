@@ -31,7 +31,7 @@ function selectType(type) {
   </transition>
 </template>
 <style scoped lang="scss">
-@use '../../../assets/main';
+@use '../../assets/main';
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
