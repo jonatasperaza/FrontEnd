@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router';
         <h1>NOSSO ENDEREÇO</h1>
        </div>
        <div>
-        <p>Rua Skibidi Bomboclat DogAmostrading, 500 Jardim dos Charltons II 89245-000 | Pink Boga – PR </p>
+        <p>Rua Skibidi Bomboclat DogAmostrading, 500 Jardim dos Charltons II 89245-000 | Hidden Spot – PR </p>
        </div>
     </div>
 </template>

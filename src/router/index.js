@@ -9,6 +9,7 @@ import RegisterEmployeeView from '@/views/admin/RegisterEmployeeView.vue'
 import RegisterDriverView from '@/views/admin/RegisterDriverView.vue'
 import ProfileClientView from '@/views/client/ProfileClientView.vue'
 import DriverProfileView from '@/views/driver/DriverProfileView.vue'
+import OrderView from '@/views/OrderView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -47,7 +48,7 @@ const router = createRouter({
       path:'/admin/employee/signup',
       name: 'employee-signup',
       component: RegisterEmployeeView
-     },
+    },
     {
       path: '/admin/driver/signin',
       name: 'driver-signin',
@@ -62,6 +63,11 @@ const router = createRouter({
       path: '/driver/profile',
       name: 'driver-profile',
       component: DriverProfileView
+    },
+    {
+      path: '/make-order',
+      name: 'make-order',
+      component: OrderView
     }
   ]
 })
