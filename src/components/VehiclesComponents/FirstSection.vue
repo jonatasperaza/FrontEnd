@@ -18,7 +18,7 @@ section {
     background-image: url(./public/imgs/TruckVehicle.png);
     width: 100%;
     background-size: cover;
-    height: 50rem;
+    height: 40rem;
     display: flex;
     justify-content: center;
     border-bottom: 3.5px solid #FC1D87;
@@ -39,6 +39,12 @@ section {
                 color: white;
             }
         }
+    }
+}
+
+@media screen and (max-width: 1024px){
+    section {
+        background-image: url(./public/imgs/TruckVehicle-responsive.png);
     }
 }
 </style>

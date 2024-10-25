@@ -24,6 +24,7 @@ section {
     background-image: url(./public/imgs/background-sixth-section.png);
     background-size: cover;
     height: 35rem;
+    border-top: 3px solid main.$standard-pink;
     .container {
         text-align: center;
         width: 50%;

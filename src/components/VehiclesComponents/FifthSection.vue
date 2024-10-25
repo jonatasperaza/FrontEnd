@@ -35,6 +35,8 @@ section {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     align-items: center;
+    border-bottom: 3px solid main.$standard-pink;
+    border-top: 3px solid main.$standard-pink;  
 
     .container-first-info {
         margin: 4em;

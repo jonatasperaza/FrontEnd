@@ -17,7 +17,7 @@
                 <li>Scania r450 ‘2012</li>
                 <li>Scania s500 ‘2016</li>
                 <li>Scania g410 ‘2014</li>
-                <li>Scania p280 ‘2017</li>
+                <li>Scania p280 ‘2017</li>  
             </ul>
         </div>  
         <div class="truck-container">

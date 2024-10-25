@@ -1,10 +1,10 @@
 <script setup>
     import VehiclesComp from '@/components/VehiclesComponents/VehiclesComp.vue';
-    import FooterComp from '@/components/footer/FooterComp.vue';
+    // import FooterComp from '@/components/footer/FooterComp.vue';
 </script>
 <template>
     <VehiclesComp />
-    <FooterComp />
+    <!-- <FooterComp /> -->
 </template>
 <style scoped>
 </style>
