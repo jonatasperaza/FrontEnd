@@ -8,9 +8,9 @@ import FifthSection from "@/components/about/FifthSection.vue";
 <template>
 <FirstSection />
 <SecondSection />
-<ThirdSection />
+<!-- <ThirdSection />
 <FourthSection />
-<FifthSection />
+<FifthSection /> -->
 </template>
 <style scoped>
 </style>

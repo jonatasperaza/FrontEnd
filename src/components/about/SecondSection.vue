@@ -106,4 +106,48 @@ section {
     background-color: main.$standard-pink;
   }
 }
+@media screen and (max-width: 1024px) {
+  section {
+    .container {
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      .cards {
+        width: 90%;
+        flex-direction: column;
+        margin: auto;
+        gap: 1rem;
+        div {
+          width: 100%;
+          height: 10rem;
+          padding: 0.5rem;
+          img {
+            width: 3rem;
+            height: 3rem;
+          }
+          p {
+            font-size: 16px;
+          }
+        }
+      }
+      .textContent {
+        margin-top: -3rem;
+        width: 80%;
+        .rowLogo {
+          width: 90%;
+          justify-content: center;
+        }
+        .rowText {
+          width: 100%;
+          h2 {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+    h2 {
+      font-size: 30px;
+    }
+  }
+}
 </style>
