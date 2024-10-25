@@ -9,7 +9,7 @@
                 <h1 class="title-last-section strong-pink">AQUI !</h1>
             </div>
             <div class="a">
-                <router-link to="/makeOrder">
+                <router-link to="/make-order">
                     Fazer meu Pedido
                 </router-link>
             </div>
