@@ -80,4 +80,37 @@ a:hover{
 //     justify-content: center;
 //     align-items: center;
 // }
+@media screen and (max-width: 1024px){
+    section{
+        height: 50vh;
+    }
+    .container{
+        height: 100%;
+        gap: 1rem;
+    }
+    .a{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    a{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 450px){
+    .title-last-section{
+        font-size: 35px;
+    }
+    .container{
+        width: 90%;
+    }
+    a{
+        width: 70%;
+    }
+    .a{
+        width: 80%;
+        display: flex;
+        align-items: center;
+    }
+}
 </style>

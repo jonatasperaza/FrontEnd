@@ -73,7 +73,7 @@ section {
     width: 100%;
     background-color: black;
     padding: 3rem;
-    height: 42rem;
+    min-height: 42rem;
     display: flex;
     justify-content: center;
     color: white;
@@ -167,6 +167,54 @@ h1{
 h2{
     font-size: 25px;
 }
-
+@media screen and (max-width: 1024px){
+    section{
+        min-height: 92vh;
+    }
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .card-row {
+        flex-direction: column;
+    }
+    .card {
+        width: 90%;
+        margin: auto;
+    }
+    span {
+        left: -16px;
+        top: -16px;
+        width: 13px;
+        height: 122px;
+    }
+    h1{
+        font-size: 40px;
+    }
+    .info{
+        width: 90%;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 450px){
+    h1{
+        font-size: 30px;
+    }
+    h2{
+        font-size: 24px;
+    }
+    span {
+        left: -16px;
+        top: -16px;
+        width: 13px;
+        height: 122px;
+    }
+    .card{
+        width: 100%;
+    }
+    .info{
+        width: 100%;
+        margin: auto;
+    }
+}
 
 </style>

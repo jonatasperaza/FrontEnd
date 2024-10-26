@@ -41,6 +41,18 @@ h1 {
     display: flex;
     flex-direction: column;
 }
-
-
+@media screen and (max-width: 1024px) {
+    section{
+        height: 50vh;
+    }
+    article{
+        width: 70%;
+        font-size: 3.5rem;
+    }
+}
+@media screen and (max-width: 450px){
+    article{
+        font-size: 2.5rem;
+    }
+}
 </style>

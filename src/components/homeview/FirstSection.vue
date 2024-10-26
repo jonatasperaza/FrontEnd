@@ -48,4 +48,40 @@ section {
     }
     }
 }
+@media screen and (max-width: 1024px) {
+    section {
+    article {
+        width: 80%;
+    div {
+    width: 45%;
+    margin: auto;
+    h1 {
+    font-size: 50px;
+    }
+    p {
+    font-size: 16px;
+    }
+    }
+    }
+    }
+    
+}
+@media screen and (max-width: 450px) {
+    section {
+    article {
+        width: 100%;
+    div {
+    width: 70%;
+    margin: auto;
+    h1 {
+    font-size: 40px;
+    }
+    p {
+    font-size: 16px;
+    }
+    }
+    }
+    
+}
+}
 </style>
