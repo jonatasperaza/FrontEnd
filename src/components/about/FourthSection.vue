@@ -70,4 +70,38 @@ h2 {
 .titlePink {
   color: main.$standard-pink;
 }
+@media screen and (max-width: 1024px){
+  section {
+    background-color: main.$standard-black;
+    background-image: none;
+    .container {
+      flex-direction: column;
+      height: 80vh;
+      justify-content: center;
+      .locationImg {
+        width: 90%;
+        margin: auto;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .locationDesc {
+        width: 90%;
+        align-items: center;
+        margin: auto;
+        .row {
+          width: 90%;
+          justify-content: center;
+          h2{
+            font-size: 40px;
+          }
+        }
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
 </style>

@@ -80,4 +80,36 @@ h2 {
 .titlePink {
   color: main.$standard-pink;
 }
+@media screen and (max-width: 1024px){
+  section {
+    flex-direction: column;
+    height: 100vh;
+    padding: 2rem 1rem;
+    .textContainer {
+      width: 90%;
+      border-left: none;
+      border-bottom: 2px solid main.$standard-white;
+      height: 40%;
+      p {
+        margin: 1rem;
+        font-size: 16px;
+      }
+      h2{
+        font-size: 40px;
+      }
+    }
+    .benefitContainer {
+      width: 90%;
+      height: 45%;
+      padding: 1rem;
+      .row {
+        flex-direction: column;
+        align-items: start;
+        p {
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+}
 </style>

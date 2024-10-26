@@ -110,7 +110,7 @@ section {
   section {
     .container {
       flex-direction: column;
-      height: 100vh;
+      height: 90vh;
       justify-content: center;
       .cards {
         width: 90%;
@@ -131,7 +131,6 @@ section {
         }
       }
       .textContent {
-        margin-top: -3rem;
         width: 80%;
         .rowLogo {
           width: 90%;
