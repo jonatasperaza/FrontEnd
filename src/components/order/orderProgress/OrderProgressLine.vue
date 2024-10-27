@@ -14,13 +14,19 @@ console.log(ordersStore.state.step);
         <div :class="{ 'stepSelected': ordersStore.state.step >= 1 }"></div>
         <span :class="{ 'stepSelected': ordersStore.state.step > 1 }"></span>
         <div :class="{ 'stepSelected': ordersStore.state.step > 1 }"></div>
-        <span :class="{ 'stepSelected': ordersStore.state.step == 3 }"></span>
-        <div :class="{ 'stepSelected': ordersStore.state.step == 3 }"></div>
+        <span :class="{ 'stepSelected': ordersStore.state.step > 2 }"></span>
+        <div :class="{ 'stepSelected': ordersStore.state.step >2 }"></div>
+        <span :class="{ 'stepSelected': ordersStore.state.step > 3 }"></span>
+        <div :class="{ 'stepSelected': ordersStore.state.step >3 }"></div>
+        <span :class="{ 'stepSelected': ordersStore.state.step == 5 }"></span>
+        <div :class="{ 'stepSelected': ordersStore.state.step == 5 }"></div>
       </div>
       <div class="container-title">
         <h2>Dados Do Pedido</h2>
         <h2>Dados De Coleta</h2>
         <h2>Dados De Entrega</h2>
+        <h2>Conferir os Dados</h2>
+        <h2>Finalizado</h2>
       </div>
     </div>
   </section>
@@ -36,7 +42,7 @@ section {
   background-color: main.$standard-black;
 
   .container {
-    width: 30%;
+    width: 55%;
 
     .container-title {
       width: 100%;
@@ -54,7 +60,7 @@ section {
 }
 
 .circles {
-  width: 85%;
+  width: 90%;
   margin: auto;
   height: 3rem;
   display: flex;
@@ -64,7 +70,7 @@ section {
   div {
     background-color: main.$standard-white;
     border-radius: 50%;
-    width: 3.5rem;
+    width: 6rem;
     height: 1.5rem;
   }
 

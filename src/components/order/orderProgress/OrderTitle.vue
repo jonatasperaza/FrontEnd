@@ -12,6 +12,8 @@ const ordersStore = useOrdersStore();
             </h1>
             <h1 class="strong-pink" v-if="ordersStore.state.step == 3">Dados<span class="white">de Entrega</span>
             </h1>
+            <h1 class="strong-pink" v-if="ordersStore.state.step == 4">Conferir<span class="white"> Dados</span>
+            </h1>
         </div>
     </section>
 </template>
