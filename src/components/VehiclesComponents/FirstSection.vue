@@ -47,4 +47,10 @@ section {
         background-image: url(./public/imgs/TruckVehicle-responsive.png);
     }
 }
+
+@media screen and (max-width: 650px){
+    section {
+        background-image: url(./public/imgs/TruckVehicle-responsive-2.png);
+    }
+}
 </style>
