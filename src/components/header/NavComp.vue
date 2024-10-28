@@ -3,9 +3,9 @@
 <template>
     <nav>
         <div class="nav-link"><router-link to="/">Home</router-link></div>
-        <div class="nav-link"><router-link to="/">Sobre nós</router-link></div>
+        <div class="nav-link"><router-link to="/about">Sobre nós</router-link></div>
         <div class="nav-link"><router-link to="/vehicles">Veículos</router-link></div>
-        <div class="nav-link"><router-link to="/">Pedido</router-link></div>
+        <div class="nav-link"><router-link to="/make-order">Pedido</router-link></div>
     </nav>
 </template>
 <style scoped lang="scss">
