@@ -25,7 +25,7 @@
 section {
   width: 100%;
   background-color: main.$standard-black;
-  height: 35rem;
+  min-height: 35rem;
   display: flex;
   color: main.$standard-white;
 }
@@ -47,7 +47,7 @@ p {
   text-align: left;
   flex-direction: column;
   gap: 1rem;
-  width: 50%;
+  width: 55%;
   margin: auto;
   padding: 1rem 1rem 1rem 2rem;
   border-left: 2px solid main.$standard-pink;
@@ -59,6 +59,39 @@ h1 {
 }
 
 img {
-  width: 65%;
+  width: 100%;
+}
+@media screen and (max-width: 1024px){
+    section{
+        // min-height: 30vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .container{
+        width: 60%;
+        margin: auto;
+        margin: 1rem 0;
+    }
+    .text{
+        width: 100%;
+        margin: auto;
+        padding: 1rem;
+    }
+    img{
+        width: 100%;
+        // margin: auto;
+    }
+}
+@media screen and (max-width: 450px){
+    h1{
+        font-size: 2rem;
+    }
+    p{
+        font-size: 1rem;
+    }
+    .container{
+      width: 80%;
+    }
 }
 </style>
