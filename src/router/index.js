@@ -11,6 +11,7 @@ import ProfileClientView from '@/views/client/ProfileClientView.vue'
 import DriverProfileView from '@/views/driver/DriverProfileView.vue'
 import OrderView from '../views/Order/OrderView.vue'
 import OrderStatusView from '@/views/Order/OrderStatusView.vue'
+import AdminDashboardView from '@/views/admin/AdminDashboardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,7 +34,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: LoginView 
+      component: LoginView
     },
     {
       path: '/test',
@@ -46,7 +47,7 @@ const router = createRouter({
       component: SignInViewClient
     },
     {
-      path:'/admin/employee/signup',
+      path: '/admin/employee/signup',
       name: 'employee-signup',
       component: RegisterEmployeeView
     },
@@ -54,6 +55,11 @@ const router = createRouter({
       path: '/admin/driver/signin',
       name: 'driver-signin',
       component: RegisterDriverView
+    },
+    {
+      path: '/admin/dashboard/',
+      name: 'admin-dashboard',
+      component: AdminDashboardView
     },
     {
       path: '/client/profile',
