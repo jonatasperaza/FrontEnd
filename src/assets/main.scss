@@ -12,6 +12,13 @@ $standard-bordeaux: #760038;
 $standard-black: #000000;
 $standard-white: #FFFFFF;
 
+
+body{
+    background-color: $standard-black;
+    color: $standard-white;
+}
+
+
 .strong-pink{
     color: $standard-pink;
 }
