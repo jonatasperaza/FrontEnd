@@ -1,23 +1,15 @@
 <script setup>
-import LoginComp from './LoginComp.vue';
-import NavComp from './NavComp.vue';
-import ProfileComp from './ProfileComp.vue';
+import DropdownComp from './DropdownComp.vue';
 import { useAuthStore } from '@/stores';
 const store = useAuthStore();
 console.log(store.state.isLogged)
 </script>
 <template>
     <header>
+        <div class="container">
         <div class="logo"><img src="/public/logo.svg" alt=""></div>
-        <div class="navbar">
-            <NavComp />
-        </div>
-        <div v-if="store.state.isLogged" class="teste">
-            <ProfileComp />
-        </div>
-        <div v-else class="login">
-            <LoginComp />
-        </div>
+        <DropdownComp />
+    </div>
     </header>
 </template>
 <style scoped lang="scss">
@@ -25,10 +17,20 @@ console.log(store.state.isLogged)
 
 header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: main.$standard-black;
     height: 100px;
+    padding: 0 60px 0 20px;
+}
+
+.container{
+    display: flex;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 .logo {
