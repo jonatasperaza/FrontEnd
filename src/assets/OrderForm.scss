@@ -326,10 +326,28 @@ h2 {
   }
 }
 @media screen and (max-width: 1024px) {
-  section {
-    .container {
-      width: 95%;
+section{
+  .container{
+    width: 90%;
+    .container-buttons{
+      button{
+        width: 40%;
+      }
     }
+    form{
+      .container-field{
+        flex-direction: column;
+        margin-bottom: 1rem;
+        .container-input{
+          width: 70%;
+          margin: .5rem 0;
+        }
+      }
+    }
+  }
+}
+
+  section {
     .container-itens {
       width: 90%;
     }
@@ -338,9 +356,21 @@ h2 {
         .container-field {
           flex-direction: column;
           align-items: center;
+          margin-bottom: 1rem;
           .container-input-2 {
-            width: 60%;
+            width: 70%;
+            margin: .5rem 0;
           }
+          .container-input{
+            width: 70%;
+            margin: .5rem 0;
+          }
+        }
+      }
+      .container-buttons{
+        margin-top: 2rem;
+        button{
+          width: 40%;
         }
       }
     }

@@ -83,6 +83,39 @@ section {
   .stepSelected {
     background-color: main.$standard-pink ;
   }
+}
+@media screen and (max-width: 1024px) {
+  section{
+    .container {
+      width: 95%;
+    
 
+    .container-title {
+      h2 {
+        font-size: 0.9rem;
+      }
+    }
+  .circles {
+    width: 100%;
+
+    div {
+      background-color: main.$standard-white;
+      border-radius: 50%;
+      width: 6rem;
+      height: 1.5rem;
+    }
+
+    span {
+      width: 100%;
+      height: 0.1rem;
+      background-color: main.$standard-white;
+    }
+
+    .stepSelected {
+      background-color: main.$standard-pink ;
+    }
+  }
+}
+}
 }
 </style>

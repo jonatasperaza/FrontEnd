@@ -51,4 +51,14 @@ section{
         color: main.$standard-pink;
     }
 }
+@media screen and (max-width: 1024px) {
+    section{
+        h1{
+        font-size: 40px;
+    }
+    button{
+        width: 40%;
+    }
+    }
+}
 </style>

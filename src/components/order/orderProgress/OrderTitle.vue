@@ -42,4 +42,16 @@ section {
         }
     }
 }
+@media screen and (max-width: 1024px){
+    section{
+        height: 5rem;
+        div{
+            width: 80%;
+            h1{
+                font-size: 2rem;
+            }
+        }
+    }
+    
+}
 </style>
