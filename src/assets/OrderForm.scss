@@ -149,17 +149,17 @@ section {
   .container-itens {
     width: 60%;
     margin-top: 5em;
-  
+
     .container-buttons {
       margin-top: 5rem;
       display: flex;
       width: 100%;
       height: 10%;
       justify-content: center;
-  
+
       button {
         width: 20%;
-        height: 3rem ;
+        height: 3rem;
         border-radius: 15px;
         background-color: main.$standard-pink;
         border: none;
@@ -167,28 +167,28 @@ section {
         cursor: pointer;
         transition: 0.3s ease-in-out;
       }
-  
+
       button:hover {
         background-color: main.$standard-black;
         color: main.$standard-pink;
       }
     }
-  
+
     form {
       width: 100%;
-  
+
       .container-field {
         width: 100%;
         display: flex;
         justify-content: space-around;
         margin-bottom: 2rem;
-  
+
         label {
           color: main.$standard-white;
           margin-bottom: 0.5em;
           margin-left: 0.5em;
         }
-  
+
         .input-1 {
           width: 100%;
           height: 3rem;
@@ -198,7 +198,7 @@ section {
           color: main.$standard-white;
           background-color: main.$standard-black;
         }
-  
+
         .input-2 {
           width: 100%;
           height: 3rem;
@@ -208,13 +208,13 @@ section {
           color: main.$standard-white;
           background-color: main.$standard-black;
         }
-  
+
         .container-input {
           width: 60%;
           display: flex;
           flex-direction: column;
         }
-  
+
         .container-input-2 {
           width: 30%;
           display: flex;
@@ -321,6 +321,27 @@ h2 {
         width: 30%;
         display: flex;
         flex-direction: column;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  section {
+    .container {
+      width: 95%;
+    }
+    .container-itens {
+      width: 90%;
+    }
+    .container-itens {
+      form {
+        .container-field {
+          flex-direction: column;
+          align-items: center;
+          .container-input-2 {
+            width: 60%;
+          }
+        }
       }
     }
   }
