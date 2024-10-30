@@ -33,12 +33,22 @@ section {
         text-align: center;
         width: 50%;
         height: 5em;
-
         h1 {
             font-size: 4rem;
             span{
                 margin-left: 0.25em 
             };
+        }
+    }
+}
+@media screen and (max-width: 1024px){
+    section{
+        height: 5rem;
+        div{
+            width: 80%;
+            h1{
+                font-size: 2rem;
+            }
         }
     }
 }

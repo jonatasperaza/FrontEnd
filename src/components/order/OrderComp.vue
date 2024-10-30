@@ -11,7 +11,6 @@ import FinishedOrder from './OrderInformations/FinishedOrder.vue';
 
 const ordersStore = useOrdersStore();
 console.log(ordersStore.state.step);
-
 const firstStep = ref(null);
 const secondStep = ref(null);
 const thirdStep = ref(null);
@@ -21,7 +20,6 @@ const isSecondStepVisible = ref(false);
 const isThirdStepVisible = ref(false);
 const isSummaryVisible = ref(false);
 const isFinishedVisible = ref(false);
-
 const nextToSecond = () => {
     firstStep.value.classList.remove('slideInReverse', 'slideOut');
     secondStep.value.classList.remove('slideIn', 'slideOutReverse');
@@ -33,7 +31,6 @@ const nextToSecond = () => {
     }, 500);
     ordersStore.state.step++;
 };
-
 const nextToThird = () => {
     secondStep.value.classList.remove('slideInReverse', 'slideOut');
     secondStep.value.classList.add('slideOut');
@@ -44,7 +41,6 @@ const nextToThird = () => {
     }, 500);
     ordersStore.state.step++;
 };
-
 const nextToSummary = () => {
     thirdStep.value.classList.remove('slideInReverse', 'slideOut');
     thirdStep.value.classList.add('slideOut');
@@ -55,7 +51,6 @@ const nextToSummary = () => {
     }, 500);
     ordersStore.state.step++;
 };
-
 const nextToFinished = () => {
     summaryStep.value.classList.remove('slideInReverse', 'slideOut');
     summaryStep.value.classList.add('slideOut');
@@ -66,7 +61,6 @@ const nextToFinished = () => {
     }, 500);
     ordersStore.state.step++;
 };
-
 const backToFirst = () => {
     secondStep.value.classList.add('slideOutReverse');
     setTimeout(() => {
@@ -79,7 +73,6 @@ const backToFirst = () => {
     }, 500);
     ordersStore.state.step--;
 };
-
 const backToSecond = () => {
     thirdStep.value.classList.add('slideOutReverse');
     setTimeout(() => {
@@ -92,7 +85,6 @@ const backToSecond = () => {
     }, 500);
     ordersStore.state.step--;
 };
-
 const backToThird = () => {
     summaryStep.value.classList.add('slideOutReverse');
     setTimeout(() => {
@@ -106,8 +98,6 @@ const backToThird = () => {
     ordersStore.state.step--;
 };
 </script>
-
-
 <template>
     <section>
         <div v-if="ordersStore.state.step < 5">
@@ -130,80 +120,63 @@ const backToThird = () => {
         </div>
     </section>
 </template>
-
-
-
 <style scoped lang="scss">
 @use '../../assets/main.scss';
-
 section {
     background-color: main.$standard-black;
     width: 100%;
     min-height: 100vh;
 }
-
 .hidden {
     display: none;
 }
-
 .slideOut {
     animation: slideOut 0.5s forwards;
 }
-
 .slideIn {
     animation: slideIn 0.5s forwards;
 }
-
 .slideInReverse {
     animation: slideInReverse 0.5s forwards;
 }
-
 .slideOutReverse {
     animation: slideOutReverse 0.5s forwards;
 }
-
 @keyframes slideOut {
     from {
         opacity: 1;
         transform: translateX(0);
     }
-
     to {
         opacity: 0;
         transform: translateX(-5%);
     }
 }
-
 @keyframes slideIn {
     from {
         opacity: 0;
         transform: translateX(5%);
     }
-
     to {
         opacity: 1;
         transform: translateX(0);
     }
 }
-
 @keyframes slideOutReverse {
     from {
         opacity: 1;
         transform: translateX(0);
     }
-
     to {
         opacity: 0;
         transform: translateX(5%);
     }
 }
-
 @keyframes slideInReverse {
     from {
         opacity: 0;
         transform: translateX(-5%);
     }
-
     to {
         opacity: 1;
         transform: translateX(0);
