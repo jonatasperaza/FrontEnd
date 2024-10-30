@@ -33,7 +33,6 @@ section {
         text-align: center;
         width: 50%;
         height: 5em;
-
         h1 {
             font-size: 4rem;
             span{
@@ -52,6 +51,5 @@ section {
             }
         }
     }
-    
 }
 </style>

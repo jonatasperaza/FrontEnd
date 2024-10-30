@@ -107,7 +107,6 @@ const ordersStore = useOrdersStore();
         </div>
     </section>
 </template>
-
 <style scoped lang="scss">
 @use '../../../assets/OrderForm.scss';
 </style>
