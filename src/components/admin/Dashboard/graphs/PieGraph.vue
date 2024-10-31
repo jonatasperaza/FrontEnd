@@ -25,14 +25,16 @@ use([
 provide(THEME_KEY, "dark");
 
 const data = ref([
-  { value: 210, name: 'Disponiveis' },
-  { value: 194, name: 'Em Manutenção'}
+  { value: 290, name: 'Disponiveis' },
+  { value: 194, name: 'Em Manutenção' },
+  { value: 170, name: 'Em Transito' }
 ]);
 
-const color = ref(['#FC1D87', '#79036D']);
+const color = ref(['#FC1D87', '#79036D', '#FFC0CB']);
 
 const option = ref({
-    title: {
+  backgroundColor: '#070707',
+  title: {
     text: 'Status Do Veiculo',
     left: 'center',
   },
@@ -43,7 +45,7 @@ const option = ref({
   legend: {
     orient: 'vertical',
     left: 'left',
-    data: ['Disponiveis', 'Em Manutenção'],
+    data: ['Disponiveis', 'Em Manutenção', 'Em Transito'],
   },
   series: [
     {
