@@ -1,15 +1,56 @@
 <script setup>
 import DropdownComp from './DropdownComp.vue';
+import Menu from 'vue-material-design-icons/Menu.vue';
+import Home from 'vue-material-design-icons/Home.vue';
+import Logout from "vue-material-design-icons/Logout.vue"
+import Car from "vue-material-design-icons/Car.vue"
+import Login from "vue-material-design-icons/Login.vue"
+import Information from "vue-material-design-icons/Information.vue"
 import { useAuthStore } from '@/stores';
+import { ref } from 'vue';
 const store = useAuthStore();
 console.log(store.state.isLogged)
+
+const isOpen = ref(false);
+
 </script>
 <template>
     <header>
         <div class="container">
-        <div class="logo"><img src="/public/logo.svg" alt=""></div>
-        <DropdownComp />
-    </div>
+            <div class="logo"><img src="/public/logo.svg" class="imgLogo" alt=""></div>
+            <div class="drop">
+                <DropdownComp />
+            </div>
+            <div class="menu" @click="isOpen = !isOpen">
+                <Menu />
+            </div>
+            <nav v-if="isOpen">
+                <router-link to="/">
+                    <Home />
+                    Home
+                </router-link>
+                <router-link to="/about">
+                    <Information />
+                    Sobre Nós
+                </router-link>
+                <router-link to="/vehicles">
+                    <Car />
+                    Veiculos
+                </router-link>
+                <router-link to="/make-order">
+                    <Home />
+                    Pedido
+                </router-link>
+                <router-link to="/login" v-if="!store.state.isLogged">
+                    <Login />
+                    Login
+                </router-link>
+                <button v-else @click="store.logout">
+                    <Logout />
+                    Logout
+                </button>
+            </nav>
+        </div>
     </header>
 </template>
 <style scoped lang="scss">
@@ -17,14 +58,13 @@ console.log(store.state.isLogged)
 
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: main.$standard-black;
     height: 100px;
-    padding: 0 60px 0 20px;
+    padding: 1rem;
 }
 
-.container{
+.container {
     display: flex;
     width: 90%;
     margin: auto;
@@ -39,11 +79,10 @@ header {
     align-items: center;
     width: 20%;
     height: 100%;
+}
 
-    img {
-        width: 45%;
-        height: 45%;
-    }
+.imgLogo {
+    width: 100%;
 }
 
 .navbar {
@@ -54,6 +93,34 @@ header {
     align-items: center;
 }
 
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: main.$standard-black;
+    z-index: 2;
+    border: 1px solid main.$standard-pink;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+
+nav>a {
+    margin: 10px auto 0;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    padding: 1rem;
+    font-size: 15pt;
+
+}
+
 .login {
     width: 20%;
     height: 100%;
@@ -62,5 +129,38 @@ header {
     align-items: center;
 }
 
-.teste {}
+.menu {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .imgLogo {
+        width: 220%;
+    }
+
+    .drop {
+        display: none;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 6fr 1fr;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        border: 1px solid main.$standard-pink;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 </style>
