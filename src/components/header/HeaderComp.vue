@@ -82,7 +82,7 @@ header {
 }
 
 .imgLogo {
-    width: 100%;
+    width: 50%;
 }
 
 .navbar {
