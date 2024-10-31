@@ -28,25 +28,29 @@ section {
 
 .container {
     display: flex;
-    width: 90%;
+    width: 80%;
     margin: auto;
     padding: 1rem;
-    gap: 1rem;
+    gap: 2rem;
     justify-self: space-between;
     align-items: center;
 }
 
 .first {
-    width: 30%;
+    width: 30%
 }
 
 .second {
     width: 70%;
+    margin-right: -100px;
     margin: auto;
 }
 
 .dynamic {
-    width: 90%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: auto;
     padding: 1rem;
 }

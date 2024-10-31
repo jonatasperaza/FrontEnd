@@ -1,13 +1,13 @@
 <script setup>
-// import PieGraph from '@/components/admin/Dashboard/graphs/PieGraph.vue';
-// import LineGraph from '@/components/admin/Dashboard/graphs/LineGraph.vue';
 import FirstGraphsComp from '@/components/admin/Dashboard/graphs/FirstGraphsComp.vue';
+import SectionCards from '@/components/admin/Dashboard/SectionCards.vue';
+import ManageAllComp from '@/components/admin/ManageAll/ManageAllComp.vue';
 </script>
 
 <template>
     <main>
-        <!-- <PieGraph />
-     <LineGraph /> -->
+        <SectionCards />
         <FirstGraphsComp />
+        <ManageAllComp />
     </main>
 </template>

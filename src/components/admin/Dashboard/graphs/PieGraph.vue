@@ -26,8 +26,8 @@ provide(THEME_KEY, "dark");
 
 const data = ref([
   { value: 290, name: 'Disponiveis' },
-  { value: 194, name: 'Em Manutenção' },
-  { value: 170, name: 'Em Transito' }
+  { value: 170, name: 'Em Transito' },
+  { value: 194, name: 'Em Manutenção' }
 ]);
 
 const color = ref(['#FC1D87', '#79036D', '#FFC0CB']);
@@ -35,7 +35,7 @@ const color = ref(['#FC1D87', '#79036D', '#FFC0CB']);
 const option = ref({
   backgroundColor: '#070707',
   title: {
-    text: 'Status Do Veiculo',
+    text: 'Status Dos Veiculos',
     left: 'center',
   },
   tooltip: {
@@ -74,5 +74,8 @@ const option = ref({
 .chart {
   width: 100%;
   height: 400px;
+  border: 1px solid #c1c1c1;
+  border-radius: 15px;
+  overflow: hidden;
 }
 </style>
