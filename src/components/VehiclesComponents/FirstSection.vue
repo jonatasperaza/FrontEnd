@@ -14,11 +14,12 @@
 </template>
 <style scoped lang="scss">
 @use '../../assets/main';
+
 section {
     background-image: url(./public/imgs/TruckVehicle.png);
     width: 100%;
     background-size: cover;
-    height: 50rem;
+    height: 40rem;
     display: flex;
     justify-content: center;
     border-bottom: 3.5px solid #FC1D87;
@@ -37,6 +38,45 @@ section {
                 font-size: 80px;
                 font-weight: 700;
                 color: white;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    section {
+        background-image: url(./public/imgs/TruckVehicle-responsive.png);
+
+        article {
+
+            div {
+
+                h1 {
+                    font-size: 60px;
+                    font-weight: 700;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    section {
+        background-image: url(./public/imgs/TruckVehicle-responsive-2.png);
+
+        article {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            div {
+
+                h1 {
+                    font-size: 60px;
+                    font-weight: 700;
+                    color: white;
+                }
             }
         }
     }
