@@ -1,4 +1,3 @@
-import router from '@/router'
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 import { AuthService } from '@/services'
