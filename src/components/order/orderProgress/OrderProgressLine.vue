@@ -1,8 +1,8 @@
 <script setup>
-import { useOrdersStore } from '@/stores'
+import { useOrderStore } from '@/stores'
 
-const ordersStore = useOrdersStore()
-console.log(ordersStore.state.step)
+const orderStore = useOrderStore()
+console.log(orderStore.state.step)
 </script>
 <template>
   <section>

@@ -1,5 +1,7 @@
 import { useCepStore } from "./address/cep";
 import { useAuthStore } from "./auth/auth";
-import { useOrdersStore } from "./order/order";
+import { useOrderStore } from "./order/order";
+import { useDriverStore } from "./driver/driver";
+import { useVehicleStore } from "./vehicle/vehicle";
 
-export { useCepStore, useAuthStore, useOrdersStore };
+export { useCepStore, useAuthStore, useOrderStore, useDriverStore, useVehicleStore }

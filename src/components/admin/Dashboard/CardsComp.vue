@@ -2,7 +2,6 @@
 
 const props = defineProps({
     option: Object,
-
 })
 </script>
 

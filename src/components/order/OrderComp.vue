@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useOrdersStore } from '@/stores';
+import { ref } from 'vue';
+import { useOrderStore } from '@/stores';
 
 import OrderProgressComp from './orderProgress/OrderProgressComp.vue';
 import OrderData from './OrderInformations/OrderData.vue';
@@ -9,7 +9,7 @@ import DeliveryData from './OrderInformations/DeliveryData.vue';
 import SummaryData from './OrderInformations/SummaryData.vue';
 import FinishedOrder from './OrderInformations/FinishedOrder.vue';
 
-const ordersStore = useOrdersStore();
+const ordersStore = useOrderStore();
 console.log(ordersStore.state.step);
 const firstStep = ref(null);
 const secondStep = ref(null);
