@@ -1,22 +1,22 @@
 <script setup>
-import { useOrdersStore } from '@/stores'
+import { useOrderStore } from '@/stores'
 
-const ordersStore = useOrdersStore()
-console.log(ordersStore.state.step)
+const orderStore = useOrderStore()
+console.log(orderStore.state.step)
 </script>
 <template>
   <section>
     <div class="container">
       <div class="circles">
-        <div :class="{ stepSelected: ordersStore.state.step >= 1 }"></div>
-        <span :class="{ stepSelected: ordersStore.state.step > 1 }"></span>
-        <div :class="{ stepSelected: ordersStore.state.step > 1 }"></div>
-        <span :class="{ stepSelected: ordersStore.state.step > 2 }"></span>
-        <div :class="{ stepSelected: ordersStore.state.step > 2 }"></div>
-        <span :class="{ stepSelected: ordersStore.state.step > 3 }"></span>
-        <div :class="{ stepSelected: ordersStore.state.step > 3 }"></div>
-        <span :class="{ stepSelected: ordersStore.state.step == 5 }"></span>
-        <div :class="{ stepSelected: ordersStore.state.step == 5 }"></div>
+        <div :class="{ stepSelected: orderStore.state.step >= 1 }"></div>
+        <span :class="{ stepSelected: orderStore.state.step > 1 }"></span>
+        <div :class="{ stepSelected: orderStore.state.step > 1 }"></div>
+        <span :class="{ stepSelected: orderStore.state.step > 2 }"></span>
+        <div :class="{ stepSelected: orderStore.state.step > 2 }"></div>
+        <span :class="{ stepSelected: orderStore.state.step > 3 }"></span>
+        <div :class="{ stepSelected: orderStore.state.step > 3 }"></div>
+        <span :class="{ stepSelected: orderStore.state.step == 5 }"></span>
+        <div :class="{ stepSelected: orderStore.state.step == 5 }"></div>
       </div>
       <div class="container-title">
         <h2>Dados Do Pedido</h2>

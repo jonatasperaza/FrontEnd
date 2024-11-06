@@ -2,7 +2,7 @@ import { reactive, computed } from "vue";
 import { defineStore } from "pinia";
 import { OrderService } from "@/services";
 
-export const useOrdersStore = defineStore("orders",
+export const useOrderStore = defineStore("orders",
     () => {
         const state = reactive({
             orders: [],
