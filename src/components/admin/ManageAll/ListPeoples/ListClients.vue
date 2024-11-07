@@ -17,12 +17,14 @@ onMounted(async () => {
             <div class="headerList">
                 <p>ID:</p>
                 <p>Nome:</p>
+                <p>Email:</p>
             </div>
             
             <div class="list">
                 <div v-for="client in clients" :key="client.id">
                     <p>{{ client.id }}</p>
                     <p>{{ client.name }}</p>
+                    <p>{{ client.user.email }}</p>
                 </div>
             </div>
         </div>
