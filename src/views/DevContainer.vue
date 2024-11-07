@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Eye from 'vue-material-design-icons/Eye.vue';
+import { toast } from 'vue3-toastify';
 const router = useRouter()
 console.log(router.getRoutes())
 const routes = router.getRoutes();
@@ -11,6 +12,10 @@ const showDev = ref(false)
 <template>
       <span @click="showDev = !showDev" class="eye"><Eye /></span>
   <p class="data" v-if="showDev">
+    <button @click="toast.success('teste')">SUCESS</button>
+    <button @click="toast.error('teste')">ERROR</button>
+    <button @click="toast.warn('teste')">WARN</button>
+    <button @click="toast.info('teste')">INFO</button>
     <RouterLink  v-for="link in routes" :key="link.path" :to="link.path">{{ link.name }}</RouterLink>
   </p>
 </template>
