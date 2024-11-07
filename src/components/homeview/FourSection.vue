@@ -15,7 +15,7 @@
         </p>
       </div>
     </div>
-    <img src="../../../public/imgs/TruckSide.png" alt="" />
+    <img src="../../../public/imgs/TruckSide.png" alt="" loading="lazy"/>
   </section>
 </template>
 
@@ -80,7 +80,6 @@ img {
     }
     img{
         width: 100%;
-        // margin: auto;
     }
 }
 @media screen and (max-width: 450px){

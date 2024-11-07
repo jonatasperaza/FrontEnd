@@ -2,6 +2,7 @@
 
 <template>
     <section>
+        <img src="../../../public/imgs/PeopleHome.png" alt="Background People" class="background-image" loading="lazy">
         <article>
             <h1>
                 <p class="strong-pink">+50000</p>
@@ -16,13 +17,23 @@
 @use '@/assets/main.scss';
 
 section {
+    position: relative;
     width: 100%;
-    background-image: url(./public/imgs/PeopleHome.png);
-    background-size: cover;
     height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 article {
@@ -35,23 +46,26 @@ article {
     color: white;
     font-size: 4.5rem;
     text-align: center;
+    z-index: 1; 
 }
 
 h1 {
     display: flex;
     flex-direction: column;
 }
+
 @media screen and (max-width: 1024px) {
-    section{
+    section {
         height: 50vh;
     }
-    article{
+    article {
         width: 70%;
         font-size: 3.5rem;
     }
 }
-@media screen and (max-width: 450px){
-    article{
+
+@media screen and (max-width: 450px) {
+    article {
         font-size: 2.5rem;
     }
 }

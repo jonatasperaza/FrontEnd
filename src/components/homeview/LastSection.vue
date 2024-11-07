@@ -3,9 +3,10 @@
 
 <template>
     <section>
+        <img src="../../../public/imgs/OrderTruck.png" alt="Order Truck Background" class="background-image">
         <div class="container">
             <div>
-                <h1 class="title-last-section">Faça seu pedido </h1>
+                <h1 class="title-last-section">Faça seu pedido</h1>
                 <h1 class="title-last-section strong-pink">AQUI !</h1>
             </div>
             <div class="a">
@@ -14,21 +15,30 @@
                 </router-link>
             </div>
         </div>
-
     </section>
 </template>
 
 <style scoped lang="scss">
 @use '@/assets/main.scss';
 
-section{
+section {
+    position: relative;
     width: 100%;
     height: 85vh;
-    background-image: url(./public/imgs/OrderTruck.png);
-    background-size: cover;
     display: flex;
     align-items: center;
     color: main.$standard-white;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; 
 }
 
 .title-last-section {
@@ -36,7 +46,7 @@ section{
     display: flex;
 }
 
-.container{
+.container {
     width: 100%;
     margin: auto;
     display: flex;
@@ -45,19 +55,21 @@ section{
     justify-content: center;
     gap: 2rem;
     height: 200px;
-    div{
+    z-index: 1;
+    
+    div {
         display: flex;
         gap: 10px;
     }
 }
 
-.a{
+.a {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-a{
+a {
     text-decoration: none;
     padding: .75rem;
     width: 20%;
@@ -71,46 +83,38 @@ a{
     transition: 0.5s ease-in-out;
 }
 
-a:hover{
+a:hover {
     background: black;
 }
-// .title-last-section{
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-// }
-@media screen and (max-width: 1024px){
-    section{
+
+@media screen and (max-width: 1024px) {
+    section {
         height: 50vh;
     }
-    .container{
+    .container {
         height: 100%;
         gap: 1rem;
     }
-    .a{
+    .a {
         width: 100%;
-        display: flex;
-        align-items: center;
     }
-    a{
+    a {
         width: 50%;
     }
 }
-@media screen and (max-width: 450px){
-    .title-last-section{
+
+@media screen and (max-width: 450px) {
+    .title-last-section {
         font-size: 35px;
     }
-    .container{
+    .container {
         width: 90%;
     }
-    a{
+    a {
         width: 70%;
     }
-    .a{
+    .a {
         width: 80%;
-        display: flex;
-        align-items: center;
     }
 }
 </style>

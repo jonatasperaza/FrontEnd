@@ -3,6 +3,7 @@
 
 <template>
     <section>
+        <img src="../../../public/imgs/TruckHome.webp" alt="Background Truck" class="background-image" loading="eager">
         <article>
             <div>
                 <h1>
@@ -17,71 +18,88 @@
     </section>
 </template>
 
-
 <style scoped lang="scss">
 @use '@/assets/main.scss';
+
 section {
-    background-image: url(./public/imgs/TruckHome.png);
+    position: relative;
     width: 100%;
-    background-size: cover;
     height: 40rem;
     display: flex;
     justify-content: center;
     border-bottom: 3.5px solid #FC1D87;
-    article {
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+article {
     width: 80%;
     margin: auto;
+    z-index: 1;
+    
     div {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 30%;
-    h1 {
-    font-size: 80px;
-    font-weight: 700;
-    color: white;
-    }
-    p {
-    font-size: 16px;
-    color: white;
-    }
-    }
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 30%;
+
+        h1 {
+            font-size: 80px;
+            font-weight: 700;
+            color: white;
+        }
+
+        p {
+            font-size: 16px;
+            color: white;
+        }
     }
 }
+
 @media screen and (max-width: 1024px) {
-    section {
     article {
         width: 80%;
-    div {
-    width: 45%;
-    margin: auto;
-    h1 {
-    font-size: 50px;
+        
+        div {
+            width: 45%;
+            margin: auto;
+
+            h1 {
+                font-size: 50px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
     }
-    p {
-    font-size: 16px;
-    }
-    }
-    }
-    }
-    
 }
+
 @media screen and (max-width: 450px) {
-    section {
     article {
         width: 100%;
-    div {
-    width: 70%;
-    margin: auto;
-    h1 {
-    font-size: 40px;
+
+        div {
+            width: 70%;
+            margin: auto;
+
+            h1 {
+                font-size: 40px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
     }
-    p {
-    font-size: 16px;
-    }
-    }
-    }
-    
-}
 }
 </style>
