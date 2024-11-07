@@ -2,11 +2,13 @@
 import { watch, ref } from 'vue';
 import { useEmployeeStore, useCepStore } from '@/stores';
 import { toast } from 'vue3-toastify';
+import { useRouter } from 'vue-router';
 
 const employeeStore = useEmployeeStore();
 const cepStore = useCepStore();
 const canStreet = ref(false);
 const canNeighborhood = ref(false);
+const router = useRouter();
 
 watch(
     () => employeeStore.state.employee_data.address.cep,
@@ -70,7 +72,7 @@ function verify() {
             v-model="employeeStore.state.employee_data.address.complement" />
 
         <button class="normalColor"
-            @click="verify() ? ($emit('next'), employeeStore.createEmployee(employeeStore.state.employee_data)) : null">Finalizar</button>
+            @click="verify() ? (router.push('/'), employeeStore.createEmployee(employeeStore.state.employee_data)) : null">Finalizar</button>
         <button class="invertColor" @click="$emit('back')">Voltar</button>
     </form>
 </template>

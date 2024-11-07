@@ -2,6 +2,7 @@
 import { watch, ref } from 'vue';
 import { useDriverStore, useCepStore } from '@/stores';
 import { toast } from 'vue3-toastify';
+import router from '@/router';
 const driverStore = useDriverStore();
 const cepStore = useCepStore();
 const canStreet = ref(false);
@@ -57,7 +58,7 @@ function verify() {
     <input type="text" placeholder="Insira seu número" v-model="driverStore.state.driver_data.address.number" />
     <label for="">Complemento</label>
     <input type="text" placeholder="Insira um complemento" v-model="driverStore.state.driver_data.address.complement" />
-    <button class="normalColor" @click="verify() ? driverStore.createDriver(driverStore.state.driver_data) : null">Finalizar</button>
+    <button class="normalColor" @click="verify() ? (driverStore.createDriver(driverStore.state.driver_data), router.push('/')) : null">Finalizar</button>
     <button class="invertColor" @click="$emit('back')">Voltar</button>
   </form>
 </template>
