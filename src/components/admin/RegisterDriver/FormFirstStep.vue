@@ -26,7 +26,7 @@ function verify(){
     <label for="">Username:</label>
     <input type="text" placeholder="Insira seu username" v-model="driverStore.state.driver_data.username" />
     <label for="">CPF</label>
-    <input type="text" placeholder="Insira seu CPF" v-model="driverStore.state.driver_data.cpf" maxlength="9" />
+    <input type="text" placeholder="Insira seu CPF" v-model="driverStore.state.driver_data.cpf" maxlength="11" />
     <label for="">Data de Nascimento</label>
     <input type="date" placeholder="Insira sua data de nascimento" v-model="driverStore.state.driver_data.date_birth" />
     <label for="">Telefone</label>

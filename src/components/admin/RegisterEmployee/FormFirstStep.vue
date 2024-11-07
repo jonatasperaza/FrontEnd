@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useEmployeeStore, useOfficeStore } from '@/stores';
+import { toast } from 'vue3-toastify';
 
 // const selectedGender = ref(null)
 
@@ -20,6 +21,15 @@ onMounted(async() => {
   await officeStore.getOffices()
 })
 
+function verify(){
+  if (employeeStore.state.employee_data.name === '' || employeeStore.state.employee_data.email === '' || employeeStore.state.employee_data.cpf === '' || employeeStore.state.employee_data.telephone === '' || employeeStore.state.employee_data.username === '' || employeeStore.state.employee_data.date_birth === '' || employeeStore.state.employee_data.date_admission === '' || employeeStore.state.employee_data.office === '' || selectStaff.value === null) {
+    toast.warn('Preencha todos os campos')
+    return false
+  } else {
+    return true 
+  }
+}
+
 </script>
 <template>
   <form @submit.prevent>
@@ -28,7 +38,7 @@ onMounted(async() => {
     <label for="">Email</label>
     <input type="email" placeholder="Insira seu email" v-model="employeeStore.state.employee_data.email" />
     <label for="">CPF</label>
-    <input type="text" placeholder="Insira seu CPF" v-model="employeeStore.state.employee_data.cpf" maxlength="9"/>
+    <input type="text" placeholder="Insira seu CPF" v-model="employeeStore.state.employee_data.cpf" maxlength="11"/>
     <label for="">Telefone</label>
     <input type="tel" placeholder="Insira seu telefone" v-model="employeeStore.state.employee_data.telephone"  />
     <label for="">Username</label>
@@ -57,7 +67,7 @@ onMounted(async() => {
           <img src="/public/woman-icon.svg" alt="Ícone feminino" />
         </button>
       </div> -->
-    <button @click="$emit('next')">Próximo</button>
+    <button @click="verify() ? $emit('next') : null">Próximo</button>
   </form>
 </template>
 <style scoped lang="scss">

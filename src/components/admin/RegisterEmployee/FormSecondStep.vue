@@ -1,6 +1,7 @@
 <script setup>
 import { watch, ref } from 'vue';
 import { useEmployeeStore, useCepStore } from '@/stores';
+import { toast } from 'vue3-toastify';
 
 const employeeStore = useEmployeeStore();
 const cepStore = useCepStore();
@@ -29,6 +30,15 @@ watch(
         }
     }
 );
+
+function verify() {
+    if (employeeStore.state.employee_data.address.cep === '' || employeeStore.state.employee_data.address.number === '') {
+        toast.warn('Preencha todos os campos');
+        return false;
+    } else {
+        return true;
+    }
+}
 </script>
 
 <template>
@@ -60,7 +70,7 @@ watch(
             v-model="employeeStore.state.employee_data.address.complement" />
 
         <button class="normalColor"
-            @click="$emit('next'), employeeStore.createEmployee(employeeStore.state.employee_data)">Finalizar</button>
+            @click="verify() ? ($emit('next'), employeeStore.createEmployee(employeeStore.state.employee_data)) : null">Finalizar</button>
         <button class="invertColor" @click="$emit('back')">Voltar</button>
     </form>
 </template>
