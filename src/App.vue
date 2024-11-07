@@ -1,19 +1,11 @@
 <script setup>
 import FooterComp from './components/footer/FooterComp.vue';
-import { ref } from 'vue'
 import { RouterView, useRouter } from 'vue-router'
 import HeaderComp from './components/header/HeaderComp.vue';
-import Eye from 'vue-material-design-icons/Eye.vue';
-const router = useRouter()
-console.log(router.getRoutes())
-const routes = router.getRoutes();
-const showDev = ref(false)
+import DevContainer from './views/DevContainer.vue';
 </script>
 <template>
-  <span @click="showDev = !showDev" class="eye"><Eye /></span>
-  <p class="data" v-if="showDev">
-    <RouterLink  v-for="link in routes" :key="link.path" :to="link.path">{{ link.name }}</RouterLink>
-  </p>
+  <DevContainer />
   <HeaderComp />
   <RouterView />
   <FooterComp />
