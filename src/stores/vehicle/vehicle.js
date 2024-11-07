@@ -7,6 +7,10 @@ export const useVehicleStore = defineStore('vehicles', () => {
     vehicles: ref([]),
     vehicle: reactive({}),
     count: ref(0),
+    countRunning: ref(0),
+    countInMaintenance: ref(0),
+    countStopped: ref(0),
+    countBroken: ref(0),
     loading: ref(false),
     error: null
   })
@@ -17,6 +21,11 @@ export const useVehicleStore = defineStore('vehicles', () => {
     try {
       state.vehicles = await VehicleService.getVehicles()
       state.count = state.vehicles.length
+      state.countRunning = state.vehicles.filter((v) => v.status === 1).length
+      state.countInMaintenance = state.vehicles.filter((v) => v.status === 2).length
+      state.countStopped = state.vehicles.filter((v) => v.status === 3).length
+      state.countBroken = state.vehicles.filter((v) => v.status === 4).length
+      
     } catch (error) {
       state.error = error
     } finally {
@@ -28,6 +37,7 @@ export const useVehicleStore = defineStore('vehicles', () => {
     state.loading = true
     try {
       state.vehicles.push(await VehicleService.createVehicle(newVehicle))
+      getVehicles()
     } catch (error) {
       state.error = error
     } finally {
@@ -40,6 +50,7 @@ export const useVehicleStore = defineStore('vehicles', () => {
     try {
       const index = state.vehicles.findIndex((s) => s.id === vehicle.id)
       state.vehicles[index] = await VehicleService.updateVehicle(vehicle)
+      getVehicles()
     } catch (error) {
       state.error = error
     } finally {
@@ -53,6 +64,7 @@ export const useVehicleStore = defineStore('vehicles', () => {
       await VehicleService.deleteVehicle(id)
       const index = state.vehicles.findIndex((s) => s.id === id)
       state.vehicles.splice(index, 1)
+       getVehicles()
     } catch (error) {
       state.error = error
     } finally {

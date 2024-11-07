@@ -23,6 +23,7 @@ export const useClientStore = defineStore('client', () => {
       },
       telephone: 0
     }),
+    count: 0,
     loading: false,
     error: null
   })
@@ -32,6 +33,7 @@ export const useClientStore = defineStore('client', () => {
     state.loading = true
     try {
       state.clients = await ClientService.getClients()
+      state.count = state.clients.length
     } catch (error) {
       state.error = error
     } finally {
@@ -55,6 +57,7 @@ export const useClientStore = defineStore('client', () => {
     try {
       const index = state.clients.findIndex((s) => s.id === client.id)
       state.clients[index] = await ClientService.updateClient(client)
+      state.count = state.clients.length
     } catch (error) {
       state.error = error
     } finally {
@@ -65,9 +68,10 @@ export const useClientStore = defineStore('client', () => {
   const deleteClient = async (id) => {
     state.loading = true
     try {
+      await ClientService.deleteClient(id)
       const index = state.clients.findIndex((s) => s.id === id)
       state.clients.splice(index, 1)
-      await ClientService.deleteClient(id)
+      state.count = state.clients.length
     } catch (error) {
       state.error = error
     } finally {

@@ -12,7 +12,10 @@ import {
   LegendComponent
 } from "echarts/components";
 import VChart, { THEME_KEY } from "vue-echarts";
-import { ref, provide } from "vue";
+import { ref, provide, onMounted } from "vue";
+import { useVehicleStore } from "@/stores";
+
+const VehicleStore = useVehicleStore();
 
 use([
   CanvasRenderer,
@@ -23,14 +26,18 @@ use([
 ]);
 
 provide(THEME_KEY, "dark");
+const data = ref([]);
+onMounted(async() => {
+  await VehicleStore.getVehicles();
+  data.value = [
+    { value: VehicleStore.state.countRunning, name: "Em Transito" },
+    { value: VehicleStore.state.countInMaintenance, name: "Em Manutenção" },
+    { value: VehicleStore.state.countStopped, name: "Disponiveis" },
+    { value: VehicleStore.state.countBroken, name: "Quebrados" }
+  ];
+})
 
-const data = ref([
-  { value: 290, name: 'Disponiveis' },
-  { value: 170, name: 'Em Transito' },
-  { value: 194, name: 'Em Manutenção' }
-]);
-
-const color = ref(['#FC1D87', '#79036D', '#FFC0CB']);
+const color = ref(['#FC1D87', '#79036D', '#FFC0CB', '#FF1493']);
 
 const option = ref({
   backgroundColor: '#070707',
@@ -41,11 +48,6 @@ const option = ref({
   tooltip: {
     trigger: 'item',
     formatter: '{a} <br/>{b} : {c} ({d}%)',
-  },
-  legend: {
-    orient: 'vertical',
-    left: 'left',
-    data: ['Disponiveis', 'Em Manutenção', 'Em Transito'],
   },
   series: [
     {

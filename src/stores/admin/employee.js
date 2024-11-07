@@ -24,6 +24,7 @@ export const useEmployeeStore = defineStore('employee', () => {
       office: 0,
       date_admission: ''
     }),
+    count: 0,
     loading: false,
     error: null
   })
@@ -33,6 +34,7 @@ export const useEmployeeStore = defineStore('employee', () => {
     state.loading = true
     try {
       state.employees = await EmployeeService.getEmployees()
+      state.count = state.employees.length
     } catch (error) {
       state.error = error
     } finally {
@@ -56,6 +58,7 @@ export const useEmployeeStore = defineStore('employee', () => {
     try {
       const index = state.employees.findIndex((s) => s.id === employee.id)
       state.employees[index] = await EmployeeService.updateEmployee(employee)
+      state.count = state.employees.length
     } catch (error) {
       state.error = error
     } finally {
@@ -69,6 +72,7 @@ export const useEmployeeStore = defineStore('employee', () => {
       const index = state.employees.findIndex((s) => s.id === id)
       state.employees.splice(index, 1)
       await EmployeeService.deleteEmployee(id)
+      state.count = state.employees.length
     } catch (error) {
       state.error = error
     } finally {

@@ -4,6 +4,8 @@ import { ContentLoader } from 'vue-content-loader';
 
 import { useDriverStore, } from '@/stores';
 import { useVehicleStore } from '@/stores';
+import { useClientStore } from '@/stores';
+import { useEmployeeStore } from '@/stores';
 
 import CardsComp from './CardsComp.vue';
 import TruckFast from 'vue-material-design-icons/TruckFast.vue';
@@ -13,11 +15,15 @@ import Tire from 'vue-material-design-icons/Tire.vue';
 
 const driverStore = useDriverStore();
 const vehicleStore = useVehicleStore();
+const clientStore = useClientStore();
+const employeeStore = useEmployeeStore();
 
 const data = ref([])
 onMounted(async () => {
     await driverStore.getDrivers()
     await vehicleStore.getVehicles()
+    await clientStore.getClients()
+    await employeeStore.getEmployees()
     data.value = [
         {
         icon: Tire,
@@ -35,14 +41,14 @@ onMounted(async () => {
     {
         icon: Account,
         title: 'Clientes Cadastrados',
-        number: 140,
+        number: clientStore.state.count,
         color: 'aqua'
     }
     ,
     {
         icon: CardAccountDetails,
         title: 'Funcionarios Cadastrados',
-        number: 923,
+        number: employeeStore.state.count,
         color: 'orange'
     }
     ]

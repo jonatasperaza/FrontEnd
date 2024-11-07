@@ -1,6 +1,5 @@
 <script setup>
 import FooterComp from './components/footer/FooterComp.vue';
-import { RouterView, useRouter } from 'vue-router'
 import HeaderComp from './components/header/HeaderComp.vue';
 import DevContainer from './views/DevContainer.vue';
 </script>

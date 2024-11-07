@@ -28,7 +28,7 @@ section {
 
 .container {
     display: flex;
-    width: 80%;
+    width: 82%;
     margin: auto;
     padding: 1rem;
     gap: 2rem;
