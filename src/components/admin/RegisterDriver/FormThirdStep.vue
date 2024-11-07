@@ -1,10 +1,12 @@
 <script setup>
 import { watch, ref } from 'vue';
 import { useDriverStore, useCepStore } from '@/stores';
+import { toast } from 'vue3-toastify';
 const driverStore = useDriverStore();
 const cepStore = useCepStore();
 const canStreet = ref(false);
 const canNeighborhood = ref(false);
+
 
 watch(
   () => driverStore.state.driver_data.address.cep,
@@ -28,6 +30,15 @@ watch(
     }
   }
 );
+
+function verify() {
+  if (driverStore.state.driver_data.address.cep === '' || driverStore.state.driver_data.address.number === '') {
+    toast.warn('Preencha todos os campos');
+    return false;
+  } else {
+    return true;
+  }
+}
 </script>
 <template>
   <h2>Endereço</h2>
@@ -46,7 +57,7 @@ watch(
     <input type="text" placeholder="Insira seu número" v-model="driverStore.state.driver_data.address.number" />
     <label for="">Complemento</label>
     <input type="text" placeholder="Insira um complemento" v-model="driverStore.state.driver_data.address.complement" />
-    <button class="normalColor" @click="$emit('next'), driverStore.createDriver(driverStore.state.driver_data)">Finalizar</button>
+    <button class="normalColor" @click="verify() ? driverStore.createDriver(driverStore.state.driver_data) : null">Finalizar</button>
     <button class="invertColor" @click="$emit('back')">Voltar</button>
   </form>
 </template>

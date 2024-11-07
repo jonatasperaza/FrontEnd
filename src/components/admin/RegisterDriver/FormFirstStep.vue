@@ -1,12 +1,16 @@
 <script setup>
-import { ref } from 'vue'
 import { useDriverStore } from '@/stores';
+import { toast } from 'vue3-toastify';
 
-const selectedGender = ref(null)
 const driverStore = useDriverStore()
 
-const selectGender = (gender) => {
-  selectedGender.value = gender
+function verify(){
+  if (driverStore.state.driver_data.name === '' || driverStore.state.driver_data.email === '' || driverStore.state.driver_data.cnh === '' || driverStore.state.driver_data.username === '' || driverStore.state.driver_data.cpf === '' || driverStore.state.driver_data.date_birth === '' || driverStore.state.driver_data.telephone === '') {
+    toast.warn('Preencha todos os campos')
+    return false
+  } else {
+   return true 
+  }
 }
 </script>
 
@@ -27,14 +31,7 @@ const selectGender = (gender) => {
     <input type="date" placeholder="Insira sua data de nascimento" v-model="driverStore.state.driver_data.date_birth" />
     <label for="">Telefone</label>
     <input type="tel" placeholder="Insira seu telefone" v-model="driverStore.state.driver_data.telephone" />
-    <div class="GenderSelection">
-      <button @click="selectGender('man')" :class="{ selectedPink: selectedGender === 'man' }">
-        <img src="/public/man-icon.svg" alt="Ícone masculino" />
-      </button>
-      <button @click="selectGender('woman')" :class="{ selectedPink: selectedGender === 'woman' }"> <img
-          src="/public/woman-icon.svg" alt="Ícone feminino" /></button>
-    </div>
-    <button @click="$emit('next')">Próximo</button>
+    <button @click="verify() ? $emit('next') : null">Próximo</button>
   </form>
 </template>
 

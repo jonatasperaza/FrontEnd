@@ -1,12 +1,22 @@
 <script setup>
 import { ref } from 'vue'
 import { useDriverStore } from '@/stores';
+import { toast } from 'vue3-toastify';
 
 const driverStore = useDriverStore()
 const selectedCategory = ref(null)
 function selectCategory(Category) {
   selectedCategory.value = Category
   driverStore.state.driver_data.type_cnh = Category
+}
+
+function verify(){
+  if (driverStore.state.driver_data.type_cnh === '') {
+    toast.warn('Selecione uma categoria')
+    return false
+  } else {
+    return true 
+  }
 }
 </script>
 <template>
@@ -32,7 +42,7 @@ function selectCategory(Category) {
     ><button @click="selectCategory('AE')" :class="{ selectedPink: selectedCategory === 'AE' }">
       AE
     </button>
-    <button class="nextButton" @click="$emit('next')">Próximo</button>
+    <button class="nextButton" @click="verify() ? $emit('next') : null">Próximo</button>
     <button class="backButton" @click="$emit('back')">Voltar</button>
   </form>
 </template>
