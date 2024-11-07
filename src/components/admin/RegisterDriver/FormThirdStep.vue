@@ -10,7 +10,7 @@ watch(
   () => driverStore.state.driver_data.address.cep,
   async (newValue) => {
     if (newValue.length === 8) {
-      const response = await cepStore.getEndereco(driverStore.state.employee_data.address.cep);
+      const response = await cepStore.getEndereco(driverStore.state.driver_data.address.cep);
       console.log(response);
       driverStore.state.driver_data.address.state = response.uf || '';
       driverStore.state.driver_data.address.city = response.localidade || '';
@@ -35,18 +35,18 @@ watch(
     <label for="">CEP</label>
     <input type="text" placeholder="Insira seu CEP" v-model="driverStore.state.driver_data.address.cep" />
     <label for="">Estado</label>
-    <input type="text" placeholder="Insira seu estado" disabled />
+    <input type="text" placeholder="Insira seu estado" v-model="driverStore.state.driver_data.address.state" disabled />
     <label for="">Cidade</label>
-    <input type="text" placeholder="Insira sua cidade" disabled />
+    <input type="text" placeholder="Insira sua cidade" v-model="driverStore.state.driver_data.address.city" disabled />
     <label for="">Bairro</label>
-    <input type="text" placeholder="Insira seu bairro" :disabled="canNeighborhood" />
+    <input type="text" placeholder="Insira seu bairro" v-model="driverStore.state.driver_data.address.neighborhood" :disabled="canNeighborhood" />
     <label for="">Endereço</label>
-    <input type="text" placeholder="Insira seu endereço" :disabled="canStreet" />
+    <input type="text" placeholder="Insira seu endereço" v-model="driverStore.state.driver_data.address.street" :disabled="canStreet" />
     <label for="">Número</label>
     <input type="text" placeholder="Insira seu número" v-model="driverStore.state.driver_data.address.number" />
     <label for="">Complemento</label>
     <input type="text" placeholder="Insira um complemento" v-model="driverStore.state.driver_data.address.complement" />
-    <button class="normalColor">Finalizar</button>
+    <button class="normalColor" @click="$emit('next'), driverStore.createDriver(driverStore.state.driver_data)">Finalizar</button>
     <button class="invertColor" @click="$emit('back')">Voltar</button>
   </form>
 </template>

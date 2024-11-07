@@ -5,6 +5,7 @@ class OrderService {
             const { data } = await api.post('orders/', order);
             return data;
         } catch (error) {
+            console.error(error)
             return error.message;
         }
     }
@@ -14,6 +15,7 @@ class OrderService {
             const { data } = await api.get('orders/');
             return data;
         } catch (error) {
+            console.error(error)
             return error.message;
         }
     }
@@ -23,6 +25,7 @@ class OrderService {
             const { data } = await api.get(`orders/${id}/`);
             return data;
         } catch (error) {
+            console.error(error)
             return error.message;
         }
     }
@@ -32,6 +35,7 @@ class OrderService {
             const { data } = await api.patch(`orders/${order.id}/`, order);
             return data;
         } catch (error) {
+            console.error(error)
             return error.message;
         }
     }
@@ -41,6 +45,7 @@ class OrderService {
             const { data } = await api.delete(`orders/${id}/`);
             return data;
         } catch (error) {
+            console.error(error)
             return error.message;
         }
     }

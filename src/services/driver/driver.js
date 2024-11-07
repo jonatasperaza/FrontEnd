@@ -6,6 +6,7 @@ class DriverService {
       const response = await api.get('driver')
       return response.data
     } catch (error) {
+      console.error(error)
       return error.response.data
     }
   }
@@ -15,15 +16,17 @@ class DriverService {
       const response = await api.get(`driver/${id}`)
       return response.data
     } catch (error) {
+      console.error(error)
       return error.response.data
     }
   }
 
   async createDriver(data) {
     try {
-      const response = await api.post('driver', data)
+      const response = await api.post('driver/', data)
       return response.data
     } catch (error) {
+      console.error(error)
       return error.response.data
     }
   }
@@ -33,6 +36,7 @@ class DriverService {
       const response = await api.put(`driver/${id}`, data)
       return response.data
     } catch (error) {
+      console.error(error)
       return error.response.data
     }
   }
@@ -42,6 +46,7 @@ class DriverService {
       const response = await api.delete(`driver/${id}`)
       return response.data
     } catch (error) {
+      console.error(error)
       return error.response.data
     }
   }

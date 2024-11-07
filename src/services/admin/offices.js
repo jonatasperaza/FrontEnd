@@ -6,6 +6,7 @@ class OfficeService {
         const response = await api.get("offices");
         return response.data;
         } catch (error) {
+            console.error(error)
         return error.response.data;
         }
     }
@@ -15,6 +16,7 @@ class OfficeService {
         const response = await api.get(`office/${id}`);
         return response.data;
         } catch (error) {
+            console.error(error)
         return error.response.data;
         }
     }
@@ -24,6 +26,7 @@ class OfficeService {
         const response = await api.post("offices", data);
         return response.data;
         } catch (error) {
+            console.error(error)
         return error.response.data;
         }
     }
@@ -33,6 +36,7 @@ class OfficeService {
         const response = await api.put(`offices/${id}`, data);
         return response.data;
         } catch (error) {
+            console.error(error)
         return error.response.data;
         }
     }
@@ -42,6 +46,7 @@ class OfficeService {
         const response = await api.delete(`offices/${id}`);
         return response.data;
         } catch (error) {
+            console.error(error)
         return error.response.data;
         }
     }

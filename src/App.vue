@@ -7,7 +7,7 @@ import Eye from 'vue-material-design-icons/Eye.vue';
 const router = useRouter()
 console.log(router.getRoutes())
 const routes = router.getRoutes();
-const showDev = ref(true)
+const showDev = ref(false)
 </script>
 <template>
   <span @click="showDev = !showDev" class="eye"><Eye /></span>

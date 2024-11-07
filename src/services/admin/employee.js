@@ -6,7 +6,7 @@ class EmployeeService {
         const response = await api.get("employe/");
         return response.data;
         } catch (error) {
-            console.log(error)
+            console.error(error)
         return error;
         }
     }
@@ -16,7 +16,7 @@ class EmployeeService {
         const response = await api.get(`employe/${id}`);
         return response.data;
         } catch (error) {
-            console.log(error)
+            console.error(error)
         return error;
         }
     }
@@ -26,7 +26,7 @@ class EmployeeService {
         const response = await api.post("employe/", data);
         return response.data;
         } catch (error) {
-        console.log(error)
+        console.error(error)
         return error;
         }
     }
@@ -36,7 +36,7 @@ class EmployeeService {
         const response = await api.put(`employe/${id}`, data);
         return response.data;
         } catch (error) {
-            console.log(error)
+          console.error(error)
         return error;
         }
     }
@@ -46,7 +46,7 @@ class EmployeeService {
         const response = await api.delete(`employe/${id}`);
         return response.data;
         } catch (error) {
-            console.log(error)
+        console.error(error)
         return error;
         }
     }
