@@ -1,9 +1,12 @@
 <script setup>
 import { ref } from 'vue'
+import { useDriverStore } from '@/stores';
 
+const driverStore = useDriverStore()
 const selectedCategory = ref(null)
 function selectCategory(Category) {
   selectedCategory.value = Category
+  driverStore.state.driver_data.type_cnh = Category
 }
 </script>
 <template>

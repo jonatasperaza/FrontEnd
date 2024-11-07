@@ -1,17 +1,16 @@
 import { reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { DriverService } from '@/services'
+import { ClientService } from '@/services'
 
-export const useDriverStore = defineStore('driver', () => {
+export const useClientStore = defineStore('client', () => {
   const state = reactive({
-    drivers: [],
-    driver_data: reactive({
-      cnh: 0,
-      type_cnh: '',
-      cpf: 0,
+    clients: [],
+    client_data: reactive({
+      type: '',
+      cpf_cnpj: 0,
       name: '',
       email: '',
-      date_birth: "",
+      date_birth: '',
       username: '',
       address: {
         cep: 0,
@@ -29,11 +28,10 @@ export const useDriverStore = defineStore('driver', () => {
   })
   const isLoading = computed(() => state.loading)
 
-  const getDrivers = async () => {
+  const getClients = async () => {
     state.loading = true
     try {
-      state.drivers = await DriverService.getDrivers()
-      state.count = state.drivers.length
+      state.clients = await ClientService.getClients()
     } catch (error) {
       state.error = error
     } finally {
@@ -41,10 +39,10 @@ export const useDriverStore = defineStore('driver', () => {
     }
   }
 
-  const createDriver = async (newDriver) => {
+  const createClient = async (newClient) => {
     state.loading = true
     try {
-      state.drivers.push(await DriverService.createDriver(newDriver))
+      state.clients.push(await ClientService.createClient(newClient))
     } catch (error) {
       state.error = error
     } finally {
@@ -52,11 +50,11 @@ export const useDriverStore = defineStore('driver', () => {
     }
   }
 
-  const updateDriver = async (driver) => {
+  const updateClient = async (client) => {
     state.loading = true
     try {
-      const index = state.drivers.findIndex((s) => s.id === driver.id)
-      state.drivers[index] = await DriverService.updateDriver(driver)
+      const index = state.clients.findIndex((s) => s.id === client.id)
+      state.clients[index] = await ClientService.updateClient(client)
     } catch (error) {
       state.error = error
     } finally {
@@ -64,13 +62,12 @@ export const useDriverStore = defineStore('driver', () => {
     }
   }
 
-  const deleteDriver = async (id) => {
+  const deleteClient = async (id) => {
     state.loading = true
     try {
-      await DriverService.deleteDriver(id)
-      const index = state.drivers.findIndex((s) => s.id === id)
-      state.drivers.splice(index, 1)
-
+      const index = state.clients.findIndex((s) => s.id === id)
+      state.clients.splice(index, 1)
+      await ClientService.deleteClient(id)
     } catch (error) {
       state.error = error
     } finally {
@@ -81,9 +78,9 @@ export const useDriverStore = defineStore('driver', () => {
   return {
     state,
     isLoading,
-    getDrivers,
-    createDriver,
-    updateDriver,
-    deleteDriver
+    getClients,
+    createClient,
+    updateClient,
+    deleteClient
   }
 })

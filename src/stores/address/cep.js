@@ -25,6 +25,7 @@ export const useCepStore = defineStore('cep', () => {
   const getEndereco = async (cep) => {
     state.loading = true
     try {
+      console.log(cep)
       state.address.cep = cep
       const response = await CepService.getCep(cep)
       state.address.cidade = response.localidade
@@ -32,6 +33,8 @@ export const useCepStore = defineStore('cep', () => {
       state.address.bairro = response.bairro
       state.address.endereco = response.logradouro
       state.address.uf = response.uf
+      console.log(response)
+      return response
     } catch (error) {
       state.error = error
     } finally {

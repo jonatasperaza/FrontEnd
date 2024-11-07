@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue'
+import { useDriverStore } from '@/stores';
 
 const selectedGender = ref(null)
+const driverStore = useDriverStore()
 
 const selectGender = (gender) => {
   selectedGender.value = gender
@@ -12,22 +14,25 @@ const selectGender = (gender) => {
   <h2>Dados <span class="strong-pink">Pessoais</span></h2>
   <form @submit.prevent>
     <label for="">Nome</label>
-    <input type="text" placeholder="Insira seu nome" />
+    <input type="text" placeholder="Insira seu nome" v-model="driverStore.state.driver_data.name" />
     <label for="">Email</label>
-    <input type="email" placeholder="Insira seu email" />
-    <label for="">Senha</label>
-    <input type="password" placeholder="Insira sua senha" />
+    <input type="text" placeholder="Insira seu email" v-model="driverStore.state.driver_data.email" />
+    <label for="">CNH:</label>
+    <input type="text" placeholder="Insira sua CNH" v-model="driverStore.state.driver_data.cnh" maxlength="9">
+    <label for="">Username:</label>
+    <input type="text" placeholder="Insira seu username" v-model="driverStore.state.driver_data.username" />
     <label for="">CPF</label>
-    <input type="text" placeholder="Insira seu CPF" />
+    <input type="text" placeholder="Insira seu CPF" v-model="driverStore.state.driver_data.cpf" maxlength="9" />
     <label for="">Data de Nascimento</label>
-    <input type="date" placeholder="Insira sua data de nascimento" />
+    <input type="date" placeholder="Insira sua data de nascimento" v-model="driverStore.state.driver_data.date_birth" />
     <label for="">Telefone</label>
-    <input type="tel" placeholder="Insira seu telefone" />
+    <input type="tel" placeholder="Insira seu telefone" v-model="driverStore.state.driver_data.telephone" />
     <div class="GenderSelection">
       <button @click="selectGender('man')" :class="{ selectedPink: selectedGender === 'man' }">
         <img src="/public/man-icon.svg" alt="Ícone masculino" />
       </button>
-      <button @click="selectGender('woman')" :class="{ selectedPink: selectedGender === 'woman' }"> <img src="/public/woman-icon.svg" alt="Ícone feminino" /></button>
+      <button @click="selectGender('woman')" :class="{ selectedPink: selectedGender === 'woman' }"> <img
+          src="/public/woman-icon.svg" alt="Ícone feminino" /></button>
     </div>
     <button @click="$emit('next')">Próximo</button>
   </form>
@@ -35,6 +40,7 @@ const selectGender = (gender) => {
 
 <style scoped lang="scss">
 @use '../../../assets/main';
+
 h2 {
   color: main.$standard-white;
   font-size: 50px;
@@ -45,12 +51,14 @@ h2 {
   border-left: 2px solid main.$standard-pink;
   font-style: italic;
 }
+
 form {
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 1rem auto 4rem auto;
+
   label {
     color: main.$standard-white;
     width: 50%;
@@ -58,6 +66,7 @@ form {
     font-weight: 800;
     margin: 0.5rem 0.5rem;
   }
+
   input {
     height: 3.25rem;
     border-radius: 1rem;
@@ -66,6 +75,7 @@ form {
     color: main.$standard-white;
     background-color: main.$standard-black;
   }
+
   button {
     width: 100%;
     height: 3rem;
@@ -80,14 +90,17 @@ form {
     transition: 0.3s ease-in-out;
   }
 }
+
 button:hover {
   background-color: main.$standard-black;
   color: main.$standard-pink;
 }
+
 .GenderSelection {
   display: flex;
   justify-content: space-around;
   margin: 1rem 0;
+
   button {
     width: 45%;
     height: 2.75rem;
@@ -99,11 +112,13 @@ button:hover {
     cursor: pointer;
     transition: 0.3s ease-in-out;
   }
+
   button:hover {
     background-color: main.$standard-pink;
     border: 2px solid main.$standard-pink;
     color: main.$standard-black;
   }
+
   .selectedPink {
     background-color: main.$standard-pink;
     border: 2px solid main.$standard-pink;

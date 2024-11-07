@@ -63,8 +63,10 @@ div {
   justify-content: center;
 
   h1 {
-    width: 9em;
-    border-left: 2px solid main.$standard-pink;
+    width: 70%;
+    margin: auto;
+    // border-left: 2px solid main.$standard-pink;
+    text-align: center;
 
   }
 }

@@ -1,39 +1,54 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useEmployeeStore, useOfficeStore } from '@/stores';
 
-const selectedGender = ref(null)
+// const selectedGender = ref(null)
 
-const selectGender = (gender) => {
-  selectedGender.value = gender
-}
+// const selectGender = (gender) => {
+//   selectedGender.value = gender
+// }
 
 const selectStaff = ref(null)
+const employeeStore = useEmployeeStore()
+const officeStore = useOfficeStore()
 
 const selectStaffOption = (option) => {
   selectStaff.value = option
 }
 
+onMounted(async() => {
+  await officeStore.getOffices()
+})
+
 </script>
 <template>
   <form @submit.prevent>
     <label for="">Nome</label>
-    <input type="text" placeholder="Insira seu nome" />
+    <input type="text" placeholder="Insira seu nome" v-model="employeeStore.state.employee_data.name" />
     <label for="">Email</label>
-    <input type="email" placeholder="Insira seu email" />
-    <label for="">Senha</label>
-    <input type="password" placeholder="Insira sua senha" />
+    <input type="email" placeholder="Insira seu email" v-model="employeeStore.state.employee_data.email" />
     <label for="">CPF</label>
-    <input type="text" placeholder="Insira seu CPF" />
+    <input type="text" placeholder="Insira seu CPF" v-model="employeeStore.state.employee_data.cpf" maxlength="9"/>
     <label for="">Telefone</label>
-    <input type="tel" placeholder="Insira seu telefone" />
+    <input type="tel" placeholder="Insira seu telefone" v-model="employeeStore.state.employee_data.telephone"  />
+    <label for="">Username</label>
+    <input type="text" placeholder="Insira seu username" v-model="employeeStore.state.employee_data.username" />
+    <label for="">Data de Nascimento:</label>
+    <input type="date" v-model="employeeStore.state.employee_data.date_birth" />
+    <label for="">Data de Admissao</label>
+    <input type="date" v-model="employeeStore.state.employee_data.date_admission" />
     <label for="">Cargo</label>
-    <select name="opcoes" id="opcoes"></select>
+    <select name="opcoes" id="opcoes" v-model="employeeStore.state.employee_data.office">
+      <option v-for="item in officeStore.state.offices" :value="item.id" :key="item.id">
+        {{ item.name }}
+      </option>
+    </select>
     <div>
       <label for="">É staff?</label>
       <button @click="selectStaffOption('sim')" :class="{ selectedPink: selectStaff === 'sim'}">Sim</button>
       <button @click="selectStaffOption('nao')" :class="{ selectedPink: selectStaff === 'nao'}">Não</button>
     </div>
-      <div class="GenderSelection">
+      <!-- <div class="GenderSelection">
         <button @click="selectGender('man')" :class="{ selectedPink: selectedGender === 'man' }">
           <img src="/public/man-icon.svg" alt="Ícone masculino" />
         </button>
@@ -41,7 +56,7 @@ const selectStaffOption = (option) => {
           @click="selectGender('woman')" :class="{ selectedPink: selectedGender === 'woman' }">
           <img src="/public/woman-icon.svg" alt="Ícone feminino" />
         </button>
-      </div>
+      </div> -->
     <button @click="$emit('next')">Próximo</button>
   </form>
 </template>
