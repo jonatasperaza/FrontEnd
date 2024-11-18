@@ -6,7 +6,9 @@ import DevContainer from './views/DevContainer.vue';
 <template>
   <DevContainer />
   <HeaderComp />
-  <RouterView />
+  <transition name="fade">
+  <RouterView :key="$route.fullPath"/>
+  </transition>
   <FooterComp />
 </template>
 
@@ -31,7 +33,6 @@ a{
   text-decoration: none;
   border: 2px solid white;
   padding: 7px;
-  /* font-size: 1.5rem;;;;;;/ */
 }
 
 a:hover{
@@ -45,5 +46,14 @@ a:hover{
   color:white;
   top: 10px;
   left: 10px;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
