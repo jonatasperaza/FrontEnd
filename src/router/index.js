@@ -7,17 +7,17 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: HomeView
     },
     {
       path: '/vehicles',
-      name: 'vehicles',
+      name: 'Veiculos',
       component: VehiclesView
     },
     {
       path: '/about',
-      name: 'about',
+      name: 'Sobre',
       component: AboutView
     },
     {
@@ -32,7 +32,7 @@ const router = createRouter({
     },
     {
       path: '/client/signin',
-      name: 'client-signin',
+      name: 'Login Do Cliente',
       component: SignInViewClient
     },
     {
@@ -52,22 +52,22 @@ const router = createRouter({
     },
     {
       path: '/client/profile',
-      name: 'client-profile',
+      name: 'Perfil Do Cliente',
       component: ProfileClientView
     },
     {
       path: '/driver/profile',
-      name: 'driver-profile',
+      name: 'Perfil Do Motorista',
       component: DriverProfileView
     },
     {
       path: '/make-order',
-      name: 'make-order',
+      name: 'Criar Pedido',
       component: OrderView
     },
     {
       path: '/order-status',
-      name: 'order-status',
+      name: 'Status Do Pedido',
       component: OrderStatusView
     }
   ]
@@ -78,7 +78,14 @@ router.beforeEach((to, from, next) => {
   const isVisited = localStorage.getItem(pageKey)
 
   if (!isVisited) {
-    toast.info(`Bem-vindo à página ${to.name}! Esperamos que você goste. 😊`)
+    toast.info(`Bem-vindo à página ${to.name}! Esperamos que você goste. 😊`, {
+      timeout: 5000,
+      closeOnClick: true,
+      pauseOnFocusLoss: true,
+      pauseOnHover: true,
+      draggable: true,
+      position: 'top-left'
+    })
     localStorage.setItem(pageKey, true) 
   }
 
