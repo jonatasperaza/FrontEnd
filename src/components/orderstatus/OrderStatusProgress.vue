@@ -1,7 +1,3 @@
-<script setup>
-import { ref, onMounted } from 'vue';
-
-</script>
 <template>
     <section>
         <div class="container">

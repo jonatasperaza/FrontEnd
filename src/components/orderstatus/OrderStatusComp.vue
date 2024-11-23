@@ -1,7 +1,5 @@
 <script setup>
-    import OrderStatusTitle from './OrderStatusTitle.vue';
-    import OrderStatusProgress from './OrderStatusProgress.vue';
-    import OrderStatusInformations from './OrderStatusInformations.vue';
+import { OrderStatusInformations, OrderStatusProgress, OrderStatusTitle} from './'
 </script>
 <template>
     <section class="order-status">

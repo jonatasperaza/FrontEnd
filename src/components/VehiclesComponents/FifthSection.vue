@@ -1,5 +1,3 @@
-<script setup>
-</script>
 <template>
     <section>
         <div class="container-first-info">

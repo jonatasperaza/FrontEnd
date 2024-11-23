@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import FormFirstStep from './FormFirstStep.vue'
-import FormSecondStep from './FormSecondStep.vue'
+import { FormFirstStep, FormSecondStep } from './';
 
 const firstStep = ref(null)
 const secondStep = ref(null)
