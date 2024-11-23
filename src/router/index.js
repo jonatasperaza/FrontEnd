@@ -1,18 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { toast } from 'vue3-toastify'
-import HomeView from '../views/HomeView.vue'
-import VehiclesView from '@/views/VehiclesView.vue'
-import AboutView from '@/views/AboutView.vue'
-import LoginView from '@/views/LoginView.vue'
-import ViaCepView from '@/views/tests/ViaCepView.vue'
-import SignInViewClient from '@/views/client/SignInViewClient.vue'
-import RegisterEmployeeView from '@/views/admin/RegisterEmployeeView.vue'
-import RegisterDriverView from '@/views/admin/RegisterDriverView.vue'
-import ProfileClientView from '@/views/client/ProfileClientView.vue'
-import DriverProfileView from '@/views/driver/DriverProfileView.vue'
-import OrderView from '../views/Order/OrderView.vue'
-import OrderStatusView from '@/views/Order/OrderStatusView.vue'
-import AdminDashboardView from '@/views/admin/AdminDashboardView.vue'
+import { AboutView, AdminDashboardView, DriverProfileView, HomeView, LoginView, OrderStatusView, OrderView, ProfileClientView, RegisterDriverView, RegisterEmployeeView, SignInViewClient, VehiclesView, ViaCepView } from '@/views/'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

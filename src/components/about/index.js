@@ -4,7 +4,7 @@ import ThirdSection from "./ThirdSection.vue";
 import FourthSection from "./FourthSection.vue";
 import FifthSection from "./FifthSection.vue";
 
-export default {
+export {
     FirstSection,
     SecondSection,
     ThirdSection,
