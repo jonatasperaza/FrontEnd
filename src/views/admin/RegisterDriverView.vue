@@ -1,5 +1,5 @@
 <script setup>
-import RegisterDriverComp from "@/components/admin/";
+import { RegisterDriverComp } from "@/components/admin/";
 </script>
 <template>
     <RegisterDriverComp />

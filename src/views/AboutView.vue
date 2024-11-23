@@ -1,10 +1,6 @@
 <script setup>
 import { onMounted } from 'vue';
-import FirstSection from "@/components/about/FirstSection.vue";
-import SecondSection from "@/components/about/SecondSection.vue";
-import ThirdSection from "@/components/about/ThirdSection.vue";
-import FourthSection from "@/components/about/FourthSection.vue";
-import FifthSection from "@/components/about/FifthSection.vue";
+import { FirstSection, SecondSection, ThirdSection, FourthSection, FifthSection} from "@/components/about/";
 
 onMounted(() => {
   const elements = document.querySelectorAll('.fade-in');

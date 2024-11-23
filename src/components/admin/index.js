@@ -3,7 +3,7 @@ import { ListClients, ListDrivers, ListEmployees, ManageAllComp, ManageOrders, M
 import { FormFirstStep, FormSecondStep, FormThirdStep, RegisterDriverComp } from './RegisterDriver'
 import { FormFirstStep as FormFirstStep1, FormSecondStep as FormSecondStep1, RegisterComp } from './RegisterEmployee'
 
-export default {
+export {
   CardsComp,
   DynamicGraph,
   FirstGraphsComp,

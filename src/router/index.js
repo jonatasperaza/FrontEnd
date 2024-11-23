@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { toast } from 'vue3-toastify'
 import HomeView from '../views/HomeView.vue'
 import VehiclesView from '@/views/VehiclesView.vue'
 import AboutView from '@/views/AboutView.vue'
