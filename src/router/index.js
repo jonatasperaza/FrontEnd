@@ -84,4 +84,16 @@ const router = createRouter({
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  const pageKey = `visited_${to.name}` // Identificador único para a página
+  const isVisited = localStorage.getItem(pageKey)
+
+  if (!isVisited) {
+    toast.info(`Bem-vindo à página ${to.name}! Esperamos que você goste. 😊`)
+    localStorage.setItem(pageKey, true) 
+  }
+
+  next()
+})
+
 export default router

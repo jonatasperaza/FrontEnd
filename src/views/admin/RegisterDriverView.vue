@@ -1,5 +1,5 @@
 <script setup>
-import RegisterDriverComp from "@/components/admin/RegisterDriver/RegisterDriverComp.vue";
+import RegisterDriverComp from "@/components/admin/";
 </script>
 <template>
     <RegisterDriverComp />

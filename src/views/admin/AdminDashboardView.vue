@@ -1,8 +1,8 @@
 <script setup>
-import FirstGraphsComp from '@/components/admin/Dashboard/graphs/FirstGraphsComp.vue';
-import SectionCards from '@/components/admin/Dashboard/SectionCards.vue';
-import ManageAllComp from '@/components/admin/ManageAll/ManageAllComp.vue';
-import ManagePeoples from '@/components/admin/ManageAll/ManagePeoples.vue';
+import FirstGraphsComp from '@/components/admin/';
+import SectionCards from '@/components/admin/';
+import ManageAllComp from '@/components/admin/';
+import ManagePeoples from '@/components/admin/';
 </script>
 
 <template>
