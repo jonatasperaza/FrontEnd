@@ -1,5 +1,5 @@
 <script setup>
-import VehiclesComp from '@/components/VehiclesComponents/VehiclesComp.vue';
+import { VehiclesComp } from '@/components/VehiclesComponents/';
 </script>
 <template>
     <VehiclesComp />

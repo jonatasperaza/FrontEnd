@@ -1,5 +1,5 @@
 <script setup>
-import OrderComp from '@/components/order/OrderComp.vue';
+import { OrderComp } from '@/components/order/';
 window.scrollBy(0, -window.innerHeight);
 </script>
 <template>

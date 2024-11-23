@@ -1,5 +1,5 @@
 <script setup>
-import ProfileComp from '@/components/driver/ProfileComp.vue';
+import { ProfileComp } from '@/components/driver/';
 </script>
 <template>
     <ProfileComp />
