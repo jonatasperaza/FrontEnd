@@ -1,11 +1,13 @@
 <script setup>
-import { ref } from 'vue';
-import { useOrderStore } from '@/stores';
+import { ref, onMounted } from 'vue';
+import { useOrderStore, useAuthStore } from '@/stores';
 
 import { OrderProgressComp, OrderData, CollectionData, DeliveryData, SummaryData, FinishedOrder } from './';
 
 
 const ordersStore = useOrderStore();
+const authStore = useAuthStore();
+
 const firstStep = ref(null);
 const secondStep = ref(null);
 const thirdStep = ref(null);
@@ -92,16 +94,65 @@ const backToThird = () => {
     }, 500);
     ordersStore.state.step--;
 };
+
+onMounted(async () => {
+    ordersStore.state.order.payment.payer_email = authStore.state.user.email;
+    ordersStore.state.order.id_client = authStore.state.user.id;
+
+    if (authStore.state.user.client_physical_person) {
+        ordersStore.state.order.payment.payer_identification_type = 'CPF';
+        ordersStore.state.order.payment.payer_identification_number = authStore.state.user.client_physical_person.cpf;
+    }
+    else if (authStore.state.user.client_legal_person) {
+        ordersStore.state.order.payment.payer_identification_type = 'CNPJ';
+        ordersStore.state.order.payment.payer_identification_number = authStore.state.user.client_legal_person.cnpj;
+    }
+})
+
+
 </script>
+
+
 <template>
+    <span class="show">
+        <div v-for="(value, key) in ordersStore.state.order" :key="key">
+            <template v-if="typeof value === 'object' && !Array.isArray(value)">
+                <strong>{{ key }}:</strong>
+                <div style="margin-left: 20px">
+                    <div v-for="(subValue, subKey) in value" :key="subKey">
+                        {{ subKey }}: {{ subValue }}
+                    </div>
+                </div>
+            </template>
+            <template v-else-if="Array.isArray(value)">
+                <strong>{{ key }}:</strong>
+                <div style="margin-left: 20px">
+                    <div v-for="(item, index) in value" :key="index">
+                        <strong>Item {{ index + 1 }}:</strong>
+                        <div style="margin-left: 20px">
+                            <div v-for="(itemValue, itemKey) in item" :key="itemKey">
+                                {{ itemKey }}: {{ itemValue }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template v-else>
+                {{ key }}: {{ value }}
+            </template>
+        </div>
+    </span>
+    <p>{{ authStore.state }}</p>
     <section>
         <div v-if="ordersStore.state.step < 5">
             <OrderProgressComp />
         </div>
-        <div ref="firstStep" :class="{ hidden: isSecondStepVisible || isThirdStepVisible || isSummaryVisible || isFinishedVisible }">
+        <div ref="firstStep"
+            :class="{ hidden: isSecondStepVisible || isThirdStepVisible || isSummaryVisible || isFinishedVisible }">
             <OrderData @next="nextToSecond" />
         </div>
-        <div ref="secondStep" v-show="isSecondStepVisible" :class="{ hidden: isThirdStepVisible || isSummaryVisible || isFinishedVisible }">
+        <div ref="secondStep" v-show="isSecondStepVisible"
+            :class="{ hidden: isThirdStepVisible || isSummaryVisible || isFinishedVisible }">
             <CollectionData @next="nextToThird" @back="backToFirst" />
         </div>
         <div ref="thirdStep" v-show="isThirdStepVisible" :class="{ hidden: isSummaryVisible || isFinishedVisible }">
@@ -117,61 +168,87 @@ const backToThird = () => {
 </template>
 <style scoped lang="scss">
 @use '../../assets/main.scss';
+
 section {
     background-color: main.$standard-black;
     width: 100%;
     min-height: 100vh;
 }
+
 .hidden {
     display: none;
 }
+
 .slideOut {
     animation: slideOut 0.5s forwards;
 }
+
 .slideIn {
     animation: slideIn 0.5s forwards;
 }
+
 .slideInReverse {
     animation: slideInReverse 0.5s forwards;
 }
+
 .slideOutReverse {
     animation: slideOutReverse 0.5s forwards;
 }
+
+span.show {
+    position: absolute;
+    top: 20;
+    left: 20;
+    color: white;
+    background-color: red;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 100;
+    width: 20%;
+}
+
 @keyframes slideOut {
     from {
         opacity: 1;
         transform: translateX(0);
     }
+
     to {
         opacity: 0;
         transform: translateX(-5%);
     }
 }
+
 @keyframes slideIn {
     from {
         opacity: 0;
         transform: translateX(5%);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
     }
 }
+
 @keyframes slideOutReverse {
     from {
         opacity: 1;
         transform: translateX(0);
     }
+
     to {
         opacity: 0;
         transform: translateX(5%);
     }
 }
+
 @keyframes slideInReverse {
     from {
         opacity: 0;
         transform: translateX(-5%);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
