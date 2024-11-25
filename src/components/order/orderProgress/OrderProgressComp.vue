@@ -1,9 +1,7 @@
 <script setup>
-import OrderTitle from './OrderTitle.vue'
-import OrderProgressLine from './OrderProgressLine.vue'
+import { OrderTitle, OrderProgressLine } from './'
 </script>
 <template>
     <OrderTitle />
     <OrderProgressLine />
 </template>
-<style scoped></style>

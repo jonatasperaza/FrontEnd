@@ -1,5 +1,3 @@
-<script setup>
-</script>
 <template>
     <section>
         <h1>Tudo <span class="strong-pink">Finalizado</span>!</h1>

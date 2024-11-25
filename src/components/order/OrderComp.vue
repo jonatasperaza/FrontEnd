@@ -2,15 +2,10 @@
 import { ref } from 'vue';
 import { useOrderStore } from '@/stores';
 
-import OrderProgressComp from './orderProgress/OrderProgressComp.vue';
-import OrderData from './OrderInformations/OrderData.vue';
-import CollectionData from './OrderInformations/CollectionData.vue';
-import DeliveryData from './OrderInformations/DeliveryData.vue';
-import SummaryData from './OrderInformations/SummaryData.vue';
-import FinishedOrder from './OrderInformations/FinishedOrder.vue';
+import { OrderProgressComp, OrderData, CollectionData, DeliveryData, SummaryData, FinishedOrder } from './';
+
 
 const ordersStore = useOrderStore();
-console.log(ordersStore.state.step);
 const firstStep = ref(null);
 const secondStep = ref(null);
 const thirdStep = ref(null);

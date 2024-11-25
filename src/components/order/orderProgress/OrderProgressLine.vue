@@ -2,7 +2,6 @@
 import { useOrderStore } from '@/stores'
 
 const orderStore = useOrderStore()
-console.log(orderStore.state.step)
 </script>
 <template>
   <section>
