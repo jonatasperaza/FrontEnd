@@ -4,7 +4,6 @@ import { useOrderStore, useAuthStore } from '@/stores';
 
 import { OrderProgressComp, OrderData, CollectionData, DeliveryData, SummaryData, FinishedOrder } from './';
 
-
 const ordersStore = useOrderStore();
 const authStore = useAuthStore();
 
