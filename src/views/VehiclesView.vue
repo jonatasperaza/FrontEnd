@@ -2,5 +2,7 @@
 import { VehiclesComp } from '@/components/VehiclesComponents/'
 </script>
 <template>
-  <VehiclesComp />
+  <div>
+    <VehiclesComp />
+  </div>
 </template>

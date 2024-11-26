@@ -2,7 +2,9 @@
 import LoginForm from './LoginForm.vue'
 </script>
 <template>
-  <section><LoginForm /></section>
+  <section>
+    <LoginForm />
+  </section>
 </template>
 <style scoped lang="scss">
 @use '../../assets/main';

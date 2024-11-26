@@ -47,11 +47,13 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <FirstSection class="hidden fade-in" />
-  <SecondSection class="hidden fade-in" />
-  <ThirdSection class="hidden fade-in" />
-  <FourSection class="hidden fade-in" />
-  <LastSection class="hidden fade-in" />
+  <div>
+    <FirstSection class="hidden fade-in" />
+    <SecondSection class="hidden fade-in" />
+    <ThirdSection class="hidden fade-in" />
+    <FourSection class="hidden fade-in" />
+    <LastSection class="hidden fade-in" />
+  </div>
 </template>
 <style scoped>
 .hidden {

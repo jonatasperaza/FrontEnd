@@ -6,9 +6,11 @@ import DevContainer from './views/DevContainer.vue'
 <template>
   <DevContainer />
   <HeaderComp />
+ <router-view v-slot="{ Component }">
   <transition name="fade">
-    <RouterView :key="$route.fullPath" />
+    <component :is="Component" />
   </transition>
+</router-view>
   <FooterComp />
 </template>
 
