@@ -92,11 +92,11 @@ section {
     grid-column: 1;
     grid-row: 1 / span 2;
     width: 70%;
+    margin: 2em;
+    display: flex;
     img {
       width: 100%;
     }
-    margin: 2em;
-    display: flex;
   }
 }
 
