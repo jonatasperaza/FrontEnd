@@ -1,6 +1,6 @@
 <script setup>
-    import { OrderStatusComp } from '@/components/orderstatus/';
+import { OrderStatusComp } from '@/components/orderstatus/'
 </script>
 <template>
-    <OrderStatusComp />
+  <OrderStatusComp />
 </template>

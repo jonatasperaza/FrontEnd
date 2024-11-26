@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import FormFirstStep from './FormFirstStep.vue';
-import FormSecondStep from './FormSecondStep.vue';
+import FormFirstStep from './FormFirstStep.vue'
+import FormSecondStep from './FormSecondStep.vue'
 const firstStep = ref(null)
 const secondStep = ref(null)
 const isSecondStepVisible = ref(false)
@@ -13,9 +13,10 @@ const next = () => {
     isSecondStepVisible.value = true
     firstStep.value.style.display = 'none'
     secondStep.value.classList.add('slideIn')
-  }, 500)}
+  }, 500)
+}
 const back = () => {
- secondStep.value.classList.add('slideOutReverse')
+  secondStep.value.classList.add('slideOutReverse')
   setTimeout(() => {
     isSecondStepVisible.value = false
     firstStep.value.style.display = ''
@@ -23,7 +24,8 @@ const back = () => {
     setTimeout(() => {
       firstStep.value.classList.add('slideInReverse')
     }, 0)
-  }, 500)}
+  }, 500)
+}
 </script>
 <template>
   <section>
@@ -67,7 +69,6 @@ div {
     margin: auto;
     // border-left: 2px solid main.$standard-pink;
     text-align: center;
-
   }
 }
 .container-title-Second-Steap {

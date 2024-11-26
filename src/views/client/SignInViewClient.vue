@@ -1,6 +1,6 @@
 <script setup>
-import { RegisterComp } from '@/components/RegisterClient/';
+import { RegisterComp } from '@/components/RegisterClient/'
 </script>
 <template>
-    <RegisterComp />
+  <RegisterComp />
 </template>

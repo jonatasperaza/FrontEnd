@@ -1,14 +1,14 @@
-import { reactive, computed } from 'vue';
-import { defineStore } from 'pinia';
-import { OrderService } from '@/services';
+import { reactive, computed } from 'vue'
+import { defineStore } from 'pinia'
+import { OrderService } from '@/services'
 
 export const useOrderStore = defineStore('orders', () => {
   // Helper para calcular datas futuras
   const calculateFutureDate = (daysToAdd) => {
-    const date = new Date();
-    date.setDate(date.getDate() + daysToAdd);
-    return date.toISOString().split('T')[0];
-  };
+    const date = new Date()
+    date.setDate(date.getDate() + daysToAdd)
+    return date.toISOString().split('T')[0]
+  }
 
   const state = reactive({
     orders: [],
@@ -17,10 +17,10 @@ export const useOrderStore = defineStore('orders', () => {
       id_client: 0,
       delivery: {
         driver_position: '',
-        date_preview_delivery: calculateFutureDate(4), 
+        date_preview_delivery: calculateFutureDate(4),
         date_effected_delivery: null,
-        date_preview_colect: calculateFutureDate(2), 
-        date_effected_colect: null,
+        date_preview_colect: calculateFutureDate(2),
+        date_effected_colect: null
       },
       payment: {
         transaction_amount: 1,
@@ -30,7 +30,7 @@ export const useOrderStore = defineStore('orders', () => {
         payer_identification_type: '',
         payer_identification_number: '',
         card: null,
-        installments: null,
+        installments: null
       },
       address_delivery: {
         street: '',
@@ -39,7 +39,7 @@ export const useOrderStore = defineStore('orders', () => {
         neighborhood: '',
         city: '',
         state: '',
-        typeAddress: null,
+        typeAddress: null
       },
       address_collect: {
         street: '',
@@ -48,7 +48,7 @@ export const useOrderStore = defineStore('orders', () => {
         neighborhood: '',
         city: '',
         state: '',
-        typeAddress: null,
+        typeAddress: null
       },
       items: [
         {
@@ -56,66 +56,66 @@ export const useOrderStore = defineStore('orders', () => {
           quantity: null,
           observation: '',
           weight: null,
-          height: null,
-        },
-      ],
+          height: null
+        }
+      ]
     }),
     loading: false,
     step: 1,
-    error: null,
-  });
+    error: null
+  })
 
-  const isLoading = computed(() => state.loading);
+  const isLoading = computed(() => state.loading)
 
   const getOrders = async () => {
-    state.loading = true;
+    state.loading = true
     try {
-      state.orders = await OrderService.getOrders();
+      state.orders = await OrderService.getOrders()
     } catch (error) {
-      state.error = error;
+      state.error = error
     } finally {
-      state.loading = false;
+      state.loading = false
     }
-  };
+  }
 
   const createOrder = async (newOrder) => {
-    state.loading = true;
+    state.loading = true
     try {
       // Atualiza as datas antes de enviar
-      newOrder.delivery.date_preview_delivery = calculateFutureDate(4);
-      newOrder.delivery.date_preview_colect = calculateFutureDate(2);
-      state.orders.push(await OrderService.createOrder(newOrder));
+      newOrder.delivery.date_preview_delivery = calculateFutureDate(4)
+      newOrder.delivery.date_preview_colect = calculateFutureDate(2)
+      state.orders.push(await OrderService.createOrder(newOrder))
     } catch (error) {
-      state.error = error;
+      state.error = error
     } finally {
-      state.loading = false;
+      state.loading = false
     }
-  };
+  }
 
   const updateOrder = async (order) => {
-    state.loading = true;
+    state.loading = true
     try {
-      const index = state.orders.findIndex((s) => s.id === order.id);
-      state.orders[index] = await OrderService.updateOrder(order);
+      const index = state.orders.findIndex((s) => s.id === order.id)
+      state.orders[index] = await OrderService.updateOrder(order)
     } catch (error) {
-      state.error = error;
+      state.error = error
     } finally {
-      state.loading = false;
+      state.loading = false
     }
-  };
+  }
 
   const deleteOrder = async (id) => {
-    state.loading = true;
+    state.loading = true
     try {
-      const index = state.orders.findIndex((s) => s.id === id);
-      state.orders.splice(index, 1);
-      await OrderService.deleteOrder(id);
+      const index = state.orders.findIndex((s) => s.id === id)
+      state.orders.splice(index, 1)
+      await OrderService.deleteOrder(id)
     } catch (error) {
-      state.error = error;
+      state.error = error
     } finally {
-      state.loading = false;
+      state.loading = false
     }
-  };
+  }
 
   return {
     state,
@@ -123,6 +123,6 @@ export const useOrderStore = defineStore('orders', () => {
     getOrders,
     createOrder,
     updateOrder,
-    deleteOrder,
-  };
-});
+    deleteOrder
+  }
+})

@@ -1,4 +1,12 @@
-import {DoneOrders, FinishedOrders, LeftProfileInputs, PendingOrders, ProfileComp, RightProfileInputs, TypeOrderComp } from './ProfileClient'
+import {
+  DoneOrders,
+  FinishedOrders,
+  LeftProfileInputs,
+  PendingOrders,
+  ProfileComp,
+  RightProfileInputs,
+  TypeOrderComp
+} from './ProfileClient'
 
 export {
   DoneOrders,

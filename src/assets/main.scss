@@ -1,32 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inria Sans", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inria Sans', sans-serif;
 }
 
-$standard-purple: #5D2061;
-$standard-pink: #FC1D87;
+$standard-purple: #5d2061;
+$standard-pink: #fc1d87;
 $standard-bordeaux: #760038;
 $standard-black: #000000;
-$standard-white: #FFFFFF;
+$standard-white: #ffffff;
 
-
-body{
-    background-color: $standard-black;
-    color: $standard-white;
+body {
+  background-color: $standard-black;
+  color: $standard-white;
 }
 
-
-.strong-pink{
-    color: $standard-pink;
+.strong-pink {
+  color: $standard-pink;
 }
 
 .white {
-    color: $standard-white;
+  color: $standard-white;
 }
-
 
 ::-webkit-scrollbar {
   width: 12px;
@@ -45,6 +42,6 @@ body{
   border-radius: 10px;
 }
 
-html{
-    scroll-behavior: auto;
+html {
+  scroll-behavior: auto;
 }

@@ -2,6 +2,6 @@
 import { OrderTitle, OrderProgressLine } from './'
 </script>
 <template>
-    <OrderTitle />
-    <OrderProgressLine />
+  <OrderTitle />
+  <OrderProgressLine />
 </template>

@@ -15,7 +15,7 @@
         </p>
       </div>
     </div>
-    <img src="../../../public/imgs/TruckSide.png" alt="" loading="lazy"/>
+    <img src="../../../public/imgs/TruckSide.png" alt="" loading="lazy" />
   </section>
 </template>
 
@@ -39,7 +39,7 @@ section {
 }
 
 p {
-    width: 100%;
+  width: 100%;
 }
 
 .text {
@@ -61,36 +61,36 @@ h1 {
 img {
   width: 100%;
 }
-@media screen and (max-width: 1024px){
-    section{
-        // min-height: 30vh;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    .container{
-        width: 60%;
-        margin: auto;
-        margin: 1rem 0;
-    }
-    .text{
-        width: 100%;
-        margin: auto;
-        padding: 1rem;
-    }
-    img{
-        width: 100%;
-    }
+@media screen and (max-width: 1024px) {
+  section {
+    // min-height: 30vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    width: 60%;
+    margin: auto;
+    margin: 1rem 0;
+  }
+  .text {
+    width: 100%;
+    margin: auto;
+    padding: 1rem;
+  }
+  img {
+    width: 100%;
+  }
 }
-@media screen and (max-width: 450px){
-    h1{
-        font-size: 2rem;
-    }
-    p{
-        font-size: 1rem;
-    }
-    .container{
-      width: 80%;
-    }
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  .container {
+    width: 80%;
+  }
 }
 </style>

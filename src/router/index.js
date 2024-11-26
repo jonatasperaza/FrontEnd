@@ -1,6 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { toast } from 'vue3-toastify'
-import { AboutView, AdminDashboardView, DriverProfileView, HomeView, LoginView, OrderStatusView, OrderView, ProfileClientView, RegisterDriverView, RegisterEmployeeView, SignInViewClient, VehiclesView, ViaCepView } from '@/views/'
+import {
+  AboutView,
+  AdminDashboardView,
+  DriverProfileView,
+  HomeView,
+  LoginView,
+  OrderStatusView,
+  OrderView,
+  ProfileClientView,
+  RegisterDriverView,
+  RegisterEmployeeView,
+  SignInViewClient,
+  VehiclesView,
+  ViaCepView
+} from '@/views/'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -86,7 +100,7 @@ router.beforeEach((to, from, next) => {
       draggable: true,
       position: 'top-left'
     })
-    localStorage.setItem(pageKey, true) 
+    localStorage.setItem(pageKey, true)
   }
 
   next()

@@ -15,8 +15,8 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(Vue3Toastify, {
-    autoClose: 3000,
-    ...Bounce
+  autoClose: 3000,
+  ...Bounce
 })
 
 app.mount('#app')

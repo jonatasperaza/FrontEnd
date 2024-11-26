@@ -1,5 +1,3 @@
-import DriverProfileView from "./DriverProfileView.vue";
+import DriverProfileView from './DriverProfileView.vue'
 
-export {
-    DriverProfileView
-}
+export { DriverProfileView }

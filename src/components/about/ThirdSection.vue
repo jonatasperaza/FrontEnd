@@ -80,7 +80,7 @@ h2 {
 .titlePink {
   color: main.$standard-pink;
 }
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
   section {
     flex-direction: column;
     height: 100vh;
@@ -94,7 +94,7 @@ h2 {
         margin: 1rem;
         font-size: 16px;
       }
-      h2{
+      h2 {
         font-size: 40px;
       }
     }

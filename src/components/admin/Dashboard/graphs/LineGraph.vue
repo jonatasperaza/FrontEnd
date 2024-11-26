@@ -3,18 +3,18 @@
 </template>
 
 <script setup>
-import { use } from "echarts/core";
-import { CanvasRenderer } from "echarts/renderers";
-import { LineChart, BarChart } from "echarts/charts";
+import { use } from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+import { LineChart, BarChart } from 'echarts/charts'
 import {
   TitleComponent,
   TooltipComponent,
   LegendComponent,
   GridComponent,
   ToolboxComponent
-} from "echarts/components";
-import VChart, { THEME_KEY } from "vue-echarts";
-import { ref, provide } from "vue";
+} from 'echarts/components'
+import VChart, { THEME_KEY } from 'vue-echarts'
+import { ref, provide } from 'vue'
 
 use([
   CanvasRenderer,
@@ -25,19 +25,18 @@ use([
   GridComponent,
   ToolboxComponent,
   BarChart
+])
 
-]);
-
-provide(THEME_KEY, "dark");
+provide(THEME_KEY, 'dark')
 
 const option = ref({
   title: {
     text: 'FATURAMENTO/BIMESTRE',
-    left: 'center',
+    left: 'center'
   },
   backgroundColor: '#070707',
   tooltip: {
-    trigger: 'axis',
+    trigger: 'axis'
   },
   toolbox: {
     feature: {
@@ -49,7 +48,17 @@ const option = ref({
 
   xAxis: {
     type: 'category',
-    data: ['1° Bimestre', '2° Bimestre', '3° Bimestre', '4° Bimestre', '4° Bimestre', '4° Bimestre', '4° Bimestre', '4° Bimestre', '4° Bimestre',]
+    data: [
+      '1° Bimestre',
+      '2° Bimestre',
+      '3° Bimestre',
+      '4° Bimestre',
+      '4° Bimestre',
+      '4° Bimestre',
+      '4° Bimestre',
+      '4° Bimestre',
+      '4° Bimestre'
+    ]
   },
   yAxis: {
     type: 'value',
@@ -67,10 +76,10 @@ const option = ref({
           { type: 'max', name: 'Max' },
           { type: 'min', name: 'Min' }
         ]
-      },
+      }
     }
   ]
-});
+})
 </script>
 
 <style scoped>

@@ -3,51 +3,41 @@
 </template>
 
 <script setup>
-import { use } from "echarts/core";
-import { CanvasRenderer } from "echarts/renderers";
-import { PieChart } from "echarts/charts";
-import {
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent
-} from "echarts/components";
-import VChart, { THEME_KEY } from "vue-echarts";
-import { ref, provide, onMounted } from "vue";
-import { useVehicleStore } from "@/stores";
+import { use } from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+import { PieChart } from 'echarts/charts'
+import { TitleComponent, TooltipComponent, LegendComponent } from 'echarts/components'
+import VChart, { THEME_KEY } from 'vue-echarts'
+import { ref, provide, onMounted } from 'vue'
+import { useVehicleStore } from '@/stores'
 
-const VehicleStore = useVehicleStore();
+const VehicleStore = useVehicleStore()
 
-use([
-  CanvasRenderer,
-  PieChart,
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent
-]);
+use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent])
 
-provide(THEME_KEY, "dark");
-const data = ref([]);
-onMounted(async() => {
-  await VehicleStore.getVehicles();
+provide(THEME_KEY, 'dark')
+const data = ref([])
+onMounted(async () => {
+  await VehicleStore.getVehicles()
   data.value = [
-    { value: VehicleStore.state.countRunning, name: "Em Transito" },
-    { value: VehicleStore.state.countInMaintenance, name: "Em Manutenção" },
-    { value: VehicleStore.state.countStopped, name: "Disponiveis" },
-    { value: VehicleStore.state.countBroken, name: "Quebrados" }
-  ];
+    { value: VehicleStore.state.countRunning, name: 'Em Transito' },
+    { value: VehicleStore.state.countInMaintenance, name: 'Em Manutenção' },
+    { value: VehicleStore.state.countStopped, name: 'Disponiveis' },
+    { value: VehicleStore.state.countBroken, name: 'Quebrados' }
+  ]
 })
 
-const color = ref(['#FC1D87', '#79036D', '#FFC0CB', '#FF1493']);
+const color = ref(['#FC1D87', '#79036D', '#FFC0CB', '#FF1493'])
 
 const option = ref({
   backgroundColor: '#070707',
   title: {
     text: 'Status Dos Veiculos',
-    left: 'center',
+    left: 'center'
   },
   tooltip: {
     trigger: 'item',
-    formatter: '{a} <br/>{b} : {c} ({d}%)',
+    formatter: '{a} <br/>{b} : {c} ({d}%)'
   },
   series: [
     {
@@ -58,18 +48,18 @@ const option = ref({
       padAngle: 4,
       data: data,
       itemStyle: {
-        borderRadius: 10,
+        borderRadius: 10
       },
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
           shadowColor: 'rgba(0, 0, 0, 0.5)'
-        },
-      },
+        }
+      }
     }
   ]
-});
+})
 </script>
 
 <style scoped>

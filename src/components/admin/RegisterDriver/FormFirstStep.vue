@@ -1,15 +1,23 @@
 <script setup>
-import { useDriverStore } from '@/stores';
-import { toast } from 'vue3-toastify';
+import { useDriverStore } from '@/stores'
+import { toast } from 'vue3-toastify'
 
 const driverStore = useDriverStore()
 
-function verify(){
-  if (driverStore.state.driver_data.name === '' || driverStore.state.driver_data.email === '' || driverStore.state.driver_data.cnh === '' || driverStore.state.driver_data.username === '' || driverStore.state.driver_data.cpf === '' || driverStore.state.driver_data.date_birth === '' || driverStore.state.driver_data.telephone === '') {
+function verify() {
+  if (
+    driverStore.state.driver_data.name === '' ||
+    driverStore.state.driver_data.email === '' ||
+    driverStore.state.driver_data.cnh === '' ||
+    driverStore.state.driver_data.username === '' ||
+    driverStore.state.driver_data.cpf === '' ||
+    driverStore.state.driver_data.date_birth === '' ||
+    driverStore.state.driver_data.telephone === ''
+  ) {
     toast.warn('Preencha todos os campos')
     return false
   } else {
-   return true 
+    return true
   }
 }
 </script>
@@ -20,17 +28,43 @@ function verify(){
     <label for="">Nome</label>
     <input type="text" placeholder="Insira seu nome" v-model="driverStore.state.driver_data.name" />
     <label for="">Email</label>
-    <input type="text" placeholder="Insira seu email" v-model="driverStore.state.driver_data.email" />
+    <input
+      type="text"
+      placeholder="Insira seu email"
+      v-model="driverStore.state.driver_data.email"
+    />
     <label for="">CNH:</label>
-    <input type="text" placeholder="Insira sua CNH" v-model="driverStore.state.driver_data.cnh" maxlength="9">
+    <input
+      type="text"
+      placeholder="Insira sua CNH"
+      v-model="driverStore.state.driver_data.cnh"
+      maxlength="9"
+    />
     <label for="">Username:</label>
-    <input type="text" placeholder="Insira seu username" v-model="driverStore.state.driver_data.username" />
+    <input
+      type="text"
+      placeholder="Insira seu username"
+      v-model="driverStore.state.driver_data.username"
+    />
     <label for="">CPF</label>
-    <input type="text" placeholder="Insira seu CPF" v-model="driverStore.state.driver_data.cpf" maxlength="11" />
+    <input
+      type="text"
+      placeholder="Insira seu CPF"
+      v-model="driverStore.state.driver_data.cpf"
+      maxlength="11"
+    />
     <label for="">Data de Nascimento</label>
-    <input type="date" placeholder="Insira sua data de nascimento" v-model="driverStore.state.driver_data.date_birth" />
+    <input
+      type="date"
+      placeholder="Insira sua data de nascimento"
+      v-model="driverStore.state.driver_data.date_birth"
+    />
     <label for="">Telefone</label>
-    <input type="tel" placeholder="Insira seu telefone" v-model="driverStore.state.driver_data.telephone" />
+    <input
+      type="tel"
+      placeholder="Insira seu telefone"
+      v-model="driverStore.state.driver_data.telephone"
+    />
     <button @click="verify() ? $emit('next') : null">Próximo</button>
   </form>
 </template>

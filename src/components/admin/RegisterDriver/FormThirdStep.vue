@@ -1,43 +1,44 @@
 <script setup>
-import { watch, ref } from 'vue';
-import { useDriverStore, useCepStore } from '@/stores';
-import { toast } from 'vue3-toastify';
-import router from '@/router';
-const driverStore = useDriverStore();
-const cepStore = useCepStore();
-const canStreet = ref(false);
-const canNeighborhood = ref(false);
-
+import { watch, ref } from 'vue'
+import { useDriverStore, useCepStore } from '@/stores'
+import { toast } from 'vue3-toastify'
+import router from '@/router'
+const driverStore = useDriverStore()
+const cepStore = useCepStore()
+const canStreet = ref(false)
+const canNeighborhood = ref(false)
 
 watch(
   () => driverStore.state.driver_data.address.cep,
   async (newValue) => {
     if (newValue.length === 8) {
-      const response = await cepStore.getEndereco(driverStore.state.driver_data.address.cep);
-      console.log(response);
-      driverStore.state.driver_data.address.state = response.uf || '';
-      driverStore.state.driver_data.address.city = response.localidade || '';
-      driverStore.state.driver_data.address.neighborhood = response.bairro || '';
-      driverStore.state.driver_data.address.street = response.logradouro || '';
+      const response = await cepStore.getEndereco(driverStore.state.driver_data.address.cep)
+      console.log(response)
+      driverStore.state.driver_data.address.state = response.uf || ''
+      driverStore.state.driver_data.address.city = response.localidade || ''
+      driverStore.state.driver_data.address.neighborhood = response.bairro || ''
+      driverStore.state.driver_data.address.street = response.logradouro || ''
 
       if (response.bairro) {
-        canNeighborhood.value = true;
+        canNeighborhood.value = true
       }
 
       if (response.logradouro) {
-        canStreet.value = true;
+        canStreet.value = true
       }
-
     }
   }
-);
+)
 
 function verify() {
-  if (driverStore.state.driver_data.address.cep === '' || driverStore.state.driver_data.address.number === '') {
-    toast.warn('Preencha todos os campos');
-    return false;
+  if (
+    driverStore.state.driver_data.address.cep === '' ||
+    driverStore.state.driver_data.address.number === ''
+  ) {
+    toast.warn('Preencha todos os campos')
+    return false
   } else {
-    return true;
+    return true
   }
 }
 </script>
@@ -45,20 +46,61 @@ function verify() {
   <h2>Endereço</h2>
   <form @submit.prevent>
     <label for="">CEP</label>
-    <input type="text" placeholder="Insira seu CEP" v-model="driverStore.state.driver_data.address.cep" />
+    <input
+      type="text"
+      placeholder="Insira seu CEP"
+      v-model="driverStore.state.driver_data.address.cep"
+    />
     <label for="">Estado</label>
-    <input type="text" placeholder="Insira seu estado" v-model="driverStore.state.driver_data.address.state" disabled />
+    <input
+      type="text"
+      placeholder="Insira seu estado"
+      v-model="driverStore.state.driver_data.address.state"
+      disabled
+    />
     <label for="">Cidade</label>
-    <input type="text" placeholder="Insira sua cidade" v-model="driverStore.state.driver_data.address.city" disabled />
+    <input
+      type="text"
+      placeholder="Insira sua cidade"
+      v-model="driverStore.state.driver_data.address.city"
+      disabled
+    />
     <label for="">Bairro</label>
-    <input type="text" placeholder="Insira seu bairro" v-model="driverStore.state.driver_data.address.neighborhood" :disabled="canNeighborhood" />
+    <input
+      type="text"
+      placeholder="Insira seu bairro"
+      v-model="driverStore.state.driver_data.address.neighborhood"
+      :disabled="canNeighborhood"
+    />
     <label for="">Endereço</label>
-    <input type="text" placeholder="Insira seu endereço" v-model="driverStore.state.driver_data.address.street" :disabled="canStreet" />
+    <input
+      type="text"
+      placeholder="Insira seu endereço"
+      v-model="driverStore.state.driver_data.address.street"
+      :disabled="canStreet"
+    />
     <label for="">Número</label>
-    <input type="text" placeholder="Insira seu número" v-model="driverStore.state.driver_data.address.number" />
+    <input
+      type="text"
+      placeholder="Insira seu número"
+      v-model="driverStore.state.driver_data.address.number"
+    />
     <label for="">Complemento</label>
-    <input type="text" placeholder="Insira um complemento" v-model="driverStore.state.driver_data.address.complement" />
-    <button class="normalColor" @click="verify() ? (driverStore.createDriver(driverStore.state.driver_data), router.push('/')) : null">Finalizar</button>
+    <input
+      type="text"
+      placeholder="Insira um complemento"
+      v-model="driverStore.state.driver_data.address.complement"
+    />
+    <button
+      class="normalColor"
+      @click="
+        verify()
+          ? (driverStore.createDriver(driverStore.state.driver_data), router.push('/'))
+          : null
+      "
+    >
+      Finalizar
+    </button>
     <button class="invertColor" @click="$emit('back')">Voltar</button>
   </form>
 </template>

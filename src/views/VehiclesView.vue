@@ -1,7 +1,6 @@
 <script setup>
-import { VehiclesComp } from '@/components/VehiclesComponents/';
+import { VehiclesComp } from '@/components/VehiclesComponents/'
 </script>
 <template>
-    <VehiclesComp />
+  <VehiclesComp />
 </template>
-

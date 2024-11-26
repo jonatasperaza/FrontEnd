@@ -1,6 +1,6 @@
 <script setup>
-import { ProfileComp } from '@/components/client/';
+import { ProfileComp } from '@/components/client/'
 </script>
 <template>
-    <ProfileComp />
+  <ProfileComp />
 </template>
