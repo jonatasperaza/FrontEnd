@@ -90,15 +90,15 @@ section {
 
   .truck-container {
     width: 80%;
+    margin-top: 2em;
+    display: flex;
+    grid-column: 2;
+    grid-row: 1 / span 2;
 
     img {
       width: 100%;
     }
 
-    margin-top: 2em;
-    display: flex;
-    grid-column: 2;
-    grid-row: 1 / span 2;
   }
 }
 
@@ -150,17 +150,17 @@ section {
       height: 100%;
       margin: 0%;
       margin-bottom: 2em;
+      margin-top: 0;
+      display: flex;
+      justify-content: center;
+      grid-row: 3;
+      grid-column: 1 / span 2;
 
       img {
         width: 25em;
         height: 20em;
       }
 
-      margin-top: 0;
-      display: flex;
-      justify-content: center;
-      grid-row: 3;
-      grid-column: 1 / span 2;
     }
   }
 }
@@ -218,17 +218,17 @@ section {
     .truck-container {
       width: 100%;
       height: 100%;
+      margin-top: 0;
+      display: flex;
+      justify-content: center;
+      grid-row: 3;
+      grid-column: 1;
 
       img {
         width: 18em;
         height: 16em;
       }
 
-      margin-top: 0;
-      display: flex;
-      justify-content: center;
-      grid-row: 3;
-      grid-column: 1;
     }
   }
 }
