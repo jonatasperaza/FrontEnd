@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 import { AuthService } from '@/services'
+import router from '@/router'
 
 export const useAuthStore = defineStore('auth', () => {
   const state = useStorage('user', {
@@ -40,9 +41,19 @@ export const useAuthStore = defineStore('auth', () => {
     localStorage.clear()
   }
 
+  async function logout() {
+      state.value.isLoading = true
+      state.value.user = {}
+      state.value.isLogged = false
+      state.value.type = ''
+      state.value.isLoading = false
+      router.go('/')
+  }
+
   return {
     setToken,
     unsetToken,
+    logout,
     state
   }
 })

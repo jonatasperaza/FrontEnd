@@ -1,7 +1,4 @@
-import LoginComp from "./LoginComp.vue";
-import LoginForm from "./LoginForm.vue";
+import LoginComp from './LoginComp.vue'
+import LoginForm from './LoginForm.vue'
 
-export {
-    LoginComp,
-    LoginForm
-}
+export { LoginComp, LoginForm }

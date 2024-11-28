@@ -1,5 +1,3 @@
-import ViaCepView from "./ViaCepView.vue";
+import ViaCepView from './ViaCepView.vue'
 
-export {
-    ViaCepView
-}
+export { ViaCepView }

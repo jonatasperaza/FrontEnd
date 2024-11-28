@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: 'http://localhost:8000/api/'
+  baseURL: 'http://192.168.3.3:8000/api/'
 })
 
 axios.interceptors.request.use(
@@ -13,6 +13,7 @@ axios.interceptors.request.use(
     return config
   },
   (error) => {
+    console.log(error)
     return Promise.reject(error)
   }
 )

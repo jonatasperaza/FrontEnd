@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { FormFirstStep, FormSecondStep } from './';
+import { FormFirstStep, FormSecondStep } from './'
 
 const firstStep = ref(null)
 const secondStep = ref(null)
@@ -14,7 +14,7 @@ const next = () => {
     firstStep.value.style.display = 'none'
     secondStep.value.classList.add('slideIn')
   }, 500)
-};
+}
 const back = () => {
   secondStep.value.classList.add('slideOutReverse')
   setTimeout(() => {
@@ -25,7 +25,7 @@ const back = () => {
       firstStep.value.classList.add('slideInReverse')
     }, 0)
   }, 500)
-};
+}
 </script>
 <template>
   <section>

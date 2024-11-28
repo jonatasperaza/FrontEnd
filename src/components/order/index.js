@@ -1,4 +1,5 @@
 import OrderComp from "./OrderComp.vue";
+
 import { CollectionData, DeliveryData, FinishedOrder, OrderData, SummaryData } from './OrderInformations'
 import { OrderProgressComp, OrderProgressLine, OrderTitle } from './orderProgress'
 

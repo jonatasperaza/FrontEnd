@@ -25,7 +25,6 @@ export const useVehicleStore = defineStore('vehicles', () => {
       state.countInMaintenance = state.vehicles.filter((v) => v.status === 2).length
       state.countStopped = state.vehicles.filter((v) => v.status === 3).length
       state.countBroken = state.vehicles.filter((v) => v.status === 4).length
-      
     } catch (error) {
       state.error = error
     } finally {
@@ -64,7 +63,7 @@ export const useVehicleStore = defineStore('vehicles', () => {
       await VehicleService.deleteVehicle(id)
       const index = state.vehicles.findIndex((s) => s.id === id)
       state.vehicles.splice(index, 1)
-       getVehicles()
+      getVehicles()
     } catch (error) {
       state.error = error
     } finally {

@@ -1,24 +1,31 @@
 <script setup>
-import { onMounted } from 'vue';
-import { FirstSection, SecondSection, ThirdSection, FourthSection, FifthSection, SixthSection } from "./"
+import { onMounted } from 'vue'
+import {
+  FirstSection,
+  SecondSection,
+  ThirdSection,
+  FourthSection,
+  FifthSection,
+  SixthSection
+} from './'
 
 onMounted(() => {
-  const elements = document.querySelectorAll('.fade-in');
+  const elements = document.querySelectorAll('.fade-in')
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Para de observar o elemento após ele aparecer
+          entry.target.classList.add('visible')
+          observer.unobserve(entry.target) // Para de observar o elemento após ele aparecer
         }
-      });
+      })
     },
     { threshold: 0.1 } // Quando 10% do elemento estiver visível
-  );
+  )
 
-  elements.forEach((el) => observer.observe(el));
-});
+  elements.forEach((el) => observer.observe(el))
+})
 </script>
 
 <template>
@@ -36,7 +43,9 @@ onMounted(() => {
 .hidden {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s, transform 0.6s;
+  transition:
+    opacity 0.6s,
+    transform 0.6s;
 }
 
 .visible {

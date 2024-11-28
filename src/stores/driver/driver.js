@@ -11,7 +11,7 @@ export const useDriverStore = defineStore('driver', () => {
       cpf: 0,
       name: '',
       email: '',
-      date_birth: "",
+      date_birth: '',
       username: '',
       address: {
         cep: 0,
@@ -70,7 +70,6 @@ export const useDriverStore = defineStore('driver', () => {
       await DriverService.deleteDriver(id)
       const index = state.drivers.findIndex((s) => s.id === id)
       state.drivers.splice(index, 1)
-
     } catch (error) {
       state.error = error
     } finally {

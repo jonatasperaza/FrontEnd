@@ -1,5 +1,6 @@
 <script setup>
 import '@passageidentity/passage-elements/passage-auth'
+const app_id = import.meta.env.VITE_PASSAGE_APP_ID
 </script>
 <template>
   <div class="container">
@@ -7,7 +8,7 @@ import '@passageidentity/passage-elements/passage-auth'
       <h1>Login</h1>
     </div>
     <div class="authContainer">
-      <passage-auth app-id="RzLQanPc9KwBIjxhveHSYyaA"></passage-auth>
+      <passage-auth :app-id="app_id"></passage-auth>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import { useDriverStore } from '@/stores';
-import { toast } from 'vue3-toastify';
+import { useDriverStore } from '@/stores'
+import { toast } from 'vue3-toastify'
 
 const driverStore = useDriverStore()
 const selectedCategory = ref(null)
@@ -10,12 +10,12 @@ function selectCategory(Category) {
   driverStore.state.driver_data.type_cnh = Category
 }
 
-function verify(){
+function verify() {
   if (driverStore.state.driver_data.type_cnh === '') {
     toast.warn('Selecione uma categoria')
     return false
   } else {
-    return true 
+    return true
   }
 }
 </script>
@@ -86,36 +86,36 @@ form {
     text-align: left;
     padding: 0 0 0 1rem;
   }
-  button:hover{
+  button:hover {
     background-color: main.$standard-pink;
     color: main.$standard-black;
-    border: 2px solid main.$standard-pink
+    border: 2px solid main.$standard-pink;
   }
   .selectedPink {
     background-color: main.$standard-pink;
     border: 2px solid main.$standard-pink;
     color: main.$standard-black;
   }
-  .nextButton{
+  .nextButton {
     background-color: main.$standard-pink;
     color: main.$standard-white;
     border: none;
     text-align: center;
     padding: 0;
   }
-  .backButton{
+  .backButton {
     background-color: main.$standard-black;
     color: main.$standard-pink;
     border: 2px solid main.$standard-pink;
     text-align: center;
     padding: 0;
   }
-  .nextButton:hover{
+  .nextButton:hover {
     background-color: main.$standard-black;
     color: main.$standard-pink;
     border: none;
   }
-  .backButton:hover{
+  .backButton:hover {
     background-color: main.$standard-pink;
     color: main.$standard-white;
   }

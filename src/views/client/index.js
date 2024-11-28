@@ -1,7 +1,4 @@
-import ProfileClientView from "./ProfileClientView.vue";
-import SignInViewClient from "./SignInViewClient.vue";
+import ProfileClientView from './ProfileClientView.vue'
+import SignInViewClient from './SignInViewClient.vue'
 
-export {
-    ProfileClientView,
-    SignInViewClient
-}
+export { ProfileClientView, SignInViewClient }

@@ -4,53 +4,53 @@ import FormFirstStep from './FormFirstStep.vue'
 import FormSecondStep from './FormSecondStep.vue'
 import FormThirdStep from './FormThirdStep.vue'
 
-const firstStep = ref(null);
-const secondStep = ref(null);
-const thirdStep = ref(null);
-const isSecondStepVisible = ref(false);
-const isThirdStepVisible = ref(false);
+const firstStep = ref(null)
+const secondStep = ref(null)
+const thirdStep = ref(null)
+const isSecondStepVisible = ref(false)
+const isThirdStepVisible = ref(false)
 const nextToSecond = () => {
-  firstStep.value.classList.remove('slideInReverse', 'slideOut');
-  secondStep.value.classList.remove('slideIn', 'slideOutReverse');
-  firstStep.value.classList.add('slideOut');
+  firstStep.value.classList.remove('slideInReverse', 'slideOut')
+  secondStep.value.classList.remove('slideIn', 'slideOutReverse')
+  firstStep.value.classList.add('slideOut')
   setTimeout(() => {
-    isSecondStepVisible.value = true;
-    firstStep.value.style.display = 'none';
-    secondStep.value.classList.add('slideIn');
-  }, 500);
-};
+    isSecondStepVisible.value = true
+    firstStep.value.style.display = 'none'
+    secondStep.value.classList.add('slideIn')
+  }, 500)
+}
 const nextToThird = () => {
-  secondStep.value.classList.remove('slideInReverse', 'slideOut');
-  thirdStep.value.classList.remove('slideIn', 'slideOutReverse');
-  secondStep.value.classList.add('slideOut');
+  secondStep.value.classList.remove('slideInReverse', 'slideOut')
+  thirdStep.value.classList.remove('slideIn', 'slideOutReverse')
+  secondStep.value.classList.add('slideOut')
   setTimeout(() => {
-    isThirdStepVisible.value = true;
-    secondStep.value.style.display = 'none';
-    thirdStep.value.classList.add('slideIn');
-  }, 500);
-};
+    isThirdStepVisible.value = true
+    secondStep.value.style.display = 'none'
+    thirdStep.value.classList.add('slideIn')
+  }, 500)
+}
 const backToFirst = () => {
-  secondStep.value.classList.add('slideOutReverse');
+  secondStep.value.classList.add('slideOutReverse')
   setTimeout(() => {
-    isSecondStepVisible.value = false;
-    firstStep.value.style.display = 'block';
-    secondStep.value.classList.remove('slideOutReverse');
+    isSecondStepVisible.value = false
+    firstStep.value.style.display = 'block'
+    secondStep.value.classList.remove('slideOutReverse')
     setTimeout(() => {
-      firstStep.value.classList.add('slideInReverse');
-    }, 0);
-  }, 500);
-};
+      firstStep.value.classList.add('slideInReverse')
+    }, 0)
+  }, 500)
+}
 const backToSecond = () => {
-  thirdStep.value.classList.add('slideOutReverse');
+  thirdStep.value.classList.add('slideOutReverse')
   setTimeout(() => {
-    isThirdStepVisible.value = false;
-    secondStep.value.style.display = 'block';
-    thirdStep.value.classList.remove('slideOutReverse');
+    isThirdStepVisible.value = false
+    secondStep.value.style.display = 'block'
+    thirdStep.value.classList.remove('slideOutReverse')
     setTimeout(() => {
-      secondStep.value.classList.add('slideInReverse');
-    }, 0);
-  }, 500);
-};
+      secondStep.value.classList.add('slideInReverse')
+    }, 0)
+  }, 500)
+}
 </script>
 <template>
   <section>

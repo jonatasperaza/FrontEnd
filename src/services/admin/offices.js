@@ -6,7 +6,7 @@ class OfficeService {
   async getOffices() {
     try {
       const response = await api.get('offices')
-        toast.success('Escritórios encontrados com sucesso')
+      toast.success('Escritórios encontrados com sucesso')
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar escritórios')
@@ -17,7 +17,7 @@ class OfficeService {
   async getOffice(id) {
     try {
       const response = await api.get(`office/${id}`)
-        toast.success('Escritório encontrado com sucesso')
+      toast.success('Escritório encontrado com sucesso')
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar escritório')
@@ -28,7 +28,7 @@ class OfficeService {
   async createOffice(data) {
     try {
       const response = await api.post('offices', data)
-        toast.success('Escritório criado com sucesso')
+      toast.success('Escritório criado com sucesso')
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao criar escritório')
@@ -39,7 +39,7 @@ class OfficeService {
   async updateOffice(id, data) {
     try {
       const response = await api.put(`offices/${id}`, data)
-        toast.success('Escritório atualizado com sucesso')
+      toast.success('Escritório atualizado com sucesso')
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao atualizar escritório')
@@ -50,7 +50,7 @@ class OfficeService {
   async deleteOffice(id) {
     try {
       const response = await api.delete(`offices/${id}`)
-        toast.success('Escritório apagado com sucesso')
+      toast.success('Escritório apagado com sucesso')
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao apagar escritório')

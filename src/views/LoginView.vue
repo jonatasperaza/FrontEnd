@@ -1,6 +1,8 @@
 <script setup>
-import { LoginComp } from '@/components/login/';
+import { LoginComp } from '@/components/login/'
 </script>
-<template><LoginComp /></template>
-<style scoped>
-</style>
+<template>
+    <div>
+        <LoginComp />
+    </div>
+</template>

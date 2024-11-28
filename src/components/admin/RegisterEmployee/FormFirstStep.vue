@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useEmployeeStore, useOfficeStore } from '@/stores';
-import { toast } from 'vue3-toastify';
+import { useEmployeeStore, useOfficeStore } from '@/stores'
+import { toast } from 'vue3-toastify'
 
 // const selectedGender = ref(null)
 
@@ -17,32 +17,62 @@ const selectStaffOption = (option) => {
   selectStaff.value = option
 }
 
-onMounted(async() => {
+onMounted(async () => {
   await officeStore.getOffices()
 })
 
-function verify(){
-  if (employeeStore.state.employee_data.name === '' || employeeStore.state.employee_data.email === '' || employeeStore.state.employee_data.cpf === '' || employeeStore.state.employee_data.telephone === '' || employeeStore.state.employee_data.username === '' || employeeStore.state.employee_data.date_birth === '' || employeeStore.state.employee_data.date_admission === '' || employeeStore.state.employee_data.office === '' || selectStaff.value === null) {
+function verify() {
+  if (
+    employeeStore.state.employee_data.name === '' ||
+    employeeStore.state.employee_data.email === '' ||
+    employeeStore.state.employee_data.cpf === '' ||
+    employeeStore.state.employee_data.telephone === '' ||
+    employeeStore.state.employee_data.username === '' ||
+    employeeStore.state.employee_data.date_birth === '' ||
+    employeeStore.state.employee_data.date_admission === '' ||
+    employeeStore.state.employee_data.office === '' ||
+    selectStaff.value === null
+  ) {
     toast.warn('Preencha todos os campos')
     return false
   } else {
-    return true 
+    return true
   }
 }
-
 </script>
 <template>
   <form @submit.prevent>
     <label for="">Nome</label>
-    <input type="text" placeholder="Insira seu nome" v-model="employeeStore.state.employee_data.name" />
+    <input
+      type="text"
+      placeholder="Insira seu nome"
+      v-model="employeeStore.state.employee_data.name"
+    />
     <label for="">Email</label>
-    <input type="email" placeholder="Insira seu email" v-model="employeeStore.state.employee_data.email" />
+    <input
+      type="email"
+      placeholder="Insira seu email"
+      v-model="employeeStore.state.employee_data.email"
+    />
     <label for="">CPF</label>
-    <input type="text" placeholder="Insira seu CPF" v-model="employeeStore.state.employee_data.cpf" maxlength="11"/>
+    <input
+      type="text"
+      placeholder="Insira seu CPF"
+      v-model="employeeStore.state.employee_data.cpf"
+      maxlength="11"
+    />
     <label for="">Telefone</label>
-    <input type="tel" placeholder="Insira seu telefone" v-model="employeeStore.state.employee_data.telephone"  />
+    <input
+      type="tel"
+      placeholder="Insira seu telefone"
+      v-model="employeeStore.state.employee_data.telephone"
+    />
     <label for="">Username</label>
-    <input type="text" placeholder="Insira seu username" v-model="employeeStore.state.employee_data.username" />
+    <input
+      type="text"
+      placeholder="Insira seu username"
+      v-model="employeeStore.state.employee_data.username"
+    />
     <label for="">Data de Nascimento:</label>
     <input type="date" v-model="employeeStore.state.employee_data.date_birth" />
     <label for="">Data de Admissao</label>
@@ -55,10 +85,14 @@ function verify(){
     </select>
     <div>
       <label for="">É staff?</label>
-      <button @click="selectStaffOption('sim')" :class="{ selectedPink: selectStaff === 'sim'}">Sim</button>
-      <button @click="selectStaffOption('nao')" :class="{ selectedPink: selectStaff === 'nao'}">Não</button>
+      <button @click="selectStaffOption('sim')" :class="{ selectedPink: selectStaff === 'sim' }">
+        Sim
+      </button>
+      <button @click="selectStaffOption('nao')" :class="{ selectedPink: selectStaff === 'nao' }">
+        Não
+      </button>
     </div>
-      <!-- <div class="GenderSelection">
+    <!-- <div class="GenderSelection">
         <button @click="selectGender('man')" :class="{ selectedPink: selectedGender === 'man' }">
           <img src="/public/man-icon.svg" alt="Ícone masculino" />
         </button>
@@ -80,31 +114,31 @@ form {
   margin: 1rem auto 4rem auto;
 
   .GenderSelection {
-  display: flex;
-  justify-content: space-around;
-  margin: 1rem 0;
-  button {
-    width: 45%;
-    height: 2.75rem;
-    border: 2px solid main.$standard-white;
-    border-radius: 1rem;
-    background-color: main.$standard-black;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+    button {
+      width: 45%;
+      height: 2.75rem;
+      border: 2px solid main.$standard-white;
+      border-radius: 1rem;
+      background-color: main.$standard-black;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+    button:hover {
+      background-color: main.$standard-pink;
+      border: 2px solid main.$standard-pink;
+      color: main.$standard-black;
+    }
+    .selectedPink {
+      background-color: main.$standard-pink;
+      border: 2px solid main.$standard-pink;
+      color: main.$standard-black;
+    }
   }
-  button:hover {
-    background-color: main.$standard-pink;
-    border: 2px solid main.$standard-pink;
-    color: main.$standard-black;
-  }
-  .selectedPink {
-    background-color: main.$standard-pink;
-    border: 2px solid main.$standard-pink;
-    color: main.$standard-black;
-  }
-}
 
   div {
     margin-top: 1em;
