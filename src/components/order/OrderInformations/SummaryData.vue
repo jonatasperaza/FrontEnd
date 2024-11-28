@@ -7,7 +7,7 @@ const ordersStore = useOrderStore()
   <section>
     <div class="container-itens">
       <form @submit.prevent>
-        <div>
+        <div v-for="item in ordersStore.state.order.items">
           <div class="container-field">
             <div class="container-input">
               <label>Nome do item</label>
@@ -15,18 +15,13 @@ const ordersStore = useOrderStore()
                 class="input-1"
                 placeholder="Inserir nome"
                 type="text"
-                name=""
-                v-model="ordersStore.state.order.itemName"
+                name="Nome do item"
+                v-model="item.name"
               />
             </div>
             <div class="container-input-2">
               <label>Quantidade</label>
-              <input
-                class="input-2"
-                type="text"
-                name=""
-                v-model="ordersStore.state.order.itemQuantity"
-              />
+              <input class="input-2" type="text" name="quantidade do item" v-model="item.itemQuantity" />
             </div>
           </div>
           <div class="container-field">
@@ -36,18 +31,17 @@ const ordersStore = useOrderStore()
                 class="input-1"
                 placeholder="Inserir observação"
                 type="text"
-                name=""
-                v-model="ordersStore.state.order.observation"
+                name="observação do item"
+                v-model="item.observation"
               />
             </div>
             <div class="container-input-2">
-              <label>Unidade de medida</label>
-              <input
-                class="input-2"
-                type="select"
-                name=""
-                v-model="ordersStore.state.order.unitOfMeasure"
-              />
+              <label>Largura</label>
+              <input class="input-2" type="select" name="largura do item" v-model="item.widht" />
+            </div>
+            <div class="container-input-2">
+              <label>Altura</label>
+              <input class="input-2" type="select" name="altura do item" v-model="item.height" />
             </div>
           </div>
         </div>
@@ -62,9 +56,9 @@ const ordersStore = useOrderStore()
             <input
               class="input"
               placeholder="Inserir CEP"
-              type="text"
+              type="number"
               name=""
-              v-model="ordersStore.state.order.collectionCep"
+              v-model="ordersStore.state.order.address_collect.cep"
             />
           </div>
           <div class="container-input">
@@ -72,9 +66,9 @@ const ordersStore = useOrderStore()
             <input
               class="input"
               placeholder="Inserir número"
-              type="text"
+              type="number"
               name=""
-              v-model="ordersStore.state.order.collectionNumber"
+              v-model="ordersStore.state.order.address_collect.number"
             />
           </div>
         </div>
@@ -86,7 +80,7 @@ const ordersStore = useOrderStore()
               placeholder="Inserir endereço"
               type="text"
               name=""
-              v-model="ordersStore.state.order.collectionAddress"
+              v-model="ordersStore.state.order.address_collect.street"
             />
           </div>
           <div class="container-input">
@@ -96,7 +90,7 @@ const ordersStore = useOrderStore()
               placeholder="Inserir complemento"
               type="text"
               name=""
-              v-model="ordersStore.state.order.collectionComplement"
+              v-model="ordersStore.state.order.address_collect.complement"
             />
           </div>
         </div>
@@ -108,7 +102,7 @@ const ordersStore = useOrderStore()
               placeholder="Inserir cidade"
               type="text"
               name=""
-              v-model="ordersStore.state.order.collectionCity"
+              v-model="ordersStore.state.order.address_collect.city"
             />
           </div>
           <div class="container-input">
@@ -118,7 +112,7 @@ const ordersStore = useOrderStore()
               placeholder="Inserir estado"
               type="text"
               name=""
-              v-model="ordersStore.state.order.collectionState"
+              v-model="ordersStore.state.order.address_collect.state"
             />
           </div>
         </div>
@@ -133,9 +127,9 @@ const ordersStore = useOrderStore()
             <input
               class="input"
               placeholder="Inserir CEP"
-              type="text"
+              type="number"
               name=""
-              v-model="ordersStore.state.order.deliveryCep"
+              v-model="ordersStore.state.order.address_delivery.cep"
             />
           </div>
           <div class="container-input">
@@ -143,9 +137,9 @@ const ordersStore = useOrderStore()
             <input
               class="input"
               placeholder="Inserir número"
-              type="text"
+              type="number"
               name=""
-              v-model="ordersStore.state.order.deliveryNumber"
+              v-model="ordersStore.state.order.address_delivery.number"
             />
           </div>
         </div>
@@ -157,7 +151,7 @@ const ordersStore = useOrderStore()
               placeholder="Inserir endereço"
               type="text"
               name=""
-              v-model="ordersStore.state.order.deliveryAddress"
+              v-model="ordersStore.state.order.address_delivery.street"
             />
           </div>
           <div class="container-input">
@@ -167,7 +161,7 @@ const ordersStore = useOrderStore()
               placeholder="Inserir complemento"
               type="text"
               name=""
-              v-model="ordersStore.state.order.deliveryComplement"
+              v-model="ordersStore.state.order.address_delivery.complement"
             />
           </div>
         </div>
@@ -179,7 +173,7 @@ const ordersStore = useOrderStore()
               placeholder="Inserir cidade"
               type="text"
               name=""
-              v-model="ordersStore.state.order.deliveryCity"
+              v-model="ordersStore.state.order.address_delivery.city"
             />
           </div>
           <div class="container-input">
@@ -189,7 +183,7 @@ const ordersStore = useOrderStore()
               placeholder="Inserir estado"
               type="text"
               name=""
-              v-model="ordersStore.state.order.deliveryState"
+              v-model="ordersStore.state.order.address_delivery.state"
             />
           </div>
         </div>

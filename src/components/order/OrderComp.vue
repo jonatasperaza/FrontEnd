@@ -56,6 +56,7 @@ const nextToFinished = () => {
     finishedOrder.value.classList.add('slideIn')
   }, 500)
   ordersStore.state.step++
+  ordersStore.createOrder(ordersStore.state.order)
 }
 const backToFirst = () => {
   secondStep.value.classList.add('slideOutReverse')
@@ -96,7 +97,7 @@ const backToThird = () => {
 
 onMounted(async () => {
   ordersStore.state.order.payment.payer_email = authStore.state.user.email
-  ordersStore.state.order.id_client = authStore.state.user.id
+  ordersStore.state.order.id_client = authStore.state.user.client.id
 
   if (authStore.state.user.client_physical_person) {
     ordersStore.state.order.payment.payer_identification_type = 'CPF'
@@ -111,8 +112,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <span class="show">
-    <div v-for="(value, key) in ordersStore.state.order" :key="key">
+  <div>
+
+    <span class="show">
+      <div v-for="(value, key) in ordersStore.state.order" :key="key">
       <template v-if="typeof value === 'object' && !Array.isArray(value)">
         <strong>{{ key }}:</strong>
         <div style="margin-left: 20px">
@@ -146,29 +149,30 @@ onMounted(async () => {
         hidden: isSecondStepVisible || isThirdStepVisible || isSummaryVisible || isFinishedVisible
       }"
     >
-      <OrderData @next="nextToSecond" />
-    </div>
-    <div
-      ref="secondStep"
-      v-show="isSecondStepVisible"
-      :class="{ hidden: isThirdStepVisible || isSummaryVisible || isFinishedVisible }"
-    >
-      <CollectionData @next="nextToThird" @back="backToFirst" />
-    </div>
-    <div
-      ref="thirdStep"
-      v-show="isThirdStepVisible"
-      :class="{ hidden: isSummaryVisible || isFinishedVisible }"
-    >
-      <DeliveryData @next="nextToSummary" @back="backToSecond" />
-    </div>
-    <div ref="summaryStep" v-show="isSummaryVisible" :class="{ hidden: isFinishedVisible }">
-      <SummaryData @next="nextToFinished" @back="backToThird" />
-    </div>
-    <div ref="finishedOrder" v-show="isFinishedVisible">
-      <FinishedOrder />
-    </div>
-  </section>
+    <OrderData @next="nextToSecond" />
+  </div>
+  <div
+  ref="secondStep"
+  v-show="isSecondStepVisible"
+  :class="{ hidden: isThirdStepVisible || isSummaryVisible || isFinishedVisible }"
+  >
+  <CollectionData @next="nextToThird" @back="backToFirst" />
+</div>
+<div
+ref="thirdStep"
+v-show="isThirdStepVisible"
+:class="{ hidden: isSummaryVisible || isFinishedVisible }"
+>
+<DeliveryData @next="nextToSummary" @back="backToSecond" />
+</div>
+<div ref="summaryStep" v-show="isSummaryVisible" :class="{ hidden: isFinishedVisible }">
+  <SummaryData @next="nextToFinished" @back="backToThird" />
+</div>
+<div ref="finishedOrder" v-show="isFinishedVisible">
+  <FinishedOrder />
+</div>
+</section>
+</div>
 </template>
 <style scoped lang="scss">
 @use '../../assets/main.scss';

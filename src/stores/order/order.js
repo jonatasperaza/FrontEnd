@@ -1,6 +1,7 @@
 import { reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { OrderService } from '@/services'
+import { useCepStore } from '../address/cep'
 
 export const useOrderStore = defineStore('orders', () => {
   // Helper para calcular datas futuras
@@ -10,13 +11,15 @@ export const useOrderStore = defineStore('orders', () => {
     return date.toISOString().split('T')[0]
   }
 
+  const cepStore = useCepStore()
+
   const state = reactive({
     orders: [],
     order: reactive({
       status: 0,
       id_client: 0,
       delivery: {
-        driver_position: '',
+        driver_position: ' ',
         date_preview_delivery: calculateFutureDate(4),
         date_effected_delivery: null,
         date_preview_colect: calculateFutureDate(2),
@@ -33,32 +36,26 @@ export const useOrderStore = defineStore('orders', () => {
         installments: null
       },
       address_delivery: {
+        cep: 0,
         street: '',
-        number: '',
+        number: 0,
         complement: '',
         neighborhood: '',
         city: '',
         state: '',
-        typeAddress: null
+        typeAddress: 0
       },
       address_collect: {
+        cep: 0,
         street: '',
-        number: '',
+        number: 0,
         complement: '',
         neighborhood: '',
         city: '',
         state: '',
-        typeAddress: null
+        typeAddress: 1
       },
-      items: [
-        {
-          name: '',
-          quantity: null,
-          observation: '',
-          weight: null,
-          height: null
-        }
-      ]
+      items: []
     }),
     loading: false,
     step: 1,
@@ -84,10 +81,39 @@ export const useOrderStore = defineStore('orders', () => {
       // Atualiza as datas antes de enviar
       newOrder.delivery.date_preview_delivery = calculateFutureDate(4)
       newOrder.delivery.date_preview_colect = calculateFutureDate(2)
-      state.orders.push(await OrderService.createOrder(newOrder))
+      const nowOrder = await OrderService.createOrder(newOrder)
+      state.orders.push(nowOrder)
     } catch (error) {
       state.error = error
     } finally {
+      state.loading = false
+    }
+  }
+
+  const getAddressByCep = async (cep, type) => {
+    state.loading = true
+    try{
+      const addres = await cepStore.getEndereco(cep)
+      if (type == "collect"){
+        state.order.address_collect.street = addres.logradouro
+        state.order.address_collect.neighborhood = addres.bairro
+        state.order.address_collect.city = addres.localidade
+        state.order.address_collect.state = addres.uf
+        console.log(addres)
+      }
+      else if (type == "delivery"){
+        state.order.address_delivery.street = addres.logradouro
+        state.order.address_delivery.neighborhood = addres.bairro
+        state.order.address_delivery.city = addres.localidade
+        state.order.address_delivery.state = addres.uf
+        console.log(addres)
+      }
+    }
+    catch(error){
+      state.error = error
+      console.log(error)
+    }
+    finally{
       state.loading = false
     }
   }
@@ -123,6 +149,7 @@ export const useOrderStore = defineStore('orders', () => {
     getOrders,
     createOrder,
     updateOrder,
-    deleteOrder
+    deleteOrder,
+    getAddressByCep
   }
 })

@@ -1,7 +1,16 @@
 <script setup>
 import { useOrderStore } from '@/stores'
+import { reactive } from 'vue'
 
 const ordersStore = useOrderStore()
+
+const item = reactive({
+  name: '',
+  quantity: null,
+  observation: '',
+  weight: null,
+  height: null
+})
 </script>
 <template>
   <section>
@@ -16,16 +25,16 @@ const ordersStore = useOrderStore()
                 placeholder="Inserir nome"
                 type="text"
                 name=""
-                v-model="ordersStore.state.order.itemName"
+                v-model="item.name"
               />
             </div>
             <div class="container-input-2">
               <label>Quantidade</label>
               <input
                 class="input-2"
-                type="text"
+                type="number"
                 name=""
-                v-model="ordersStore.state.order.itemQuantity"
+                v-model="item.quantity"
               />
             </div>
           </div>
@@ -37,21 +46,33 @@ const ordersStore = useOrderStore()
                 placeholder="Inserir observação"
                 type="text"
                 name=""
-                v-model="ordersStore.state.order.observation"
+                v-model="item.observation"
               />
             </div>
             <div class="container-input-2">
-              <label>Unidade de medida</label>
+              <label>Tamanho</label>
               <input
                 class="input-2"
-                type="select"
+                type="number"
                 name=""
-                v-model="ordersStore.state.order.unitOfMeasure"
+                v-model="item.weight"
+              />
+            </div>
+            <div class="container-input-2">
+              <label>Altura</label>
+              <input
+                class="input-2"
+                type="number"
+                name=""
+                v-model="item.height"
               />
             </div>
           </div>
         </div>
       </form>
+      <div class="container-buttons">
+        <button @click="ordersStore.state.order.items.push(item)">Adicionar item</button>
+      </div>
       <div class="container-buttons">
         <button @click="$emit('next')">Avançar</button>
       </div>

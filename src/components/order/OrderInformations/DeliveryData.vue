@@ -13,19 +13,21 @@ const ordersStore = useOrderStore()
             <input
               class="input"
               placeholder="Inserir CEP"
-              type="text"
+              type="number"
               name=""
-              v-model="ordersStore.state.order.deliveryCep"
+              v-model="ordersStore.state.order.address_delivery.cep"
+              @change="ordersStore.state.order.address_delivery.cep.toString().length == 8 ? ordersStore.getAddressByCep(ordersStore.state.order.address_delivery.cep, 'delivery') : null"
             />
+            {{ ordersStore.state.order.address_delivery.cep.toString().length }}
           </div>
           <div class="container-input">
             <label>Número</label>
             <input
               class="input"
               placeholder="Inserir número"
-              type="text"
+              type="number"
               name=""
-              v-model="ordersStore.state.order.address_delivery.street"
+              v-model="ordersStore.state.order.address_delivery.number"
             />
           </div>
         </div>
