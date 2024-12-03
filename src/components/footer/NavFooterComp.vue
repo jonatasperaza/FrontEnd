@@ -36,4 +36,24 @@ import { RouterLink } from 'vue-router'
     }
   }
 }
+
+@media screen and (max-width: 1150px) {
+  .container {
+  
+  div {
+    display: flex;
+    justify-content: center;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    a {
+      margin: 0;
+      margin-bottom: 0.5em;
+    }
+  }
+}
+}
 </style>

@@ -40,4 +40,26 @@ import { RouterLink } from 'vue-router'
     bottom: 0;
   }
 }
+
+@media screen and (max-width: 1150px) {
+  .container {
+
+  .container-title {
+    display: flex;
+    justify-content: center;
+    h1 {
+      width: 8rem;
+    }
+  }
+  div {
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    h2 {
+      width: 14rem;
+    }
+  }
+
+}
+}
 </style>
