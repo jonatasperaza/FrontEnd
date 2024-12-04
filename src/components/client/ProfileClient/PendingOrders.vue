@@ -55,7 +55,7 @@ const testOrders = [
 @use '../../../assets/OrderTable';
 @media screen and (max-width: 1150px) {
 .container {
-  padding: 3rem;
+  padding: 1rem;
   width: 100%;
   display: flex;
   

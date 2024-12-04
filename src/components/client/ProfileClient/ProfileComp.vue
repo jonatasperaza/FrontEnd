@@ -89,12 +89,12 @@ section {
     flex-direction: column-reverse;
     width: 100%;
     .left {
-      width: 60%;
+      width: 80%;
       height: 55vh;
       justify-content: flex-start;
     }
     .right {
-      width: 60%;
+      width: 80%;
       height: 55vh;
       display: flex;
       justify-content: space-between;
