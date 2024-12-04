@@ -207,5 +207,11 @@ button:hover {
   form {
     width: 100%;
   }
+
+  div { 
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
 }
 </style>
