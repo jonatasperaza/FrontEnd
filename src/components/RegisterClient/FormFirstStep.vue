@@ -60,4 +60,11 @@ button:hover {
   background-color: main.$standard-black;
   color: main.$standard-pink;
 }
+
+@media screen and (max-width: 1150px) {
+  form {
+    width: 100%;
+  }
+
+}
 </style>

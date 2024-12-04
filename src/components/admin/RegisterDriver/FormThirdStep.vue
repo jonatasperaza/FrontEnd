@@ -175,4 +175,10 @@ form {
   background-color: main.$standard-pink;
   color: main.$standard-white;
 }
+
+@media screen and (max-width: 1150px) {
+  form {
+    width: 100%;
+  }
+}
 </style>

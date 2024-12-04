@@ -43,6 +43,7 @@ const back = () => {
 
 <style scoped lang="scss">
 @use '../../assets/main';
+
 section {
   width: 100%;
   min-height: 100vh;
@@ -53,9 +54,11 @@ section {
   background-image: url(/public/backgroundLogin.png);
   background-size: cover;
 }
+
 div {
   width: 100%;
 }
+
 h1 {
   color: main.$standard-pink;
   font-style: italic;
@@ -63,6 +66,7 @@ h1 {
   margin: 2rem;
   font-weight: 800;
 }
+
 .container {
   width: 45%;
   min-height: 100vh;
@@ -71,59 +75,83 @@ h1 {
   align-items: center;
   background-color: main.$standard-black;
 }
+
 .hidden {
   display: none;
 }
+
 .slideOut {
   animation: slideOut 0.5s forwards;
 }
+
 .slideIn {
   animation: slideIn 0.5s forwards;
 }
+
 .slideInReverse {
   animation: slideInReverse 0.5s forwards;
 }
+
 .slideOutReverse {
   animation: slideOutReverse 0.5s forwards;
 }
+
 @keyframes slideOut {
   from {
     opacity: 1;
     transform: translateX(0);
   }
+
   to {
     opacity: 0;
     transform: translateX(-100%);
   }
 }
+
 @keyframes slideIn {
   from {
     opacity: 0;
     transform: translateX(100%);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
+
 @keyframes slideOutReverse {
   from {
     opacity: 1;
     transform: translateX(0);
   }
+
   to {
     opacity: 0;
     transform: translateX(100%);
   }
 }
+
 @keyframes slideInReverse {
   from {
     opacity: 0;
     transform: translateX(-100%);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+
+@media screen and (max-width: 1150px) {
+  form {
+    width: 100%;
+  }
+
+  .container {
+    width: 80%;
   }
 }
 </style>

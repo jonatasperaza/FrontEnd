@@ -72,7 +72,7 @@ const backToSecond = () => {
 @use '../../../assets/main';
 section {
   width: 100%;
-  min-height: 160vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,7 +85,7 @@ div {
 }
 .container {
   width: 45%;
-  min-height: 160vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,5 +146,11 @@ div {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@media screen and (max-width: 1150px) {
+  .container {
+  width: 80%;
+}
 }
 </style>

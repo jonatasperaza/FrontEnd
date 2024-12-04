@@ -33,4 +33,13 @@ h1 {
   font-size: 50px;
   font-weight: 800;
 }
+
+@media screen and (max-width: 1150px) {
+  .container {
+    width: 100%;
+    .row {
+    margin-bottom: 3rem;
+  }
+  }
+}
 </style>

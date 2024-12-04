@@ -17,4 +17,11 @@ section {
   background-image: url(/public/backgroundLogin.png);
   background-size: cover;
 }
+
+@media screen and (max-width: 1150px) {
+  section {
+  height: 80vh;
+  
+}
+}
 </style>

@@ -43,7 +43,7 @@ import { RouterLink } from 'vue-router'
 
 @media screen and (max-width: 1150px) {
   .container {
-
+    height: 80%;
   .container-title {
     display: flex;
     justify-content: center;

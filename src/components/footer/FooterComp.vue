@@ -17,16 +17,18 @@ import ContactFooterComp from './ContactFooterComp.vue'
 @use '../../assets/main';
 
 footer {
+  border-top: 5px solid main.$standard-pink;
   height: 16rem;
   background-color: main.$standard-black;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
+  
 }
 
 @media screen and (max-width: 1150px) {
   footer {
-    height: 13rem;
+    height: 15rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

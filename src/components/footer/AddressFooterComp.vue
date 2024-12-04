@@ -38,7 +38,7 @@ import { RouterLink } from 'vue-router'
 
 @media screen and (max-width: 1150px) {
   .container {
-
+    height: 80%;
   .container-title {
     margin: 0;
     width: 100%;

@@ -67,7 +67,6 @@ div {
   h1 {
     width: 70%;
     margin: auto;
-    // border-left: 2px solid main.$standard-pink;
     text-align: center;
   }
 }
@@ -82,6 +81,7 @@ div {
 }
 h1 {
   color: main.$standard-pink;
+  border-left: 2px solid main.$standard-pink;
   font-style: italic;
   font-size: 50px;
   padding: 0 0 0 0.5em;
@@ -149,5 +149,11 @@ h1 {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@media screen and (max-width: 1150px) {
+  .container {
+  width: 80%;
+}
 }
 </style>
