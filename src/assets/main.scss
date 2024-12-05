@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inria Sans', sans-serif;
+}
+
+$standard-purple: #5d2061;
+$standard-pink: #fc1d87;
+$standard-bordeaux: #760038;
+$standard-black: #000000;
+$standard-white: #ffffff;
+
+body {
+  background-color: $standard-black;
+  color: $standard-white;
+}
+
+.strong-pink {
+  color: $standard-pink;
+}
+
+.white {
+  color: $standard-white;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border: 2px solid rgb(35 35 35);
+  border-radius: 10px;
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border: 2px solid rgb(35 35 35);
+  border-radius: 10px;
+}
+
+html {
+  scroll-behavior: auto;
+}
