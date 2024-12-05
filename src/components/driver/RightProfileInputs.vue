@@ -27,6 +27,7 @@
   border-radius: 50%;
   margin: 3rem auto;
 }
+
 form {
   display: flex;
   width: 80%;

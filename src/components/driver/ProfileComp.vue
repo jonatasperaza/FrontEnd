@@ -95,7 +95,7 @@ section {
     }
     .right {
       width: 80%;
-      height: 55vh;
+      height: 60vh;
       display: flex;
       justify-content: space-between;
 

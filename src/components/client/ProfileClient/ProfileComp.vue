@@ -91,7 +91,8 @@ section {
     .left {
       width: 80%;
       height: 55vh;
-      justify-content: flex-start;
+      display: flex;
+      justify-content: flex-end;
     }
     .right {
       width: 80%;

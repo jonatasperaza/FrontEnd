@@ -48,30 +48,15 @@ const selectedColor = computed(() => {
           <h2>Gerenciar Pessoas:</h2>
         </div>
         <div class="ulPeoples">
-          <div
-            class="line"
-            :class="{ selected: selectedIndex === 0 }"
-            @click="handleSelect(0)"
-            style="color: #73fbfd"
-          >
+          <div class="line" :class="{ selected: selectedIndex === 0 }" @click="handleSelect(0)" style="color: #73fbfd">
             <Account />
             Clientes
           </div>
-          <div
-            class="line"
-            :class="{ selected: selectedIndex === 1 }"
-            @click="handleSelect(1)"
-            style="color: #fc1d87"
-          >
+          <div class="line" :class="{ selected: selectedIndex === 1 }" @click="handleSelect(1)" style="color: #fc1d87">
             <Tire />
             Motoristas
           </div>
-          <div
-            class="line"
-            :class="{ selected: selectedIndex === 2 }"
-            @click="handleSelect(2)"
-            style="color: #da4819"
-          >
+          <div class="line" :class="{ selected: selectedIndex === 2 }" @click="handleSelect(2)" style="color: #da4819">
             <CardAccountDetails />
             Funcionarios
           </div>
@@ -82,9 +67,7 @@ const selectedColor = computed(() => {
           <h2>Gerenciar</h2>
           <h2 :style="{ color: selectedColor }">{{ selectedTitle }}</h2>
         </div>
-        <component
-          :is="selectedIndex === 0 ? ListClients : selectedIndex === 1 ? ListDrivers : ListEmployee"
-        />
+        <component :is="selectedIndex === 0 ? ListClients : selectedIndex === 1 ? ListDrivers : ListEmployee" />
       </article>
     </div>
   </section>
@@ -129,7 +112,7 @@ section {
   gap: 2rem;
 }
 
-.titleManage > h2 {
+.titleManage>h2 {
   font-size: 2rem;
   display: flex;
 }
@@ -143,7 +126,7 @@ section {
   font-size: 1.5rem;
 }
 
-.ulPeoples > .line {
+.ulPeoples>.line {
   background-color: transparent;
   color: #fff;
   padding: 1rem;
@@ -155,7 +138,7 @@ section {
   border-bottom: none;
 }
 
-.ulPeoples > .line.selected {
+.ulPeoples>.line.selected {
   border-bottom: 2px solid;
 }
 
@@ -163,5 +146,28 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 1150px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .titleManage>h2 {
+    font-size: 25px;
+    display: flex;
+  }
+
+  .titleManage {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .ulPeoples>.line {
+   display: flex;
+   justify-content: center;
+  }
+
 }
 </style>

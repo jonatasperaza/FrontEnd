@@ -53,4 +53,35 @@ section {
   margin: auto;
   padding: 1rem;
 }
+
+@media screen and (max-width: 1150px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    padding: 1rem;
+    gap: 2rem;
+    justify-content: center;
+
+    .first {
+      width: 90%;
+    }
+
+    .second {
+      width: 90%;
+      margin: auto;
+    }
+  }
+
+  .dynamic {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 1rem;
+  }
+
+}
 </style>

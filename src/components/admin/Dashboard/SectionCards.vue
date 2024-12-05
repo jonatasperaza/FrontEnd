@@ -58,12 +58,8 @@ onMounted(async () => {
     <div class="title">
       <h2>Meu <span class="strong-pink">Dashboard</span> {{ driverStore.isLoading }}</h2>
     </div>
-    <ContentLoader
-      v-if="driverStore.isLoading || vehicleStore.isLoading"
-      animate="true"
-      primary-color="#FC1D87"
-      secondary-color="#242424"
-    >
+    <ContentLoader v-if="driverStore.isLoading || vehicleStore.isLoading" animate="true" primary-color="#FC1D87"
+      secondary-color="#242424">
       <rect x="43" y="20" rx="5" ry="5" width="76%" height="70" />
     </ContentLoader>
     <div class="cards" v-else>
@@ -93,5 +89,29 @@ section {
   margin: auto;
   display: flex;
   gap: 2rem;
+}
+
+@media screen and (max-width: 1150px) {
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+
+    .title {
+      font-size: 1.3rem
+    }
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+
 }
 </style>

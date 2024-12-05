@@ -61,6 +61,7 @@ article {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
   border-bottom: 1px solid #c1c1c1;
 }
 
@@ -76,6 +77,7 @@ article {
   border-bottom: 1px solid #c1c1c1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
   padding: 1rem 0;
 }
 
