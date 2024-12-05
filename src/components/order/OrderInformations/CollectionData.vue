@@ -18,7 +18,6 @@ const ordersStore = useOrderStore()
               v-model="ordersStore.state.order.address_collect.cep"
               @change="ordersStore.state.order.address_collect.cep.toString().length == 8 ? ordersStore.getAddressByCep(ordersStore.state.order.address_collect.cep, 'collect') : null"
             />
-            {{ ordersStore.state.order.address_collect.cep.toString().length }}
           </div>
           <div class="container-input">
             <label>Número</label>

@@ -113,32 +113,6 @@ onMounted(async () => {
 
 <template>
   <div>
-
-    <span class="show">
-      <div v-for="(value, key) in ordersStore.state.order" :key="key">
-      <template v-if="typeof value === 'object' && !Array.isArray(value)">
-        <strong>{{ key }}:</strong>
-        <div style="margin-left: 20px">
-          <div v-for="(subValue, subKey) in value" :key="subKey">{{ subKey }}: {{ subValue }}</div>
-        </div>
-      </template>
-      <template v-else-if="Array.isArray(value)">
-        <strong>{{ key }}:</strong>
-        <div style="margin-left: 20px">
-          <div v-for="(item, index) in value" :key="index">
-            <strong>Item {{ index + 1 }}:</strong>
-            <div style="margin-left: 20px">
-              <div v-for="(itemValue, itemKey) in item" :key="itemKey">
-                {{ itemKey }}: {{ itemValue }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </template>
-      <template v-else> {{ key }}: {{ value }} </template>
-    </div>
-  </span>
-  <p>{{ authStore.state }}</p>
   <section>
     <div v-if="ordersStore.state.step < 5">
       <OrderProgressComp />
