@@ -26,7 +26,9 @@ function closeModal() {
 </script>
 
 <template>
+  <h3 style="margin: auto; width: 80%;">Manage Orders:</h3>
   <article>
+  
     <div class="listOrders">
       <div class="headerList">
         <p>ID:</p>
@@ -60,11 +62,12 @@ function closeModal() {
 @use '@/assets/main';
 
 article {
-  width: 100%;
+  width: 80%;
   background-color: #070707;
-  padding: 1rem 0;
-  border-radius: 5px;
+  padding: 1rem;
+  border-radius: 15px;
   overflow: hidden;
+  margin: auto;
 }
 
 .headerList {

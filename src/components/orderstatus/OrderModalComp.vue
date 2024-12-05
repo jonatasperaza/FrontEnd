@@ -1,6 +1,12 @@
 <script setup>
 import order from '@/services/order/order';
-import { defineProps, defineEmits, ref } from 'vue'
+import { defineProps, defineEmits, ref } from 'vue';
+import { useDriverStore } from '@/stores';
+import { useVehicleStore } from '@/stores';
+
+const driverStore = useDriverStore();
+const vehicleStore = useVehicleStore();
+
 import axios from 'axios';
 
 const props = defineProps({
@@ -12,9 +18,9 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
-})
+});
 
-const emit = defineEmits(['close', 'update-status'])
+const emit = defineEmits(['close', 'update-status']);
 
 // Lista de status disponíveis
 const statusOptions = [
@@ -30,14 +36,30 @@ const statusOptions = [
   { value: 9, label: 'Falha na Entrega' },
   { value: 10, label: 'Devolvido' },
   { value: 11, label: 'Cancelado' },
-]
+];
 
-const statusselect = ref('')
+const statusselect = ref('');
 // Função para atualizar o status
 async function updateStatus(newStatus) {
-    statusselect.value = newStatus
-    const response = await axios.post(`https://api.fexcompany.me/api/orders/${props.order.id}/status/${newStatus}/`, {})
-    console.log(response)
+  statusselect.value = newStatus;
+  const response = await axios.post(
+    `https://api.fexcompany.me/api/orders/${props.order.id}/status/${newStatus}/`,
+    {}
+  );
+  console.log(response);
+}
+
+const vehicleselect = ref('');
+const driverselect = ref('');
+
+async function updateVehicle() {
+  console.log(vehicleselect.value);
+  console.log(driverselect.value);
+  const response = await axios.post(
+    `https://api.fexcompany.me/api/orders/${props.order.id}/assign/${vehicleselect.value}/${driverselect.value}/`,
+    {}
+  );
+  console.log(response);
 }
 </script>
 
@@ -50,17 +72,47 @@ async function updateStatus(newStatus) {
     <div class="modal-content">
       <h2>Detalhes do Pedido</h2>
       <div v-if="order">
-        <!-- Dados do pedido -->
-        <p><strong>Motorista:</strong> {{ order.driver?.name || 'Não informado' }}</p>
-        <p><strong>Veículo:</strong> {{ order.vehicle?.name || 'Não informado' }}</p>
-        <p>
-          <strong>Status:</strong>
+        <div class="field-row">
+          <label for="driver"><strong>Motorista:</strong></label>
+          <select
+            name="driver"
+            v-model="driverselect"
+            id="driver"
+          >
+            <option
+              v-for="driver in driverStore.state.drivers"
+              :key="driver.value"
+              :value="driver.id"
+            >
+              {{ driver.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field-row">
+          <label for="vehicle"><strong>Veículo:</strong></label>
+          <select
+            name="vehicle"
+            v-model="vehicleselect"
+            id="vehicle"
+          >
+            <option
+              v-for="vehicle in vehicleStore.state.vehicles"
+              :key="vehicle.plate"
+              :value="vehicle.id"
+            >
+              {{ vehicle.plate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field-row">
+          <label for="status"><strong>Status:</strong></label>
           <select
             name="status"
             :value="order.status"
             @change="updateStatus($event.target.value)"
             id="status"
-
           >
             <option
               v-for="option in statusOptions"
@@ -70,11 +122,14 @@ async function updateStatus(newStatus) {
               {{ option.label }}
             </option>
           </select>
-        </p>
-        <p><strong>Data Gerada:</strong> {{ new Date(order.payment?.date_generated).toLocaleString() || 'Não disponível' }}</p>
-        <p><strong>Valor:</strong> R$ {{ parseFloat(order.payment?.transaction_amount).toFixed(2) || '0.00' }}</p>
+        </div>
+
       </div>
-      <button class="close-btn" @click="emit('close')">Fechar</button>
+
+      <div class="actions">
+        <button class="close-btn" @click="emit('close')">Fechar</button>
+        <button class="update-btn" @click="updateVehicle()">Alterar</button>
+      </div>
     </div>
   </div>
 </template>
@@ -104,21 +159,15 @@ async function updateStatus(newStatus) {
   border: 1px solid #c1c1c1;
 }
 
-.close-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #ff5f5f;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
-.close-btn:hover {
-  background-color: #ff4c4c;
-}
-
-p {
+label {
+  margin-right: 10px;
   color: #fff;
 }
 
@@ -128,5 +177,36 @@ select {
   border: 1px solid #c1c1c1;
   border-radius: 4px;
   padding: 5px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.close-btn,
+.update-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.close-btn {
+  background-color: #fc1d87;
+}
+
+.update-btn {
+  background-color: #1d87fc;
+}
+
+.close-btn:hover {
+  background-color: #ff4c4c;
+}
+
+.update-btn:hover {
+  background-color: #1d70fc;
 }
 </style>
