@@ -53,6 +53,10 @@ const testOrders = [
 </template>
 <style scoped lang="scss">
 @use '../../../assets/OrderTable';
+.container{
+  width: 90%;
+  margin: auto
+}
 @media screen and (max-width: 1150px) {
 .container {
   padding: 1rem;
