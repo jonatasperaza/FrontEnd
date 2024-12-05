@@ -92,15 +92,6 @@ function verify() {
         Não
       </button>
     </div>
-    <!-- <div class="GenderSelection">
-        <button @click="selectGender('man')" :class="{ selectedPink: selectedGender === 'man' }">
-          <img src="/public/man-icon.svg" alt="Ícone masculino" />
-        </button>
-        <button
-          @click="selectGender('woman')" :class="{ selectedPink: selectedGender === 'woman' }">
-          <img src="/public/woman-icon.svg" alt="Ícone feminino" />
-        </button>
-      </div> -->
     <button @click="verify() ? $emit('next') : null">Próximo</button>
   </form>
 </template>
@@ -210,5 +201,17 @@ form {
 button:hover {
   background-color: main.$standard-black;
   color: main.$standard-pink;
+}
+
+@media screen and (max-width: 1150px) {
+  form {
+    width: 100%;
+  }
+
+  div { 
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
 }
 </style>

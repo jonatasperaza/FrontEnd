@@ -30,4 +30,11 @@ import { RouterLink } from 'vue-router'
     margin-top: 2em;
   }
 }
+
+@media screen and (max-width: 1150px) {
+  .container {
+    margin-top: 2rem;
+    height: 80%;
+}
+}
 </style>

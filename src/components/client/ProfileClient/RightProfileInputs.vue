@@ -26,8 +26,8 @@
   margin: 3rem auto;
 }
 form {
-  width: 80%;
   display: flex;
+  width: 80%;
   flex-direction: column;
   justify-content: center;
   label {
@@ -46,4 +46,5 @@ form {
     background-color: main.$standard-black;
   }
 }
+
 </style>

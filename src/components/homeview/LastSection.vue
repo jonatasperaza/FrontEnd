@@ -8,7 +8,7 @@
       class="background-image"
     />
     <div class="container">
-      <div>
+      <div class="container-title">
         <h1 class="title-last-section">Faça seu pedido</h1>
         <h1 class="title-last-section strong-pink">AQUI !</h1>
       </div>
@@ -58,7 +58,7 @@ section {
   height: 200px;
   z-index: 1;
 
-  div {
+  .container-title {
     display: flex;
     gap: 10px;
   }
@@ -92,13 +92,15 @@ a:hover {
   section {
     height: 50vh;
   }
-  .container {
-    height: 100%;
-    gap: 1rem;
+  .container-title {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .a {
     width: 100%;
   }
+
   a {
     width: 50%;
   }

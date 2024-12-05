@@ -65,10 +65,10 @@ div {
   justify-content: center;
 
   h1 {
-    width: 70%;
+    width: 100%;
     margin: auto;
-    // border-left: 2px solid main.$standard-pink;
     text-align: center;
+    text-wrap: nowrap;
   }
 }
 .container-title-Second-Steap {
@@ -82,6 +82,7 @@ div {
 }
 h1 {
   color: main.$standard-pink;
+  border-left: 2px solid main.$standard-pink;
   font-style: italic;
   font-size: 50px;
   padding: 0 0 0 0.5em;
@@ -148,6 +149,24 @@ h1 {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .container {
+  width: 80%;
+}
+}
+
+@media screen and (max-width: 1150px) {
+  form {
+    width: 100%;
+  }
+
+  div { 
+    h1 {
+      font-size: 2.5rem;
+    }
   }
 }
 </style>

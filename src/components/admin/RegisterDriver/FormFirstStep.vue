@@ -23,7 +23,10 @@ function verify() {
 </script>
 
 <template>
-  <h2>Dados <span class="strong-pink">Pessoais</span></h2>
+  <div>
+    <h2>Dados <span class="strong-pink">Pessoais</span></h2>
+  </div>
+  
   <form @submit.prevent>
     <label for="">Nome</label>
     <input type="text" placeholder="Insira seu nome" v-model="driverStore.state.driver_data.name" />
@@ -154,6 +157,18 @@ button:hover {
     background-color: main.$standard-pink;
     border: 2px solid main.$standard-pink;
     color: main.$standard-black;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  form {
+    width: 100%;
+  }
+
+  div { 
+    h2 {
+      font-size: 2.5rem;
+    }
   }
 }
 </style>

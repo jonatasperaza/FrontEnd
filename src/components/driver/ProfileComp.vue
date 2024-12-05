@@ -28,7 +28,7 @@ section {
   min-height: 100vh;
   background-color: main.$standard-black;
   .container {
-    width: 60%;
+    width: 100%;
     margin: auto;
 
     .pinkLine {
@@ -65,5 +65,42 @@ section {
       align-items: center;
     }
   }
+}
+
+@media screen and (max-width: 1150px) {
+  
+
+  section {
+  
+  .container {
+    
+
+    .pinkLine {
+      
+    }
+  }
+  h1 {
+    
+  }
+  h2 {
+    
+  }
+  .rowInputs {
+    flex-direction: column-reverse;
+    width: 100%;
+    .left {
+      width: 80%;
+      height: 55vh;
+      justify-content: flex-start;
+    }
+    .right {
+      width: 80%;
+      height: 60vh;
+      display: flex;
+      justify-content: space-between;
+
+    }
+  }
+}
 }
 </style>

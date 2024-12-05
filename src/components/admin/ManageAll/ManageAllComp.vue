@@ -26,4 +26,13 @@ section {
   gap: 2rem;
   margin: auto;
 }
+
+@media screen and (max-width: 1150px) {
+  .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+}
 </style>
