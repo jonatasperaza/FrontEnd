@@ -80,9 +80,9 @@ const router = createRouter({
       component: OrderView
     },
     {
-      path: '/order-status',
+      path: '/order-status/:id',
       name: 'Status Do Pedido',
-      component: OrderStatusView
+      component: OrderStatusView,
     }
   ]
 })

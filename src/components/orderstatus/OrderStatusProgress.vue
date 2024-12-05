@@ -1,3 +1,10 @@
+<script setup>
+import order from '@/services/order/order';
+import { useOrderStore } from '@/stores'
+
+const orderStore = useOrderStore()
+</script>
+
 <template>
   <section>
     <div class="container">
@@ -12,21 +19,22 @@
         <h2>Entregue</h2>
       </div>
       <div class="circles">
-        <div></div>
-        <span></span>
-        <div></div>
-        <span></span>
-        <div></div>
-        <span></span>
-        <div></div>
-        <span></span>
-        <div></div>
-        <span></span>
-        <div></div>
-        <span></span>
-        <div></div>
-        <span></span>
-        <div></div>
+        <!-- {{ orderStore.state.statusCurrentOrder }} -->
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 1 }"></div>
+        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 2 }"></span>
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 2 }"></div>
+        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 3 }"></span>
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 3 }"></div>
+        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 4 }"></span>
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 4 }"></div>
+        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 5 }"></span>
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 5 }"></div>
+        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 6 }"></span>
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 6 }"></div>
+        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 7 }"></span>
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 7 }"></div>
+        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder == 8 }"></span>
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder == 8 }"></div>
       </div>
     </div>
   </section>
@@ -82,6 +90,10 @@ section {
       height: 60%;
       width: 0.1rem;
       background-color: main.$standard-white;
+    }
+
+    .stepSelected {
+      background-color: main.$standard-pink;
     }
   }
 }

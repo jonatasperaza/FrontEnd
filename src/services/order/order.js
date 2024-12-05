@@ -29,6 +29,7 @@ class OrderService {
   async getOrder(id) {
     try {
       const { data } = await api.get(`order/${id}/`)
+      console.log(data)
       toast.success('Pedido encontrado com sucesso')
       return data
     } catch (error) {
