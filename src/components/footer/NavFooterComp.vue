@@ -7,11 +7,10 @@ import { RouterLink } from 'vue-router'
       <img src="/public/logo.svg" alt="logo" />
     </div>
     <nav>
-      <!-- tem que linkar so -->
-      <a href="">Home</a>
-      <a href="">Sobre nós</a>
-      <a href="">Veículos</a>
-      <a href="">Motoristas</a>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">Sobre</RouterLink>
+      <RouterLink to="/vehicles">Veiculos</RouterLink>
+      <RouterLink to="/make-order">Pedido</RouterLink>
     </nav>
   </div>
 </template>
