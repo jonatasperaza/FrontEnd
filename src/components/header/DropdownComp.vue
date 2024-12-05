@@ -5,6 +5,7 @@ import Logout from 'vue-material-design-icons/Logout.vue'
 import Home from 'vue-material-design-icons/Home.vue'
 import Car from 'vue-material-design-icons/Car.vue'
 import Login from 'vue-material-design-icons/Login.vue'
+import Singup from 'vue-material-design-icons/AccountPlus.vue'
 import Menu from 'vue-material-design-icons/Menu.vue'
 import Information from 'vue-material-design-icons/Information.vue'
 import { useAuthStore } from '@/stores/auth/auth'
@@ -53,6 +54,10 @@ onUnmounted(() => {
       <router-link to="/login" class="drop" v-if="!authStore.state.isLogged">
         <Login />
         Login
+      </router-link>
+      <router-link to="/client/signin" class="drop" v-if="!authStore.state.isLogged">
+        <Singup />
+        Cadastrar
       </router-link>
       <div v-else>
         <button @click="authStore.logout" class="logout">
