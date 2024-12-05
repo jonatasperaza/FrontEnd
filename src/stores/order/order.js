@@ -15,6 +15,7 @@ export const useOrderStore = defineStore('orders', () => {
 
   const state = reactive({
     orders: [],
+    currentOrder: null,
     order: reactive({
       status: 0,
       id_client: 0,
@@ -68,6 +69,17 @@ export const useOrderStore = defineStore('orders', () => {
     state.loading = true
     try {
       state.orders = await OrderService.getOrders()
+    } catch (error) {
+      state.error = error
+    } finally {
+      state.loading = false
+    }
+  }
+
+  const getOrder = async (id) => {
+    state.loading = true
+    try {
+      state.currentOrder = await OrderService.getOrder(id)
     } catch (error) {
       state.error = error
     } finally {
@@ -150,6 +162,7 @@ export const useOrderStore = defineStore('orders', () => {
     createOrder,
     updateOrder,
     deleteOrder,
-    getAddressByCep
+    getAddressByCep,
+    getOrder
   }
 })
