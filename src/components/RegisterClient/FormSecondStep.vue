@@ -8,9 +8,9 @@ const clientStore = useClientStore();
 
 const cepData = computed(() => cepStore.address);
 
-const handleCepChange = () => {
+const handleCepChange = async() => {
   if (cepData.value.cep.length === 8) {
-    cepStore.getEndereco(cepData.value.cep);
+    await cepStore.getEndereco(cepData.value.cep);
   }
 };
 

@@ -9,9 +9,7 @@
           <span class="strong-pink">Brasil</span>
         </h1>
         <p>
-          It is a long established fact that a reader will be distracted by the readable content of
-          a page when looking at its layout. The point of using Lorem Ipsum is that it has a o using
-          'Content here, content here', making it look like readable English.
+          Na Fex, qualidade e desempenho andam juntos. Nossa frota é composta pelos caminhões mais modernos e confiáveis do mercado, prontos para atender às suas necessidades com eficiência e segurança. Seja para transporte de cargas ou projetos específicos, oferecemos soluções robustas que fazem a diferença na estrada.
         </p>
       </div>
     </div>

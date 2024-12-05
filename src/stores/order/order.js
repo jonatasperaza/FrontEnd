@@ -60,6 +60,7 @@ export const useOrderStore = defineStore('orders', () => {
     }),
     loading: false,
     step: 1,
+    statusCurrentOrder: 0,
     error: null
   })
 
@@ -79,7 +80,10 @@ export const useOrderStore = defineStore('orders', () => {
   const getOrder = async (id) => {
     state.loading = true
     try {
-      state.currentOrder = await OrderService.getOrder(id)
+      const response = await OrderService.getOrder(id)
+      state.currentOrder = response
+      console.log(response)
+      return response
     } catch (error) {
       state.error = error
     } finally {
