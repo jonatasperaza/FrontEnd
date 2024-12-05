@@ -1,5 +1,5 @@
 <script setup>
-import { FirstGraphsComp, SectionCards, ManageAllComp, ManagePeoples } from '@/components/admin/'
+import { FirstGraphsComp, SectionCards, ManageAllComp, ManagePeoples, ManageOrders } from '@/components/admin/'
 </script>
 
 <template>
@@ -8,5 +8,6 @@ import { FirstGraphsComp, SectionCards, ManageAllComp, ManagePeoples } from '@/c
     <FirstGraphsComp />
     <ManageAllComp />
     <ManagePeoples />
+    <ManageOrders />
   </main>
 </template>

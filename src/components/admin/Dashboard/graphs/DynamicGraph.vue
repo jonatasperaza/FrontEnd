@@ -106,12 +106,12 @@ const option = ref({
   title: [
     {
       left: 'center',
-      text: 'Employee Cocks Side'
+      text: 'Lorem ipsum dolor'
     },
     {
       top: '55%',
       left: 'center',
-      text: 'Driver Cocks Side'
+      text: 'Sit amet consectetur'
     }
   ],
   tooltip: {
