@@ -1,25 +1,28 @@
 import { reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { ClientService } from '@/services'
+import { useCepStore } from '../address/cep'
+import router from '@/router'
 
 export const useClientStore = defineStore('client', () => {
+  const cepStore = useCepStore()
   const state = reactive({
     clients: [],
     client_data: reactive({
       type: '',
-      cpf_cnpj: 0,
+      cpf_cnpj: '',
       name: '',
       email: '',
       date_birth: '',
       username: '',
       address: {
-        cep: 0,
-        street: '',
-        number: 0,
-        complement: '',
-        neighborhood: '',
-        city: '',
-        state: ''
+        cep: cepStore.address.cep,
+        street: cepStore.address.endereco,
+        number: cepStore.address.numero,
+        complement: cepStore.address.complemento,
+        neighborhood: cepStore.address.bairro,
+        city: cepStore.address.cidade,
+        state: cepStore.address.uf
       },
       telephone: 0
     }),

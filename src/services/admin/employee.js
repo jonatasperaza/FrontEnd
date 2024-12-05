@@ -1,12 +1,15 @@
 import { api } from '@/plugins'
 import { toast } from 'vue3-toastify'
 import { handleErrorResponse } from '@/utils/errorHandler'
+import router from '@/router' 
 
 class EmployeeService {
   async getEmployees() {
     try {
       const response = await api.get('employe/')
-      toast.success('Funcionários encontrados com sucesso')
+      toast.success('Funcionários encontrados com sucesso', {
+        delay: 2000
+      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar funcionários')
@@ -17,7 +20,9 @@ class EmployeeService {
   async getEmployee(id) {
     try {
       const response = await api.get(`employe/${id}`)
-      toast.success('Funcionário encontrado com sucesso')
+      toast.success('Funcionário encontrado com sucesso', {
+        delay: 2000
+      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar funcionário')
@@ -28,7 +33,10 @@ class EmployeeService {
   async createEmployee(data) {
     try {
       const response = await api.post('employe/', data)
-      toast.success('Funcionário criado com sucesso')
+      toast.success('Funcionário criado com sucesso', {
+        delay: 2000
+      })
+      router.push('/login')
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao criar funcionário')
@@ -39,7 +47,9 @@ class EmployeeService {
   async updateEmployee(id, data) {
     try {
       const response = await api.put(`employe/${id}`, data)
-      toast.success('Funcionário atualizado com sucesso')
+      toast.success('Funcionário atualizado com sucesso', {
+        delay: 2000
+      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao atualizar funcionário')
@@ -50,7 +60,9 @@ class EmployeeService {
   async deleteEmployee(id) {
     try {
       const response = await api.delete(`employe/${id}`)
-      toast.success('Funcionário apagado com sucesso')
+      toast.success('Funcionário apagado com sucesso', {
+        delay: 2000
+      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao apagar funcionário')

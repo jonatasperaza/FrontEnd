@@ -36,7 +36,7 @@ const router = createRouter({
     },
     {
       path: '/login',
-      name: 'login',
+      name: 'Login',
       component: LoginView
     },
     {
@@ -46,22 +46,22 @@ const router = createRouter({
     },
     {
       path: '/client/signin',
-      name: 'Login Do Cliente',
+      name: 'Cadatrar Do Cliente',
       component: SignInViewClient
     },
     {
       path: '/admin/employee/signup',
-      name: 'employee-signup',
+      name: 'Cadastrar funcionario',
       component: RegisterEmployeeView
     },
     {
       path: '/admin/driver/signin',
-      name: 'driver-signin',
+      name: 'Cadastrar Motorista',
       component: RegisterDriverView
     },
     {
       path: '/admin/dashboard/',
-      name: 'admin-dashboard',
+      name: 'Painel do Admin',
       component: AdminDashboardView
     },
     {
@@ -89,9 +89,11 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const pageKey = `visited_${to.name}` // Identificador único para a página
-  const isVisited = localStorage.getItem(pageKey)
+  const isVisited = sessionStorage.getItem(pageKey)
 
   if (!isVisited) {
+    console.log(isVisited)
+    sessionStorage.setItem(pageKey, true)
     toast.info(`Bem-vindo à página ${to.name}! Esperamos que você goste. 😊`, {
       timeout: 5000,
       closeOnClick: true,
@@ -100,9 +102,8 @@ router.beforeEach((to, from, next) => {
       draggable: true,
       position: 'top-left'
     })
-    localStorage.setItem(pageKey, true)
   }
-
+  
   next()
 })
 

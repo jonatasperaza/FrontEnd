@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: 'https://api.fexcompany.me/api/'
+  baseURL: import.meta.env.VITE_BACKEND_URL
 })
 
 axios.interceptors.request.use(

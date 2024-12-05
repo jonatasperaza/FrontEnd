@@ -1,18 +1,21 @@
-<script setup></script>
+<script setup>
+import { useAuthStore } from '@/stores';
+const authStore = useAuthStore();
+</script>
 <template>
   <form @submit.prevent>
     <label for="">Estado</label>
-    <input type="text" placeholder="Cracolandia" />
+    <input type="text" placeholder="Estado" :value="authStore.state.user?.address[0].state" disabled/>
     <label for="">Cidade</label>
-    <input type="text" placeholder="Cidade" />
+    <input type="text" placeholder="Cidade" :value="authStore.state.user?.address[0].city" disabled />
     <label for="">CEP</label>
-    <input type="text" placeholder="CEP" />
+    <input type="text" placeholder="CEP" :value="authStore.state.user?.address[0].cep" disabled />
     <label for="">Bairro</label>
-    <input type="text" placeholder="Cracolandia" />
+    <input type="text" placeholder="Cracolandia" :value="authStore.state.user?.address[0].neighborhood" disabled />
     <label for="">Número</label>
-    <input type="text" placeholder="Número" />
+    <input type="text" placeholder="Número" :value="authStore.state.user?.address[0].number" disabled />
     <label for="">Complemento</label>
-    <input type="text" placeholder="Complemento" />
+    <input type="text" placeholder="Complemento" :value="authStore.state.user?.address[0].complement" disabled />
   </form>
 </template>
 <style scoped lang="scss">

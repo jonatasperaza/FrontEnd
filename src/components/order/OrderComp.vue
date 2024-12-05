@@ -97,7 +97,7 @@ const backToThird = () => {
 
 onMounted(async () => {
   ordersStore.state.order.payment.payer_email = authStore.state.user.email
-  ordersStore.state.order.id_client = authStore.state.user.client.id
+  ordersStore.state.order.id_client = authStore.state.user.client?.id
 
   if (authStore.state.user.client_physical_person) {
     ordersStore.state.order.payment.payer_identification_type = 'CPF'

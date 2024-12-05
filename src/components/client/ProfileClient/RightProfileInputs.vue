@@ -1,17 +1,22 @@
-<script setup></script>
+<script setup>
+import { useAuthStore } from '@/stores';
+const authStore = useAuthStore();
+</script>
 <template>
   <div class="clientPic">
     <img src="/public/client-Icon.svg" alt="" />
   </div>
   <form @submit.prevent>
+    <label for="">Categoria</label>
+    <input type="text" placeholder="Categoria" :value="authStore.state.type" disabled />
     <label for="">Nome</label>
-    <input type="text" placeholder="Nome" />
+    <input type="text" placeholder="Nome" :value="authStore.state.user.name" disabled/>
     <label for="">Email</label>
-    <input type="text" placeholder="Email" />
+    <input type="text" placeholder="Email" :value="authStore.state.user.email" disabled/>
     <label for="">Telefone</label>
-    <input type="text" placeholder="Telefone" />
+    <input type="text" placeholder="Telefone" :value="authStore.state.user.telephone" disabled />
     <label for="">Endereço</label>
-    <input type="text" placeholder="Endereço" />
+    <input type="text" placeholder="Endereço" :value="authStore.state.user.address[0].street" disabled />
   </form>
 </template>
 <style scoped lang="scss">

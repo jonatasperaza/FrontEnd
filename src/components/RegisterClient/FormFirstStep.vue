@@ -1,17 +1,45 @@
-<script setup></script>
+<script setup>
+import { useClientStore } from '@/stores';
+import { computed } from 'vue';
+
+const clientStore = useClientStore();
+
+const clientData = computed(() => clientStore.state.client_data);
+
+const handleCpfCnpjChange = () => {
+  const length = clientData.value.cpf_cnpj.length;
+  clientData.value.type = length > 11 ? 'J' : length === 11 ? 'F' : null;
+};
+</script>
 <template>
-  <form @submit.prevent>
-    <label for="">Email</label>
-    <input type="email" placeholder="Insira seu email" />
-    <label for="">Nome</label>
-    <input type="text" placeholder="Insira seu nome" />
-    <label for="">Senha</label>
-    <input type="password" placeholder="Insira sua senha" />
-    <label for="">Telefone</label>
-    <input type="tel" placeholder="Insira seu telefone" />
-    <label for="">CPF ou CNPJ</label>
-    <input type="text" placeholder="Insira seu CPF ou CNPJ" />
-    <button @click="$emit('next')">Próximo</button>
+  <form @submit.prevent="$emit('next')">
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="Insira seu email" v-model="clientData.email" required/>
+
+    <label for="username">Username</label>
+    <input id="username" type="text" placeholder="Insira seu username" v-model="clientData.username" required/>
+
+    <label for="date_birth">Data de Nascimento</label>
+    <input id="date_birth" type="date" v-model="clientData.date_birth" required/>
+
+    <label for="name">Nome</label>
+    <input id="name" type="text" placeholder="Insira seu nome completo" v-model="clientData.name" required/>
+
+    <label for="telephone">Telefone</label>
+    <input id="telephone" type="tel" placeholder="Insira seu telefone" v-model="clientData.telephone" required maxlength="11"/>
+
+    <label for="cpf_cnpj">CPF ou CNPJ</label>
+    <input
+      id="cpf_cnpj"
+      type="text"
+      placeholder="Insira seu CPF ou CNPJ"
+      v-model="clientData.cpf_cnpj"
+      @change="handleCpfCnpjChange"
+      required
+      max="14"
+    />
+
+    <button>Próximo</button>
   </form>
 </template>
 <style scoped lang="scss">

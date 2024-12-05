@@ -71,20 +71,6 @@ section {
   
 
   section {
-  
-  .container {
-    
-
-    .pinkLine {
-      
-    }
-  }
-  h1 {
-    
-  }
-  h2 {
-    
-  }
   .rowInputs {
     flex-direction: column-reverse;
     width: 100%;
