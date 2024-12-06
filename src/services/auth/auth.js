@@ -1,4 +1,6 @@
 import { api } from '@/plugins'
+import { handleErrorResponse } from '@/utils/errorHandler'
+import { h } from 'vue'
 
 class AuthService {
   async getUser(token) {
@@ -30,6 +32,7 @@ class AuthService {
       return data
     } catch (error) {
       console.error(error)
+      handleErrorResponse(error, 'Erro ao logar usuário')
       return error
     }
   }

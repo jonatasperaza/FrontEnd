@@ -7,9 +7,6 @@ class ClientService {
   async getClients() {
     try {
       const response = await api.get('client/')
-      toast.success('Clientes encontrados com sucesso', {
-        delay: 2000
-      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar clientes')
@@ -20,9 +17,6 @@ class ClientService {
   async getClient(id) {
     try {
       const response = await api.get(`client/${id}`)
-      toast.success('Cliente encontrado com sucesso', {
-        delay: 2000
-      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar cliente')

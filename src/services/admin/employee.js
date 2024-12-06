@@ -7,9 +7,6 @@ class EmployeeService {
   async getEmployees() {
     try {
       const response = await api.get('employe/')
-      toast.success('Funcionários encontrados com sucesso', {
-        delay: 2000
-      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar funcionários')
@@ -20,9 +17,6 @@ class EmployeeService {
   async getEmployee(id) {
     try {
       const response = await api.get(`employe/${id}`)
-      toast.success('Funcionário encontrado com sucesso', {
-        delay: 2000
-      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar funcionário')

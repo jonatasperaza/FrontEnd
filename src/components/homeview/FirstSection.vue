@@ -15,9 +15,7 @@
           <span class="strong-pink">A Solução.</span>
         </h1>
         <p>
-          It is a long established fact that a reader will be distracted by the readable content of
-          a page when looking at its layout. The point of using Lorem Ipsum is that it has a o using
-          'Content here, content here', making it look like readable English.
+          Entregamos soluções claras e objetivas para os seus desafios. Nossa missão é oferecer resultados que atendam às suas expectativas, com serviços de alta qualidade e comunicação eficiente, garantindo que cada detalhe seja pensado para o seu sucesso.
         </p>
       </div>
     </article>

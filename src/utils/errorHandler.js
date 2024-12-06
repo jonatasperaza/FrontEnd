@@ -2,7 +2,7 @@ import { toast } from 'vue3-toastify'
 
 export const handleErrorResponse = (error, defaultMessage = 'Erro ao processar a requisição') => {
   const errors = error?.response?.data
-  let errorMessage = defaultMessage + ': '
+  let errorMessage = defaultMessage
 
   const processErrors = (errorObj) => {
     let message = ''
@@ -16,6 +16,15 @@ export const handleErrorResponse = (error, defaultMessage = 'Erro ao processar a
     return message
   }
 
-  errorMessage += errors ? processErrors(errors) : 'Erro desconhecido.'
+  if (errors) {
+    errorMessage += `: ${processErrors(errors)}`
+  } else {
+    errorMessage += ': Erro desconhecido.'
+  }
+
   toast.error(errorMessage)
+
+  if (process.env.NODE_ENV === 'development') {
+    console.error('Error details:', error)
+  }
 }

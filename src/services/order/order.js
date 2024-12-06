@@ -18,7 +18,6 @@ class OrderService {
   async getOrders() {
     try {
       const { data } = await api.get('order/')
-      toast.success('Pedidos encontrados com sucesso')
       return data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar pedidos')
@@ -29,8 +28,6 @@ class OrderService {
   async getOrder(id) {
     try {
       const { data } = await api.get(`order/${id}/`)
-      console.log(data)
-      toast.success('Pedido encontrado com sucesso')
       return data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar pedido')
