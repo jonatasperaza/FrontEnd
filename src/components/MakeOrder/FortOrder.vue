@@ -1,6 +1,11 @@
 <script setup>
 import { ref } from 'vue';
 import ArrowDownBold from 'vue-material-design-icons/ArrowDownBold.vue';
+import { useOrderStore } from '@/stores';
+import { useAuthStore } from '@/stores';
+
+const ordersStore = useOrderStore();
+const authStore = useAuthStore();
 
 const showDetails = ref(false);
 
@@ -26,8 +31,8 @@ const toggleDetails = () => {
             <div class="detailsContainer" v-if="showDetails">
                 <div>
                     <h2>Itens:</h2>
-                    <p>Confira os itens adicionados para o transporte:</p>
-                    <div v-for="(item, index) in items" :key="index" class="row">
+                    <p> {{ ordersStore.state.order.items[0] ? 'Confira os itens adicionados para o transporte:' : 'Não há itens'}}:</p>
+                    <div v-for="(item, index) in ordersStore.state.order.items" :key="index" class="row">
                         <div class="container-input">
                             <label>Item:</label>
                             <p>{{ item.name }}</p>
@@ -56,75 +61,69 @@ const toggleDetails = () => {
                 </div>
 
                 <div>
-                    <h2>Dados da Entrega:</h2>
+                    <h2>Dados da Coleta:</h2>
                     <div class="grid-layout">
                         <div class="container-input">
                             <label>Endereço:</label>
-                            <p>Rua A, 123 - Centro</p>
+                            <p>{{ ordersStore.state.order.address_collect.street }}</p>
                         </div>
                         <div class="container-input">
                             <label>Cidade:</label>
-                            <p>São Paulo</p>
+                            <p>{{ ordersStore.state.order.address_collect.city }}</p>
                         </div>
                         <div class="container-input">
                             <label>CEP:</label>
-                            <p>12345-678</p>
+                            <p>{{ ordersStore.state.order.address_collect.cep }}</p>
                         </div>
                         <div class="container-input">
                             <label>Complemento:</label>
-                            <p>Apto 12</p>
+                            <p>{{ ordersStore.state.order.address_collect.complement }}</p>
                         </div>
                         <div class="container-input">
                             <label>Estado:</label>
-                            <p>SP</p>
-                        </div>
-                        <div class="container-input">
-                            <label>País:</label>
-                            <p>Brasil</p>
+                            <p>{{ ordersStore.state.order.address_collect.state }}</p>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <h2>Dados da Coleta:</h2>
+                    <h2>Dados da Entrega:</h2>
                     <div class="grid-layout">
                         <div class="container-input">
                             <label>Endereço:</label>
-                            <p>Rua B, 456 - Bairro X</p>
+                            <p>{{ ordersStore.state.order.address_delivery.street }}</p>
                         </div>
                         <div class="container-input">
                             <label>Cidade:</label>
-                            <p>Rio de Janeiro</p>
+                            <p>{{ ordersStore.state.order.address_delivery.city }}</p>
                         </div>
                         <div class="container-input">
                             <label>CEP:</label>
-                            <p>87654-321</p>
+                            <p>{{ ordersStore.state.order.address_delivery.cep }}</p>
                         </div>
                         <div class="container-input">
                             <label>Complemento:</label>
-                            <p>Casa</p>
+                            <p>{{ ordersStore.state.order.address_delivery.complement }}</p>
                         </div>
                         <div class="container-input">
                             <label>Estado:</label>
-                            <p>RJ</p>
-                        </div>
-                        <div class="container-input">
-                            <label>País:</label>
-                            <p>Brasil</p>
+                            <p>{{ ordersStore.state.order.address_delivery.state }}</p>
                         </div>
                     </div>
                 </div>
+
+                
 
                 <div>
                     <h2>Dados do Pagamento:</h2>
                     <div class="row">
                         <div class="container-input">
-                            <label>CPF:</label>
-                            <p>123.456.789-00</p>
+                            <label>{{ authStore.state?.user.client_physical_person ? 'CPF' : 'CNPJ'}}:</label>
+                            <p>{{ authStore.state?.user.client_physical_person ? authStore.state?.user.client_physical_person.cpf : authStore.state?.user.client_legal_person.cnpj }}</p>
                         </div>
                         <div class="container-input">
                             <label>Email:</label>
-                            <p>cliente@exemplo.com</p>
+                            <p>{{ authStore.state?.user.email }}</p>
                         </div>
                     </div>
                     <div class="row">

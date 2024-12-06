@@ -1,6 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import ArrowDownBold from 'vue-material-design-icons/ArrowDownBold.vue';
+
+import { useOrderStore } from '@/stores';
+
+const ordersStore = useOrderStore();
+ordersStore.getAddressByCep
 
 const showFirst = ref(false);
 
@@ -21,55 +26,64 @@ const toggleFirstContainer = () => {
         <p>Adicione Todos os dados para a coleta</p>
         <div class="row">
           <div class="container-input">
-            <label for="name">CEP:</label>
+            <label for="cep">CEP:</label>
             <input
               type="text"
-              id="name"
-              placeholder="Nome do item"
+              id="cep"
+              placeholder="Cep"
+              v-model="ordersStore.state.order.address_collect.cep"
+              @change="ordersStore.state.order.address_collect.cep.length == 8 ? ordersStore.getAddressByCep(ordersStore.state.order.address_collect.cep, 'collect') : null"
             />
           </div>
           <div class="container-input">
-            <label for="observation">Rua:</label>
+            <label for="street">Rua:</label>
             <input
               type="text"
-              id="observation"
-              placeholder="Ex: Oversized"
+              id="street"
+              placeholder="Rua"
+              v-model="ordersStore.state.order.address_collect.street"
             />
           </div>
         </div>
         <div class="row">
           <div class="container-input">
-            <label for="quantity">Número:</label>
+            <label for="number">Número:</label>
             <input
               type="number"
-              id="quantity"
+              id="number"
               placeholder="Quantidade"
+              v-model="ordersStore.state.order.address_collect.number"
             />
           </div>
           <div class="container-input">
-            <label for="height">Complemento:</label>
+            <label for="complement">Complemento:</label>
             <input
-              type="number"
-              id="height"
-              placeholder="Altura (m)"
+              type="string"
+              id="complement"
+              placeholder="Complemento"
+              v-model="ordersStore.state.order.address_collect.complement"
             />
           </div>
         </div>
         <div class="row">
           <div class="container-input">
-            <label for="weight">Estado:</label>
+            <label for="state">Estado:</label>
             <input
-              type="number"
-              id="weight"
-              placeholder="Peso (kg)"
+              type="string"
+              id="state"
+              placeholder="Estado"
+              v-model="ordersStore.state.order.address_collect.state"
+              disabled
             />
           </div>
           <div class="container-input">
-            <label for="width">Cidade:</label>
+            <label for="city">Cidade:</label>
             <input
-              type="number"
-              id="width"
-              placeholder="Largura (m)"
+              type="string"
+              id="city"
+              placeholder="Cidade"
+              v-model="ordersStore.state.order.address_collect.city"
+              disabled
             />
           </div>
         </div>

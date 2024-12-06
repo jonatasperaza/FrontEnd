@@ -37,7 +37,7 @@ export const useOrderStore = defineStore('orders', () => {
         installments: null
       },
       address_delivery: {
-        cep: 0,
+        cep: '0',
         street: '',
         number: 0,
         complement: '',
@@ -47,7 +47,7 @@ export const useOrderStore = defineStore('orders', () => {
         typeAddress: 0
       },
       address_collect: {
-        cep: 0,
+        cep: '0',
         street: '',
         number: 0,
         complement: '',

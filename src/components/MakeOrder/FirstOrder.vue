@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import ArrowDownBold from 'vue-material-design-icons/ArrowDownBold.vue';
+import { useOrderStore } from '@/stores';
+
+const ordersStore = useOrderStore();
 
 // Controla o estado do container
 const showFirst = ref(false);
@@ -25,7 +28,7 @@ const toggleFirstContainer = () => {
 // Adiciona um item ao array de itens
 const addItem = () => {
   const newItem = { ...form.value };
-  items.value.push(newItem);
+  ordersStore.state.order.items.push(newItem);
 
   // Limpa o formulário
   form.value = {
