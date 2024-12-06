@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Fork
         uses: actions/checkout@v3
         with:
-          persist-credentials: false
+          persist-credentials: false  # Desativa as credenciais padrão para usar o token
 
       - name: Set Git Config
         run: |
@@ -30,4 +30,7 @@ jobs:
         run: |
           git checkout main
           git merge upstream/main --allow-unrelated-histories
-          git push origin main
+
+      - name: Push Changes
+        run: |
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git main
