@@ -3,7 +3,7 @@ import LoginView from './LoginView.vue'
 import VehiclesView from './VehiclesView.vue'
 import DevContainer from './DevContainer.vue'
 import AboutView from './AboutView.vue'
-import { OrderStatusView, OrderView } from './order'
+import { OrderStatusView, OrderView, MakeOrderTest } from './order'
 import { DriverProfileView } from './driver'
 import { ViaCepView } from './tests'
 import { SignInViewClient, ProfileClientView } from './client'
@@ -23,5 +23,6 @@ export {
   ProfileClientView,
   RegisterEmployeeView,
   RegisterDriverView,
-  AdminDashboardView
+  AdminDashboardView,
+  MakeOrderTest
 }

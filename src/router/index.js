@@ -13,7 +13,8 @@ import {
   RegisterEmployeeView,
   SignInViewClient,
   VehiclesView,
-  ViaCepView
+  ViaCepView,
+  MakeOrderTest
 } from '@/views/'
 
 const router = createRouter({
@@ -83,12 +84,17 @@ const router = createRouter({
       path: '/order-status/:id',
       name: 'Status Do Pedido',
       component: OrderStatusView,
+    },
+    {
+      path: '/make-order-test',
+      name: 'Teste de Pedido',
+      component: MakeOrderTest
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  const pageKey = `visited_${to.name}` // Identificador único para a página
+  const pageKey = `visited_${to.name}`
   const isVisited = sessionStorage.getItem(pageKey)
 
   if (!isVisited) {
