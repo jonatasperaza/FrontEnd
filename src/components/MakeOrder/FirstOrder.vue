@@ -22,6 +22,11 @@ const toggleFirstContainer = () => {
   showFirst.value = !showFirst.value;
 };
 
+const closeAndOpen = () => {
+  showFirst.value = false;
+  ordersStore.state.step = 2;
+};
+
 const addItem = () => {
   const newItem = { ...form.value };
   items.value.push(newItem);
@@ -94,7 +99,7 @@ const removeItem = (index) => {
               </ul>
             </div>
             <div class="alignButton">
-              <button @click="toggleFirstContainer" class="add-button">Proxima Etapa</button>
+              <button @click="closeAndOpen" class="add-button">Proxima Etapa</button>
             </div>
           </div>
         </div>

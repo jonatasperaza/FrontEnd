@@ -22,7 +22,7 @@ const toggleFirstContainer = () => {
       <ArrowDownBold :class="{ rotated: showFirst }" />
     </div>
     <transition name="slide">
-      <div class="firstContainer" v-if="showFirst">
+      <div class="firstContainer" v-if="ordersStore.state.step == 2">
         <p>Adicione Todos os dados para a coleta</p>
         <div class="row">
           <div class="container-input">
