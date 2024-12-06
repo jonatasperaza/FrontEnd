@@ -15,6 +15,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Set Git Config
+        run: |
+          git config --global user.email "jonatassilvaperaza@gmail.com"
+          git config --global user.name "jonatasperaza"
+
       - name: Add Upstream
         run: git remote add upstream https://github.com/HackHeaders/FrontEnd.git
 
