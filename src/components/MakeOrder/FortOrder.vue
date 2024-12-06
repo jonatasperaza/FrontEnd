@@ -9,11 +9,11 @@ const authStore = useAuthStore();
 
 const showDetails = ref(false);
 
-const items = ref([
-    { name: 'Caixa Pequena', observation: 'Frágil', quantity: 3, weight: 1.5, height: 0.5, width: 0.3 },
-    { name: 'Mala Média', observation: 'Oversized', quantity: 1, weight: 10, height: 0.8, width: 0.4 },
-    { name: 'Pacote', observation: 'Nenhuma', quantity: 5, weight: 0.2, height: 0.2, width: 0.1 },
-]);
+// const items = ref([
+//     { name: 'Caixa Pequena', observation: 'Frágil', quantity: 3, weight: 1.5, height: 0.5, width: 0.3 },
+//     { name: 'Mala Média', observation: 'Oversized', quantity: 1, weight: 10, height: 0.8, width: 0.4 },
+//     { name: 'Pacote', observation: 'Nenhuma', quantity: 5, weight: 0.2, height: 0.2, width: 0.1 },
+// ]);
 
 const toggleDetails = () => {
     showDetails.value = !showDetails.value;
@@ -52,10 +52,6 @@ const toggleDetails = () => {
                         <div class="container-input">
                             <label>Altura:</label>
                             <p>{{ item.height }} m</p>
-                        </div>
-                        <div class="container-input">
-                            <label>Largura:</label>
-                            <p>{{ item.width }} m</p>
                         </div>
                     </div>
                 </div>
@@ -157,12 +153,12 @@ section {
 
 .access {
     width: 100%;
-    border-bottom: 2px solid #fc1d87;
+    // border-bottom: 2px solid #fc1d87;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: rgb(37, 37, 37);
+    background-color: #131316;
     cursor: pointer;
 }
 
@@ -178,7 +174,7 @@ section {
 .detailsContainer {
     width: 100%;
     display: flex;
-    background-color: rgb(37, 37, 37);
+    background-color: #131316;
     padding: 1rem;
     flex-direction: column;
     gap: 2rem;

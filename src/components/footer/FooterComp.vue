@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import NavFooterComp from './NavFooterComp.vue'
 import SocialFooterComp from './SocialFooterComp.vue'
 import AddressFooterComp from './AddressFooterComp.vue'

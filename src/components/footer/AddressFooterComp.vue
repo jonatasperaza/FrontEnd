@@ -1,10 +1,9 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 </script>
 <template>
   <div class="container">
     <div class="container-title">
-      <h1>NOSSO ENDEREÇO</h1>
+      <h1>Endereço</h1>
     </div>
     <div>
       <p>

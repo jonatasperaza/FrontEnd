@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref} from 'vue';
 import ArrowDownBold from 'vue-material-design-icons/ArrowDownBold.vue';
 
 import { useOrderStore } from '@/stores';
@@ -102,13 +102,13 @@ section {
 
 .access {
   width: 100%;
-  border-bottom: 2px solid #fc1d87;
+  // border-bottom: 2px solid #fc1d87;
 //   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: rgb(37, 37, 37);
+  background-color: #131316;
   cursor: pointer;
 }
 
@@ -124,7 +124,7 @@ section {
 .firstContainer {
   width: 100%;
   display: flex;
-  background-color: rgb(37, 37, 37);
+  background-color: #131316;
   padding: 1rem;
   flex-direction: column;
   gap: 1rem;

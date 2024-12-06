@@ -1,16 +1,15 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 </script>
 <template>
   <div class="container">
     <div class="container-title">
-      <h1>CONTATO</h1>
+      <h1>Contato</h1>
     </div>
     <div>
       <h2>0800 545 8200</h2>
     </div>
     <div class="rights-reserved">
-      <h3>© Todos os direitos reservados</h3>
+      <p>© Todos os direitos reservados</p>
     </div>
   </div>
 </template>
@@ -38,6 +37,7 @@ import { RouterLink } from 'vue-router'
     color: main.$standard-white;
     position: absolute;
     bottom: 0;
+    font-size: 10pt;
   }
 }
 

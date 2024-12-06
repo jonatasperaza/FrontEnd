@@ -1,10 +1,9 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 </script>
 <template>
   <div class="container">
     <div>
-      <h1>ONDE ESTAMOS</h1>
+      <h1>Onde Estamos</h1>
     </div>
     <div class="container-img">
       <a href=""><img src="/public/instagram-icon.svg" /></a>
