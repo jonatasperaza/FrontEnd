@@ -11,6 +11,25 @@ onMounted(async () => {
   orders.value = orderStore.state.orders
 })
 
+const statusOptions = [
+  { value: 0, label: 'Aguardando Pagamento' },
+  { value: 1, label: 'Pagamento Aprovado' },
+  { value: 2, label: 'Em Preparação' },
+  { value: 3, label: 'Aguardando Coleta' },
+  { value: 4, label: 'Em Andamento' },
+  { value: 5, label: 'Pedido Coletado' },
+  { value: 6, label: 'Pronto para a Entrega' },
+  { value: 7, label: 'Aguardando Entrega' },
+  { value: 8, label: 'Entregue' },
+  { value: 9, label: 'Falha na Entrega' },
+  { value: 10, label: 'Devolvido' },
+  { value: 11, label: 'Cancelado' },
+];
+
+function statusProcessor(satusId){
+  return statusOptions.find(status => status.value === satusId).label
+}
+
 const selectedOrder = ref(null)
 const isModalVisible = ref(false)
 
@@ -43,7 +62,7 @@ function closeModal() {
           @click="openModal(order)"
         >
           <p>{{ order.id }}</p>
-          <p>{{ order.status }}</p>
+          <p>{{ statusProcessor(order.status) }}</p>
           <p>{{ order.vehicle?.plate || 'Não informado' }}</p>
         </div>
       </div>
@@ -52,8 +71,8 @@ function closeModal() {
     <!-- Modal de detalhes do pedido -->
     <OrderDetailsModal
       :order="selectedOrder"
-      :visible="isModalVisible"
       @close="closeModal"
+      v-if="isModalVisible"
     />
   </article>
 </template>
@@ -91,6 +110,7 @@ article {
   grid-template-columns: 1fr 1fr 1fr;
   padding: 1rem 0;
   cursor: pointer;
+  transition: 0.4s ease-in-out;
 }
 
 .list div:hover {

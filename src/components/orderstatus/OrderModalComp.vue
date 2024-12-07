@@ -1,28 +1,23 @@
 <script setup>
-import order from '@/services/order/order';
-import { defineProps, defineEmits, ref } from 'vue';
+import axios from 'axios';
+import { ref } from 'vue';
 import { useDriverStore } from '@/stores';
 import { useVehicleStore } from '@/stores';
 
 const driverStore = useDriverStore();
 const vehicleStore = useVehicleStore();
 
-import axios from 'axios';
 
 const props = defineProps({
   order: {
     type: Object,
     required: true,
-  },
-  visible: {
-    type: Boolean,
-    required: true,
+    default: null
   },
 });
 
 const emit = defineEmits(['close', 'update-status']);
 
-// Lista de status disponíveis
 const statusOptions = [
   { value: 0, label: 'Aguardando Pagamento' },
   { value: 1, label: 'Pagamento Aprovado' },
@@ -39,33 +34,28 @@ const statusOptions = [
 ];
 
 const statusselect = ref('');
-// Função para atualizar o status
+
 async function updateStatus(newStatus) {
   statusselect.value = newStatus;
   const response = await axios.post(
     `https://api.fexcompany.me/api/orders/${props.order.id}/status/${newStatus}/`,
     {}
   );
-  console.log(response);
 }
 
 const vehicleselect = ref('');
 const driverselect = ref('');
 
 async function updateVehicle() {
-  console.log(vehicleselect.value);
-  console.log(driverselect.value);
   const response = await axios.post(
     `https://api.fexcompany.me/api/orders/${props.order.id}/assign/${vehicleselect.value}/${driverselect.value}/`,
     {}
   );
-  console.log(response);
 }
 </script>
 
 <template>
   <div
-    v-if="visible"
     class="modal-overlay"
     @click.self="emit('close')"
   >

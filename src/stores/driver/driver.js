@@ -25,9 +25,11 @@ export const useDriverStore = defineStore('driver', () => {
       telephone: 0
     }),
     loading: false,
-    error: null
+    error: null,
+    count: 0
   })
   const isLoading = computed(() => state.loading)
+  
 
   const getDrivers = async () => {
     state.loading = true

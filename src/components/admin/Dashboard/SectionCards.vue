@@ -1,70 +1,81 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { ContentLoader } from 'vue-content-loader'
+import { ref, onMounted, markRaw, computed } from 'vue';
+import { ContentLoader } from 'vue-content-loader';
 
-import { useDriverStore } from '@/stores'
-import { useVehicleStore } from '@/stores'
-import { useClientStore } from '@/stores'
-import { useEmployeeStore } from '@/stores'
+import { useDriverStore } from '@/stores';
+import { useVehicleStore } from '@/stores';
+import { useClientStore } from '@/stores';
+import { useEmployeeStore } from '@/stores';
 
-import CardsComp from './CardsComp.vue'
-import TruckFast from 'vue-material-design-icons/TruckFast.vue'
-import Account from 'vue-material-design-icons/Account.vue'
-import CardAccountDetails from 'vue-material-design-icons/CardAccountDetails.vue'
-import Tire from 'vue-material-design-icons/Tire.vue'
+import CardsComp from './CardsComp.vue';
+import TruckFast from 'vue-material-design-icons/TruckFast.vue';
+import Account from 'vue-material-design-icons/Account.vue';
+import CardAccountDetails from 'vue-material-design-icons/CardAccountDetails.vue';
+import Tire from 'vue-material-design-icons/Tire.vue';
 
-const driverStore = useDriverStore()
-const vehicleStore = useVehicleStore()
-const clientStore = useClientStore()
-const employeeStore = useEmployeeStore()
+const driverStore = useDriverStore();
+const vehicleStore = useVehicleStore();
+const clientStore = useClientStore();
+const employeeStore = useEmployeeStore();
 
-const data = ref([])
+const data = ref([]);
+const isLoading = computed(() =>
+  driverStore.isLoading || vehicleStore.isLoading || clientStore.isLoading || employeeStore.isLoading
+);
+
 onMounted(async () => {
-  await driverStore.getDrivers()
-  await vehicleStore.getVehicles()
-  await clientStore.getClients()
-  await employeeStore.getEmployees()
+  await Promise.all([
+    driverStore.getDrivers(),
+    vehicleStore.getVehicles(),
+    clientStore.getClients(),
+    employeeStore.getEmployees()
+  ]);
+
   data.value = [
     {
-      icon: Tire,
+      icon: markRaw(Tire),
       title: 'Motoristas Cadastrados',
       number: driverStore.state.count,
       color: 'limegreen'
     },
     {
-      icon: TruckFast,
-      title: 'Veiculos Cadastrados',
+      icon: markRaw(TruckFast),
+      title: 'Veículos Cadastrados',
       number: vehicleStore.state.count,
       color: 'yellow'
     },
     {
-      icon: Account,
+      icon: markRaw(Account),
       title: 'Clientes Cadastrados',
       number: clientStore.state.count,
       color: 'aqua'
     },
     {
-      icon: CardAccountDetails,
-      title: 'Funcionarios Cadastrados',
+      icon: markRaw(CardAccountDetails),
+      title: 'Funcionários Cadastrados',
       number: employeeStore.state.count,
       color: 'orange'
     }
-  ]
-})
+  ];
+});
 </script>
 
 <template>
   <section>
     <div class="title">
-      <h2>Meu <span class="strong-pink">Dashboard</span> {{ driverStore.isLoading }}</h2>
+      <h2>Meu <span class="strong-pink">Dashboard</span></h2>
     </div>
-    <ContentLoader v-if="driverStore.isLoading || vehicleStore.isLoading" animate="true" primary-color="#FC1D87"
-      secondary-color="#242424">
-      <rect x="43" y="20" rx="5" ry="5" width="76%" height="70" />
-    </ContentLoader>
-    <div class="cards" v-else>
-      <CardsComp v-for="item in data" :key="item" :option="item" />
-    </div>
+
+    <Transition name="fade" mode="out-in">
+      <template v-if="isLoading">
+        <ContentLoader :animate="true" primary-color="#000000" secondary-color="#D0D0D0" width="1080" style="margin-left: 10vw; border: 1px solid #C1C1C1; border-radius: 14px;">
+          <rect x="0" y="0" rx="0" ry="0" width="100vw" height="100vh"/>
+        </ContentLoader>
+      </template>
+      <div class="cards" v-else>
+        <CardsComp v-for="(item, index) in data" :key="index" :option="item" />
+      </div>
+    </Transition>
   </section>
 </template>
 
@@ -85,33 +96,20 @@ section {
 }
 
 .cards {
-  width: 80%;
+  width: 79%;
   margin: auto;
   display: flex;
   gap: 2rem;
 }
 
 @media screen and (max-width: 1150px) {
-  section {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-  }
-
-  div {
-    display: flex;
-    justify-content: center;
-
-    .title {
-      font-size: 1.3rem
-    }
+  .title {
+    font-size: 1.3rem;
   }
 
   .cards {
     display: flex;
     flex-wrap: wrap;
   }
-
-
 }
 </style>
