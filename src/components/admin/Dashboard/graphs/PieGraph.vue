@@ -22,7 +22,7 @@ provide(THEME_KEY, 'dark')
 
 // Dados do gráfico
 const data = ref([])
-const color = ref(['#FC1D87', '#79036D', '#FFC0CB', '#FF1493'])
+const color = ['#D24783', '#A75478', '#FC2B86', '#7D5466']
 
 // Buscar dados
 onMounted(async () => {
@@ -81,16 +81,21 @@ const option = ref({
       name: 'Status Do Veiculo',
       type: 'pie',
       radius: ['50%', '70%'],
-      centre: ['50%', '95%'],
-      color: color.value,
+      center: ['50%', '58%'],
+      color: color,
       label: {
         show: true,
-        formatter: '{b}: {c} ({d}%)',
-        fontSize: 12,
-        color: '#fff'
+        formatter: (params) => {
+          let tooltip = `${params.name}: \n ${params.value} (${params.percent}%)`
+          return tooltip
+        },
+        fontSize: 10,
+
+        color: '#fff',
       },
       labelLine: {
         show: true,
+        length: 8,
         lineStyle: {
           color: '#ccc'
         }
@@ -116,7 +121,7 @@ const option = ref({
       }
     }
   ],
-  animationDuration: 1500, // Duração da animação
+  animationDuration: 2000, // Duração da animação
   animationEasing: 'cubicOut' // Tipo de animação
 })
 
