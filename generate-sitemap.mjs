@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { routes } from './src/routes.js' // Importe as rotas manualmente
 
-const baseURL = 'http://localhost:5173'
+const baseURL = 'https://fexcompany.me'
 
 const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
