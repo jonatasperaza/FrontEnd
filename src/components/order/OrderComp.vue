@@ -185,7 +185,7 @@ span.show {
   background-color: red;
   padding: 10px;
   border-radius: 10px;
-  z-index: 100;
+  z-index: 2;
   width: 20%;
 }
 

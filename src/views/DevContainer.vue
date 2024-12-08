@@ -32,7 +32,7 @@ p.data {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  z-index: 100;
+  z-index: 1;
 }
 
 a {
