@@ -31,8 +31,6 @@ section {
   overflow: hidden;
 }
 
-
-
 .background-image {
   position: absolute;
   top: 0;

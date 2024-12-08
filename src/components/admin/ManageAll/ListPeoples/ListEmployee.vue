@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 import { useEmployeeStore } from '@/stores'
 const employeeStore = useEmployeeStore()
-
 </script>
 
 <template>
@@ -10,7 +9,7 @@ const employeeStore = useEmployeeStore()
     <div class="listVehicles">
       <div class="headerList">
         <p>ID:</p>
-        <p>Nome:</p>	
+        <p>Nome:</p>
         <p>Email:</p>
       </div>
       <div class="list">

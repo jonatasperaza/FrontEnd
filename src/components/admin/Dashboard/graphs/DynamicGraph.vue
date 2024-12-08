@@ -1,5 +1,5 @@
 <template>
-  <v-chart :option="chartOptions" autoresize class="chart"/>
+  <v-chart :option="chartOptions" autoresize class="chart" />
 </template>
 
 <script setup>
@@ -52,14 +52,14 @@ const chartOptions = ref({
     text: 'Gráfico de Linhas com ECharts',
     left: 'center'
   },
-    toolbox: {
+  toolbox: {
     feature: {
       magicType: { type: ['line', 'bar'] },
       restore: {},
       saveAsImage: {}
     }
   },
-    grid: {
+  grid: {
     left: '3%',
     right: '4%',
     bottom: '10%',
@@ -75,7 +75,7 @@ const chartOptions = ref({
   },
   xAxis: {
     type: 'category',
-    data: data.map(item => item[0])
+    data: data.map((item) => item[0])
   },
   yAxis: {
     type: 'value',
@@ -83,12 +83,10 @@ const chartOptions = ref({
       formatter: '{value}'
     },
     markLine: {
-      data: [
-        { type: 'average', name: 'Média' }
-      ]
+      data: [{ type: 'average', name: 'Média' }]
     }
   },
-    dataZoom: [
+  dataZoom: [
     {
       type: 'slider',
       start: 0,
@@ -99,23 +97,21 @@ const chartOptions = ref({
       }
     }
   ],
-  
+
   series: [
     {
       name: 'Valores',
       type: 'line',
-      data: data.map(item => item[1]),
+      data: data.map((item) => item[1]),
       color: '#fc1d87',
       smooth: true,
       animationDuration: 2000,
       markLine: {
-        data: [
-          { type: 'average', name: 'Média' }
-        ]
+        data: [{ type: 'average', name: 'Média' }]
       },
       areaStyle: {
         color: 'rgba(252, 29, 135, 0.2)'
-      },
+      }
     }
   ]
 })

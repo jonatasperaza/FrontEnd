@@ -82,6 +82,5 @@ section {
     margin: auto;
     padding: 1rem;
   }
-
 }
 </style>

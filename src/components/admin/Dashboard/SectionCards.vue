@@ -1,27 +1,31 @@
 <script setup>
-import { ref, onMounted, markRaw, computed } from 'vue';
-import { ContentLoader } from 'vue-content-loader';
+import { ref, onMounted, markRaw, computed } from 'vue'
+import { ContentLoader } from 'vue-content-loader'
 
-import { useDriverStore } from '@/stores';
-import { useVehicleStore } from '@/stores';
-import { useClientStore } from '@/stores';
-import { useEmployeeStore } from '@/stores';
+import { useDriverStore } from '@/stores'
+import { useVehicleStore } from '@/stores'
+import { useClientStore } from '@/stores'
+import { useEmployeeStore } from '@/stores'
 
-import CardsComp from './CardsComp.vue';
-import TruckFast from 'vue-material-design-icons/TruckFast.vue';
-import Account from 'vue-material-design-icons/Account.vue';
-import CardAccountDetails from 'vue-material-design-icons/CardAccountDetails.vue';
-import Tire from 'vue-material-design-icons/Tire.vue';
+import CardsComp from './CardsComp.vue'
+import TruckFast from 'vue-material-design-icons/TruckFast.vue'
+import Account from 'vue-material-design-icons/Account.vue'
+import CardAccountDetails from 'vue-material-design-icons/CardAccountDetails.vue'
+import Tire from 'vue-material-design-icons/Tire.vue'
 
-const driverStore = useDriverStore();
-const vehicleStore = useVehicleStore();
-const clientStore = useClientStore();
-const employeeStore = useEmployeeStore();
+const driverStore = useDriverStore()
+const vehicleStore = useVehicleStore()
+const clientStore = useClientStore()
+const employeeStore = useEmployeeStore()
 
-const data = ref([]);
-const isLoading = computed(() =>
-  driverStore.isLoading || vehicleStore.isLoading || clientStore.isLoading || employeeStore.isLoading
-);
+const data = ref([])
+const isLoading = computed(
+  () =>
+    driverStore.isLoading ||
+    vehicleStore.isLoading ||
+    clientStore.isLoading ||
+    employeeStore.isLoading
+)
 
 onMounted(async () => {
   await Promise.all([
@@ -29,7 +33,7 @@ onMounted(async () => {
     vehicleStore.getVehicles(),
     clientStore.getClients(),
     employeeStore.getEmployees()
-  ]);
+  ])
 
   data.value = [
     {
@@ -54,14 +58,14 @@ onMounted(async () => {
       color: 'aqua'
     },
     {
-      id:'employees',
+      id: 'employees',
       icon: markRaw(CardAccountDetails),
       title: 'Funcionários Cadastrados',
       number: employeeStore.state.count,
       color: 'orange'
     }
-  ];
-});
+  ]
+})
 </script>
 
 <template>
@@ -72,8 +76,20 @@ onMounted(async () => {
 
     <Transition name="fade" mode="out-in">
       <template v-if="isLoading">
-        <ContentLoader :animate="true" primary-color="#000000" secondary-color="#D0D0D0" width="82vw" height="12%" style="margin-left: 8.5vw; border: 1px solid #C1C1C1; border-radius: 14px; margin-bottom: 3rem;">
-          <rect x="0" y="0" rx="0" ry="0" width="100vw" height="100%"/>
+        <ContentLoader
+          :animate="true"
+          primary-color="#000000"
+          secondary-color="#D0D0D0"
+          width="82vw"
+          height="12%"
+          style="
+            margin-left: 8.5vw;
+            border: 1px solid #c1c1c1;
+            border-radius: 14px;
+            margin-bottom: 3rem;
+          "
+        >
+          <rect x="0" y="0" rx="0" ry="0" width="100vw" height="100%" />
         </ContentLoader>
       </template>
       <div class="cards" v-else>

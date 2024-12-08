@@ -1,7 +1,7 @@
 import { api } from '@/plugins'
 import { toast } from 'vue3-toastify'
 import { handleErrorResponse } from '@/utils/errorHandler'
-import router from '@/router' 
+import router from '@/router'
 
 class EmployeeService {
   async getEmployees() {

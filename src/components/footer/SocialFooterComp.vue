@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 <template>
   <div class="container">
     <div>
@@ -34,6 +33,6 @@
   .container {
     margin-top: 2rem;
     height: 80%;
-}
+  }
 }
 </style>

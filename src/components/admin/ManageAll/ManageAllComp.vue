@@ -4,11 +4,11 @@ import ManageVehicles from './ManageVehicles.vue'
 </script>
 
 <template>
-    <div class="container">
-      <ManageVehicles />
-      <ManageVehicles />
-      <!-- <ManageOrders /> -->
-    </div>
+  <div class="container">
+    <ManageVehicles />
+    <ManageVehicles />
+    <!-- <ManageOrders /> -->
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -25,10 +25,9 @@ import ManageVehicles from './ManageVehicles.vue'
 
 @media screen and (max-width: 1150px) {
   .container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-}
-
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
 }
 </style>

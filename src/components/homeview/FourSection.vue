@@ -9,7 +9,10 @@
           <span class="strong-pink">Brasil</span>
         </h1>
         <p>
-          Na Fex, qualidade e desempenho andam juntos. Nossa frota é composta pelos caminhões mais modernos e confiáveis do mercado, prontos para atender às suas necessidades com eficiência e segurança. Seja para transporte de cargas ou projetos específicos, oferecemos soluções robustas que fazem a diferença na estrada.
+          Na Fex, qualidade e desempenho andam juntos. Nossa frota é composta pelos caminhões mais
+          modernos e confiáveis do mercado, prontos para atender às suas necessidades com eficiência
+          e segurança. Seja para transporte de cargas ou projetos específicos, oferecemos soluções
+          robustas que fazem a diferença na estrada.
         </p>
       </div>
     </div>

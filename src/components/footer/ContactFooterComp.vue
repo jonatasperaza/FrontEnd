@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 <template>
   <div class="container">
     <div class="container-title">
@@ -44,22 +43,21 @@
 @media screen and (max-width: 1150px) {
   .container {
     height: 80%;
-  .container-title {
-    display: flex;
-    justify-content: center;
-    h1 {
-      width: 8rem;
+    .container-title {
+      display: flex;
+      justify-content: center;
+      h1 {
+        width: 8rem;
+      }
+    }
+    div {
+      margin: 1em;
+      display: flex;
+      justify-content: center;
+      h2 {
+        width: 14rem;
+      }
     }
   }
-  div {
-    margin: 1em;
-    display: flex;
-    justify-content: center;
-    h2 {
-      width: 14rem;
-    }
-  }
-
-}
 }
 </style>

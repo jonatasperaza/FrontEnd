@@ -16,7 +16,14 @@ const ordersStore = useOrderStore()
               type="number"
               name=""
               v-model="ordersStore.state.order.address_delivery.cep"
-              @change="ordersStore.state.order.address_delivery.cep.toString().length == 8 ? ordersStore.getAddressByCep(ordersStore.state.order.address_delivery.cep, 'delivery') : null"
+              @change="
+                ordersStore.state.order.address_delivery.cep.toString().length == 8
+                  ? ordersStore.getAddressByCep(
+                      ordersStore.state.order.address_delivery.cep,
+                      'delivery'
+                    )
+                  : null
+              "
             />
           </div>
           <div class="container-input">

@@ -1,17 +1,16 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 
 const props = defineProps({
   option: Object
 })
 
 function scrollToSection() {
-  const section = document.getElementById(props.option.id);
+  const section = document.getElementById(props.option.id)
   if (section) {
-    section.scrollIntoView({ behavior: 'smooth' }); // Rolagem suave
+    section.scrollIntoView({ behavior: 'smooth' }) // Rolagem suave
   }
-  window.scrollTo(0, 1700);
-
+  window.scrollTo(0, 1700)
 }
 </script>
 
@@ -34,9 +33,9 @@ function scrollToSection() {
 <style scoped lang="scss">
 @use '@/assets/main';
 
-a{
+a {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 
 article {
@@ -50,7 +49,7 @@ article {
   cursor: pointer;
 }
 
-article:hover{
+article:hover {
   background-color: #333;
   scale: 1.03;
 }

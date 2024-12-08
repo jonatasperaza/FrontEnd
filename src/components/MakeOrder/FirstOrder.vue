@@ -1,50 +1,50 @@
 <script setup>
-import { ref } from 'vue';
-import ArrowDownBold from 'vue-material-design-icons/ArrowDownBold.vue';
-import Trash from 'vue-material-design-icons/TrashCan.vue';
-import { useOrderStore } from '@/stores';
+import { ref } from 'vue'
+import ArrowDownBold from 'vue-material-design-icons/ArrowDownBold.vue'
+import Trash from 'vue-material-design-icons/TrashCan.vue'
+import { useOrderStore } from '@/stores'
 
-const ordersStore = useOrderStore();
+const ordersStore = useOrderStore()
 
-const showFirst = ref(false);
+const showFirst = ref(false)
 
-const items = ref([]);
+const items = ref([])
 
 const form = ref({
   name: '',
   observation: '',
   quantity: '',
   weight: '',
-  height: '',
-});
+  height: ''
+})
 
 const toggleFirstContainer = () => {
-  showFirst.value = !showFirst.value;
-};
+  showFirst.value = !showFirst.value
+}
 
 const closeAndOpen = () => {
-  showFirst.value = false;
-  ordersStore.state.step = 2;
-};
+  showFirst.value = false
+  ordersStore.state.step = 2
+}
 
 const addItem = () => {
-  const newItem = { ...form.value };
-  items.value.push(newItem);
-  ordersStore.state.order.items.push(newItem);
+  const newItem = { ...form.value }
+  items.value.push(newItem)
+  ordersStore.state.order.items.push(newItem)
 
   form.value = {
     name: '',
     observation: '',
     quantity: '',
     weight: '',
-    height: '',
-  };
-};
+    height: ''
+  }
+}
 
 const removeItem = (index) => {
-  items.value.splice(index, 1);
-  ordersStore.state.order.items.splice(index, 1);
-};
+  items.value.splice(index, 1)
+  ordersStore.state.order.items.splice(index, 1)
+}
 </script>
 
 <template>
@@ -76,7 +76,12 @@ const removeItem = (index) => {
             </div>
             <div class="container-input">
               <label for="observation">Observação:</label>
-              <textarea id="observation" v-model="form.observation" placeholder="Ex: Oversized" class="obs"></textarea>
+              <textarea
+                id="observation"
+                v-model="form.observation"
+                placeholder="Ex: Oversized"
+                class="obs"
+              ></textarea>
             </div>
             <button @click="addItem" class="add-button">Adicionar Item</button>
           </div>
@@ -136,7 +141,7 @@ section {
   display: grid;
   grid-template-rows: 92.5% 7.5%;
   gap: 1rem;
-  padding: 1rem
+  padding: 1rem;
 }
 
 .teste:last-child {
@@ -145,7 +150,6 @@ section {
 
 .teste:last-child button {
   width: 30%;
-
 }
 
 textarea.obs {
@@ -157,7 +161,7 @@ textarea.obs {
   background-color: transparent;
   border: 1px solid #fff;
   border-radius: 0.5rem;
-  resize: none
+  resize: none;
 }
 
 .access p {
@@ -184,7 +188,6 @@ textarea.obs {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-
 }
 
 .form-container {
@@ -230,9 +233,9 @@ textarea.obs {
 
 input {
   width: 100%;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border: 1px solid #fff;
-  padding: .75rem;
+  padding: 0.75rem;
   color: #fff;
   background-color: transparent;
 }
@@ -263,7 +266,9 @@ input {
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease;
   overflow: hidden;
 }
 

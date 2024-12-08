@@ -13,7 +13,7 @@ const statusOptions = [
 const vehicles = ref([])
 
 const statusProcessor = (statusId) => {
-  return statusOptions.find(status => status.value === statusId)?.label
+  return statusOptions.find((status) => status.value === statusId)?.label
 }
 
 onMounted(async () => {
@@ -37,7 +37,7 @@ onMounted(async () => {
         <p>Status:</p>
       </div>
       <div class="list">
-        <div v-for="vehicle in vehicles" :key="vehicle.id" >
+        <div v-for="vehicle in vehicles" :key="vehicle.id">
           <p>{{ vehicle.id }}</p>
           <p>{{ vehicle.model }}</p>
           <p>{{ statusProcessor(vehicle?.status) || 'Desconhecido' }}</p>

@@ -48,15 +48,30 @@ const selectedColor = computed(() => {
           <h2>Gerenciar Pessoas:</h2>
         </div>
         <div class="ulPeoples">
-          <div class="line" :class="{ selected: selectedIndex === 0 }" @click="handleSelect(0)" style="color: #73fbfd">
+          <div
+            class="line"
+            :class="{ selected: selectedIndex === 0 }"
+            @click="handleSelect(0)"
+            style="color: #73fbfd"
+          >
             <Account />
             Clientes
           </div>
-          <div class="line" :class="{ selected: selectedIndex === 1 }" @click="handleSelect(1)" style="color: #fc1d87">
+          <div
+            class="line"
+            :class="{ selected: selectedIndex === 1 }"
+            @click="handleSelect(1)"
+            style="color: #fc1d87"
+          >
             <Tire />
             Motoristas
           </div>
-          <div class="line" :class="{ selected: selectedIndex === 2 }" @click="handleSelect(2)" style="color: #da4819">
+          <div
+            class="line"
+            :class="{ selected: selectedIndex === 2 }"
+            @click="handleSelect(2)"
+            style="color: #da4819"
+          >
             <CardAccountDetails />
             Funcionarios
           </div>
@@ -69,7 +84,9 @@ const selectedColor = computed(() => {
         </div>
         <Transition name="fade" mode="out-in">
           <component
-            :is="selectedIndex === 0 ? ListClients : selectedIndex === 1 ? ListDrivers : ListEmployee"
+            :is="
+              selectedIndex === 0 ? ListClients : selectedIndex === 1 ? ListDrivers : ListEmployee
+            "
             :key="selectedIndex"
           />
         </Transition>
@@ -156,10 +173,12 @@ span {
 }
 
 /* Estilos de transição */
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 
@@ -168,7 +187,6 @@ span {
   .container {
     display: flex;
     flex-wrap: wrap;
-    
   }
 
   .managePeoples {
@@ -177,7 +195,7 @@ span {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
-  } 
+  }
 
   .titleManage > h2 {
     font-size: 25px;

@@ -18,7 +18,6 @@ async function reload() {
   reloadRef.value.$el.classList.add('rotate')
   await orderStore.getOrders()
   reloadRef.value.$el.classList.remove('rotate')
-
 }
 
 const statusOptions = [
@@ -33,11 +32,11 @@ const statusOptions = [
   { value: 8, label: 'Entregue' },
   { value: 9, label: 'Falha na Entrega' },
   { value: 10, label: 'Devolvido' },
-  { value: 11, label: 'Cancelado' },
-];
+  { value: 11, label: 'Cancelado' }
+]
 
-function statusProcessor(satusId){
-  return statusOptions.find(status => status.value === satusId).label
+function statusProcessor(satusId) {
+  return statusOptions.find((status) => status.value === satusId).label
 }
 
 const selectedOrder = ref(null)
@@ -45,15 +44,15 @@ const isModalVisible = ref(false)
 
 watch(isModalVisible, (newValue) => {
   if (newValue) {
-    document.body.classList.add('modal-open');
+    document.body.classList.add('modal-open')
   } else {
-    document.body.classList.remove('modal-open');
+    document.body.classList.remove('modal-open')
   }
-});
+})
 
 onBeforeUnmount(() => {
-  document.body.classList.remove('modal-open');
-});
+  document.body.classList.remove('modal-open')
+})
 
 function openModal(order) {
   selectedOrder.value = order
@@ -74,8 +73,8 @@ function closeModalReload() {
 
 <template>
   <article>
-    <div style="display: flex; justify-content: space-between;">
-      <h2 style="margin: 0; width: 80%;">Gerenciar <span class="strong-pink">Pedidos:</span></h2>
+    <div style="display: flex; justify-content: space-between">
+      <h2 style="margin: 0; width: 80%">Gerenciar <span class="strong-pink">Pedidos:</span></h2>
       <Refresh class="reload" @click="reload()" ref="reloadRef" />
     </div>
     <div class="listOrders">
@@ -87,11 +86,7 @@ function closeModalReload() {
       </div>
 
       <div class="list">
-        <div
-          v-for="order in orderStore.state.orders" 
-          :key="order.id"
-          @click="openModal(order)"
-        >
+        <div v-for="order in orderStore.state.orders" :key="order.id" @click="openModal(order)">
           <p>{{ order.id }}</p>
           <p>{{ statusProcessor(order.status) }}</p>
           <p>{{ order.vehicle?.plate || 'Não informado' }}</p>
@@ -100,13 +95,13 @@ function closeModalReload() {
       </div>
     </div>
 
-     <Transition name="fade" mode="out-in">
-    <OrderDetailsModal
-      :order="selectedOrder"
-      @close="closeModal"
-      @close-loader="closeModalReload"	
-      v-if="isModalVisible"
-    />
+    <Transition name="fade" mode="out-in">
+      <OrderDetailsModal
+        :order="selectedOrder"
+        @close="closeModal"
+        @close-loader="closeModalReload"
+        v-if="isModalVisible"
+      />
     </Transition>
   </article>
 </template>
@@ -154,19 +149,21 @@ article {
   background-color: #333;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.6s ease;
 }
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 
-.reload{
+.reload {
   color: #fff;
   transition: 0.3s ease-in-out;
   width: 24px;
   height: 100%;
-  display: flex; 
+  display: flex;
   cursor: pointer;
 }
 
@@ -185,6 +182,5 @@ article {
   100% {
     transform: rotate(360deg);
   }
-  
 }
 </style>

@@ -20,8 +20,7 @@ section {
 
 @media screen and (max-width: 1150px) {
   section {
-  height: 80vh;
-  
-}
+    height: 80vh;
+  }
 }
 </style>

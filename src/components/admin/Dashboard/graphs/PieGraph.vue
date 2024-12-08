@@ -1,5 +1,5 @@
 <template>
-  <v-chart class="chart" :option="option" autoresize/>
+  <v-chart class="chart" :option="option" autoresize />
 </template>
 
 <script setup>
@@ -7,7 +7,13 @@ import { ref, provide, onMounted, watch } from 'vue'
 import { CanvasRenderer } from 'echarts/renderers'
 import { use } from 'echarts/core'
 import { PieChart } from 'echarts/charts'
-import { TitleComponent, TooltipComponent, LegendComponent, GridComponent, ToolboxComponent } from 'echarts/components'
+import {
+  TitleComponent,
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+  ToolboxComponent
+} from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
 import { useVehicleStore } from '@/stores'
 
@@ -15,7 +21,15 @@ import { useVehicleStore } from '@/stores'
 const VehicleStore = useVehicleStore()
 
 // Registrar componentes do ECharts
-use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent, GridComponent, ToolboxComponent])
+use([
+  CanvasRenderer,
+  PieChart,
+  TitleComponent,
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+  ToolboxComponent
+])
 
 // Definir tema
 provide(THEME_KEY, 'dark')
@@ -91,7 +105,7 @@ const option = ref({
         },
         fontSize: 10,
 
-        color: '#fff',
+        color: '#fff'
       },
       labelLine: {
         show: true,
@@ -112,7 +126,7 @@ const option = ref({
         label: {
           show: true,
           fontSize: 12,
-          fontWeight: 'bold',
+          fontWeight: 'bold'
         },
         itemStyle: {
           shadowBlur: 10,
@@ -122,16 +136,15 @@ const option = ref({
       }
     }
   ],
-animation: 'auto',  
-animationDuration: 1000,
-animationDurationUpdate: 500,
-animationEasing: 'cubicInOut',
-animationEasingUpdate: 'cubicInOut',
-animationThreshold: 2000,
-progressiveThreshold: 3000,
-progressive: 400,
-hoverLayerThreshold: 3000,
-
+  animation: 'auto',
+  animationDuration: 1000,
+  animationDurationUpdate: 500,
+  animationEasing: 'cubicInOut',
+  animationEasingUpdate: 'cubicInOut',
+  animationThreshold: 2000,
+  progressiveThreshold: 3000,
+  progressive: 400,
+  hoverLayerThreshold: 3000
 })
 
 // Atualizar gráfico quando os dados mudarem

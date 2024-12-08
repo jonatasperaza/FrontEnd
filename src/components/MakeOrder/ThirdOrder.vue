@@ -1,18 +1,17 @@
 <script setup>
-import { ref} from 'vue';
-import ArrowDownBold from 'vue-material-design-icons/ArrowDownBold.vue';
+import { ref } from 'vue'
+import ArrowDownBold from 'vue-material-design-icons/ArrowDownBold.vue'
 
-import { useOrderStore } from '@/stores';
+import { useOrderStore } from '@/stores'
 
-const ordersStore = useOrderStore();
+const ordersStore = useOrderStore()
 ordersStore.getAddressByCep
 
-const showFirst = ref(false);
+const showFirst = ref(false)
 
 const toggleFirstContainer = () => {
-  showFirst.value = !showFirst.value;
-};
-
+  showFirst.value = !showFirst.value
+}
 </script>
 
 <template>
@@ -32,7 +31,14 @@ const toggleFirstContainer = () => {
               id="cep"
               placeholder="Cep"
               v-model="ordersStore.state.order.address_delivery.cep"
-              @change="ordersStore.state.order.address_delivery.cep.length == 8 ? ordersStore.getAddressByCep(ordersStore.state.order.address_delivery.cep, 'delivery') : null"
+              @change="
+                ordersStore.state.order.address_delivery.cep.length == 8
+                  ? ordersStore.getAddressByCep(
+                      ordersStore.state.order.address_delivery.cep,
+                      'delivery'
+                    )
+                  : null
+              "
             />
           </div>
           <div class="container-input">
@@ -103,7 +109,7 @@ section {
 .access {
   width: 100%;
   // border-bottom: 2px solid #fc1d87;
-//   border-radius: 5px;
+  //   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -128,7 +134,7 @@ section {
   padding: 1rem;
   flex-direction: column;
   gap: 1rem;
-  overflow: hidden; 
+  overflow: hidden;
   border-bottom: 2px solid #fc1d87;
 }
 
@@ -145,36 +151,38 @@ section {
 
 input {
   width: 100%;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border: 1px solid #fff;
-  padding: .75rem;
+  padding: 0.75rem;
   color: #fff;
   background-color: transparent;
 }
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  overflow: hidden; 
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease;
+  overflow: hidden;
 }
 
 .slide-enter-from {
-  max-height: 0; 
-  opacity: 0;    
+  max-height: 0;
+  opacity: 0;
 }
 
 .slide-enter-to {
-  max-height: 300px; 
-  opacity: 1;        
+  max-height: 300px;
+  opacity: 1;
 }
 
 .slide-leave-from {
-  max-height: 300px; 
-  opacity: 1;        
+  max-height: 300px;
+  opacity: 1;
 }
 
 .slide-leave-to {
   max-height: 0;
-  opacity: 0;    
+  opacity: 0;
 }
 </style>

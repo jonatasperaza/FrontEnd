@@ -1,22 +1,21 @@
 <script setup>
-import axios from 'axios';
-import { onMounted, ref } from 'vue';
-import { useDriverStore } from '@/stores';
-import { useVehicleStore } from '@/stores';
+import axios from 'axios'
+import { onMounted, ref } from 'vue'
+import { useDriverStore } from '@/stores'
+import { useVehicleStore } from '@/stores'
 
-const driverStore = useDriverStore();
-const vehicleStore = useVehicleStore();
-
+const driverStore = useDriverStore()
+const vehicleStore = useVehicleStore()
 
 const props = defineProps({
   order: {
     type: Object,
     required: true,
     default: null
-  },
-});
+  }
+})
 
-const emit = defineEmits(['close', 'update-status', 'close-loader']);
+const emit = defineEmits(['close', 'update-status', 'close-loader'])
 
 const statusOptions = [
   { value: 0, label: 'Aguardando Pagamento' },
@@ -30,49 +29,46 @@ const statusOptions = [
   { value: 8, label: 'Entregue' },
   { value: 9, label: 'Falha na Entrega' },
   { value: 10, label: 'Devolvido' },
-  { value: 11, label: 'Cancelado' },
-];
+  { value: 11, label: 'Cancelado' }
+]
 
-const statusselect = ref('');
+const statusselect = ref('')
 
-function updateDriver(newDrive){
-  driverselect.value = newDrive;
+function updateDriver(newDrive) {
+  driverselect.value = newDrive
 }
 
-function updateVehicle(newVehicle){
-  vehicleselect.value = newVehicle;
+function updateVehicle(newVehicle) {
+  vehicleselect.value = newVehicle
 }
 
 async function updateStatus(newStatus) {
-  statusselect.value = newStatus;
+  statusselect.value = newStatus
 }
 
-const vehicleselect = ref('');
-const driverselect = ref('');
+const vehicleselect = ref('')
+const driverselect = ref('')
 
 async function updateVehicleDriver() {
   await axios.post(
     `https://api.fexcompany.me/api/orders/${props.order.id}/assign/${vehicleselect.value}/${driverselect.value}/`,
     {}
-  );
+  )
   await axios.post(
     `https://api.fexcompany.me/api/orders/${props.order.id}/status/${statusselect.value}/`,
     {}
-  );
+  )
 }
 
 onMounted(() => {
-  statusselect.value = props.order?.status;
-  vehicleselect.value = props.order?.vehicle?.id;
-  driverselect.value = props.order?.driver?.id;
-});
+  statusselect.value = props.order?.status
+  vehicleselect.value = props.order?.vehicle?.id
+  driverselect.value = props.order?.driver?.id
+})
 </script>
 
 <template>
-  <div
-    class="modal-overlay"
-    @click.self="emit('close')"
-  >
+  <div class="modal-overlay" @click.self="emit('close')">
     <div class="modal-content">
       <h2>Detalhes do Pedido</h2>
       <div v-if="order">
@@ -123,21 +119,18 @@ onMounted(() => {
             id="status"
           >
             <option value="" disabled>Selecione um status</option>
-            <option
-              v-for="option in statusOptions"
-              :key="option.value"
-              :value="option.value"
-            >
+            <option v-for="option in statusOptions" :key="option.value" :value="option.value">
               {{ option.label }}
             </option>
           </select>
         </div>
-
       </div>
 
       <div class="actions">
         <button class="close-btn" @click="emit('close')">Fechar</button>
-        <button class="update-btn" @click="updateVehicleDriver() && emit('close-loader')">Alterar</button>
+        <button class="update-btn" @click="updateVehicleDriver() && emit('close-loader')">
+          Alterar
+        </button>
       </div>
     </div>
   </div>
@@ -195,7 +188,7 @@ select:hover {
   background: #4444;
 }
 
-option{
+option {
   background: #333;
   color: white;
 }

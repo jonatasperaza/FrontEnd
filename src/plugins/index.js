@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { useAuthStore } from '@/stores'
 
-
 export const api = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL
 })
@@ -29,8 +28,7 @@ axios.interceptors.response.use(
     if (error.response.status === 401) {
       authStore.logout()
       location.reload()
-    }
-    else{
+    } else {
       console.error(error)
     }
     return Promise.reject(error)

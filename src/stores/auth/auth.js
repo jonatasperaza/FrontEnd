@@ -42,12 +42,12 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function logout() {
-      state.value.isLoading = true
-      state.value.user = {}
-      state.value.isLogged = false
-      state.value.type = ''
-      state.value.isLoading = false
-      router.go('/')
+    state.value.isLoading = true
+    state.value.user = {}
+    state.value.isLogged = false
+    state.value.type = ''
+    state.value.isLoading = false
+    router.go('/')
   }
 
   return {

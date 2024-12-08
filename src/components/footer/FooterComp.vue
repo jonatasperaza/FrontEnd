@@ -22,7 +22,6 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
-  
 }
 
 @media screen and (max-width: 1150px) {

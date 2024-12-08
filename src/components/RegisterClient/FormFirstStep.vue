@@ -1,32 +1,57 @@
 <script setup>
-import { useClientStore } from '@/stores';
-import { computed } from 'vue';
+import { useClientStore } from '@/stores'
+import { computed } from 'vue'
 
-const clientStore = useClientStore();
+const clientStore = useClientStore()
 
-const clientData = computed(() => clientStore.state.client_data);
+const clientData = computed(() => clientStore.state.client_data)
 
 const handleCpfCnpjChange = () => {
-  const length = clientData.value.cpf_cnpj.length;
-  clientData.value.type = length > 11 ? 'J' : length === 11 ? 'F' : null;
-};
+  const length = clientData.value.cpf_cnpj.length
+  clientData.value.type = length > 11 ? 'J' : length === 11 ? 'F' : null
+}
 </script>
 <template>
   <form @submit.prevent="$emit('next')">
     <label for="email">Email</label>
-    <input id="email" type="email" placeholder="Insira seu email" v-model="clientData.email" required/>
+    <input
+      id="email"
+      type="email"
+      placeholder="Insira seu email"
+      v-model="clientData.email"
+      required
+    />
 
     <label for="username">Username</label>
-    <input id="username" type="text" placeholder="Insira seu username" v-model="clientData.username" required/>
+    <input
+      id="username"
+      type="text"
+      placeholder="Insira seu username"
+      v-model="clientData.username"
+      required
+    />
 
     <label for="date_birth">Data de Nascimento</label>
-    <input id="date_birth" type="date" v-model="clientData.date_birth" required/>
+    <input id="date_birth" type="date" v-model="clientData.date_birth" required />
 
     <label for="name">Nome</label>
-    <input id="name" type="text" placeholder="Insira seu nome completo" v-model="clientData.name" required/>
+    <input
+      id="name"
+      type="text"
+      placeholder="Insira seu nome completo"
+      v-model="clientData.name"
+      required
+    />
 
     <label for="telephone">Telefone</label>
-    <input id="telephone" type="tel" placeholder="Insira seu telefone" v-model="clientData.telephone" required maxlength="11"/>
+    <input
+      id="telephone"
+      type="tel"
+      placeholder="Insira seu telefone"
+      v-model="clientData.telephone"
+      required
+      maxlength="11"
+    />
 
     <label for="cpf_cnpj">CPF ou CNPJ</label>
     <input
@@ -93,6 +118,5 @@ button:hover {
   form {
     width: 100%;
   }
-
 }
 </style>

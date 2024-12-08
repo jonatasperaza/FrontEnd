@@ -15,7 +15,9 @@
           <span class="strong-pink">A Solução.</span>
         </h1>
         <p>
-          Entregamos soluções claras e objetivas para os seus desafios. Nossa missão é oferecer resultados que atendam às suas expectativas, com serviços de alta qualidade e comunicação eficiente, garantindo que cada detalhe seja pensado para o seu sucesso.
+          Entregamos soluções claras e objetivas para os seus desafios. Nossa missão é oferecer
+          resultados que atendam às suas expectativas, com serviços de alta qualidade e comunicação
+          eficiente, garantindo que cada detalhe seja pensado para o seu sucesso.
         </p>
       </div>
     </article>

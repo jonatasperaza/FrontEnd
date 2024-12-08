@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 <template>
   <div class="container">
     <div class="container-title">
@@ -38,20 +37,20 @@
 @media screen and (max-width: 1150px) {
   .container {
     height: 80%;
-  .container-title {
-    margin: 0;
-    width: 100%;
-    h1 {
-      color: main.$standard-pink;
+    .container-title {
+      margin: 0;
+      width: 100%;
+      h1 {
+        color: main.$standard-pink;
+      }
+    }
+    div {
+      margin: 1em;
+      p {
+        margin-top: 2em;
+        color: main.$standard-white;
+      }
     }
   }
-  div {
-    margin: 1em;
-    p {
-      margin-top: 2em;
-      color: main.$standard-white;
-    }
-  }
-}
 }
 </style>

@@ -83,7 +83,7 @@ const router = createRouter({
     {
       path: '/order-status/:id',
       name: 'Status Do Pedido',
-      component: OrderStatusView,
+      component: OrderStatusView
     },
     {
       path: '/make-order-test',
@@ -109,7 +109,7 @@ router.beforeEach((to, from, next) => {
       position: 'top-left'
     })
   }
-  
+
   next()
 })
 

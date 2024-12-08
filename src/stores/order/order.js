@@ -108,28 +108,25 @@ export const useOrderStore = defineStore('orders', () => {
 
   const getAddressByCep = async (cep, type) => {
     state.loading = true
-    try{
+    try {
       const addres = await cepStore.getEndereco(cep)
-      if (type == "collect"){
+      if (type == 'collect') {
         state.order.address_collect.street = addres.logradouro
         state.order.address_collect.neighborhood = addres.bairro
         state.order.address_collect.city = addres.localidade
         state.order.address_collect.state = addres.uf
         console.log(addres)
-      }
-      else if (type == "delivery"){
+      } else if (type == 'delivery') {
         state.order.address_delivery.street = addres.logradouro
         state.order.address_delivery.neighborhood = addres.bairro
         state.order.address_delivery.city = addres.localidade
         state.order.address_delivery.state = addres.uf
         console.log(addres)
       }
-    }
-    catch(error){
+    } catch (error) {
       state.error = error
       console.log(error)
-    }
-    finally{
+    } finally {
       state.loading = false
     }
   }
