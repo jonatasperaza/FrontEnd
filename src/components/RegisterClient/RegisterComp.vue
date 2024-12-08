@@ -144,7 +144,6 @@ h1 {
   }
 }
 
-
 @media screen and (max-width: 1150px) {
   form {
     width: 100%;

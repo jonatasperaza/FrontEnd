@@ -150,7 +150,7 @@ div {
 
 @media screen and (max-width: 1150px) {
   .container {
-  width: 80%;
-}
+    width: 80%;
+  }
 }
 </style>

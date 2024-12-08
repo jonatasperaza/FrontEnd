@@ -38,8 +38,8 @@ h1 {
   .container {
     width: 100%;
     .row {
-    margin-bottom: 3rem;
-  }
+      margin-bottom: 3rem;
+    }
   }
 }
 </style>

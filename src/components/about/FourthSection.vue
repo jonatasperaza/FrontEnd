@@ -97,7 +97,7 @@ h2 {
 .titlePink {
   color: main.$standard-pink;
 }
-#loc2{
+#loc2 {
   display: none;
 }
 @media screen and (max-width: 1024px) {
@@ -133,10 +133,10 @@ h2 {
       }
     }
   }
-  #loc1{
+  #loc1 {
     display: none;
   }
-  #loc2{
+  #loc2 {
     display: block;
   }
 }

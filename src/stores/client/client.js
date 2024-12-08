@@ -2,7 +2,7 @@ import { reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { ClientService } from '@/services'
 import { useCepStore } from '../address/cep'
-import router from '@/router'
+// import router from '@/router'
 
 export const useClientStore = defineStore('client', () => {
   const cepStore = useCepStore()

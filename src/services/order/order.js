@@ -18,7 +18,6 @@ class OrderService {
   async getOrders() {
     try {
       const { data } = await api.get('order/')
-      toast.success('Pedidos encontrados com sucesso')
       return data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar pedidos')
@@ -29,8 +28,6 @@ class OrderService {
   async getOrder(id) {
     try {
       const { data } = await api.get(`order/${id}/`)
-      console.log(data)
-      toast.success('Pedido encontrado com sucesso')
       return data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar pedido')
@@ -56,6 +53,28 @@ class OrderService {
       return data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao apagar pedido')
+      return error.message
+    }
+  }
+
+  async updateOrderStatus(orderId, newStatus) {
+    try {
+      const { data } = await api.post(`orders/${orderId}/status/${newStatus}/`)
+      toast.success('Status do pedido atualizado com sucesso')
+      return data
+    } catch (error) {
+      handleErrorResponse(error, 'Erro ao atualizar status do pedido')
+      return error.message
+    }
+  }
+
+  async updateVehicleDriver(orderId, vehicleId, driverId) {
+    try {
+      const { data } = await api.post(`orders/${orderId}/assign/${vehicleId}/${driverId}/`)
+      toast.success('Veículo e motorista do pedido atualizados com sucesso')
+      return data
+    } catch (error) {
+      handleErrorResponse(error, 'Erro ao atualizar veículo e motorista do pedido')
       return error.message
     }
   }

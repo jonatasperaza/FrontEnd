@@ -15,7 +15,6 @@ watch(
   async (newValue) => {
     if (newValue.length === 8) {
       const response = await cepStore.getEndereco(employeeStore.state.employee_data.address.cep)
-      console.log(response)
       employeeStore.state.employee_data.address.state = response.uf || ''
       employeeStore.state.employee_data.address.city = response.localidade || ''
       employeeStore.state.employee_data.address.neighborhood = response.bairro || ''

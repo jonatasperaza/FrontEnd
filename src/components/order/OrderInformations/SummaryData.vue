@@ -21,7 +21,12 @@ const ordersStore = useOrderStore()
             </div>
             <div class="container-input-2">
               <label>Quantidade</label>
-              <input class="input-2" type="text" name="quantidade do item" v-model="item.itemQuantity" />
+              <input
+                class="input-2"
+                type="text"
+                name="quantidade do item"
+                v-model="item.itemQuantity"
+              />
             </div>
           </div>
           <div class="container-field">

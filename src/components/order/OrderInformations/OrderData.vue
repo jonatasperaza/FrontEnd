@@ -30,12 +30,7 @@ const item = reactive({
             </div>
             <div class="container-input-2">
               <label>Quantidade</label>
-              <input
-                class="input-2"
-                type="number"
-                name=""
-                v-model="item.quantity"
-              />
+              <input class="input-2" type="number" name="" v-model="item.quantity" />
             </div>
           </div>
           <div class="container-field">
@@ -51,21 +46,11 @@ const item = reactive({
             </div>
             <div class="container-input-2">
               <label>Tamanho</label>
-              <input
-                class="input-2"
-                type="number"
-                name=""
-                v-model="item.weight"
-              />
+              <input class="input-2" type="number" name="" v-model="item.weight" />
             </div>
             <div class="container-input-2">
               <label>Altura</label>
-              <input
-                class="input-2"
-                type="number"
-                name=""
-                v-model="item.height"
-              />
+              <input class="input-2" type="number" name="" v-model="item.height" />
             </div>
           </div>
         </div>

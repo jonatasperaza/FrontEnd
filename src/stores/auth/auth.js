@@ -19,10 +19,8 @@ export const useAuthStore = defineStore('auth', () => {
       state.value.isLoading = true
       data = await AuthService.getUser(token)
     } catch (error) {
-      console.log(error)
       error.value = true
     } finally {
-      console.log(data)
       state.value.user = data
       state.value.isLogged = true
       state.value.type = data.type
@@ -42,12 +40,12 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function logout() {
-      state.value.isLoading = true
-      state.value.user = {}
-      state.value.isLogged = false
-      state.value.type = ''
-      state.value.isLoading = false
-      router.go('/')
+    state.value.isLoading = true
+    state.value.user = {}
+    state.value.isLogged = false
+    state.value.type = ''
+    state.value.isLoading = false
+    router.go('/')
   }
 
   return {

@@ -154,8 +154,8 @@ h1 {
 
 @media screen and (max-width: 1150px) {
   .container {
-  width: 80%;
-}
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 1150px) {
@@ -163,7 +163,7 @@ h1 {
     width: 100%;
   }
 
-  div { 
+  div {
     h1 {
       font-size: 2.5rem;
     }

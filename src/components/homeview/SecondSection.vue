@@ -10,7 +10,9 @@
             <div class="text">
               <h2>Rapidez</h2>
               <p>
-                Entendemos que tempo é um recurso valioso. Por isso, trabalhamos de forma ágil e eficiente, entregando resultados em prazos que superam expectativas sem comprometer a qualidade do serviço prestado.
+                Entendemos que tempo é um recurso valioso. Por isso, trabalhamos de forma ágil e
+                eficiente, entregando resultados em prazos que superam expectativas sem comprometer
+                a qualidade do serviço prestado.
               </p>
             </div>
           </div>
@@ -19,7 +21,9 @@
             <div class="text">
               <h2>Segurança</h2>
               <p>
-                Garantimos total segurança em nossos processos, utilizando tecnologias avançadas e métodos confiáveis para proteger os dados e informações dos nossos clientes. Seu projeto estará em boas mãos conosco.
+                Garantimos total segurança em nossos processos, utilizando tecnologias avançadas e
+                métodos confiáveis para proteger os dados e informações dos nossos clientes. Seu
+                projeto estará em boas mãos conosco.
               </p>
             </div>
           </div>
@@ -30,7 +34,9 @@
             <div class="text">
               <h2>Qualidade</h2>
               <p>
-                Nosso compromisso é entregar serviços que atendam aos mais altos padrões de qualidade. Cada detalhe é pensado e executado com excelência para garantir que você obtenha o melhor. 
+                Nosso compromisso é entregar serviços que atendam aos mais altos padrões de
+                qualidade. Cada detalhe é pensado e executado com excelência para garantir que você
+                obtenha o melhor.
               </p>
             </div>
           </div>
@@ -39,7 +45,9 @@
             <div class="text">
               <h2>Preço Justo</h2>
               <p>
-                Oferecemos soluções acessíveis e competitivas, equilibrando custos e benefícios. Nosso objetivo é proporcionar o máximo de valor pelo menor investimento possível, respeitando o seu orçamento.
+                Oferecemos soluções acessíveis e competitivas, equilibrando custos e benefícios.
+                Nosso objetivo é proporcionar o máximo de valor pelo menor investimento possível,
+                respeitando o seu orçamento.
               </p>
             </div>
           </div>
@@ -54,7 +62,9 @@
             <div class="strong-pink">Problemas</div>
           </h1>
           <p>
-            Seja qual for o desafio, estamos prontos para resolvê-lo. Nosso time de especialistas trabalha com dedicação e criatividade para oferecer soluções práticas e eficazes, ajudando você a alcançar seus objetivos de maneira simples e eficiente.
+            Seja qual for o desafio, estamos prontos para resolvê-lo. Nosso time de especialistas
+            trabalha com dedicação e criatividade para oferecer soluções práticas e eficazes,
+            ajudando você a alcançar seus objetivos de maneira simples e eficiente.
           </p>
         </div>
       </div>

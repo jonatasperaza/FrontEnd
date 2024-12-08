@@ -2,7 +2,7 @@
 import { LoginComp } from '@/components/login/'
 </script>
 <template>
-    <div>
-        <LoginComp />
-    </div>
+  <div>
+    <LoginComp />
+  </div>
 </template>

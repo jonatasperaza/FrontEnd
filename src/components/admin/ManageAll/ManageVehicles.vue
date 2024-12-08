@@ -4,7 +4,17 @@ import ArrowExpandAll from 'vue-material-design-icons/ArrowExpandAll.vue'
 import { useVehicleStore } from '@/stores'
 const vehicleStore = useVehicleStore()
 
+const statusOptions = [
+  { value: 1, label: 'Rodando' },
+  { value: 2, label: 'Em uso' },
+  { value: 3, label: 'Parado' },
+  { value: 4, label: 'Quebrado' }
+]
 const vehicles = ref([])
+
+const statusProcessor = (statusId) => {
+  return statusOptions.find((status) => status.value === statusId)?.label
+}
 
 onMounted(async () => {
   await vehicleStore.getVehicles()
@@ -30,7 +40,7 @@ onMounted(async () => {
         <div v-for="vehicle in vehicles" :key="vehicle.id">
           <p>{{ vehicle.id }}</p>
           <p>{{ vehicle.model }}</p>
-          <p>{{ vehicle.status }}</p>
+          <p>{{ statusProcessor(vehicle?.status) || 'Desconhecido' }}</p>
         </div>
       </div>
     </div>
@@ -79,6 +89,16 @@ article {
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   padding: 1rem 0;
+  transition: 0.4s ease-in-out;
+}
+
+.list div:hover {
+  background-color: #333;
+  cursor: pointer;
+}
+
+li div:hover {
+  background-color: #333;
 }
 
 button {

@@ -64,18 +64,18 @@ function selectType(type) {
 
 @media screen and (max-width: 1150px) {
   .row {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0.5rem;
-  button {
-    width: 30%;
-    height: 3rem;
-    font-size: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    button {
+      width: 30%;
+      height: 3rem;
+      font-size: 25px;
+    }
+    .selectedPink {
+      border-bottom: 2px solid main.$standard-pink;
+    }
   }
-  .selectedPink {
-    border-bottom: 2px solid main.$standard-pink;
-  }
-}
 }
 </style>

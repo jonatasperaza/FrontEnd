@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import NavFooterComp from './NavFooterComp.vue'
 import SocialFooterComp from './SocialFooterComp.vue'
 import AddressFooterComp from './AddressFooterComp.vue'
@@ -23,7 +22,6 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
-  
 }
 
 @media screen and (max-width: 1150px) {

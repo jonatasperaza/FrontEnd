@@ -43,5 +43,9 @@ body {
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
+}
+
+body.modal-open {
+  overflow: hidden;
 }

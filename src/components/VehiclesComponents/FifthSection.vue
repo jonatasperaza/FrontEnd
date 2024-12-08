@@ -167,7 +167,6 @@ section {
         width: 25em;
         height: 20em;
       }
-
     }
   }
 }
@@ -237,7 +236,6 @@ section {
         width: 18em;
         height: 16em;
       }
-
     }
   }
 }

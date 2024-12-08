@@ -13,7 +13,8 @@ import {
   RegisterEmployeeView,
   SignInViewClient,
   VehiclesView,
-  ViaCepView
+  ViaCepView,
+  MakeOrderTest
 } from '@/views/'
 
 const router = createRouter({
@@ -82,17 +83,21 @@ const router = createRouter({
     {
       path: '/order-status/:id',
       name: 'Status Do Pedido',
-      component: OrderStatusView,
+      component: OrderStatusView
+    },
+    {
+      path: '/make-order-test',
+      name: 'Teste de Pedido',
+      component: MakeOrderTest
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  const pageKey = `visited_${to.name}` // Identificador único para a página
+  const pageKey = `visited_${to.name}`
   const isVisited = sessionStorage.getItem(pageKey)
 
   if (!isVisited) {
-    console.log(isVisited)
     sessionStorage.setItem(pageKey, true)
     toast.info(`Bem-vindo à página ${to.name}! Esperamos que você goste. 😊`, {
       timeout: 5000,
@@ -103,7 +108,7 @@ router.beforeEach((to, from, next) => {
       position: 'top-left'
     })
   }
-  
+
   next()
 })
 

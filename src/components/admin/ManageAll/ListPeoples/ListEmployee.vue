@@ -2,13 +2,6 @@
 import { onMounted, ref } from 'vue'
 import { useEmployeeStore } from '@/stores'
 const employeeStore = useEmployeeStore()
-
-const employees = ref([])
-
-onMounted(async () => {
-  await employeeStore.getEmployees()
-  employees.value = employeeStore.state.employees
-})
 </script>
 
 <template>
@@ -16,11 +9,11 @@ onMounted(async () => {
     <div class="listVehicles">
       <div class="headerList">
         <p>ID:</p>
-        <p>Nome:</p>	
+        <p>Nome:</p>
         <p>Email:</p>
       </div>
       <div class="list">
-        <div v-for="employee in employees" :key="employee.id">
+        <div v-for="employee in employeeStore.state.employees" :key="employee.id">
           <p>{{ employee.id }}</p>
           <p>{{ employee.user.username }}</p>
           <p>{{ employee.user.email }}</p>
@@ -61,6 +54,12 @@ article {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 1rem 0;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.list div:hover {
+  background-color: #1c1c1c;
 }
 
 button {

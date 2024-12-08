@@ -9,7 +9,6 @@ import Information from 'vue-material-design-icons/Information.vue'
 import { useAuthStore } from '@/stores'
 import { ref } from 'vue'
 const store = useAuthStore()
-console.log(store.state.isLogged)
 
 const isOpen = ref(false)
 </script>

@@ -6,7 +6,6 @@ class OfficeService {
   async getOffices() {
     try {
       const response = await api.get('offices')
-      toast.success('Escritórios encontrados com sucesso')
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar escritórios')
@@ -17,7 +16,6 @@ class OfficeService {
   async getOffice(id) {
     try {
       const response = await api.get(`office/${id}`)
-      toast.success('Escritório encontrado com sucesso')
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar escritório')

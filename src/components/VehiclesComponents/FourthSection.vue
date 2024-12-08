@@ -155,7 +155,6 @@ section {
         width: 25em;
         height: 20em;
       }
-
     }
   }
 }
@@ -220,11 +219,10 @@ section {
       grid-column: 1;
     }
 
-      img {
-        width: 18em;
-        height: 16em;
-      }
-
+    img {
+      width: 18em;
+      height: 16em;
+    }
   }
 }
 </style>

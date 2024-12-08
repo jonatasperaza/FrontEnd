@@ -68,26 +68,22 @@ section {
 }
 
 @media screen and (max-width: 1150px) {
-  
-
   section {
-  
-  .rowInputs {
-    flex-direction: column-reverse;
-    width: 100%;
-    .left {
-      width: 80%;
-      height: 55vh;
-      justify-content: flex-start;
-    }
-    .right {
-      width: 80%;
-      height: 60vh;
-      display: flex;
-      justify-content: space-between;
-
+    .rowInputs {
+      flex-direction: column-reverse;
+      width: 100%;
+      .left {
+        width: 80%;
+        height: 55vh;
+        justify-content: flex-start;
+      }
+      .right {
+        width: 80%;
+        height: 60vh;
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
-}
 }
 </style>

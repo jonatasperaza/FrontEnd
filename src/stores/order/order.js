@@ -37,7 +37,7 @@ export const useOrderStore = defineStore('orders', () => {
         installments: null
       },
       address_delivery: {
-        cep: 0,
+        cep: '0',
         street: '',
         number: 0,
         complement: '',
@@ -47,7 +47,7 @@ export const useOrderStore = defineStore('orders', () => {
         typeAddress: 0
       },
       address_collect: {
-        cep: 0,
+        cep: '0',
         street: '',
         number: 0,
         complement: '',
@@ -82,7 +82,6 @@ export const useOrderStore = defineStore('orders', () => {
     try {
       const response = await OrderService.getOrder(id)
       state.currentOrder = response
-      console.log(response)
       return response
     } catch (error) {
       state.error = error
@@ -108,28 +107,22 @@ export const useOrderStore = defineStore('orders', () => {
 
   const getAddressByCep = async (cep, type) => {
     state.loading = true
-    try{
+    try {
       const addres = await cepStore.getEndereco(cep)
-      if (type == "collect"){
+      if (type == 'collect') {
         state.order.address_collect.street = addres.logradouro
         state.order.address_collect.neighborhood = addres.bairro
         state.order.address_collect.city = addres.localidade
         state.order.address_collect.state = addres.uf
-        console.log(addres)
-      }
-      else if (type == "delivery"){
+      } else if (type == 'delivery') {
         state.order.address_delivery.street = addres.logradouro
         state.order.address_delivery.neighborhood = addres.bairro
         state.order.address_delivery.city = addres.localidade
         state.order.address_delivery.state = addres.uf
-        console.log(addres)
       }
-    }
-    catch(error){
+    } catch (error) {
       state.error = error
-      console.log(error)
-    }
-    finally{
+    } finally {
       state.loading = false
     }
   }

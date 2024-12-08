@@ -1,4 +1,6 @@
 import { api } from '@/plugins'
+import { handleErrorResponse } from '@/utils/errorHandler'
+import { h } from 'vue'
 
 class AuthService {
   async getUser(token) {
@@ -9,7 +11,6 @@ class AuthService {
           Authorization: `Bearer ${token}`
         }
       })
-      console.log(response.data)
       if (response.data['driver']) {
         data = {
           ...response.data,
@@ -26,10 +27,10 @@ class AuthService {
           type: 'client'
         }
       }
-      console.log(data)
       return data
     } catch (error) {
       console.error(error)
+      handleErrorResponse(error, 'Erro ao logar usuário')
       return error
     }
   }
