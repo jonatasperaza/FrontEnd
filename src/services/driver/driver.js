@@ -33,7 +33,6 @@ class DriverService {
       router.push('/login')
       return response.data
     } catch (error) {
-      console.log(error.response.data)
       handleErrorResponse(error, 'Erro ao criar motorista')
       return error.response.data
     }

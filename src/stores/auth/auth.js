@@ -19,10 +19,8 @@ export const useAuthStore = defineStore('auth', () => {
       state.value.isLoading = true
       data = await AuthService.getUser(token)
     } catch (error) {
-      console.log(error)
       error.value = true
     } finally {
-      console.log(data)
       state.value.user = data
       state.value.isLogged = true
       state.value.type = data.type

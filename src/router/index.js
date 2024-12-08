@@ -98,7 +98,6 @@ router.beforeEach((to, from, next) => {
   const isVisited = sessionStorage.getItem(pageKey)
 
   if (!isVisited) {
-    console.log(isVisited)
     sessionStorage.setItem(pageKey, true)
     toast.info(`Bem-vindo à página ${to.name}! Esperamos que você goste. 😊`, {
       timeout: 5000,

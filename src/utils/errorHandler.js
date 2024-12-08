@@ -24,7 +24,7 @@ export const handleErrorResponse = (error, defaultMessage = 'Erro ao processar a
 
   toast.error(errorMessage)
 
-  if (process.env.NODE_ENV === 'development') {
+  if (import.meta.env.VITE_MODE === 'development') {
     console.error('Error details:', error)
   }
 }

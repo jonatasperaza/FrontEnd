@@ -82,7 +82,6 @@ export const useOrderStore = defineStore('orders', () => {
     try {
       const response = await OrderService.getOrder(id)
       state.currentOrder = response
-      console.log(response)
       return response
     } catch (error) {
       state.error = error
@@ -115,17 +114,14 @@ export const useOrderStore = defineStore('orders', () => {
         state.order.address_collect.neighborhood = addres.bairro
         state.order.address_collect.city = addres.localidade
         state.order.address_collect.state = addres.uf
-        console.log(addres)
       } else if (type == 'delivery') {
         state.order.address_delivery.street = addres.logradouro
         state.order.address_delivery.neighborhood = addres.bairro
         state.order.address_delivery.city = addres.localidade
         state.order.address_delivery.state = addres.uf
-        console.log(addres)
       }
     } catch (error) {
       state.error = error
-      console.log(error)
     } finally {
       state.loading = false
     }
