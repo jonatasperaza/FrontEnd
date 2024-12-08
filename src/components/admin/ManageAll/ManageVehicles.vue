@@ -37,7 +37,7 @@ onMounted(async () => {
         <p>Status:</p>
       </div>
       <div class="list">
-        <div v-for="vehicle in vehicles" :key="vehicle.id">
+        <div v-for="vehicle in vehicles" :key="vehicle.id" >
           <p>{{ vehicle.id }}</p>
           <p>{{ vehicle.model }}</p>
           <p>{{ statusProcessor(vehicle?.status) || 'Desconhecido' }}</p>
@@ -89,6 +89,12 @@ article {
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   padding: 1rem 0;
+  transition: 0.4s ease-in-out;
+}
+
+.list div:hover {
+  background-color: #333;
+  cursor: pointer;
 }
 
 li div:hover {

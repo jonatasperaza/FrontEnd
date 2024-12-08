@@ -52,6 +52,19 @@ const chartOptions = ref({
     text: 'Gráfico de Linhas com ECharts',
     left: 'center'
   },
+    toolbox: {
+    feature: {
+      magicType: { type: ['line', 'bar'] },
+      restore: {},
+      saveAsImage: {}
+    }
+  },
+    grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '10%',
+    containLabel: true
+  },
   tooltip: {
     trigger: 'axis'
   },
@@ -75,6 +88,18 @@ const chartOptions = ref({
       ]
     }
   },
+    dataZoom: [
+    {
+      type: 'slider',
+      start: 0,
+      end: 100,
+      bottom: '5%',
+      textStyle: {
+        color: '#fff'
+      }
+    }
+  ],
+  
   series: [
     {
       name: 'Valores',
@@ -87,7 +112,10 @@ const chartOptions = ref({
         data: [
           { type: 'average', name: 'Média' }
         ]
-      }
+      },
+      areaStyle: {
+        color: 'rgba(252, 29, 135, 0.2)'
+      },
     }
   ]
 })

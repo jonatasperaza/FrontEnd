@@ -107,22 +107,31 @@ const option = ref({
         borderWidth: 1
       },
       emphasis: {
+        scale: true,
+        scaleSize: 15,
         label: {
           show: true,
-          fontSize: 14,
+          fontSize: 12,
           fontWeight: 'bold',
-          color: '#fff'
         },
         itemStyle: {
           shadowBlur: 10,
-          shadowOffsetX: 0,
+          shadowOffsetX: 10,
           shadowColor: 'rgba(0, 0, 0, 0.5)'
         }
       }
     }
   ],
-  animationDuration: 2000, // Duração da animação
-  animationEasing: 'cubicOut' // Tipo de animação
+animation: 'auto',  
+animationDuration: 1000,
+animationDurationUpdate: 500,
+animationEasing: 'cubicInOut',
+animationEasingUpdate: 'cubicInOut',
+animationThreshold: 2000,
+progressiveThreshold: 3000,
+progressive: 400,
+hoverLayerThreshold: 3000,
+
 })
 
 // Atualizar gráfico quando os dados mudarem
