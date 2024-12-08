@@ -68,8 +68,8 @@ onMounted(async () => {
 
     <Transition name="fade" mode="out-in">
       <template v-if="isLoading">
-        <ContentLoader :animate="true" primary-color="#000000" secondary-color="#D0D0D0" width="1080" style="margin-left: 10vw; border: 1px solid #C1C1C1; border-radius: 14px;">
-          <rect x="0" y="0" rx="0" ry="0" width="100vw" height="100vh"/>
+        <ContentLoader :animate="true" primary-color="#000000" secondary-color="#D0D0D0" width="82vw" height="12%" style="margin-left: 8.5vw; border: 1px solid #C1C1C1; border-radius: 14px; margin-bottom: 3rem;">
+          <rect x="0" y="0" rx="0" ry="0" width="100vw" height="100%"/>
         </ContentLoader>
       </template>
       <div class="cards" v-else>
@@ -96,10 +96,13 @@ section {
 }
 
 .cards {
-  width: 79%;
+  width: 82vw;
   margin: auto;
   display: flex;
   gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
 }
 
 @media screen and (max-width: 1150px) {

@@ -60,6 +60,12 @@ article {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 1rem 0;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.list div:hover {
+  background-color: #1c1c1c;
 }
 
 button {

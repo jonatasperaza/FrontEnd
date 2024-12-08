@@ -45,14 +45,15 @@ function closeModal() {
 </script>
 
 <template>
-  <h3 style="margin: auto; width: 80%;">Manage Orders:</h3>
   <article>
+    <h2 style="margin: 0; width: 80%;">Gerenciar <span class="strong-pink">Pedidos:</span></h2>
   
     <div class="listOrders">
       <div class="headerList">
         <p>ID:</p>
         <p>Status:</p>
         <p>Veículo:</p>
+        <p>Motorista</p>
       </div>
 
       <div class="list">
@@ -64,16 +65,19 @@ function closeModal() {
           <p>{{ order.id }}</p>
           <p>{{ statusProcessor(order.status) }}</p>
           <p>{{ order.vehicle?.plate || 'Não informado' }}</p>
+          <p>{{ order.driver?.name || 'Não informado' }}</p>
         </div>
       </div>
     </div>
 
     <!-- Modal de detalhes do pedido -->
+     <Transition name="fade" mode="out-in">
     <OrderDetailsModal
       :order="selectedOrder"
       @close="closeModal"
       v-if="isModalVisible"
     />
+    </Transition>
   </article>
 </template>
 
@@ -81,18 +85,21 @@ function closeModal() {
 @use '@/assets/main';
 
 article {
-  width: 80%;
+  width: 82vw;
   background-color: #070707;
   padding: 1rem;
   border-radius: 15px;
   overflow: hidden;
   margin: auto;
+  border-radius: 6px;
+  border: 1px solid #c1c1c1;
+  margin-bottom: 3rem;
 }
 
 .headerList {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   border-bottom: 1px solid #c1c1c1;
 }
 
@@ -107,7 +114,7 @@ article {
 .list div {
   border-bottom: 1px solid #c1c1c1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 1rem 0;
   cursor: pointer;
   transition: 0.4s ease-in-out;
@@ -115,5 +122,12 @@ article {
 
 .list div:hover {
   background-color: #333;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>

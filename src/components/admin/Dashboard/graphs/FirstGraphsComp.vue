@@ -20,38 +20,38 @@ import DynamicGraph from './DynamicGraph.vue'
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/assets/main';
+
 section {
   width: 100%;
 }
 
 .container {
   display: flex;
-  width: 82%;
+  width: 82vw;
   margin: auto;
-  padding: 1rem;
+  margin-bottom: 3rem;
   gap: 2rem;
-  justify-self: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .first {
-  width: 30%;
+  width: 41vw;
 }
 
 .second {
-  width: 70%;
-  margin-right: -100px;
-  margin: auto;
+  width: 41vw;
 }
 
 .dynamic {
-  width: 80%;
+  width: 82vw;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
-  padding: 1rem;
+  margin-bottom: 3rem;
 }
 
 @media screen and (max-width: 1150px) {

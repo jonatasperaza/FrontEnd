@@ -35,6 +35,14 @@ const statusOptions = [
 
 const statusselect = ref('');
 
+function updateDriver(newDrive){
+  driverselect.value = newDrive;
+}
+
+function updateVehicle(newVehicle){
+  vehicleselect.value = newVehicle;
+}
+
 async function updateStatus(newStatus) {
   statusselect.value = newStatus;
   const response = await axios.post(
@@ -46,7 +54,7 @@ async function updateStatus(newStatus) {
 const vehicleselect = ref('');
 const driverselect = ref('');
 
-async function updateVehicle() {
+async function updateVehicleDriver() {
   const response = await axios.post(
     `https://api.fexcompany.me/api/orders/${props.order.id}/assign/${vehicleselect.value}/${driverselect.value}/`,
     {}
@@ -66,9 +74,11 @@ async function updateVehicle() {
           <label for="driver"><strong>Motorista:</strong></label>
           <select
             name="driver"
-            v-model="driverselect"
             id="driver"
+            :value="order?.driver?.id"
+            @change="updateDriver($event.target.value)"
           >
+            <option value="" disabled>Selecione um motorista</option>
             <option
               v-for="driver in driverStore.state.drivers"
               :key="driver.value"
@@ -83,9 +93,11 @@ async function updateVehicle() {
           <label for="vehicle"><strong>Veículo:</strong></label>
           <select
             name="vehicle"
-            v-model="vehicleselect"
+            :value="order?.vehicle?.id"
             id="vehicle"
+            @change="updateVehicle($event.target.value)"
           >
+            <option value="" disabled>Selecione um veículo</option>
             <option
               v-for="vehicle in vehicleStore.state.vehicles"
               :key="vehicle.plate"
@@ -104,6 +116,7 @@ async function updateVehicle() {
             @change="updateStatus($event.target.value)"
             id="status"
           >
+            <option value="" disabled>Selecione um status</option>
             <option
               v-for="option in statusOptions"
               :key="option.value"
@@ -118,13 +131,15 @@ async function updateVehicle() {
 
       <div class="actions">
         <button class="close-btn" @click="emit('close')">Fechar</button>
-        <button class="update-btn" @click="updateVehicle()">Alterar</button>
+        <button class="update-btn" @click="updateVehicleDriver()">Alterar</button>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/assets/main';
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -167,6 +182,15 @@ select {
   border: 1px solid #c1c1c1;
   border-radius: 4px;
   padding: 5px;
+  transition: 0.3s;
+}
+
+select:focus {
+  outline: none;
+}
+
+select option {
+  background: #333;
 }
 
 .actions {

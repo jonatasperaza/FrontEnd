@@ -4,27 +4,23 @@ import ManageVehicles from './ManageVehicles.vue'
 </script>
 
 <template>
-  <section>
     <div class="container">
       <ManageVehicles />
       <ManageVehicles />
       <!-- <ManageOrders /> -->
     </div>
-  </section>
 </template>
 
 <style scoped lang="scss">
 @use '@/assets/main';
 
-section {
-  width: 100%;
-}
-
 .container {
-  width: 80%;
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 82vw;
   margin: auto;
+  gap: 1rem;
 }
 
 @media screen and (max-width: 1150px) {

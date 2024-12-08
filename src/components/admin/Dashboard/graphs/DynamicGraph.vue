@@ -1,16 +1,18 @@
 <template>
-  <v-chart class="chart" :option="option" />
+  <v-chart :option="chartOptions" autoresize class="chart"/>
 </template>
 
 <script setup>
-import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
+import { use } from 'echarts/core'
 import { LineChart } from 'echarts/charts'
 import {
   TitleComponent,
   TooltipComponent,
   VisualMapComponent,
-  GridComponent
+  GridComponent,
+  LegendComponent,
+  MarkLineComponent
 } from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
 import { ref, provide } from 'vue'
@@ -21,7 +23,9 @@ use([
   TitleComponent,
   TooltipComponent,
   VisualMapComponent,
-  GridComponent
+  GridComponent,
+  LegendComponent,
+  MarkLineComponent
 ])
 
 provide(THEME_KEY, 'dark')
@@ -39,124 +43,50 @@ const data = [
   ['2000-06-14', 130],
   ['2000-06-15', 245],
   ['2000-06-16', 139],
-  ['2000-06-17', 115],
-  ['2000-06-18', 111],
-  ['2000-06-19', 309],
-  ['2000-06-20', 206],
-  ['2000-06-21', 137],
-  ['2000-06-22', 128],
-  ['2000-06-23', 85],
-  ['2000-06-24', 94],
-  ['2000-06-25', 71],
-  ['2000-06-26', 106],
-  ['2000-06-27', 84],
-  ['2000-06-28', 93],
-  ['2000-06-29', 85],
-  ['2000-06-30', 73],
-  ['2000-07-01', 83],
-  ['2000-07-02', 125],
-  ['2000-07-03', 107],
-  ['2000-07-04', 82],
-  ['2000-07-05', 44],
-  ['2000-07-06', 72],
-  ['2000-07-07', 106],
-  ['2000-07-08', 107],
-  ['2000-07-09', 66],
-  ['2000-07-10', 91],
-  ['2000-07-11', 92],
-  ['2000-07-12', 113],
-  ['2000-07-13', 107],
-  ['2000-07-14', 131],
-  ['2000-07-15', 111],
-  ['2000-07-16', 64],
-  ['2000-07-17', 69],
-  ['2000-07-18', 88],
-  ['2000-07-19', 77],
-  ['2000-07-20', 83],
-  ['2000-07-21', 111],
-  ['2000-07-22', 57],
-  ['2000-07-23', 55],
-  ['2000-07-24', 60]
+  ['2000-06-17', 115]
 ]
 
-const dateList = data.map((item) => item[0])
-let valueList = data.map((item) => item[1])
-
-valueList = valueList.map((value) => value * (1 + Math.random() * 1.5 - 0.75))
-
-const option = ref({
+const chartOptions = ref({
   backgroundColor: '#070707',
-  visualMap: [
-    {
-      show: false,
-      type: 'continuous',
-      seriesIndex: 0,
-      min: 0,
-      max: 400
-    },
-    {
-      show: false,
-      type: 'continuous',
-      seriesIndex: 1,
-      dimension: 0,
-      min: 0,
-      max: dateList.length - 1
-    }
-  ],
-  title: [
-    {
-      left: 'center',
-      text: 'Lorem ipsum dolor'
-    },
-    {
-      top: '55%',
-      left: 'center',
-      text: 'Sit amet consectetur'
-    }
-  ],
+  title: {
+    text: 'Gráfico de Linhas com ECharts',
+    left: 'center'
+  },
   tooltip: {
     trigger: 'axis'
   },
-  xAxis: [
-    {
-      data: dateList
+  legend: {
+    data: ['Valores'],
+    left: '2',
+    top: '2'
+  },
+  xAxis: {
+    type: 'category',
+    data: data.map(item => item[0])
+  },
+  yAxis: {
+    type: 'value',
+    axisLabel: {
+      formatter: '{value}'
     },
-    {
-      data: dateList,
-      gridIndex: 1
+    markLine: {
+      data: [
+        { type: 'average', name: 'Média' }
+      ]
     }
-  ],
-  yAxis: [
-    {},
-    {
-      gridIndex: 1
-    }
-  ],
-  grid: [
-    {
-      bottom: '60%'
-    },
-    {
-      top: '60%'
-    }
-  ],
+  },
   series: [
     {
+      name: 'Valores',
       type: 'line',
-      showSymbol: false,
-      data: valueList,
-      lineStyle: {
-        color: 'yellow'
-      }
-    },
-    {
-      type: 'line',
-      showSymbol: false,
-      data: valueList,
-      xAxisIndex: 1,
-      yAxisIndex: 1,
-      lineStyle: {
-        color: 'yellow'
+      data: data.map(item => item[1]),
+      color: '#fc1d87',
+      smooth: true,
+      animationDuration: 2000,
+      markLine: {
+        data: [
+          { type: 'average', name: 'Média' }
+        ]
       }
     }
   ]

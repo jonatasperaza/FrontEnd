@@ -1,22 +1,30 @@
 <template>
-  <v-chart class="chart" :option="option" />
+  <v-chart class="chart" :option="option" autoresize/>
 </template>
 
 <script setup>
-import { use } from 'echarts/core'
+import { ref, provide, onMounted, watch } from 'vue'
 import { CanvasRenderer } from 'echarts/renderers'
+import { use } from 'echarts/core'
 import { PieChart } from 'echarts/charts'
-import { TitleComponent, TooltipComponent, LegendComponent } from 'echarts/components'
+import { TitleComponent, TooltipComponent, LegendComponent, GridComponent, ToolboxComponent } from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
-import { ref, provide, onMounted } from 'vue'
 import { useVehicleStore } from '@/stores'
 
+// Store
 const VehicleStore = useVehicleStore()
 
-use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent])
+// Registrar componentes do ECharts
+use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent, GridComponent, ToolboxComponent])
 
+// Definir tema
 provide(THEME_KEY, 'dark')
+
+// Dados do gráfico
 const data = ref([])
+const color = ref(['#FC1D87', '#79036D', '#FFC0CB', '#FF1493'])
+
+// Buscar dados
 onMounted(async () => {
   await VehicleStore.getVehicles()
   data.value = [
@@ -27,30 +35,79 @@ onMounted(async () => {
   ]
 })
 
-const color = ref(['#FC1D87', '#79036D', '#FFC0CB', '#FF1493'])
-
+// Configuração do gráfico
 const option = ref({
   backgroundColor: '#070707',
   title: {
     text: 'Status Dos Veiculos',
-    left: 'center'
+    left: 'center',
+    textStyle: {
+      color: '#fff'
+    },
+    subtextStyle: {
+      color: '#ccc'
+    }
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+    textStyle: {
+      color: '#fff'
+    }
+  },
+  toolbox: {
+    feature: {
+      restore: {},
+      saveAsImage: {}
+    }
   },
   tooltip: {
     trigger: 'item',
-    formatter: '{a} <br/>{b} : {c} ({d}%)'
+    formatter: (params) => {
+      return `
+        <b>${params.seriesName}</b><br>
+        ${params.marker} ${params.name}: <b>${params.value}</b> (${params.percent}%)
+      `
+    },
+    textStyle: {
+      color: '#fff'
+    },
+    backgroundColor: 'rgba(50, 50, 50, 0.8)',
+    borderColor: '#777',
+    borderWidth: 1
   },
   series: [
     {
       name: 'Status Do Veiculo',
       type: 'pie',
-      radius: ['60%', '80%'],
-      color: color,
-      padAngle: 4,
-      data: data,
+      radius: ['50%', '70%'],
+      centre: ['50%', '95%'],
+      color: color.value,
+      label: {
+        show: true,
+        formatter: '{b}: {c} ({d}%)',
+        fontSize: 12,
+        color: '#fff'
+      },
+      labelLine: {
+        show: true,
+        lineStyle: {
+          color: '#ccc'
+        }
+      },
+      data: data.value,
       itemStyle: {
-        borderRadius: 10
+        borderRadius: 8,
+        borderColor: '#000',
+        borderWidth: 1
       },
       emphasis: {
+        label: {
+          show: true,
+          fontSize: 14,
+          fontWeight: 'bold',
+          color: '#fff'
+        },
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
@@ -58,14 +115,21 @@ const option = ref({
         }
       }
     }
-  ]
+  ],
+  animationDuration: 1500, // Duração da animação
+  animationEasing: 'cubicOut' // Tipo de animação
+})
+
+// Atualizar gráfico quando os dados mudarem
+watch(data, (newData) => {
+  option.value.series[0].data = newData
 })
 </script>
 
 <style scoped>
 .chart {
   width: 100%;
-  height: 400px;
+  height: 77vh;
   border: 1px solid #c1c1c1;
   border-radius: 15px;
   overflow: hidden;
