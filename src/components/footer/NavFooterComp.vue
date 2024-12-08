@@ -38,8 +38,7 @@ import { RouterLink } from 'vue-router'
 
 @media screen and (max-width: 1150px) {
   .container {
-    display: none ;
+    display: none;
   }
 }
-
 </style>

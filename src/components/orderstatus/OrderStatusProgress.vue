@@ -1,5 +1,4 @@
 <script setup>
-import order from '@/services/order/order';
 import { useOrderStore } from '@/stores'
 
 const orderStore = useOrderStore()

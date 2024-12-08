@@ -1,11 +1,21 @@
 <script setup>
+import { onMounted } from 'vue'
+
 const props = defineProps({
   option: Object
 })
+
+function scrollToSection() {
+  const section = document.getElementById(props.option.id)
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' }) // Rolagem suave
+  }
+  window.scrollTo(0, 1700)
+}
 </script>
 
 <template>
-  <article>
+  <article @click="scrollToSection()">
     <div class="title">
       <h3>{{ props.option.title }}</h3>
     </div>
@@ -23,6 +33,11 @@ const props = defineProps({
 <style scoped lang="scss">
 @use '@/assets/main';
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 article {
   width: 100%;
   background-color: #070707;
@@ -30,6 +45,13 @@ article {
   border-radius: 5px;
   border: 1px solid #c1c1c1;
   overflow: hidden;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+article:hover {
+  background-color: #333;
+  scale: 1.03;
 }
 
 .info {

@@ -1,28 +1,22 @@
 <script setup>
-import order from '@/services/order/order';
-import { defineProps, defineEmits, ref } from 'vue';
-import { useDriverStore } from '@/stores';
-import { useVehicleStore } from '@/stores';
+import axios from 'axios'
+import { onMounted, ref } from 'vue'
+import { useDriverStore } from '@/stores'
+import { useVehicleStore } from '@/stores'
 
-const driverStore = useDriverStore();
-const vehicleStore = useVehicleStore();
-
-import axios from 'axios';
+const driverStore = useDriverStore()
+const vehicleStore = useVehicleStore()
 
 const props = defineProps({
   order: {
     type: Object,
     required: true,
-  },
-  visible: {
-    type: Boolean,
-    required: true,
-  },
-});
+    default: null
+  }
+})
 
-const emit = defineEmits(['close', 'update-status']);
+const emit = defineEmits(['close', 'update-status', 'close-loader'])
 
-// Lista de status disponíveis
 const statusOptions = [
   { value: 0, label: 'Aguardando Pagamento' },
   { value: 1, label: 'Pagamento Aprovado' },
@@ -35,40 +29,46 @@ const statusOptions = [
   { value: 8, label: 'Entregue' },
   { value: 9, label: 'Falha na Entrega' },
   { value: 10, label: 'Devolvido' },
-  { value: 11, label: 'Cancelado' },
-];
+  { value: 11, label: 'Cancelado' }
+]
 
-const statusselect = ref('');
-// Função para atualizar o status
-async function updateStatus(newStatus) {
-  statusselect.value = newStatus;
-  const response = await axios.post(
-    `https://api.fexcompany.me/api/orders/${props.order.id}/status/${newStatus}/`,
-    {}
-  );
-  console.log(response);
+const statusselect = ref('')
+
+function updateDriver(newDrive) {
+  driverselect.value = newDrive
 }
 
-const vehicleselect = ref('');
-const driverselect = ref('');
+function updateVehicle(newVehicle) {
+  vehicleselect.value = newVehicle
+}
 
-async function updateVehicle() {
-  console.log(vehicleselect.value);
-  console.log(driverselect.value);
-  const response = await axios.post(
+async function updateStatus(newStatus) {
+  statusselect.value = newStatus
+}
+
+const vehicleselect = ref('')
+const driverselect = ref('')
+
+async function updateVehicleDriver() {
+  await axios.post(
     `https://api.fexcompany.me/api/orders/${props.order.id}/assign/${vehicleselect.value}/${driverselect.value}/`,
     {}
-  );
-  console.log(response);
+  )
+  await axios.post(
+    `https://api.fexcompany.me/api/orders/${props.order.id}/status/${statusselect.value}/`,
+    {}
+  )
 }
+
+onMounted(() => {
+  statusselect.value = props.order?.status
+  vehicleselect.value = props.order?.vehicle?.id
+  driverselect.value = props.order?.driver?.id
+})
 </script>
 
 <template>
-  <div
-    v-if="visible"
-    class="modal-overlay"
-    @click.self="emit('close')"
-  >
+  <div class="modal-overlay" @click.self="emit('close')">
     <div class="modal-content">
       <h2>Detalhes do Pedido</h2>
       <div v-if="order">
@@ -76,9 +76,11 @@ async function updateVehicle() {
           <label for="driver"><strong>Motorista:</strong></label>
           <select
             name="driver"
-            v-model="driverselect"
             id="driver"
+            :value="order?.driver?.id"
+            @change="updateDriver($event.target.value)"
           >
+            <option value="" disabled>Selecione um motorista</option>
             <option
               v-for="driver in driverStore.state.drivers"
               :key="driver.value"
@@ -93,9 +95,11 @@ async function updateVehicle() {
           <label for="vehicle"><strong>Veículo:</strong></label>
           <select
             name="vehicle"
-            v-model="vehicleselect"
+            :value="order?.vehicle?.id"
             id="vehicle"
+            @change="updateVehicle($event.target.value)"
           >
+            <option value="" disabled>Selecione um veículo</option>
             <option
               v-for="vehicle in vehicleStore.state.vehicles"
               :key="vehicle.plate"
@@ -114,27 +118,27 @@ async function updateVehicle() {
             @change="updateStatus($event.target.value)"
             id="status"
           >
-            <option
-              v-for="option in statusOptions"
-              :key="option.value"
-              :value="option.value"
-            >
+            <option value="" disabled>Selecione um status</option>
+            <option v-for="option in statusOptions" :key="option.value" :value="option.value">
               {{ option.label }}
             </option>
           </select>
         </div>
-
       </div>
 
       <div class="actions">
         <button class="close-btn" @click="emit('close')">Fechar</button>
-        <button class="update-btn" @click="updateVehicle()">Alterar</button>
+        <button class="update-btn" @click="updateVehicleDriver() && emit('close-loader')">
+          Alterar
+        </button>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/assets/main';
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -145,7 +149,7 @@ async function updateVehicle() {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1;
 }
 
 .modal-content {
@@ -177,6 +181,16 @@ select {
   border: 1px solid #c1c1c1;
   border-radius: 4px;
   padding: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+select:hover {
+  background: #4444;
+}
+
+option {
+  background: #333;
+  color: white;
 }
 
 .actions {
@@ -196,10 +210,12 @@ select {
 
 .close-btn {
   background-color: #fc1d87;
+  transition: 0.3s ease-in-out;
 }
 
 .update-btn {
   background-color: #1d87fc;
+  transition: 0.3s ease-in-out;
 }
 
 .close-btn:hover {

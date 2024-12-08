@@ -6,5 +6,5 @@ export const routes = [
   { path: '/client/signin', name: 'Login Do Cliente' },
   { path: '/admin/employee/signup', name: 'Cadastro de Funcionário' },
   { path: '/admin/driver/signin', name: 'Login do Motorista' },
-  { path: '/admin/driver/signup', name: 'Cadastro do Motorista' },
+  { path: '/admin/driver/signup', name: 'Cadastro do Motorista' }
 ]

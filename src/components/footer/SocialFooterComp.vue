@@ -1,10 +1,8 @@
-<script setup>
-import { RouterLink } from 'vue-router'
-</script>
+<script setup></script>
 <template>
   <div class="container">
     <div>
-      <h1>ONDE ESTAMOS</h1>
+      <h1>Onde Estamos</h1>
     </div>
     <div class="container-img">
       <a href=""><img src="/public/instagram-icon.svg" /></a>
@@ -35,6 +33,6 @@ import { RouterLink } from 'vue-router'
   .container {
     margin-top: 2rem;
     height: 80%;
-}
+  }
 }
 </style>

@@ -1,18 +1,18 @@
 <script setup>
-import { useCepStore } from '@/stores';
-import { useClientStore } from '@/stores';
-import { computed } from 'vue';
+import { useCepStore } from '@/stores'
+import { useClientStore } from '@/stores'
+import { computed } from 'vue'
 
-const cepStore = useCepStore();
-const clientStore = useClientStore();
+const cepStore = useCepStore()
+const clientStore = useClientStore()
 
-const cepData = computed(() => cepStore.address);
+const cepData = computed(() => cepStore.address)
 
-const handleCepChange = async() => {
+const handleCepChange = async () => {
   if (cepData.value.cep.length === 8) {
-    await cepStore.getEndereco(cepData.value.cep);
+    await cepStore.getEndereco(cepData.value.cep)
   }
-};
+}
 
 const createClient = async () => {
   clientStore.state.client_data.address = {
@@ -22,10 +22,10 @@ const createClient = async () => {
     complement: cepData.value.complemento,
     neighborhood: cepData.value.bairro,
     city: cepData.value.cidade,
-    state: cepData.value.uf,
-  };
-  await clientStore.createClient(clientStore.state.client_data);
-};
+    state: cepData.value.uf
+  }
+  await clientStore.createClient(clientStore.state.client_data)
+}
 </script>
 
 <template>
@@ -41,17 +41,52 @@ const createClient = async () => {
       maxlength="8"
     />
     <label for="state">Estado</label>
-    <input id="state" type="text" placeholder="Insira seu estado" v-model="cepData.estado" required />
+    <input
+      id="state"
+      type="text"
+      placeholder="Insira seu estado"
+      v-model="cepData.estado"
+      required
+    />
     <label for="city">Cidade</label>
-    <input id="city" type="text" placeholder="Insira sua cidade" v-model="cepData.cidade" required />
+    <input
+      id="city"
+      type="text"
+      placeholder="Insira sua cidade"
+      v-model="cepData.cidade"
+      required
+    />
     <label for="neighborhood">Bairro</label>
-    <input id="neighborhood" type="text" placeholder="Insira seu bairro" v-model="cepData.bairro" required />
+    <input
+      id="neighborhood"
+      type="text"
+      placeholder="Insira seu bairro"
+      v-model="cepData.bairro"
+      required
+    />
     <label for="street">Endereço</label>
-    <input id="street" type="text" placeholder="Insira seu endereço" v-model="cepData.endereco" required />
+    <input
+      id="street"
+      type="text"
+      placeholder="Insira seu endereço"
+      v-model="cepData.endereco"
+      required
+    />
     <label for="number">Número</label>
-    <input id="number" type="text" placeholder="Insira seu número" v-model="cepData.numero" required />
+    <input
+      id="number"
+      type="text"
+      placeholder="Insira seu número"
+      v-model="cepData.numero"
+      required
+    />
     <label for="complement">Complemento</label>
-    <input id="complement" type="text" placeholder="Insira um complemento" v-model="cepData.complemento" />
+    <input
+      id="complement"
+      type="text"
+      placeholder="Insira um complemento"
+      v-model="cepData.complemento"
+    />
     <button class="normalColor" type="submit">Finalizar</button>
     <button class="invertColor" type="button" @click="$emit('back')">Voltar</button>
   </form>
@@ -114,6 +149,5 @@ form {
   form {
     width: 100%;
   }
-
 }
 </style>

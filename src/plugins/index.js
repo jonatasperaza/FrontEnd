@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useAuthStore } from '@/stores'
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL
@@ -11,9 +12,21 @@ axios.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`
     }
     return config
+  }
+)
+
+axios.interceptors.response.use(
+  (response) => {
+    return response
   },
   (error) => {
-    console.log(error)
+    const authStore = useAuthStore()
+    if (error.response.status === 401) {
+      authStore.logout()
+      location.reload()
+    } else {
+      console.error(error)
+    }
     return Promise.reject(error)
   }
 )

@@ -13,7 +13,6 @@ watch(
   async (newValue) => {
     if (newValue.length === 8) {
       const response = await cepStore.getEndereco(driverStore.state.driver_data.address.cep)
-      console.log(response)
       driverStore.state.driver_data.address.state = response.uf || ''
       driverStore.state.driver_data.address.city = response.localidade || ''
       driverStore.state.driver_data.address.neighborhood = response.bairro || ''

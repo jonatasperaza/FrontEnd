@@ -7,9 +7,6 @@ class DriverService {
   async getDrivers() {
     try {
       const response = await api.get('driver/')
-      toast.success('Motoristas encontrados com sucesso', {
-        delay: 2000
-      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar motoristas')
@@ -20,9 +17,6 @@ class DriverService {
   async getDriver(id) {
     try {
       const response = await api.get(`driver/${id}`)
-      toast.success('Motorista encontrado com sucesso', {
-        delay: 2000
-      })
       return response.data
     } catch (error) {
       handleErrorResponse(error, 'Erro ao buscar motorista')
@@ -39,7 +33,6 @@ class DriverService {
       router.push('/login')
       return response.data
     } catch (error) {
-      console.log(error.response.data)
       handleErrorResponse(error, 'Erro ao criar motorista')
       return error.response.data
     }

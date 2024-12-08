@@ -48,15 +48,30 @@ const selectedColor = computed(() => {
           <h2>Gerenciar Pessoas:</h2>
         </div>
         <div class="ulPeoples">
-          <div class="line" :class="{ selected: selectedIndex === 0 }" @click="handleSelect(0)" style="color: #73fbfd">
+          <div
+            class="line"
+            :class="{ selected: selectedIndex === 0 }"
+            @click="handleSelect(0)"
+            style="color: #73fbfd"
+          >
             <Account />
             Clientes
           </div>
-          <div class="line" :class="{ selected: selectedIndex === 1 }" @click="handleSelect(1)" style="color: #fc1d87">
+          <div
+            class="line"
+            :class="{ selected: selectedIndex === 1 }"
+            @click="handleSelect(1)"
+            style="color: #fc1d87"
+          >
             <Tire />
             Motoristas
           </div>
-          <div class="line" :class="{ selected: selectedIndex === 2 }" @click="handleSelect(2)" style="color: #da4819">
+          <div
+            class="line"
+            :class="{ selected: selectedIndex === 2 }"
+            @click="handleSelect(2)"
+            style="color: #da4819"
+          >
             <CardAccountDetails />
             Funcionarios
           </div>
@@ -67,24 +82,33 @@ const selectedColor = computed(() => {
           <h2>Gerenciar</h2>
           <h2 :style="{ color: selectedColor }">{{ selectedTitle }}</h2>
         </div>
-        <component :is="selectedIndex === 0 ? ListClients : selectedIndex === 1 ? ListDrivers : ListEmployee" />
+        <Transition name="fade" mode="out-in">
+          <component
+            :is="
+              selectedIndex === 0 ? ListClients : selectedIndex === 1 ? ListDrivers : ListEmployee
+            "
+            :key="selectedIndex"
+          />
+        </Transition>
       </article>
     </div>
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/assets/main';
+/* Estilos principais */
 section {
   width: 100%;
 }
 
 .container {
-  width: 80%;
-  margin: 0 auto;
+  width: 82vw;
+  margin: auto;
   display: grid;
   grid-template-columns: 1fr 4fr;
   gap: 2rem;
-  margin-bottom: 10rem;
+  margin-bottom: 3rem;
 }
 
 .managePeoples {
@@ -112,7 +136,7 @@ section {
   gap: 2rem;
 }
 
-.titleManage>h2 {
+.titleManage > h2 {
   font-size: 2rem;
   display: flex;
 }
@@ -126,7 +150,7 @@ section {
   font-size: 1.5rem;
 }
 
-.ulPeoples>.line {
+.ulPeoples > .line {
   background-color: transparent;
   color: #fff;
   padding: 1rem;
@@ -138,7 +162,7 @@ section {
   border-bottom: none;
 }
 
-.ulPeoples>.line.selected {
+.ulPeoples > .line.selected {
   border-bottom: 2px solid;
 }
 
@@ -148,13 +172,32 @@ span {
   align-items: center;
 }
 
+/* Estilos de transição */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Responsividade */
 @media screen and (max-width: 1150px) {
   .container {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .titleManage>h2 {
+  .managePeoples {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .titleManage > h2 {
     font-size: 25px;
     display: flex;
   }
@@ -164,10 +207,9 @@ span {
     gap: 1rem;
   }
 
-  .ulPeoples>.line {
-   display: flex;
-   justify-content: center;
+  .ulPeoples > .line {
+    display: flex;
+    justify-content: center;
   }
-
 }
 </style>
