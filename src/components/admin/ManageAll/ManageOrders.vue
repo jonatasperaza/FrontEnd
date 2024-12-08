@@ -2,18 +2,23 @@
 import { onMounted, ref, watch, onBeforeUnmount } from 'vue'
 import { useOrderStore } from '@/stores'
 import OrderDetailsModal from '@/components/orderstatus/OrderModalComp.vue'
-import Reload from 'vue-material-design-icons/Reload.vue'
+import Refresh from 'vue-material-design-icons/Refresh.vue'
 
 const orderStore = useOrderStore()
 const orders = ref([])
+
+const reloadRef = ref(null)
 
 onMounted(async () => {
   await orderStore.getOrders()
   orders.value = orderStore.state.orders
 })
 
-function realod() {
-  orderStore.getOrders()
+async function reload() {
+  reloadRef.value.$el.classList.add('rotate')
+  await orderStore.getOrders()
+  reloadRef.value.$el.classList.remove('rotate')
+
 }
 
 const statusOptions = [
@@ -63,7 +68,7 @@ function closeModal() {
 function closeModalReload() {
   isModalVisible.value = false
   selectedOrder.value = null
-  orderStore.getOrders()
+  reload()
 }
 </script>
 
@@ -71,7 +76,7 @@ function closeModalReload() {
   <article>
     <div style="display: flex; justify-content: space-between;">
       <h2 style="margin: 0; width: 80%;">Gerenciar <span class="strong-pink">Pedidos:</span></h2>
-      <Reload style="display: flex; cursor: pointer;" @click="realod()"/>
+      <Refresh class="reload" @click="reload()" ref="reloadRef" />
     </div>
     <div class="listOrders">
       <div class="headerList">
@@ -154,5 +159,32 @@ article {
 }
 .fade-enter-from, .fade-leave-to {
   opacity: 0;
+}
+
+.reload{
+  color: #fff;
+  transition: 0.3s ease-in-out;
+  width: 24px;
+  height: 100%;
+  display: flex; 
+  cursor: pointer;
+}
+
+.reload:hover {
+  transform: scale(1.1);
+}
+
+.rotate {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+  
 }
 </style>
