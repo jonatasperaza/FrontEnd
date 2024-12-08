@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useDriverStore } from '@/stores';
 import { useVehicleStore } from '@/stores';
 
@@ -16,7 +16,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['close', 'update-status']);
+const emit = defineEmits(['close', 'update-status', 'close-loader']);
 
 const statusOptions = [
   { value: 0, label: 'Aguardando Pagamento' },
@@ -45,21 +45,27 @@ function updateVehicle(newVehicle){
 
 async function updateStatus(newStatus) {
   statusselect.value = newStatus;
-  const response = await axios.post(
-    `https://api.fexcompany.me/api/orders/${props.order.id}/status/${newStatus}/`,
-    {}
-  );
 }
 
 const vehicleselect = ref('');
 const driverselect = ref('');
 
 async function updateVehicleDriver() {
-  const response = await axios.post(
+  await axios.post(
     `https://api.fexcompany.me/api/orders/${props.order.id}/assign/${vehicleselect.value}/${driverselect.value}/`,
     {}
   );
+  await axios.post(
+    `https://api.fexcompany.me/api/orders/${props.order.id}/status/${statusselect.value}/`,
+    {}
+  );
 }
+
+onMounted(() => {
+  statusselect.value = props.order?.status;
+  vehicleselect.value = props.order?.vehicle?.id;
+  driverselect.value = props.order?.driver?.id;
+});
 </script>
 
 <template>
@@ -131,7 +137,7 @@ async function updateVehicleDriver() {
 
       <div class="actions">
         <button class="close-btn" @click="emit('close')">Fechar</button>
-        <button class="update-btn" @click="updateVehicleDriver()">Alterar</button>
+        <button class="update-btn" @click="updateVehicleDriver() && emit('close-loader')">Alterar</button>
       </div>
     </div>
   </div>

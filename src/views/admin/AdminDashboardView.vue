@@ -7,7 +7,7 @@ import { FirstGraphsComp, SectionCards, ManageAllComp, ManagePeoples, ManageOrde
     <SectionCards />
     <FirstGraphsComp />
     <ManageAllComp />
-    <ManagePeoples />
+    <ManagePeoples id="vehicles employees"/>
     <ManageOrders />
   </main>
 </template>

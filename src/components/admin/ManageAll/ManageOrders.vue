@@ -2,6 +2,7 @@
 import { onMounted, ref, watch, onBeforeUnmount } from 'vue'
 import { useOrderStore } from '@/stores'
 import OrderDetailsModal from '@/components/orderstatus/OrderModalComp.vue'
+import Reload from 'vue-material-design-icons/Reload.vue'
 
 const orderStore = useOrderStore()
 const orders = ref([])
@@ -10,6 +11,10 @@ onMounted(async () => {
   await orderStore.getOrders()
   orders.value = orderStore.state.orders
 })
+
+function realod() {
+  orderStore.getOrders()
+}
 
 const statusOptions = [
   { value: 0, label: 'Aguardando Pagamento' },
@@ -54,12 +59,20 @@ function closeModal() {
   isModalVisible.value = false
   selectedOrder.value = null
 }
+
+function closeModalReload() {
+  isModalVisible.value = false
+  selectedOrder.value = null
+  orderStore.getOrders()
+}
 </script>
 
 <template>
   <article>
-    <h2 style="margin: 0; width: 80%;">Gerenciar <span class="strong-pink">Pedidos:</span></h2>
-  
+    <div style="display: flex; justify-content: space-between;">
+      <h2 style="margin: 0; width: 80%;">Gerenciar <span class="strong-pink">Pedidos:</span></h2>
+      <Reload style="display: flex; cursor: pointer;" @click="realod()"/>
+    </div>
     <div class="listOrders">
       <div class="headerList">
         <p>ID:</p>
@@ -82,11 +95,11 @@ function closeModal() {
       </div>
     </div>
 
-    <!-- Modal de detalhes do pedido -->
      <Transition name="fade" mode="out-in">
     <OrderDetailsModal
       :order="selectedOrder"
       @close="closeModal"
+      @close-loader="closeModalReload"	
       v-if="isModalVisible"
     />
     </Transition>
@@ -137,7 +150,7 @@ article {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.6s ease;
 }
 .fade-enter-from, .fade-leave-to {
   opacity: 0;

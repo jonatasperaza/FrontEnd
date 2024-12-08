@@ -33,24 +33,28 @@ onMounted(async () => {
 
   data.value = [
     {
+      id: 'drivers',
       icon: markRaw(Tire),
       title: 'Motoristas Cadastrados',
       number: driverStore.state.count,
       color: 'limegreen'
     },
     {
+      id: 'vehicles',
       icon: markRaw(TruckFast),
       title: 'Veículos Cadastrados',
       number: vehicleStore.state.count,
       color: 'yellow'
     },
     {
+      id: 'clients',
       icon: markRaw(Account),
       title: 'Clientes Cadastrados',
       number: clientStore.state.count,
       color: 'aqua'
     },
     {
+      id:'employees',
       icon: markRaw(CardAccountDetails),
       title: 'Funcionários Cadastrados',
       number: employeeStore.state.count,
