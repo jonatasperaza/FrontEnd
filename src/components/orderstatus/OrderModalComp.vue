@@ -182,15 +182,16 @@ select {
   border: 1px solid #c1c1c1;
   border-radius: 4px;
   padding: 5px;
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
 }
 
-select:focus {
-  outline: none;
+select:hover {
+  background: #4444;
 }
 
-select option {
+option{
   background: #333;
+  color: white;
 }
 
 .actions {
@@ -210,10 +211,12 @@ select option {
 
 .close-btn {
   background-color: #fc1d87;
+  transition: 0.3s ease-in-out;
 }
 
 .update-btn {
   background-color: #1d87fc;
+  transition: 0.3s ease-in-out;
 }
 
 .close-btn:hover {

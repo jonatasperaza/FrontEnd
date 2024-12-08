@@ -1,7 +1,5 @@
 <script setup>
 import { FirstGraphsComp, SectionCards, ManageAllComp, ManagePeoples, ManageOrders } from '@/components/admin/'
-
-
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch, onBeforeUnmount } from 'vue'
 import { useOrderStore } from '@/stores'
 import OrderDetailsModal from '@/components/orderstatus/OrderModalComp.vue'
 
@@ -32,6 +32,18 @@ function statusProcessor(satusId){
 
 const selectedOrder = ref(null)
 const isModalVisible = ref(false)
+
+watch(isModalVisible, (newValue) => {
+  if (newValue) {
+    document.body.classList.add('modal-open');
+  } else {
+    document.body.classList.remove('modal-open');
+  }
+});
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('modal-open');
+});
 
 function openModal(order) {
   selectedOrder.value = order
