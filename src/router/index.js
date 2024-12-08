@@ -76,7 +76,7 @@ const router = createRouter({
       component: DriverProfileView
     },
     {
-      path: '/make-order',
+      path: '/make-order-test',
       name: 'Criar Pedido',
       component: OrderView
     },
@@ -86,7 +86,7 @@ const router = createRouter({
       component: OrderStatusView
     },
     {
-      path: '/make-order-test',
+      path: '/make-order',
       name: 'Teste de Pedido',
       component: MakeOrderTest
     }
