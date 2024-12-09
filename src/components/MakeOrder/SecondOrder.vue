@@ -12,6 +12,18 @@ const showFirst = ref(false)
 const toggleFirstContainer = () => {
   showFirst.value = !showFirst.value
 }
+
+const previousStep = () => {
+  if (ordersStore.state.step > 1) {
+    ordersStore.state.step -= 1
+  }
+}
+
+const nextStep = () => {
+  if (ordersStore.state.step < 3) {
+    ordersStore.state.step += 1
+  }
+}
 </script>
 
 <template>
@@ -92,6 +104,19 @@ const toggleFirstContainer = () => {
               disabled
             />
           </div>
+          <div class="container-input">
+            <label for="city">Bairro:</label>
+            <input
+              type="string"
+              id="city"
+              placeholder="Bairro"
+              v-model="ordersStore.state.order.address_collect.neighborhood"
+            />
+          </div>
+        </div>
+        <div class="buttons">
+          <button @click="previousStep">Voltar Etapa</button>
+          <button @click="nextStep">Próxima Etapa</button>
         </div>
       </div>
     </transition>
@@ -108,8 +133,6 @@ section {
 
 .access {
   width: 100%;
-  // border-bottom: 2px solid #fc1d87;
-  //   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -156,6 +179,31 @@ input {
   padding: 0.75rem;
   color: #fff;
   background-color: transparent;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  background-color: #fc1d87;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e11774;
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
 }
 
 .slide-enter-active,
