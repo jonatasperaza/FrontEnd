@@ -343,4 +343,27 @@ input {
 .delete-button:hover {
   color: #d01970;
 }
+@media screen and (max-width: 1024px){
+  .row{
+    display: flex;
+    flex-direction: column;
+  }
+  .firstContainer{
+    height: 90vh;
+  }
+  .alignButton{
+    width: 100%;
+    height: 3rem;
+    button.add-button{
+    margin: auto;
+    height: 3rem;
+    width: 100%;
+  }
+  }
+  .add-button{
+    margin: auto;
+    height: 3rem;
+    width: 100%;
+  }
+}
 </style>
