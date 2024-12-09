@@ -145,7 +145,7 @@ const goBack = () => {
 
                 <div class="button-container">
                     <button @click="goBack" class="add-button">Voltar</button>
-                    <button v-if="ordersStore.state.step === 4" @click="addItem" class="add-button">
+                    <button v-if="ordersStore.state.step === 4" @click="ordersStore.createOrder(ordersStore.state.order)" class="add-button">
                         Gerar Pedido
                     </button>
                 </div>
@@ -165,7 +165,6 @@ section {
 
 .access {
     width: 100%;
-    // border-bottom: 2px solid #fc1d87;
     display: flex;
     justify-content: space-between;
     align-items: center;

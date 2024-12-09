@@ -45,6 +45,7 @@ export const useAuthStore = defineStore('auth', () => {
     state.value.isLogged = false
     state.value.type = ''
     state.value.isLoading = false
+    localStorage.clear()
     router.go('/')
   }
 
