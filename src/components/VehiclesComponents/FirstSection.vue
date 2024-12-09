@@ -15,7 +15,7 @@
 @use '../../assets/main';
 
 section {
-  background-image: url(./public/imgs/TruckVehicle.png);
+  background-image: url(../../../public/imgs/TruckVehicle.png);
   width: 100%;
   background-size: cover;
   height: 40rem;

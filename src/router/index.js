@@ -99,6 +99,11 @@ const router = createRouter({
       name: 'Teste de Pedido',
       component: MakeOrderTest,
       meta: { requiresAuth: true, role: 'client' }
+    },
+    {
+      path: '/testelocal',
+      name: 'Teste Local',
+      component: () => import('@/views/tests/Location.vue')
     }
   ]
 })

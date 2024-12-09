@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -7,13 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
   plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => tag === 'passage-auth'
-        }
-      }
-    }),
+    vue(),
     vueDevTools(),
     VitePWA({
       registerType: 'autoUpdate',
@@ -24,29 +17,26 @@ export default defineConfig({
         description: 'Fex Company - The best company ever',
         theme_color: '#ffffff',
         icons: [
-          {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-            purpose: 'any'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'maskable'
-          }
+          { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
         ],
         id: 'com.fex-company.app',
-        orientation: 'any',
-        background_color: '#ffffff',
         start_url: '.',
-        launch_handler: {
-          client_mode: ['navigate-existing', 'auto']
-        }
+        background_color: '#000000',
+        orientation: 'any'
       },
-      devOptions: {
-        enabled: true
+      devOptions: { enabled: true },
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/api\.fexcompany\.me\/.*$/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api-cache',
+              expiration: { maxEntries: 50, maxAgeSeconds: 86400 } // 1 dia
+            }
+          }
+        ]
       }
     })
   ],
