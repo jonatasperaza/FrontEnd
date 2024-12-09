@@ -15,6 +15,7 @@ onMounted(async () => {
   <section>
     <div class="container">
       <div class="container-informations">
+        <h2 class="title-data">Itens</h2>
         <div class="container-field">
           <div class="container-input">
             <label>Nome do item</label>
@@ -193,6 +194,27 @@ onMounted(async () => {
               name=""
               :value="currentOrder?.address_delivery.state"
             />
+          </div>
+        </div>
+        <h2 class="title-data">Motorista e Veículo</h2>
+        <div class="container-field">
+          <div class="container-input">
+            <label>Motorista</label>
+            <input type="text" class="input" :value="currentOrder?.driver.name" />
+          </div>
+          <div class="container-input">
+            <label for="">Tipo do veículo</label>
+            <input type="text" class="input" :value="currentOrder?.vehicle.type_vehicle" />
+          </div>
+        </div>
+        <div class="container-field">
+          <div class="container-input">
+            <label for="">Modelo do veículo</label>
+            <input type="text" class="input" :value="currentOrder?.vehicle.model" />
+          </div>
+          <div class="container-input">
+            <label for="">Placa do veículo</label>
+            <input type="text" class="input" :value="currentOrder?.vehicle.plate" />
           </div>
         </div>
       </div>
