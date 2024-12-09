@@ -59,7 +59,7 @@ class OrderService {
 
   async updateOrderStatus(orderId, newStatus) {
     try {
-      const { data } = await api.post(`orders/${orderId}/status/${newStatus}/`)
+      const { data } = await api.post(`orders/${orderId}/status/${newStatus}/`, {})
       toast.success('Status do pedido atualizado com sucesso')
       return data
     } catch (error) {
@@ -68,13 +68,24 @@ class OrderService {
     }
   }
 
-  async updateVehicleDriver(orderId, vehicleId, driverId) {
+  async updateOrderVehicle(orderId, vehicleId) {
     try {
-      const { data } = await api.post(`orders/${orderId}/assign/${vehicleId}/${driverId}/`)
-      toast.success('Veículo e motorista do pedido atualizados com sucesso')
+      const { data } = await api.post(`orders/${orderId}/assign-vehicle/${vehicleId}/`, {})
+      toast.success('Veículo do pedido atualizado com sucesso')
       return data
     } catch (error) {
-      handleErrorResponse(error, 'Erro ao atualizar veículo e motorista do pedido')
+      handleErrorResponse(error, 'Erro ao atualizar veículo do pedido')
+      return error.message
+    }
+  }
+
+  async updateOrderDriver(orderId, driverId) {
+    try {
+      const { data } = await api.post(`orders/${orderId}/assign-driver/${driverId}/`, {})
+      toast.success('Motorista do pedido atualizado com sucesso')
+      return data
+    } catch (error) {
+      handleErrorResponse(error, 'Erro ao atualizar motorista do pedido')
       return error.message
     }
   }

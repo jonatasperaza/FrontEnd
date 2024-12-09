@@ -9,14 +9,13 @@ const authStore = useAuthStore()
 
 const showDetails = ref(false)
 
-// const items = ref([
-//     { name: 'Caixa Pequena', observation: 'Frágil', quantity: 3, weight: 1.5, height: 0.5, width: 0.3 },
-//     { name: 'Mala Média', observation: 'Oversized', quantity: 1, weight: 10, height: 0.8, width: 0.4 },
-//     { name: 'Pacote', observation: 'Nenhuma', quantity: 5, weight: 0.2, height: 0.2, width: 0.1 },
-// ]);
-
 const toggleDetails = () => {
   showDetails.value = !showDetails.value
+}
+
+const goBack = () => {
+  ordersStore.state.step = 3
+  console.log('Voltar para a etapa anterior')
 }
 </script>
 
@@ -28,7 +27,7 @@ const toggleDetails = () => {
     </div>
 
     <transition name="slide">
-      <div class="detailsContainer" v-if="showDetails">
+      <div class="detailsContainer" v-if="ordersStore.state.step == 4">
         <div>
           <h2>Itens:</h2>
           <p>
@@ -145,7 +144,14 @@ const toggleDetails = () => {
         </div>
 
         <div class="button-container">
-          <button @click="addItem" class="add-button">Gerar Pedido</button>
+          <button @click="goBack" class="add-button">Voltar</button>
+          <button
+            v-if="ordersStore.state.step === 4"
+            @click="ordersStore.createOrder(ordersStore.state.order)"
+            class="add-button"
+          >
+            Gerar Pedido
+          </button>
         </div>
       </div>
     </transition>
@@ -163,7 +169,6 @@ section {
 
 .access {
   width: 100%;
-  // border-bottom: 2px solid #fc1d87;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -255,6 +260,7 @@ h2 {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
+  gap: 1rem;
 }
 
 .add-button {

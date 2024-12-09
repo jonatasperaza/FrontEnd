@@ -12,6 +12,14 @@ const showFirst = ref(false)
 const toggleFirstContainer = () => {
   showFirst.value = !showFirst.value
 }
+
+const goToPreviousStep = () => {
+  if (ordersStore.state.step > 1) ordersStore.state.step--
+}
+
+const goToNextStep = () => {
+  if (ordersStore.state.step < 4) ordersStore.state.step++
+}
 </script>
 
 <template>
@@ -21,7 +29,7 @@ const toggleFirstContainer = () => {
       <ArrowDownBold :class="{ rotated: showFirst }" />
     </div>
     <transition name="slide">
-      <div class="firstContainer" v-if="showFirst">
+      <div class="firstContainer" v-if="ordersStore.state.step == 3">
         <p>Adicione Todos os dados para a entrega</p>
         <div class="row">
           <div class="container-input">
@@ -92,6 +100,19 @@ const toggleFirstContainer = () => {
               disabled
             />
           </div>
+          <div class="container-input">
+            <label for="city">Bairro:</label>
+            <input
+              type="string"
+              id="city"
+              placeholder="Bairro"
+              v-model="ordersStore.state.order.address_delivery.neighborhood"
+            />
+          </div>
+        </div>
+        <div class="buttons">
+          <button @click="goToPreviousStep" class="step-button">Voltar Etapa</button>
+          <button @click="goToNextStep" class="step-button">Próxima Etapa</button>
         </div>
       </div>
     </transition>
@@ -108,8 +129,6 @@ section {
 
 .access {
   width: 100%;
-  // border-bottom: 2px solid #fc1d87;
-  //   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -156,6 +175,27 @@ input {
   padding: 0.75rem;
   color: #fff;
   background-color: transparent;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.step-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #fc1d87;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.step-button:hover {
+  background-color: #e01b7b;
 }
 
 .slide-enter-active,

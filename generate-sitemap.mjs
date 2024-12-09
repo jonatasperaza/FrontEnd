@@ -12,7 +12,7 @@ const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
       <loc>${baseURL}${route.path}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
       <changefreq>daily</changefreq>
-      <priority>0.8</priority>
+      <priority>${route.path == '/' ? '1' : '0.8'}</priority>
     </url>
   `
     )
