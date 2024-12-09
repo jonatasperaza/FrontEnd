@@ -1,21 +1,21 @@
 <script setup>
-import axios from 'axios'
-import { onMounted, ref } from 'vue'
-import { useDriverStore } from '@/stores'
-import { useVehicleStore } from '@/stores'
+import axios from 'axios';
+import { onMounted, ref } from 'vue';
+import { useDriverStore, useVehicleStore, useOrderStore } from '@/stores';
 
-const driverStore = useDriverStore()
-const vehicleStore = useVehicleStore()
+const driverStore = useDriverStore();
+const vehicleStore = useVehicleStore();
+const orderStore = useOrderStore();
 
 const props = defineProps({
   order: {
     type: Object,
     required: true,
-    default: null
-  }
-})
+    default: null,
+  },
+});
 
-const emit = defineEmits(['close', 'update-status', 'close-loader'])
+const emit = defineEmits(['close', 'update-status', 'close-loader']);
 
 const statusOptions = [
   { value: 0, label: 'Aguardando Pagamento' },
@@ -29,42 +29,46 @@ const statusOptions = [
   { value: 8, label: 'Entregue' },
   { value: 9, label: 'Falha na Entrega' },
   { value: 10, label: 'Devolvido' },
-  { value: 11, label: 'Cancelado' }
-]
+  { value: 11, label: 'Cancelado' },
+];
 
-const statusselect = ref('')
+const statusSelect = ref(props.order.status || 0);
+const vehicleSelect = ref(props.order?.vehicle?.id || '');
+const driverSelect = ref(props.order?.driver?.id || '');
 
-function updateDriver(newDrive) {
-  driverselect.value = newDrive
-}
+const changes = ref({ status: false, vehicle: false, driver: false });
 
-function updateVehicle(newVehicle) {
-  vehicleselect.value = newVehicle
-}
+const updateField = (field, value) => {
+  changes.value[field] = true;
+  if (field === 'status') statusSelect.value = value;
+  if (field === 'vehicle') vehicleSelect.value = value;
+  if (field === 'driver') driverSelect.value = value;
+};
 
-async function updateStatus(newStatus) {
-  statusselect.value = newStatus
-}
+const updateVehicleDriver = async () => {
+  const { id } = props.order;
 
-const vehicleselect = ref('')
-const driverselect = ref('')
-
-async function updateVehicleDriver() {
-  await axios.post(
-    `https://api.fexcompany.me/api/orders/${props.order.id}/assign/${vehicleselect.value}/${driverselect.value}/`,
-    {}
-  )
-  await axios.post(
-    `https://api.fexcompany.me/api/orders/${props.order.id}/status/${statusselect.value}/`,
-    {}
-  )
-}
+  try {
+    if (changes.value.status) {
+      await orderStore.updateOrderStatus(id, statusSelect.value);
+    }
+    if (changes.value.vehicle) {
+      await orderStore.updateOrderVehicle(id, vehicleSelect.value);
+    }
+    if (changes.value.driver) {
+      await orderStore.updateOrderDriver(id, driverSelect.value);
+    }
+    emit('close-loader');
+  } catch (error) {
+    console.error('Error updating order:', error);
+  }
+};
 
 onMounted(() => {
-  statusselect.value = props.order?.status
-  vehicleselect.value = props.order?.vehicle?.id
-  driverselect.value = props.order?.driver?.id
-})
+  statusSelect.value = props.order.status || 0;
+  vehicleSelect.value = props.order?.vehicle?.id || '';
+  driverSelect.value = props.order?.driver?.id || '';
+});
 </script>
 
 <template>
@@ -75,15 +79,14 @@ onMounted(() => {
         <div class="field-row">
           <label for="driver"><strong>Motorista:</strong></label>
           <select
-            name="driver"
             id="driver"
-            :value="order?.driver?.id"
-            @change="updateDriver($event.target.value)"
+            v-model="driverSelect"
+            @change="updateField('driver', $event.target.value)"
           >
             <option value="" disabled>Selecione um motorista</option>
             <option
               v-for="driver in driverStore.state.drivers"
-              :key="driver.value"
+              :key="driver.id"
               :value="driver.id"
             >
               {{ driver.name }}
@@ -94,15 +97,14 @@ onMounted(() => {
         <div class="field-row">
           <label for="vehicle"><strong>Veículo:</strong></label>
           <select
-            name="vehicle"
-            :value="order?.vehicle?.id"
             id="vehicle"
-            @change="updateVehicle($event.target.value)"
+            v-model="vehicleSelect"
+            @change="updateField('vehicle', $event.target.value)"
           >
             <option value="" disabled>Selecione um veículo</option>
             <option
               v-for="vehicle in vehicleStore.state.vehicles"
-              :key="vehicle.plate"
+              :key="vehicle.id"
               :value="vehicle.id"
             >
               {{ vehicle.plate }}
@@ -113,13 +115,16 @@ onMounted(() => {
         <div class="field-row">
           <label for="status"><strong>Status:</strong></label>
           <select
-            name="status"
-            :value="order.status"
-            @change="updateStatus($event.target.value)"
             id="status"
+            v-model="statusSelect"
+            @change="updateField('status', $event.target.value)"
           >
             <option value="" disabled>Selecione um status</option>
-            <option v-for="option in statusOptions" :key="option.value" :value="option.value">
+            <option
+              v-for="option in statusOptions"
+              :key="option.value"
+              :value="option.value"
+            >
               {{ option.label }}
             </option>
           </select>
@@ -128,9 +133,7 @@ onMounted(() => {
 
       <div class="actions">
         <button class="close-btn" @click="emit('close')">Fechar</button>
-        <button class="update-btn" @click="updateVehicleDriver() && emit('close-loader')">
-          Alterar
-        </button>
+        <button class="update-btn" @click="updateVehicleDriver">Alterar</button>
       </div>
     </div>
   </div>

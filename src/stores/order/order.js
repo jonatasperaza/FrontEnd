@@ -152,6 +152,39 @@ export const useOrderStore = defineStore('orders', () => {
     }
   }
 
+  const updateOrderStatus = async (orderId, newStatus) => {
+    state.loading = true
+    try {
+      await OrderService.updateOrderStatus(orderId, newStatus)
+    } catch (error) {
+      state.error = error
+    } finally {
+      state.loading = false
+    }
+  }
+
+  const updateOrderVehicle = async (orderId, vehicleId) => {
+    state.loading = true
+    try {
+      await OrderService.updateOrderVehicle(orderId, vehicleId)
+    } catch (error) {
+      state.error = error
+    } finally {
+      state.loading = false
+    }
+  }
+
+  const updateOrderDriver = async (orderId, driverId) => {
+    state.loading = true
+    try {
+      await OrderService.updateOrderDriver(orderId, driverId)
+    } catch (error) {
+      state.error = error
+    } finally {
+      state.loading = false
+    }
+  }
+
   return {
     state,
     isLoading,
@@ -160,6 +193,9 @@ export const useOrderStore = defineStore('orders', () => {
     updateOrder,
     deleteOrder,
     getAddressByCep,
-    getOrder
+    getOrder,
+    updateOrderStatus,
+    updateOrderVehicle,
+    updateOrderDriver
   }
 })
