@@ -67,7 +67,7 @@ const router = createRouter({
     {
       path: '/admin/dashboard/',
       name: 'Painel do Admin',
-      component: AdminDashboardView,
+      component: AdminDashboardView
       // meta: { requiresAuth: true, role: 'employee' }
     },
     {

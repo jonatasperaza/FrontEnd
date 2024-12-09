@@ -34,49 +34,80 @@ const goToNextStep = () => {
         <div class="row">
           <div class="container-input">
             <label for="cep">CEP:</label>
-            <input type="text" id="cep" placeholder="Cep" v-model="ordersStore.state.order.address_delivery.cep"
+            <input
+              type="text"
+              id="cep"
+              placeholder="Cep"
+              v-model="ordersStore.state.order.address_delivery.cep"
               @change="
                 ordersStore.state.order.address_delivery.cep.length == 8
                   ? ordersStore.getAddressByCep(
-                    ordersStore.state.order.address_delivery.cep,
-                    'delivery'
-                  )
+                      ordersStore.state.order.address_delivery.cep,
+                      'delivery'
+                    )
                   : null
-                " />
+              "
+            />
           </div>
           <div class="container-input">
             <label for="street">Rua:</label>
-            <input type="text" id="street" placeholder="Rua"
-              v-model="ordersStore.state.order.address_delivery.street" />
+            <input
+              type="text"
+              id="street"
+              placeholder="Rua"
+              v-model="ordersStore.state.order.address_delivery.street"
+            />
           </div>
         </div>
         <div class="row">
           <div class="container-input">
             <label for="number">Número:</label>
-            <input type="number" id="number" placeholder="Quantidade"
-              v-model="ordersStore.state.order.address_delivery.number" />
+            <input
+              type="number"
+              id="number"
+              placeholder="Quantidade"
+              v-model="ordersStore.state.order.address_delivery.number"
+            />
           </div>
           <div class="container-input">
             <label for="complement">Complemento:</label>
-            <input type="string" id="complement" placeholder="Complemento"
-              v-model="ordersStore.state.order.address_delivery.complement" />
+            <input
+              type="string"
+              id="complement"
+              placeholder="Complemento"
+              v-model="ordersStore.state.order.address_delivery.complement"
+            />
           </div>
         </div>
         <div class="row">
           <div class="container-input">
             <label for="state">Estado:</label>
-            <input type="string" id="state" placeholder="Estado"
-              v-model="ordersStore.state.order.address_delivery.state" disabled />
+            <input
+              type="string"
+              id="state"
+              placeholder="Estado"
+              v-model="ordersStore.state.order.address_delivery.state"
+              disabled
+            />
           </div>
           <div class="container-input">
             <label for="city">Cidade:</label>
-            <input type="string" id="city" placeholder="Cidade" v-model="ordersStore.state.order.address_delivery.city"
-              disabled />
+            <input
+              type="string"
+              id="city"
+              placeholder="Cidade"
+              v-model="ordersStore.state.order.address_delivery.city"
+              disabled
+            />
           </div>
           <div class="container-input">
             <label for="city">Bairro:</label>
-            <input type="string" id="city" placeholder="Bairro" v-model="ordersStore.state.order.address_delivery.neighborhood"
-             />
+            <input
+              type="string"
+              id="city"
+              placeholder="Bairro"
+              v-model="ordersStore.state.order.address_delivery.neighborhood"
+            />
           </div>
         </div>
         <div class="buttons">

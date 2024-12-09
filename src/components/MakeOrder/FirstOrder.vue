@@ -56,7 +56,7 @@ onMounted(() => {
     ordersStore.state.order.id_client = user.client.id
   } else {
     ordersStore.state.order.payment.payer_identification_type = 'CNPJ'
-    ordersStore.state.order.payment.payer_identification_number = user.client_legal_person.cnpj 
+    ordersStore.state.order.payment.payer_identification_number = user.client_legal_person.cnpj
     ordersStore.state.order.id_client = user.client.id
   }
 })
@@ -91,7 +91,12 @@ onMounted(() => {
             </div>
             <div class="container-input">
               <label for="observation">Observação:</label>
-              <textarea id="observation" v-model="form.observation" placeholder="Ex: Oversized" class="obs"></textarea>
+              <textarea
+                id="observation"
+                v-model="form.observation"
+                placeholder="Ex: Oversized"
+                class="obs"
+              ></textarea>
             </div>
             <button @click="addItem" class="add-button">Adicionar Item</button>
           </div>

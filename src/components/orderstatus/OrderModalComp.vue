@@ -1,21 +1,21 @@
 <script setup>
-import axios from 'axios';
-import { onMounted, ref } from 'vue';
-import { useDriverStore, useVehicleStore, useOrderStore } from '@/stores';
+import axios from 'axios'
+import { onMounted, ref } from 'vue'
+import { useDriverStore, useVehicleStore, useOrderStore } from '@/stores'
 
-const driverStore = useDriverStore();
-const vehicleStore = useVehicleStore();
-const orderStore = useOrderStore();
+const driverStore = useDriverStore()
+const vehicleStore = useVehicleStore()
+const orderStore = useOrderStore()
 
 const props = defineProps({
   order: {
     type: Object,
     required: true,
-    default: null,
-  },
-});
+    default: null
+  }
+})
 
-const emit = defineEmits(['close', 'update-status', 'close-loader']);
+const emit = defineEmits(['close', 'update-status', 'close-loader'])
 
 const statusOptions = [
   { value: 0, label: 'Aguardando Pagamento' },
@@ -29,46 +29,46 @@ const statusOptions = [
   { value: 8, label: 'Entregue' },
   { value: 9, label: 'Falha na Entrega' },
   { value: 10, label: 'Devolvido' },
-  { value: 11, label: 'Cancelado' },
-];
+  { value: 11, label: 'Cancelado' }
+]
 
-const statusSelect = ref(props.order.status || 0);
-const vehicleSelect = ref(props.order?.vehicle?.id || '');
-const driverSelect = ref(props.order?.driver?.id || '');
+const statusSelect = ref(props.order.status || 0)
+const vehicleSelect = ref(props.order?.vehicle?.id || '')
+const driverSelect = ref(props.order?.driver?.id || '')
 
-const changes = ref({ status: false, vehicle: false, driver: false });
+const changes = ref({ status: false, vehicle: false, driver: false })
 
 const updateField = (field, value) => {
-  changes.value[field] = true;
-  if (field === 'status') statusSelect.value = value;
-  if (field === 'vehicle') vehicleSelect.value = value;
-  if (field === 'driver') driverSelect.value = value;
-};
+  changes.value[field] = true
+  if (field === 'status') statusSelect.value = value
+  if (field === 'vehicle') vehicleSelect.value = value
+  if (field === 'driver') driverSelect.value = value
+}
 
 const updateVehicleDriver = async () => {
-  const { id } = props.order;
+  const { id } = props.order
 
   try {
     if (changes.value.status) {
-      await orderStore.updateOrderStatus(id, statusSelect.value);
+      await orderStore.updateOrderStatus(id, statusSelect.value)
     }
     if (changes.value.vehicle) {
-      await orderStore.updateOrderVehicle(id, vehicleSelect.value);
+      await orderStore.updateOrderVehicle(id, vehicleSelect.value)
     }
     if (changes.value.driver) {
-      await orderStore.updateOrderDriver(id, driverSelect.value);
+      await orderStore.updateOrderDriver(id, driverSelect.value)
     }
-    emit('close-loader');
+    emit('close-loader')
   } catch (error) {
-    console.error('Error updating order:', error);
+    console.error('Error updating order:', error)
   }
-};
+}
 
 onMounted(() => {
-  statusSelect.value = props.order.status || 0;
-  vehicleSelect.value = props.order?.vehicle?.id || '';
-  driverSelect.value = props.order?.driver?.id || '';
-});
+  statusSelect.value = props.order.status || 0
+  vehicleSelect.value = props.order?.vehicle?.id || ''
+  driverSelect.value = props.order?.driver?.id || ''
+})
 </script>
 
 <template>
@@ -84,11 +84,7 @@ onMounted(() => {
             @change="updateField('driver', $event.target.value)"
           >
             <option value="" disabled>Selecione um motorista</option>
-            <option
-              v-for="driver in driverStore.state.drivers"
-              :key="driver.id"
-              :value="driver.id"
-            >
+            <option v-for="driver in driverStore.state.drivers" :key="driver.id" :value="driver.id">
               {{ driver.name }}
             </option>
           </select>
@@ -120,11 +116,7 @@ onMounted(() => {
             @change="updateField('status', $event.target.value)"
           >
             <option value="" disabled>Selecione um status</option>
-            <option
-              v-for="option in statusOptions"
-              :key="option.value"
-              :value="option.value"
-            >
+            <option v-for="option in statusOptions" :key="option.value" :value="option.value">
               {{ option.label }}
             </option>
           </select>
