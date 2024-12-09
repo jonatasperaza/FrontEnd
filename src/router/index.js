@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { toast } from 'vue3-toastify'
+import { useAuthStore } from '@/stores/'
+
 import {
   AboutView,
   AdminDashboardView,
@@ -47,53 +49,79 @@ const router = createRouter({
     },
     {
       path: '/client/signin',
-      name: 'Cadatrar Do Cliente',
+      name: 'Cadastrar Cliente',
       component: SignInViewClient
     },
     {
       path: '/admin/employee/signup',
-      name: 'Cadastrar funcionario',
-      component: RegisterEmployeeView
+      name: 'Cadastrar Funcionario',
+      component: RegisterEmployeeView,
+      meta: { requiresAuth: true, role: 'employee' }
     },
     {
       path: '/admin/driver/signin',
       name: 'Cadastrar Motorista',
-      component: RegisterDriverView
+      component: RegisterDriverView,
+      meta: { requiresAuth: true, role: 'employee' }
     },
     {
       path: '/admin/dashboard/',
       name: 'Painel do Admin',
-      component: AdminDashboardView
+      component: AdminDashboardView,
+      // meta: { requiresAuth: true, role: 'employee' }
     },
     {
       path: '/client/profile',
-      name: 'Perfil Do Cliente',
-      component: ProfileClientView
+      name: 'Perfil do Cliente',
+      component: ProfileClientView,
+      meta: { requiresAuth: true, role: 'client' }
     },
     {
       path: '/driver/profile',
-      name: 'Perfil Do Motorista',
-      component: DriverProfileView
-    },
-    {
-      path: '/make-order',
-      name: 'Criar Pedido',
-      component: OrderView
-    },
-    {
-      path: '/order-status/:id',
-      name: 'Status Do Pedido',
-      component: OrderStatusView
+      name: 'Perfil do Motorista',
+      component: DriverProfileView,
+      meta: { requiresAuth: true, role: 'driver' }
     },
     {
       path: '/make-order-test',
+      name: 'Criar Pedido',
+      component: OrderView,
+      meta: { requiresAuth: true, role: 'client' }
+    },
+    {
+      path: '/order-status/:id',
+      name: 'Status do Pedido',
+      component: OrderStatusView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/make-order',
       name: 'Teste de Pedido',
-      component: MakeOrderTest
+      component: MakeOrderTest,
+      meta: { requiresAuth: true, role: 'client' }
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore()
+
+  if (to.meta.requiresAuth) {
+    if (!authStore.state.isLogged) {
+      toast.error('Você precisa estar logado para acessar esta página!', {
+        timeout: 5000
+      })
+      return next({ name: 'Login' })
+    }
+
+    if (to.meta.role && authStore.state.type !== to.meta.role) {
+      toast.error('Você não tem permissão para acessar esta página!', {
+        timeout: 5000
+      })
+      return next({ name: 'Home' })
+    }
+  }
+
   const pageKey = `visited_${to.name}`
   const isVisited = sessionStorage.getItem(pageKey)
 

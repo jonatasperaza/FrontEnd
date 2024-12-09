@@ -1,13 +1,13 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import ArrowDownBold from 'vue-material-design-icons/ArrowDownBold.vue'
 import Trash from 'vue-material-design-icons/TrashCan.vue'
-import { useOrderStore } from '@/stores'
+import { useOrderStore, useAuthStore } from '@/stores'
 
 const ordersStore = useOrderStore()
+const authStore = useAuthStore()
 
 const showFirst = ref(false)
-
 const items = ref([])
 
 const form = ref({
@@ -45,6 +45,21 @@ const removeItem = (index) => {
   items.value.splice(index, 1)
   ordersStore.state.order.items.splice(index, 1)
 }
+
+onMounted(() => {
+  const user = authStore.state.user
+
+  ordersStore.state.order.payment.payer_email = user.email
+  if (user.client_physical_person) {
+    ordersStore.state.order.payment.payer_identification_type = 'CPF'
+    ordersStore.state.order.payment.payer_identification_number = user.client_physical_person.cpf
+    ordersStore.state.order.id_client = user.client.id
+  } else {
+    ordersStore.state.order.payment.payer_identification_type = 'CNPJ'
+    ordersStore.state.order.payment.payer_identification_number = user.client_legal_person.cnpj 
+    ordersStore.state.order.id_client = user.client.id
+  }
+})
 </script>
 
 <template>
@@ -76,12 +91,7 @@ const removeItem = (index) => {
             </div>
             <div class="container-input">
               <label for="observation">Observação:</label>
-              <textarea
-                id="observation"
-                v-model="form.observation"
-                placeholder="Ex: Oversized"
-                class="obs"
-              ></textarea>
+              <textarea id="observation" v-model="form.observation" placeholder="Ex: Oversized" class="obs"></textarea>
             </div>
             <button @click="addItem" class="add-button">Adicionar Item</button>
           </div>
