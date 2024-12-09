@@ -19,12 +19,14 @@
     "echarts": "^5.5.1",
     "pinia": "^2.1.7",
     "v-dropdown": "^3.0.0",
+    "vite-plugin-pwa": "^0.21.1",
     "vue": "^3.4.29",
     "vue-content-loader": "^2.0.1",
     "vue-echarts": "^7.0.3",
     "vue-material-design-icons": "^5.3.1",
     "vue-router": "^4.3.3",
-    "vue3-toastify": "^0.2.4"
+    "vue3-toastify": "^0.2.4",
+    "workbox-precaching": "^7.3.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
