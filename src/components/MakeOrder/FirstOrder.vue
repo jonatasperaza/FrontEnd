@@ -344,12 +344,21 @@ input {
   color: #d01970;
 }
 @media screen and (max-width: 1024px){
+    .teste{
+      padding: 0;
+    }
   .row{
     display: flex;
     flex-direction: column;
   }
   .firstContainer{
-    height: 90vh;
+    height: 100vh;
+  }
+  .list-container{
+    margin: auto;
+    height: 120px;
+    width: 100%;
+    overflow-y: scroll;
   }
   .alignButton{
     width: 100%;
