@@ -104,6 +104,11 @@ const router = createRouter({
       path: '/testelocal',
       name: 'Teste Local',
       component: () => import('@/views/tests/Location.vue')
+    },
+    {
+      path: "/my-driver-order",
+      name: "MyDriverOrder",
+      component: () => import("@/views/driver/MyDriverOrder.vue"),
     }
   ]
 })
