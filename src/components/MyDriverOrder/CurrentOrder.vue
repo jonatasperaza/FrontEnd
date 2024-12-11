@@ -76,11 +76,11 @@ onMounted(async () => {
         <article class="items">
             <h3>Itens do Pedido:</h3>
             <div class="headerList">
-                <p>Nome</p>
+                <p class="pink">Nome</p>
                 <p>Quantidade</p>
-                <p>Peso (kg)</p>
+                <p  class="pink">Peso (kg)</p>
                 <p>Altura (m)</p>
-                <p>Observação</p>
+                <p  class="pink">Observação</p>
             </div>
             <div class="list">
                 <div
@@ -100,7 +100,7 @@ onMounted(async () => {
 
         <!-- Dados de Coleta -->
         <article class="collect">
-            <h3>Dados de Coleta:</h3>
+            <h3 class="pink">Dados de Coleta:</h3>
             <p>Endereço: {{ orderStore.state.currentOrder.address_collect.street }}, 
                 Nº {{ orderStore.state.currentOrder.address_collect.number }}</p>
             <p>Bairro: {{ orderStore.state.currentOrder.address_collect.neighborhood }}</p>
@@ -113,7 +113,7 @@ onMounted(async () => {
 
         <!-- Dados de Entrega -->
         <article class="delivery">
-            <h3>Dados de Entrega:</h3>
+            <h3 class="pink">Dados de Entrega:</h3>
             <p>Endereço: {{ orderStore.state.currentOrder.address_delivery.street }}, 
                 Nº {{ orderStore.state.currentOrder.address_delivery.number }}</p>
             <p>Bairro: {{ orderStore.state.currentOrder.address_delivery.neighborhood }}</p>
@@ -126,7 +126,7 @@ onMounted(async () => {
 
         <!-- Buttons -->
         <div class="actions">
-            <button @click="editOrder">Confirmar Coleta</button>
+            <button @click="editOrder" v-if="orderStore.state.currentOrder.orderStatus">Confirmar Coleta</button>
             <button @click="resume">Iniciar Entrega</button>
             <button @click="live = !live">
             {{ live ? "Stop Live Mode" : "Start Live Mode" }}
@@ -137,17 +137,18 @@ onMounted(async () => {
 
 <style scoped>
 main {
-    margin: 20px auto;
+    margin: 3rem auto;
     background-color: #070707;
     border: 1px solid #c1c1c1;
     border-radius: 10px;
     padding: 1rem;
-    width: 50%;
+    width: 60%;
 }
 
 .top {
-    display: grid;
-    grid-template-columns: 2fr 4fr;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
 }
 
 .icon {
@@ -166,11 +167,13 @@ span {
     margin: 0;
     color: #c1c1c1;
 }
-
+.title > h2{
+    color: #fc1d87 ;
+}
 .items,
 .collect,
 .delivery {
-    margin-top: 1rem;
+    margin: 1rem auto;
 }
 
 .items h3,
@@ -183,16 +186,25 @@ span {
 
 .headerList {
     display: grid;
+    align-items: center;
     grid-template-columns: repeat(5, 1fr);
     border-bottom: 1px solid #ccc;
     padding: 1rem;
     font-size: 80%;
 }
+.headerList > p{
+    text-align: center;
+    font-weight: bold;
+}
 
 .list {
     display: grid;
+    max-height: 200px;
+    overflow-y: scroll;
 }
-
+.pink{
+    color: #fc1d87 !important;
+}
 .itemList {
     width: 100%;
     display: grid;
@@ -200,6 +212,9 @@ span {
     padding: 1rem;
     border-bottom: 1px solid #ccc;
     font-size: 80%;
+}
+.itemList > p{
+    text-align: center;
 }
 
 .date {
@@ -210,20 +225,21 @@ span {
 .actions {
     display: flex;
     justify-content: space-around;
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 
 .actions button {
-    padding: 0.5rem 1rem;
+    padding: .75rem;
     border: none;
     border-radius: 5px;
     color: white;
-    background-color: #333;
+    background-color: #fc1d87;
     cursor: pointer;
+    transition: .3s ease-in-out;
 }
 
 .actions button:hover {
-    background-color: #555;
+    background-color: #d01970;
 }
 
 @media screen and (max-width: 1024px) {
@@ -234,6 +250,16 @@ span {
     .headerList,
     .itemList {
         grid-template-columns: 1fr;
+    }
+    .headerList > p{
+        text-align: left;
+    }
+    .itemList > p{
+        text-align: left;
+    }
+    .actions{
+        flex-direction: column;
+        gap: 1rem;
     }
 }
 </style>
