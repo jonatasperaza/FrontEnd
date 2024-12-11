@@ -106,9 +106,9 @@ const router = createRouter({
       component: () => import('@/views/tests/Location.vue')
     },
     {
-      path: "/my-driver-order",
-      name: "MyDriverOrder",
-      component: () => import("@/views/driver/MyDriverOrder.vue"),
+      path: '/my-driver-order',
+      name: 'MyDriverOrder',
+      component: () => import('@/views/driver/MyDriverOrder.vue')
     }
   ]
 })
