@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useOrderStore, useAuthStore } from '@/stores'
 import router from '@/router'
+import ExportVariant from 'vue-material-design-icons/ExportVariant.vue'
 
 const orderStore = useOrderStore()
 const authStore = useAuthStore()
@@ -158,6 +159,16 @@ const exampleOrder = {
     }
   ]
 }
+
+const copyPixKey = async (key) => {
+  try {
+    await navigator.clipboard.writeText(key)
+    alert('Chave PIX copiada com sucesso!')
+  } catch (error) {
+    console.error('Erro ao copiar a chave PIX:', error)
+    alert('Erro ao copiar a chave PIX.')
+  }
+}
 </script>
 
 <template>
@@ -171,13 +182,13 @@ const exampleOrder = {
         <p>Data</p>
         <p>Status</p>
         <p>Pagamento</p>
+        <p>PIX</p>
       </div>
       <div class="table-body">
         <div
           class="table-row"
           v-for="order in orders"
           :key="order.id"
-          @click="router.push(`/order-status/${order.id}`)"
         >
           <p>{{ order.id }}</p>
           <p>{{ order.items[0]?.name || 'N/A' }}</p>
@@ -191,10 +202,14 @@ const exampleOrder = {
                 : order.payment.status == 'cancelled'
                   ? 'Pagamento cancelado'
                   : order.payment.status == 'pending'
-                    ? 'Pagamento pendente'
+                    ? ''
                     : order.payment.status
             }}
           </p>
+          <p>
+            <button @click="copyPixKey(order.payment.pix_copyPaste)">Copiar chave PIX</button>
+          </p>
+          <ExportVariant class="export-icon" @click="router.push(`/order-status/${order.id}`)"/>
         </div>
       </div>
     </div>
@@ -250,7 +265,6 @@ const exampleOrder = {
 .table-row:hover {
   background-color: main.$standard-purple;
   color: main.$standard-white;
-  cursor: pointer;
 }
 
 p {
@@ -276,5 +290,11 @@ p:last-child {
   border-radius: 8px;
   overflow-y: auto;
   max-height: 400px;
+}
+
+.export-icon {
+  color: main.$standard-white;
+  cursor: pointer;
+  height: 10px;
 }
 </style>
