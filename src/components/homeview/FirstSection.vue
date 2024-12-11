@@ -6,7 +6,7 @@
       src="../../../public/imgs/TruckHome.webp"
       alt="Background Truck"
       class="background-image"
-      loading="eager"
+      loading="lazy"
     />
     <article>
       <div>
