@@ -260,7 +260,7 @@ const copyPixKey = async (key) => {
               @click="copyPixKey(currentOrder?.payment.pix_copyPaste)"
             />
           </div>
-            <div class="container-input">
+            <div class="container-input-">
             <label for="">Pagar com QRCode</label>
             <a :href="currentOrder?.payment.ticket_url"  target="_blank">Pagar com QRCode</a>
           </div>
@@ -319,25 +319,32 @@ section {
             background-color: main.$standard-black;
           }
 
-          a{
-            color: main.$standard-white;
-            text-decoration: none;
-            padding: 0.5rem;
-            border-radius: 1rem;
-            background-color: main.$standard-purple;
-            transition: 0.3s;
-          }
-
-          a:hover{
-            background-color: main.$standard-pink;
-          }
-
         }
 
         .container-input {
           width: 60%;
           display: flex;
           flex-direction: column;
+        }
+        .container-input- {
+          width: 60%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          a {
+            color: main.$standard-white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border-radius: 1rem;
+            background-color: main.$standard-purple;
+            transition: 0.3s ease-in-out;
+          }
+
+          a:hover {
+            background-color: main.$standard-pink;
+          }
         }
       }
     }
