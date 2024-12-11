@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: 
 
-Sitemap: http://localhost:5173/sitemap.xml
+Sitemap: https://fexcompany.me/sitemap.xml
