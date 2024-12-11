@@ -28,16 +28,16 @@ const goBack = () => {
 
     <transition name="slide">
       <div class="detailsContainer" v-if="ordersStore.state.step == 4">
-        <div>
+        <div class="scroll-itens">
           <h2>Itens:</h2>
           <p>
             {{
               ordersStore.state.order.items[0]
                 ? 'Confira os itens adicionados para o transporte:'
                 : 'Não há itens'
-            }}:
+            }}
           </p>
-          <div v-for="(item, index) in ordersStore.state.order.items" :key="index" class="row">
+          <div v-for="(item, index) in ordersStore.state.order.items" :key="index" class="row row-itens">
             <div class="container-input">
               <label>Item:</label>
               <p>{{ item.name }}</p>
@@ -276,5 +276,45 @@ h2 {
 
 .add-button:hover {
   background-color: #d01970;
+}
+@media screen and (max-width: 1024px){
+  .row{
+    flex-direction: column;
+
+  }
+  .scroll-itens{
+    max-height: 200px;
+    overflow-y: scroll;
+    p{
+      margin-bottom: 1rem;
+    }
+  }
+  .row-itens{
+    gap: .5rem;
+    margin-bottom: 1.5rem;
+  }
+  .buttons{
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .container-input{
+    flex-direction: row;
+    gap: .5rem;
+    p{
+      margin: 0;
+    }
+  }
+  .grid-layout{
+    grid-template-columns: 1fr;
+  }
+  .button-container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    button{
+      width: 100%;
+    }
+  }
 }
 </style>
