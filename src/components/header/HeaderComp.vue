@@ -158,5 +158,14 @@ nav > a {
     justify-content: center;
     align-items: center;
   }
+  button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    font-size: 15pt;
+  }
 }
 </style>
