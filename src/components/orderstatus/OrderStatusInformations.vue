@@ -150,6 +150,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.cep"
+              disabled
             />
           </div>
           <div class="container-input">
@@ -160,6 +161,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.number"
+              disabled
             />
           </div>
         </div>
@@ -172,6 +174,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.street"
+              disabled
             />
           </div>
           <div class="container-input">
@@ -182,6 +185,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.complement"
+              disabled
             />
           </div>
         </div>
@@ -194,6 +198,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.city"
+              disabled
             />
           </div>
           <div class="container-input">
@@ -204,6 +209,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.state"
+              disabled
             />
           </div>
         </div>
@@ -211,21 +217,21 @@ const copyPixKey = async (key) => {
         <div class="container-field">
           <div class="container-input">
             <label>Motorista</label>
-            <input type="text" class="input" :value="currentOrder?.driver.name" />
+            <input type="text" class="input" :value="currentOrder?.driver.name" disabled />
           </div>
           <div class="container-input">
             <label for="">Tipo do veículo</label>
-            <input type="text" class="input" :value="currentOrder?.vehicle.type_vehicle" />
+            <input type="text" class="input" :value="currentOrder?.vehicle.type_vehicle" disabled />
           </div>
         </div>
         <div class="container-field">
           <div class="container-input">
             <label for="">Modelo do veículo</label>
-            <input type="text" class="input" :value="currentOrder?.vehicle.model" />
+            <input type="text" class="input" :value="currentOrder?.vehicle.model" disabled />
           </div>
           <div class="container-input">
             <label for="">Placa do veículo</label>
-            <input type="text" class="input" :value="currentOrder?.vehicle.plate" />
+            <input type="text" class="input" :value="currentOrder?.vehicle.plate" disabled />
           </div>
         </div>
         <h2 class="title-data">Dados e pagamento</h2>

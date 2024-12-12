@@ -25,4 +25,17 @@ import { OrderStatusInformations, OrderStatusProgress, OrderStatusTitle } from '
     grid-template-columns: 1fr 4fr;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .order-status {
+    .container-comp {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3rem 0;
+    }
+  }
+  
+}
 </style>
