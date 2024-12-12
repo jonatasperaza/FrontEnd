@@ -19,13 +19,13 @@ const orderStore = useOrderStore()
       </div>
       <div class="circles">
         <!-- {{ orderStore.state.statusCurrentOrder }} -->
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 0 }"></div>
+        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 0 }"></span>
+        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 0 }"></div>
+        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 1 }"></span>
         <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 1 }"></div>
         <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 2 }"></span>
         <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 2 }"></div>
-        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 3 }"></span>
-        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 3 }"></div>
-        <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 4 }"></span>
-        <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 4 }"></div>
         <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 5 }"></span>
         <div :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 5 }"></div>
         <span :class="{ stepSelected: orderStore.state.statusCurrentOrder >= 6 }"></span>

@@ -26,6 +26,20 @@ const copyPixKey = async (key) => {
   <section>
     <div class="container">
       <div class="container-informations">
+        <h2 class="title-data" v-if="currentOrder?.delivery.distance != null">Distancia do Motorista até a Entrega</h2>
+        <div class="container-field" v-if="currentOrder?.delivery.distance != null">
+          <div class="container-input">
+            <label>Distancia</label>
+            <input
+              class="input"
+              placeholder="Distancia"
+              type="text"
+              name=""
+              disabled
+              :value="currentOrder?.delivery.distance"
+            />
+          </div>
+          </div>  
         <h2 class="title-data">Itens</h2>
         <div class="container-field">
           <div class="container-input">
@@ -213,27 +227,28 @@ const copyPixKey = async (key) => {
             />
           </div>
         </div>
-        <h2 class="title-data">Motorista e Veículo</h2>
-        <div class="container-field">
-          <div class="container-input">
-            <label>Motorista</label>
-            <input type="text" class="input" :value="currentOrder?.driver.name" disabled />
-          </div>
-          <div class="container-input">
-            <label for="">Tipo do veículo</label>
-            <input type="text" class="input" :value="currentOrder?.vehicle.type_vehicle" disabled />
-          </div>
-        </div>
-        <div class="container-field">
-          <div class="container-input">
-            <label for="">Modelo do veículo</label>
-            <input type="text" class="input" :value="currentOrder?.vehicle.model" disabled />
-          </div>
-          <div class="container-input">
-            <label for="">Placa do veículo</label>
-            <input type="text" class="input" :value="currentOrder?.vehicle.plate" disabled />
-          </div>
-        </div>
+        <h2 v-if="currentOrder?.driver && currentOrder?.vehicle" class="title-data">Motorista e Veículo</h2>
+<div v-if="currentOrder?.driver && currentOrder?.vehicle" class="container-field">
+  <div class="container-input">
+    <label>Motorista</label>
+    <input type="text" class="input" :value="currentOrder?.driver.name" disabled />
+  </div>
+  <div class="container-input">
+    <label for="">Tipo do veículo</label>
+    <input type="text" class="input" :value="currentOrder?.vehicle.type_vehicle" disabled />
+  </div>
+</div>
+<div v-if="currentOrder?.driver && currentOrder?.vehicle" class="container-field">
+  <div class="container-input">
+    <label for="">Modelo do veículo</label>
+    <input type="text" class="input" :value="currentOrder?.vehicle.model" disabled />
+  </div>
+  <div class="container-input">
+    <label for="">Placa do veículo</label>
+    <input type="text" class="input" :value="currentOrder?.vehicle.plate" disabled />
+  </div>
+</div>
+
         <h2 class="title-data">Dados e pagamento</h2>
         <div class="container-field">
           <div class="container-input">

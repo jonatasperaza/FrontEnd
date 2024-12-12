@@ -8,7 +8,7 @@ import { useOrderStore, useAuthStore } from '@/stores'
 const orderStore = useOrderStore()
 const authStore = useAuthStore()
 
-const { coords, resume } = useGeolocation()
+const { coords } = useGeolocation()
 
 const live = ref(false)
 
@@ -60,7 +60,7 @@ onMounted(async () => {
     <!-- Top Information -->
     <article class="top">
       <div class="icon">
-        <OrderBoolDescendingVariant size="100" />
+        <OrderBoolDescendingVariant size="80" />
       </div>
       <div class="title">
         <h2>Minha Entrega</h2>
@@ -128,10 +128,10 @@ onMounted(async () => {
 
     <!-- Buttons -->
     <div class="actions">
-      <button @click="editOrder">Confirmar Coleta</button>
-      <button @click="resume">Iniciar Entrega</button>
+      <button @click="editOrder" v-if="orderStore.state.order.status > 5">Confirmar Coleta</button>
+
       <button @click="live = !live">
-        {{ live ? 'Stop Live Mode' : 'Start Live Mode' }}
+        {{ live ? 'Parar Entrega' : 'Iniciar Entrega' }}
       </button>
     </div>
   </main>
