@@ -5,12 +5,12 @@
         <div class="container-title">
           <h1>
             Caminhões
-            <span class="strong-pink">Daf</span>
+            <span class="strong-pink">DAF</span>
           </h1>
         </div>
         <div class="container-text">
           <p>
-            Os caminhões da Scania são reconhecidos mundialmente por sua durabilidade, eficiência e
+            Os caminhões da DAF são reconhecidos mundialmente por sua durabilidade, eficiência e
             inovação tecnológica, projetados para oferecer alto desempenho, desde transporte de
             cargas pesadas até serviços urbanos e de longa distância.
           </p>
@@ -19,10 +19,10 @@
     </div>
     <div class="container-ul">
       <ul>
-        <li>Scania r450 ‘2012</li>
-        <li>Scania s500 ‘2016</li>
-        <li>Scania g410 ‘2014</li>
-        <li>Scania p280 ‘2017</li>
+        <li>DAF XF85</li>
+        <li>DAF XF105</li>
+        <li>DAF CF85</li>
+        <li>DAF CF105</li>
       </ul>
     </div>
     <div class="truck-container">

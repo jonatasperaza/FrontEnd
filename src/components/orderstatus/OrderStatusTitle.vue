@@ -17,9 +17,22 @@ section {
   .container {
     display: flex;
     align-items: center;
+    margin: auto;
     h1 {
       margin-left: 0.5em;
       font-size: 4em;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    height: 10vh;
+    .container {
+      h1 {
+        margin-left: 0;
+        text-align: center;
+      }
     }
   }
 }

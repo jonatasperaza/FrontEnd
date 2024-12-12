@@ -8,6 +8,8 @@ import Login from 'vue-material-design-icons/Login.vue'
 import Singup from 'vue-material-design-icons/AccountPlus.vue'
 import Menu from 'vue-material-design-icons/Menu.vue'
 import Information from 'vue-material-design-icons/Information.vue'
+import Account from 'vue-material-design-icons/Account.vue'
+import MonitorDashboard from 'vue-material-design-icons/MonitorDashboard.vue'
 import { useAuthStore } from '@/stores/auth/auth'
 
 const authStore = useAuthStore()
@@ -50,6 +52,38 @@ onUnmounted(() => {
       <router-link to="/make-order" class="drop">
         <Home />
         Pedido
+      </router-link>
+      <router-link
+        to="/client/profile"
+        class="drop"
+        v-if="authStore.state.isLogged && authStore.state.type == 'client'"
+      >
+        <Account />
+        Perfil
+      </router-link>
+      <router-link
+        to="/employee/profile"
+        class="drop"
+        v-if="authStore.state.isLogged && authStore.state.type == 'employee'"
+      >
+        <Account />
+        Perfil
+      </router-link>
+      <router-link
+        to="/driver/profile"
+        class="drop"
+        v-if="authStore.state.isLogged && authStore.state.type == 'driver'"
+      >
+        <Account />
+        Perfil
+      </router-link>
+      <router-link
+        to="/admin/dashboard/"
+        class="drop"
+        v-if="authStore.state.isLogged && authStore.state.type == 'employee'"
+      >
+        <MonitorDashboard />
+        Dashboard
       </router-link>
       <router-link to="/login" class="drop" v-if="!authStore.state.isLogged">
         <Login />

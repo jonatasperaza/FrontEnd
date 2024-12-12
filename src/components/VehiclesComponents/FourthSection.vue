@@ -6,12 +6,12 @@
         <div class="container-title">
           <h1>
             Caminhões
-            <span class="strong-pink">Mercedez</span>
+            <span class="strong-pink">Mercedes</span>
           </h1>
         </div>
         <div class="container-text">
           <p>
-            Os caminhões da Scania são reconhecidos mundialmente por sua durabilidade, eficiência e
+            Os caminhões da Mercedes-Benz são reconhecidos mundialmente por sua durabilidade, eficiência e
             inovação tecnológica, projetados para oferecer alto desempenho, desde transporte de
             cargas pesadas até serviços urbanos e de longa distância.
           </p>
@@ -20,10 +20,10 @@
     </div>
     <div class="container-ul">
       <ul>
-        <li>Scania r450 ‘2012</li>
-        <li>Scania s500 ‘2016</li>
-        <li>Scania g410 ‘2014</li>
-        <li>Scania p280 ‘2017</li>
+        <li>Actros Evo 2045 LS</li>
+        <li>Actros Evo 2045 S</li>
+        <li>Actros Evo 2548 LS</li>
+        <li>Actros Evo 2548 S</li>
       </ul>
     </div>
     <div class="truck-container">
