@@ -46,7 +46,7 @@ section {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 55%;
+  height: 100vh;
   background-color: main.$standard-black;
   border-right: 2px solid main.$standard-pink;
 

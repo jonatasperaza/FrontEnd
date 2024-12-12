@@ -24,4 +24,15 @@ section {
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  section {
+    height: 10vh;
+    .container {
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+}
 </style>
