@@ -8,6 +8,8 @@ import Login from 'vue-material-design-icons/Login.vue'
 import Information from 'vue-material-design-icons/Information.vue'
 import Account from 'vue-material-design-icons/Account.vue'
 import MonitorDashboard from 'vue-material-design-icons/MonitorDashboard.vue'
+import Singup from 'vue-material-design-icons/AccountPlus.vue'
+
 import { useAuthStore } from '@/stores'
 import { ref } from 'vue'
 const store = useAuthStore()
@@ -37,42 +39,39 @@ const isOpen = ref(false)
           <Car />
           Veiculos
         </router-link>
-        <router-link to="/make-order">
+        <router-link to="/make-order" v-if="store.state.isLogged && store.state.type == 'client'">
           <Home />
           Pedido
         </router-link>
-        <router-link
-          to="/client/profile"
-          v-if="store.state.isLogged && store.state.type == 'client'"
-        >
+        <router-link to="/client/profile" v-if="store.state.isLogged && store.state.type == 'client'">
           <Account />
           Perfil
         </router-link>
-        <router-link
-          to="/employee/profile"
-          v-if="store.state.isLogged && store.state.type == 'employee'"
-        >
+        <router-link to="/employee/profile" v-if="store.state.isLogged && store.state.type == 'employee'">
           <Account />
           Perfil
         </router-link>
-        <router-link
-          to="/driver/profile"
-          v-if="store.state.isLogged && store.state.type == 'driver'"
-        >
+        <router-link to="/driver/profile" v-if="store.state.isLogged && store.state.type == 'driver'">
           <Account />
           Perfil
         </router-link>
-        <router-link
-          to="/admin/dashboard/"
-          v-if="store.state.isLogged && store.state.type == 'employee'"
-        >
+        <router-link to="/admin/dashboard/" v-if="store.state.isLogged && store.state.type == 'employee'">
           <MonitorDashboard />
           Dashboard
+        </router-link>
+        <router-link to="/my-driver-order" v-if="store.state.isLogged && store.state.type == 'driver'">
+          <MonitorDashboard />
+          Meu Pedido
         </router-link>
         <router-link to="/login" v-if="!store.state.isLogged">
           <Login />
           Login
         </router-link>
+        <router-link to="/client/signin" v-if="!store.state.isLogged">
+          <Singup />
+          Cadastrar
+        </router-link>
+
         <button v-else @click="store.logout">
           <Logout />
           Logout
@@ -135,7 +134,7 @@ nav {
   gap: 1rem;
 }
 
-nav > a {
+nav>a {
   margin: 10px auto 0;
   display: flex;
   justify-content: start;
@@ -188,6 +187,7 @@ nav > a {
     justify-content: center;
     align-items: center;
   }
+
   button {
     background-color: transparent;
     border: none;
