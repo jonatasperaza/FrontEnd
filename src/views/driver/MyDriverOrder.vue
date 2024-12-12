@@ -1,9 +1,9 @@
 <script setup>
-import CurrentOrder from '@/components/MyDriverOrder/CurrentOrder.vue';
+import CurrentOrder from '@/components/MyDriverOrder/CurrentOrder.vue'
 </script>
 
 <template>
-    <CurrentOrder />
+  <CurrentOrder />
 </template>
 
 <style scoped></style>

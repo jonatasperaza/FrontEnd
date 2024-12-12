@@ -90,7 +90,7 @@ class OrderService {
     }
   }
 
-  async getOrderByClientOrByDriver(clientId ='', driverId = '') {
+  async getOrderByClientOrByDriver(clientId = '', driverId = '') {
     try {
       const { data } = await api.get(`order/?client_id=${clientId}&driver_id=${driverId}`)
       return data
@@ -100,7 +100,7 @@ class OrderService {
     }
   }
 
-  async updateOrderLocal(orderId, obj){
+  async updateOrderLocal(orderId, obj) {
     try {
       const { data } = await api.patch(`orders/${orderId}/update-driver-position/`, obj)
       toast.success('Local do pedido atualizado com sucesso')

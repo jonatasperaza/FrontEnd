@@ -343,33 +343,33 @@ input {
 .delete-button:hover {
   color: #d01970;
 }
-@media screen and (max-width: 1024px){
-    .teste{
-      padding: 0;
-    }
-  .row{
+@media screen and (max-width: 1024px) {
+  .teste {
+    padding: 0;
+  }
+  .row {
     display: flex;
     flex-direction: column;
   }
-  .firstContainer{
+  .firstContainer {
     height: 100vh;
   }
-  .list-container{
+  .list-container {
     margin: auto;
     height: 120px;
     width: 100%;
     overflow-y: scroll;
   }
-  .alignButton{
+  .alignButton {
     width: 100%;
     height: 3rem;
-    button.add-button{
-    margin: auto;
-    height: 3rem;
-    width: 100%;
+    button.add-button {
+      margin: auto;
+      height: 3rem;
+      width: 100%;
+    }
   }
-  }
-  .add-button{
+  .add-button {
     margin: auto;
     height: 3rem;
     width: 100%;

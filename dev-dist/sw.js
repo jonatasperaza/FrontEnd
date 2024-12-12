@@ -67,7 +67,7 @@ if (!self.define) {
     });
   };
 }
-define(['./workbox-e7681877'], (function (workbox) { 'use strict';
+define(['../../../../OneDrive/Documentos/FrontEnd/node_modules/workbox-routing/registerRoute.mjs', './workbox-7e873c62', '../../../../OneDrive/Documentos/FrontEnd/node_modules/workbox-strategies/NetworkFirst.mjs', '../../../../OneDrive/Documentos/FrontEnd/node_modules/workbox-routing/NavigationRoute.mjs'], (function (registerRoute_mjs, workbox, NetworkFirst_mjs, NavigationRoute_mjs) { 'use strict';
 
   self.skipWaiting();
   workbox.clientsClaim();
@@ -82,13 +82,14 @@ define(['./workbox-e7681877'], (function (workbox) { 'use strict';
     "revision": "3ca0b8505b4bec776b69afdba2768812"
   }, {
     "url": "index.html",
+    "revision": "0.2oghpsav228"
     "revision": "0.c3kt0d5q7lo"
   }], {});
   workbox.cleanupOutdatedCaches();
-  workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
+  registerRoute_mjs.registerRoute(new NavigationRoute_mjs.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
     allowlist: [/^\/$/]
   }));
-  workbox.registerRoute(/^https:\/\/api\.fexcompany\.me\/.*$/, new workbox.NetworkFirst({
+  registerRoute_mjs.registerRoute(/^https:\/\/api\.fexcompany\.me\/.*$/, new NetworkFirst_mjs.NetworkFirst({
     "cacheName": "api-cache",
     plugins: [new workbox.ExpirationPlugin({
       maxEntries: 50,
