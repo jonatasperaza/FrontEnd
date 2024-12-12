@@ -120,6 +120,7 @@ section {
         div {
           width: 100%;
           height: 10rem;
+          justify-content: center;
           padding: 0.5rem;
           img {
             width: 3rem;

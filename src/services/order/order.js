@@ -89,6 +89,27 @@ class OrderService {
       return error.message
     }
   }
+
+  async getOrderByClientOrByDriver(clientId = '', driverId = '') {
+    try {
+      const { data } = await api.get(`order/?client_id=${clientId}&driver_id=${driverId}`)
+      return data
+    } catch (error) {
+      handleErrorResponse(error, 'Erro ao buscar pedidos')
+      return error.message
+    }
+  }
+
+  async updateOrderLocal(orderId, obj) {
+    try {
+      const { data } = await api.patch(`orders/${orderId}/update-driver-position/`, obj)
+      toast.success('Local do pedido atualizado com sucesso')
+      return data
+    } catch (error) {
+      handleErrorResponse(error, 'Erro ao atualizar local do pedido')
+      return error.message
+    }
+  }
 }
 
 export default new OrderService()

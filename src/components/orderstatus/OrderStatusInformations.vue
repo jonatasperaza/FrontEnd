@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useOrderStore } from '@/stores'
 import router from '@/router'
+import { toast } from 'vue3-toastify';
 
 const orderStore = useOrderStore()
 const currentOrder = ref(null)
@@ -10,6 +11,16 @@ onMounted(async () => {
 
   orderStore.state.statusCurrentOrder = currentOrder.value?.status
 })
+
+const copyPixKey = async (key) => {
+  try {
+    await navigator.clipboard.writeText(key)
+    toast.success('Chave PIX copiada com sucesso!')
+  } catch (error) {
+    console.error('Erro ao copiar a chave PIX:', error)
+    toast.error('Erro ao copiar a chave PIX!')
+  }
+}
 </script>
 <template>
   <section>
@@ -217,6 +228,43 @@ onMounted(async () => {
             <input type="text" class="input" :value="currentOrder?.vehicle.plate" />
           </div>
         </div>
+        <h2 class="title-data">Dados e pagamento</h2>
+        <div class="container-field">
+          <div class="container-input">
+            <label for="">Forma de pagamento</label>
+            <input
+              type="text"
+              disabled
+              class="input"
+              :value="currentOrder?.payment.payment_method_id"
+            />
+          </div>
+          <div class="container-input">
+            <label for="">Status do pagamento</label>
+            <input type="text" class="input" disabled :value="currentOrder?.payment.status == 'approved'
+                ? 'Pagamento aprovado'
+                : currentOrder?.payment.status == 'cancelled'
+                  ? 'Pagamento cancelado'
+                  : currentOrder?.payment.status == 'pending'
+                    ? 'Pendente'
+                    : currentOrder?.payment.status" />
+          </div>
+        </div>
+        <div class="container-field">
+          <div class="container-input">
+            <label for="">Copiar chave pix</label>
+            <input
+              type="text"
+              class="input"
+              :value="currentOrder?.payment.pix_copyPaste"
+              @click="copyPixKey(currentOrder?.payment.pix_copyPaste)"
+            />
+          </div>
+            <div class="container-input-">
+            <label for="">Pagar com QRCode</label>
+            <a :href="currentOrder?.payment.ticket_url"  target="_blank">Pagar com QRCode</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -270,12 +318,33 @@ section {
             color: main.$standard-white;
             background-color: main.$standard-black;
           }
+
         }
 
         .container-input {
           width: 60%;
           display: flex;
           flex-direction: column;
+        }
+        .container-input- {
+          width: 60%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          a {
+            color: main.$standard-white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border-radius: 1rem;
+            background-color: main.$standard-purple;
+            transition: 0.3s ease-in-out;
+          }
+
+          a:hover {
+            background-color: main.$standard-pink;
+          }
         }
       }
     }

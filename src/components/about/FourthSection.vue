@@ -18,7 +18,7 @@
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.479943546926!2d-46.43355922539462!3d-23.443146357258374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce63078c968bf7%3A0x1980321f2d8c69eb!2sSKIBIDI%20SIGMA%20AURA%20RIZZ%20LAND!5e0!3m2!1spt-BR!2sbr!4v1731896138133!5m2!1spt-BR!2sbr"
           width="300"
-          height="400"
+          height="300"
           style="border: 2px solid #fc1d87"
           allowfullscreen=""
           loading="lazy"
