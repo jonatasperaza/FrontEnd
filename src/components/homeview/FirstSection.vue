@@ -76,7 +76,7 @@ article {
     width: 80%;
 
     div {
-      width: 45%;
+      width: 100%;
       margin: auto;
 
       h1 {
