@@ -185,6 +185,29 @@ export const useOrderStore = defineStore('orders', () => {
     }
   }
 
+  const getOrderByClientOrByDriver = async (client_id = '', driver_id = '') => {
+    state.loading = true
+    try {
+      const response = await OrderService.getOrderByClientOrByDriver(client_id, driver_id)
+      return response
+    } catch (error) {
+      state.error = error
+    } finally {
+      state.loading = false
+    }
+  }
+
+  const updateOrderLocal = async (orderId, obj) => {
+    state.loading = true
+    try {
+      await OrderService.updateOrderLocal(orderId, obj)
+    } catch (error) {
+      state.error = error
+    } finally {
+      state.loading = false
+    }
+  }
+
   return {
     state,
     isLoading,
@@ -196,6 +219,8 @@ export const useOrderStore = defineStore('orders', () => {
     getOrder,
     updateOrderStatus,
     updateOrderVehicle,
-    updateOrderDriver
+    updateOrderDriver,
+    getOrderByClientOrByDriver,
+    updateOrderLocal
   }
 })

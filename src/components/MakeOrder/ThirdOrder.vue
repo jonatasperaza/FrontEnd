@@ -225,4 +225,14 @@ input {
   max-height: 0;
   opacity: 0;
 }
+@media screen and (max-width: 1024px){
+  .row{
+    flex-direction: column
+  }
+  .buttons{
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
 </style>
