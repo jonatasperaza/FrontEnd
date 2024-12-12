@@ -30,6 +30,7 @@ section {
     height: 10vh;
     .container {
       h1 {
+        margin-left: 0;
         text-align: center;
       }
     }
