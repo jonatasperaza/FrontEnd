@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useOrderStore } from '@/stores'
 import router from '@/router'
-import { toast } from 'vue3-toastify';
+import { toast } from 'vue3-toastify'
 
 const orderStore = useOrderStore()
 const currentOrder = ref(null)
@@ -247,13 +247,20 @@ const copyPixKey = async (key) => {
           </div>
           <div class="container-input">
             <label for="">Status do pagamento</label>
-            <input type="text" class="input" disabled :value="currentOrder?.payment.status == 'approved'
-                ? 'Pagamento aprovado'
-                : currentOrder?.payment.status == 'cancelled'
-                  ? 'Pagamento cancelado'
-                  : currentOrder?.payment.status == 'pending'
-                    ? 'Pendente'
-                    : currentOrder?.payment.status" />
+            <input
+              type="text"
+              class="input"
+              disabled
+              :value="
+                currentOrder?.payment.status == 'approved'
+                  ? 'Pagamento aprovado'
+                  : currentOrder?.payment.status == 'cancelled'
+                    ? 'Pagamento cancelado'
+                    : currentOrder?.payment.status == 'pending'
+                      ? 'Pendente'
+                      : currentOrder?.payment.status
+              "
+            />
           </div>
         </div>
         <div class="container-field">
@@ -266,9 +273,9 @@ const copyPixKey = async (key) => {
               @click="copyPixKey(currentOrder?.payment.pix_copyPaste)"
             />
           </div>
-            <div class="container-input-">
+          <div class="container-input-">
             <label for="">Pagar com QRCode</label>
-            <a :href="currentOrder?.payment.ticket_url"  target="_blank">Pagar com QRCode</a>
+            <a :href="currentOrder?.payment.ticket_url" target="_blank">Pagar com QRCode</a>
           </div>
         </div>
       </div>
@@ -324,7 +331,6 @@ section {
             color: main.$standard-white;
             background-color: main.$standard-black;
           }
-
         }
 
         .container-input {

@@ -37,7 +37,11 @@ const goBack = () => {
                 : 'Não há itens'
             }}
           </p>
-          <div v-for="(item, index) in ordersStore.state.order.items" :key="index" class="row row-itens">
+          <div
+            v-for="(item, index) in ordersStore.state.order.items"
+            :key="index"
+            class="row row-itens"
+          >
             <div class="container-input">
               <label>Item:</label>
               <p>{{ item.name }}</p>
@@ -277,42 +281,41 @@ h2 {
 .add-button:hover {
   background-color: #d01970;
 }
-@media screen and (max-width: 1024px){
-  .row{
+@media screen and (max-width: 1024px) {
+  .row {
     flex-direction: column;
-
   }
-  .scroll-itens{
+  .scroll-itens {
     max-height: 200px;
     overflow-y: scroll;
-    p{
+    p {
       margin-bottom: 1rem;
     }
   }
-  .row-itens{
-    gap: .5rem;
+  .row-itens {
+    gap: 0.5rem;
     margin-bottom: 1.5rem;
   }
-  .buttons{
+  .buttons {
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
   }
-  .container-input{
+  .container-input {
     flex-direction: row;
-    gap: .5rem;
-    p{
+    gap: 0.5rem;
+    p {
       margin: 0;
     }
   }
-  .grid-layout{
+  .grid-layout {
     grid-template-columns: 1fr;
   }
-  .button-container{
+  .button-container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    button{
+    button {
       width: 100%;
     }
   }

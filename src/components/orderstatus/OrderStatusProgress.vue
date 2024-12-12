@@ -98,13 +98,13 @@ section {
 }
 
 @media screen and (max-width: 768px) {
- section {
-  border: none;
-  margin-top: 5rem;
+  section {
+    border: none;
+    margin-top: 5rem;
 
-  .container{
-    height: 65vh;
+    .container {
+      height: 65vh;
+    }
   }
- }
 }
 </style>

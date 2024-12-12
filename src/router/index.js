@@ -138,12 +138,12 @@ router.beforeEach((to, from, next) => {
   if (!isVisited) {
     sessionStorage.setItem(pageKey, true)
     //toast.info(`Bem-vindo à página ${to.name}! Esperamos que você goste. 😊`, {
-      //timeout: 5000,
-      //closeOnClick: true,
-      //pauseOnFocusLoss: true,
-      //pauseOnHover: true,
-      //draggable: true,
-      //position: 'top-left'
+    //timeout: 5000,
+    //closeOnClick: true,
+    //pauseOnFocusLoss: true,
+    //pauseOnHover: true,
+    //draggable: true,
+    //position: 'top-left'
     //})
   }
 

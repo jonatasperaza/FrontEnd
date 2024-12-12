@@ -36,6 +36,5 @@ import { OrderStatusInformations, OrderStatusProgress, OrderStatusTitle } from '
       padding: 3rem 0;
     }
   }
-  
 }
 </style>
