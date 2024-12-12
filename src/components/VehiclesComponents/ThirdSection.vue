@@ -11,7 +11,7 @@
         </div>
         <div class="container-text">
           <p>
-            Os caminhões da Scania são reconhecidos mundialmente por sua durabilidade, eficiência e
+            Os caminhões da Volvo são reconhecidos mundialmente por sua durabilidade, eficiência e
             inovação tecnológica, projetados para oferecer alto desempenho, desde transporte de
             cargas pesadas até serviços urbanos e de longa distância.
           </p>
@@ -20,10 +20,10 @@
     </div>
     <div class="container-ul">
       <ul>
-        <li>Scania r450 ‘2012</li>
-        <li>Scania s500 ‘2016</li>
-        <li>Scania g410 ‘2014</li>
-        <li>Scania p280 ‘2017</li>
+        <li>Volvo FH</li>
+        <li>Volvo FM</li>
+        <li>Volvo FMX</li>
+        <li>Volvo VM</li>
       </ul>
     </div>
     <div class="truck-container">

@@ -6,6 +6,8 @@ import Logout from 'vue-material-design-icons/Logout.vue'
 import Car from 'vue-material-design-icons/Car.vue'
 import Login from 'vue-material-design-icons/Login.vue'
 import Information from 'vue-material-design-icons/Information.vue'
+import Account from 'vue-material-design-icons/Account.vue'
+import MonitorDashboard from 'vue-material-design-icons/MonitorDashboard.vue'
 import { useAuthStore } from '@/stores'
 import { ref } from 'vue'
 const store = useAuthStore()
@@ -38,6 +40,34 @@ const isOpen = ref(false)
         <router-link to="/make-order">
           <Home />
           Pedido
+        </router-link>
+        <router-link
+          to="/client/profile"
+          v-if="store.state.isLogged && store.state.type == 'client'"
+        >
+          <Account />
+          Perfil
+        </router-link>
+        <router-link
+          to="/employee/profile"
+          v-if="store.state.isLogged && store.state.type == 'employee'"
+        >
+          <Account />
+          Perfil
+        </router-link>
+        <router-link
+          to="/driver/profile"
+          v-if="store.state.isLogged && store.state.type == 'driver'"
+        >
+          <Account />
+          Perfil
+        </router-link>
+        <router-link
+          to="/admin/dashboard/"
+          v-if="store.state.isLogged && store.state.type == 'employee'"
+        >
+          <MonitorDashboard />
+          Dashboard
         </router-link>
         <router-link to="/login" v-if="!store.state.isLogged">
           <Login />
@@ -158,7 +188,7 @@ nav > a {
     justify-content: center;
     align-items: center;
   }
-  button{
+  button {
     background-color: transparent;
     border: none;
     color: white;

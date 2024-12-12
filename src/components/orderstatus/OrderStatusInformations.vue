@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useOrderStore } from '@/stores'
 import router from '@/router'
-import { toast } from 'vue3-toastify';
+import { toast } from 'vue3-toastify'
 
 const orderStore = useOrderStore()
 const currentOrder = ref(null)
@@ -150,6 +150,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.cep"
+              disabled
             />
           </div>
           <div class="container-input">
@@ -160,6 +161,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.number"
+              disabled
             />
           </div>
         </div>
@@ -172,6 +174,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.street"
+              disabled
             />
           </div>
           <div class="container-input">
@@ -182,6 +185,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.complement"
+              disabled
             />
           </div>
         </div>
@@ -194,6 +198,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.city"
+              disabled
             />
           </div>
           <div class="container-input">
@@ -204,6 +209,7 @@ const copyPixKey = async (key) => {
               type="text"
               name=""
               :value="currentOrder?.address_delivery.state"
+              disabled
             />
           </div>
         </div>
@@ -211,21 +217,21 @@ const copyPixKey = async (key) => {
         <div class="container-field">
           <div class="container-input">
             <label>Motorista</label>
-            <input type="text" class="input" :value="currentOrder?.driver.name" />
+            <input type="text" class="input" :value="currentOrder?.driver.name" disabled />
           </div>
           <div class="container-input">
             <label for="">Tipo do veículo</label>
-            <input type="text" class="input" :value="currentOrder?.vehicle.type_vehicle" />
+            <input type="text" class="input" :value="currentOrder?.vehicle.type_vehicle" disabled />
           </div>
         </div>
         <div class="container-field">
           <div class="container-input">
             <label for="">Modelo do veículo</label>
-            <input type="text" class="input" :value="currentOrder?.vehicle.model" />
+            <input type="text" class="input" :value="currentOrder?.vehicle.model" disabled />
           </div>
           <div class="container-input">
             <label for="">Placa do veículo</label>
-            <input type="text" class="input" :value="currentOrder?.vehicle.plate" />
+            <input type="text" class="input" :value="currentOrder?.vehicle.plate" disabled />
           </div>
         </div>
         <h2 class="title-data">Dados e pagamento</h2>
@@ -241,13 +247,20 @@ const copyPixKey = async (key) => {
           </div>
           <div class="container-input">
             <label for="">Status do pagamento</label>
-            <input type="text" class="input" disabled :value="currentOrder?.payment.status == 'approved'
-                ? 'Pagamento aprovado'
-                : currentOrder?.payment.status == 'cancelled'
-                  ? 'Pagamento cancelado'
-                  : currentOrder?.payment.status == 'pending'
-                    ? 'Pendente'
-                    : currentOrder?.payment.status" />
+            <input
+              type="text"
+              class="input"
+              disabled
+              :value="
+                currentOrder?.payment.status == 'approved'
+                  ? 'Pagamento aprovado'
+                  : currentOrder?.payment.status == 'cancelled'
+                    ? 'Pagamento cancelado'
+                    : currentOrder?.payment.status == 'pending'
+                      ? 'Pendente'
+                      : currentOrder?.payment.status
+              "
+            />
           </div>
         </div>
         <div class="container-field">
@@ -260,9 +273,9 @@ const copyPixKey = async (key) => {
               @click="copyPixKey(currentOrder?.payment.pix_copyPaste)"
             />
           </div>
-            <div class="container-input-">
+          <div class="container-input-">
             <label for="">Pagar com QRCode</label>
-            <a :href="currentOrder?.payment.ticket_url"  target="_blank">Pagar com QRCode</a>
+            <a :href="currentOrder?.payment.ticket_url" target="_blank">Pagar com QRCode</a>
           </div>
         </div>
       </div>
@@ -318,7 +331,6 @@ section {
             color: main.$standard-white;
             background-color: main.$standard-black;
           }
-
         }
 
         .container-input {
